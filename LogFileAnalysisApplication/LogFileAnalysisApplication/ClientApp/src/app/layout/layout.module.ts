@@ -3,19 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import {
   MatToolbarModule,
   MatSidenavModule,
   MatButtonModule,
+  MatBadgeModule,
   MatListModule,
   MatIconModule
 } from '@angular/material';
 
 @NgModule({
   declarations: [
-    LayoutComponent,
-    SidenavComponent
+    LayoutComponent    
   ],
   imports: [
     CommonModule,
@@ -24,6 +23,7 @@ import {
     /**material */
     MatToolbarModule,
     MatSidenavModule,
+    MatBadgeModule,
     MatButtonModule,
     MatListModule,
     MatIconModule
