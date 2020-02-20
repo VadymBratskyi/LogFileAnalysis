@@ -1,0 +1,28 @@
+.flexBox {
+    width: 100%;
+    text-align: right;
+    padding-right: 10px;
+  }
+  
+  .footerToolbar {
+    height: 24px;
+    padding: 0px;
+    font-size: 13px;
+  }
+  
+  ul.infoGroup {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+  }
+  
+  ul.infoGroup li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    border-bottom: 2px solid gray; /* Рамка вокруг текста */
+    padding: 3px; /* Поля вокруг текста */
+  }
+  
+  ul.infoGroup li:hover {
+    cursor:pointer;
+    border-bottom: 2px solid #fff; /* Рамка вокруг текста */
+  }

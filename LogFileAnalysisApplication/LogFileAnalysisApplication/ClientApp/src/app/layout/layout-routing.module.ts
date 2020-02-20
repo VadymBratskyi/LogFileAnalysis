@@ -6,7 +6,18 @@ import { LayoutComponent } from './layout.component';
 const routes: Routes = [
   {
     path: "",
-    component: LayoutComponent
+    component: LayoutComponent,
+    children: [
+      {
+        path: "home",
+        loadChildren: () => import('../home/home.module').then(h => h.HomeModule)
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+    ]    
   }
 ];
 

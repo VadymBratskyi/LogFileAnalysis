@@ -3,7 +3,7 @@
     <mat-toolbar color="primary">    
             <mat-toolbar-row color="primary" class="example-toolbar">
                 <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-                <span>Log Аналітік</span>
+                <span>Log Analyst</span>
                 <span class="example-spacer"></span>
                 <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
                 <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
@@ -18,28 +18,14 @@
             </mat-nav-list>
         </mat-sidenav>
 
-        <mat-sidenav-content>
-            <p>hello content</p>
+        <mat-sidenav-content class="contentFlaxe">
+            <div class="contentSize">
+                <router-outlet></router-outlet>
+            </div>            
         </mat-sidenav-content>
 
     </mat-sidenav-container>
 
-<footer>
-    <mat-toolbar class="footerToolbar">
-
-      <ul class="infoGroup">
-        <li (click)="showInfo()">
-          <button mat-button color="primary">Повідомлення</button> 
-        </li>
-      </ul>
-
-      <div flex class="flexBox">
-        <span>
-          0.1 v.
-        </span>
-      </div>
-    </mat-toolbar>
-
-  </footer>
+    <app-footer-layout></app-footer-layout>
 
 </div>

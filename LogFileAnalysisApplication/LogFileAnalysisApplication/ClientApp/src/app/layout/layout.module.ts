@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
+import { FooterLayoutComponent } from './footer/footer-layout.component';
 import {
   MatToolbarModule,
   MatSidenavModule,
@@ -12,9 +13,11 @@ import {
   MatIconModule
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [
-    LayoutComponent    
+    LayoutComponent,
+    FooterLayoutComponent    
   ],
   imports: [
     CommonModule,
