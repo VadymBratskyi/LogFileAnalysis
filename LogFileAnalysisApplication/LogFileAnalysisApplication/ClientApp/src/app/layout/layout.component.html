@@ -3,10 +3,9 @@
     <mat-toolbar color="primary">    
             <mat-toolbar-row color="primary" class="example-toolbar">
                 <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-                <span>Log Analyst</span>
+                <span>Log Аналітик</span>
                 <span class="example-spacer"></span>
-                <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-                <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+                <mat-icon class="example-icon" aria-hidden="false" aria-label="Settings icon">settings</mat-icon>
             </mat-toolbar-row>
     </mat-toolbar>
   
@@ -14,12 +13,27 @@
 
         <mat-sidenav #snav [mode]="'over'" [fixedInViewport]="false">
             <mat-nav-list>
-                <a mat-list-item routerLink=".">Nav link</a>
-            </mat-nav-list>
+                <a mat-list-item routerLink="/" class="rowMenu">
+                    Головна. <span class="fill-space"></span>
+                    <!-- <img alt="search" src="./assets/images/searchIconGray.svg" style="padding-right: 5px"> Пошук <span class="fill-space"></span> -->
+                </a>
+                <a mat-list-item routerLink="/process-log-files" class="rowMenu">
+                    Обробка Log-файлів. <span class="fill-space"></span>
+                    <!-- <img alt="search" src="./assets/images/searchIconGray.svg" style="padding-right: 5px"> Пошук <span class="fill-space"></span> -->
+                </a>
+                <a mat-list-item routerLink="/show-log-objects" class="rowMenu">
+                    Перегляд Log-об'єктів. <span class="fill-space"></span>
+                    <!-- <img alt="search" src="./assets/images/searchIconGray.svg" style="padding-right: 5px"> Пошук <span class="fill-space"></span> -->
+                </a>
+                <a mat-list-item routerLink="/analysis-log-objects" class="rowMenu">
+                    Аналіз Log-об'єктів. <span class="fill-space"></span>
+                    <!-- <img alt="search" src="./assets/images/searchIconGray.svg" style="padding-right: 5px"> Пошук <span class="fill-space"></span> -->
+                </a>
+            </mat-nav-list>            
         </mat-sidenav>
 
         <mat-sidenav-content class="contentFlaxe">
-            <div class="contentSize">
+            <div class="container-fluid">
                 <router-outlet></router-outlet>
             </div>            
         </mat-sidenav-content>
