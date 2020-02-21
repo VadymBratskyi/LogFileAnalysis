@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileAnalysisApplication", "LogFileAnalysisApplication\LogFileAnalysisApplication.csproj", "{3CB3E86C-D097-4CBB-94CD-CC36E76F7206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysisApplication", "LogFileAnalysisApplication\LogFileAnalysisApplication.csproj", "{3CB3E86C-D097-4CBB-94CD-CC36E76F7206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessLogFilesDLL", "ProcessLogFilesDLL\ProcessLogFilesDLL.csproj", "{D55E416C-2BF7-466F-AF4D-2716AB55C893}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowLogObjectsDLL", "ShowLogObjectsDLL\ShowLogObjectsDLL.csproj", "{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalysisLogObjects", "AnalysisLogObjects\AnalysisLogObjects.csproj", "{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileAnalysisDAL", "LogFileAnalysisDAL\LogFileAnalysisDAL.csproj", "{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{3CB3E86C-D097-4CBB-94CD-CC36E76F7206}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB3E86C-D097-4CBB-94CD-CC36E76F7206}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CB3E86C-D097-4CBB-94CD-CC36E76F7206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D55E416C-2BF7-466F-AF4D-2716AB55C893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55E416C-2BF7-466F-AF4D-2716AB55C893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55E416C-2BF7-466F-AF4D-2716AB55C893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55E416C-2BF7-466F-AF4D-2716AB55C893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

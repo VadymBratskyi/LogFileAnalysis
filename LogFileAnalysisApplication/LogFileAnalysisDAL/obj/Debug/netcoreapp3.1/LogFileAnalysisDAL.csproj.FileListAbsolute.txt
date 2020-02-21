@@ -1,0 +1,5 @@
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.deps.json
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.AssemblyInfoInputs.cache
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.AssemblyInfo.cs
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.csprojAssemblyReference.cache
