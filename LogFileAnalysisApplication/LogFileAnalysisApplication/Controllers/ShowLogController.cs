@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LogFileAnalysisApplication.Models;
+﻿using LogFileAnalysisApplication.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace LogFileAnalysisApplication.Controllers
-{
-    [Route("api/[controller]")]
-    [EnableCors("AllowOrigin")]
-    public class ShowLogController : Controller
-    {
-        private readonly ILogger<ShowLogController> _logger;
+namespace LogFileAnalysisApplication.Controllers {
 
-        public ShowLogController(ILogger<ShowLogController> logger) {
-            _logger = logger;
-        }
+	#region Class: ShowLogController
+
+	[Route("api/[controller]")]
+	[EnableCors("AllowOrigin")]
+	public class ShowLogController : Controller {
+
+		#region Fields: Private
+
+		private readonly ILogger<ShowLogController> _logger;
+
+		#endregion
+
+		#region Constructor: Public
+
+		public ShowLogController(ILogger<ShowLogController> logger) {
+			_logger = logger;
+		}
+
+		#endregion
+
+		#region Methods: Public
 
 		[HttpGet("[action]")]
 		public TestValue GetTestValue() {
@@ -31,5 +39,11 @@ namespace LogFileAnalysisApplication.Controllers
 			test.Value = "Hello World from ShowLogController.PostTestValue";
 			return test;
 		}
+
+		#endregion
+
 	}
+
+	#endregion
+
 }

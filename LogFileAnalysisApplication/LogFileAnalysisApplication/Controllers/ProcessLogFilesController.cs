@@ -2,19 +2,30 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
 namespace LogFileAnalysisApplication.Controllers {
+
+	#region Class: ProcessLogFilesController
 
 	[Route("api/[controller]")]
 	[EnableCors("AllowOrigin")]
 	public class ProcessLogFilesController : Controller {
 
+		#region Fields: Private
+
 		private readonly ILogger<ProcessLogFilesController> _logger;
+
+		#endregion
+
+		#region Constructor: Public
 
 		public ProcessLogFilesController(ILogger<ProcessLogFilesController> logger) {
 			_logger = logger;
 		}
+
+		#endregion
+
+		#region Methods: Public
 
 		[HttpGet("[action]")]
 		public TestValue GetTestValue() {
@@ -28,5 +39,11 @@ namespace LogFileAnalysisApplication.Controllers {
 			test.Value += "Hello World from ProcessLogFilesController.PostTestValue";
 			return test;
 		}
+
+		#endregion
+
 	}
+
+	#endregion
+
 }
