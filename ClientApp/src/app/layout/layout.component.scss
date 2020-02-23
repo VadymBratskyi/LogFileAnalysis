@@ -34,7 +34,7 @@ h1.example-app-name {
 .example-icon {
     padding: 0 14px;
   }
-  
+
 .example-spacer {
     flex: 1 1 auto;
 }
@@ -45,4 +45,12 @@ h1.example-app-name {
 
 .rowMenu {
   border-bottom: 1px solid lightgrey;
+}
+
+.homeBackground {
+  background-image: url('assets/images/fon_2.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

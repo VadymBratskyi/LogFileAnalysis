@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "LogFileAnalysisDAL/1.0.0": {
         "dependencies": {
-          "MongoDB.Driver": "2.10.2"
+          "MongoDB.Driver": "2.10.2",
+          "MongoDB.Driver.GridFS": "2.10.2"
         },
         "runtime": {
           "LogFileAnalysisDAL.dll": {}
@@ -95,6 +96,20 @@
         },
         "runtime": {
           "lib/netstandard1.5/MongoDB.Driver.Core.dll": {
+            "assemblyVersion": "2.10.2.0",
+            "fileVersion": "2.10.2.0"
+          }
+        }
+      },
+      "MongoDB.Driver.GridFS/2.10.2": {
+        "dependencies": {
+          "MongoDB.Bson": "2.10.2",
+          "MongoDB.Driver": "2.10.2",
+          "MongoDB.Driver.Core": "2.10.2",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {
             "assemblyVersion": "2.10.2.0",
             "fileVersion": "2.10.2.0"
           }
@@ -1100,6 +1115,13 @@
       "sha512": "sha512-fW7Vq8u3CC+ivqKiWOIO4F4pDy+UD1onllcjT2Pi5a5xw3A2rtYt2kOWaR/Kxd+aakoNMXCHEZyDXusNM1n/Lw==",
       "path": "mongodb.driver.core/2.10.2",
       "hashPath": "mongodb.driver.core.2.10.2.nupkg.sha512"
+    },
+    "MongoDB.Driver.GridFS/2.10.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y8MZvORlK9vN7zgClorapYgfTycOkA/sjMB5a7Yndb6+EHtA3PLGYlU9COOlFG3NV1FfS0cmmfUvPp2rcMPsWw==",
+      "path": "mongodb.driver.gridfs/2.10.2",
+      "hashPath": "mongodb.driver.gridfs.2.10.2.nupkg.sha512"
     },
     "MongoDB.Libmongocrypt/1.0.0": {
       "type": "package",

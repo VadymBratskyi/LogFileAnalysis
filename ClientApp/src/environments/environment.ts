@@ -5,9 +5,13 @@
 export const environment = {
   production: false,
   localhostApp: 'https://localhost:44396/',
+
   urlProcessLogApi: 'api/ProcessLogFiles/',
   urlShowLogApi: 'api/ShowLog/',
   urlAnalysisLogApi: 'api/AnalysisLog/',
+  
+  methodUploadLogFiles: 'UploadLogFiles',
+
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'
 };

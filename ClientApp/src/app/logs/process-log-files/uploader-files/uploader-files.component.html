@@ -1,6 +1,6 @@
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title>
+        <mat-card-title class="padd-title-header">
           Завантаження Logs-файлів
         </mat-card-title>
     </mat-card-header>
@@ -9,7 +9,7 @@
             [saveUrl]="uploadSaveUrl"
             [removeUrl]="uploadRemoveUrl"
             [batch]="true"
-            [withCredentials]="false" >
+            [withCredentials]="false">
             <kendo-upload-messages select="Обрати файл"
                     invalidFileExtension="Недопустимий тип файла"
                     uploadSelectedFiles="Завантажити обрані файли"
@@ -25,8 +25,4 @@
             </kendo-upload-messages>
         </kendo-upload>
     </mat-card-content> 
-    <mat-card-actions>
-        <button mat-button (click)="onGetMessage()">Get</button>
-        <button mat-button (click)="onPostMessage()">Post</button>
-    </mat-card-actions>
 </mat-card>

@@ -1,3 +1,4 @@
+using LogFileAnalysisDAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,9 @@ namespace LogFileAnalysisApplication {
 		public IConfiguration Configuration { get; }
 
 		public void ConfigureServices(IServiceCollection services) {
-			services.AddControllersWithViews();
+
+			var connectionstring = Configuration.GetConnectionString("DefaultConnection");
+			services.AddSingleton(new DbContextService(connectionstring));
 
 			services.AddCors(options =>
 			  options.AddPolicy("AllowOrigin",
@@ -39,6 +42,7 @@ namespace LogFileAnalysisApplication {
 				app.UseHsts();
 			}
 
+			app.UseDefaultFiles();
 			app.UseStaticFiles();
 
 			app.UseMvc();

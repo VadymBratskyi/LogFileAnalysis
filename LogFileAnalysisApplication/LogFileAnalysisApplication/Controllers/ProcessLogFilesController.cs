@@ -1,7 +1,12 @@
 ﻿using LogFileAnalysisApplication.Models;
+using LogFileAnalysisDAL;
+using LogFileAnalysisDAL.Models;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
+using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
 
@@ -14,18 +19,31 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Fields: Private
 
 		private readonly ILogger<ProcessLogFilesController> _logger;
+		private readonly DbContextService _dbService;
 
 		#endregion
 
 		#region Constructor: Public
 
-		public ProcessLogFilesController(ILogger<ProcessLogFilesController> logger) {
+		public ProcessLogFilesController(ILogger<ProcessLogFilesController> logger, DbContextService service) {
 			_logger = logger;
+			_dbService = service;
 		}
 
 		#endregion
 
 		#region Methods: Public
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> UploadLogFiles(IFormFileCollection files) {
+			var st = ModelState.IsValid;
+			if (files != null) {
+				foreach (var file in files) {
+					await _dbService.StoreLogFile(new ObjectId("5e518db31d277a1ff4f041d9"), file.OpenReadStream(), file.Name);
+				}
+			}
+			return Ok();
+		}
 
 		[HttpGet("[action]")]
 		public TestValue GetTestValue() {
@@ -35,7 +53,7 @@ namespace LogFileAnalysisApplication.Controllers {
 		}
 
 		[HttpPost("[action]")]
-		public TestValue PostTestValue([FromBody] TestValue test) {
+		public TestValue PostTestValue([FromBody] TestValue test) {		
 			test.Value += "Hello World from ProcessLogFilesController.PostTestValue";
 			return test;
 		}

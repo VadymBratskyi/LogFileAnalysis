@@ -25,8 +25,8 @@ namespace LogFileAnalysisDAL.Models {
 
         #endregion
 
-    }
+	}
 
-    #endregion
+	#endregion
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-uploader-files',
@@ -8,9 +9,9 @@ import { ProcessLogFilesService } from '@log_services/process-log-files.service'
 })
 export class UploaderFilesComponent implements OnInit {
 
-  uploadSaveUrl = "";//environment.localhostApp + environment.urlApi + 'PostAddFile'; // should represent an actual API endpoint
-  uploadRemoveUrl = "";//environment.localhostApp + environment.urlApi + 'PostRemoveFiles'; // should represent an actual API endpoint
-
+  uploadSaveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodUploadLogFiles; // should represent an actual API endpoint
+  uploadRemoveUrl = environment.localhostApp + environment.urlProcessLogApi + 'PostRemoveFiles'; // should represent an actual API endpoint
+  
   constructor(
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
