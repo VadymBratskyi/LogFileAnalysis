@@ -36,12 +36,14 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		[HttpPost("[action]")]
 		public async Task<ActionResult> UploadLogFiles(IFormFileCollection files) {
-			var st = ModelState.IsValid;
-			if (files != null) {
-				foreach (var file in files) {
-					await _dbService.StoreLogFile(new ObjectId("5e518db31d277a1ff4f041d9"), file.OpenReadStream(), file.Name);
-				}
-			}
+			var log = await _dbService.Logs.Get();
+			//var log = _dbService.GetById(new ObjectId("5e518db31d277a1ff4f041d9"));
+			
+			//if (files != null) {
+			//	foreach (var file in files) {
+			//		await _dbService.StoreLogFile(new ObjectId("5e518db31d277a1ff4f041d9"), file.OpenReadStream(), file.Name);
+			//	}
+			//}
 			return Ok();
 		}
 
