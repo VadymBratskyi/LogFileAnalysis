@@ -1,13 +1,11 @@
-<a [routerLink]="cardHome.rouuterLink">
-    <mat-card class="example-card">      
-        <mat-card-header>
-            <mat-card-title>{{cardHome.title}}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="cardHome.contentImage" alt="log analysis">
-        <mat-card-content>
-            <p>
-                {{cardHome.contentParagraph}} 
-            </p>
-        </mat-card-content>            
-    </mat-card>	
-</a>
+<mat-card class="example-card">      
+    <mat-card-header>
+        <mat-card-title>{{cardHome.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="cardHome.contentImage" alt="log analysis">
+    <mat-card-content>
+        <p>                
+            {{cardHome.contentParagraph}} 
+        </p>
+    </mat-card-content>            
+</mat-card>

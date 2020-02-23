@@ -5,12 +5,10 @@ namespace LogFileAnalysisDAL.Models {
 
     #region Class: Log
 
-    public class Log {
+    public class Log : Entity {
 
         #region Properties: Public
-
-        public ObjectId Id { get; set; }
-
+    
         public DateTime RequestDate { get; set; }
 
         public BsonDocument Request { get; set; }

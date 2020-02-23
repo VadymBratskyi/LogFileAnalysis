@@ -5,7 +5,7 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <kendo-upload
+        <kendo-upload *ngIf="uploadSaveUrl"
             [saveUrl]="uploadSaveUrl"
             [removeUrl]="uploadRemoveUrl"
             [batch]="true"

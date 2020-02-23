@@ -1,11 +1,15 @@
 <div class="container h-100 d-flex justify-content-center">
 
     <div class="row text-center">
-
-        <div class="col-md-4 my-auto" *ngFor="let card of homeCards">
-            <app-card-home [cardHome]="card"></app-card-home>
+        <div class="col-md-4 my-auto">
+            <app-card-home [cardHome]="homeCards[0]" (click)="onProcessLogFile(homeCards[0])"></app-card-home>
         </div>
-
+        <div class="col-md-4 my-auto">
+            <app-card-home [cardHome]="homeCards[1]" (click)="onShowLogObjects(homeCards[1])"></app-card-home>
+        </div>
+        <div class="col-md-4 my-auto">
+            <app-card-home [cardHome]="homeCards[2]" (click)="onAnlysisLogObjects(homeCards[2])"></app-card-home>
+        </div>
     </div>  
     
 </div>

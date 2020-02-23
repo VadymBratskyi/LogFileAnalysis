@@ -10,7 +10,9 @@ export const environment = {
   urlShowLogApi: 'api/ShowLog/',
   urlAnalysisLogApi: 'api/AnalysisLog/',
   
+  methodCreateProcessLogSession: 'CreateProcessLogSession',
   methodUploadLogFiles: 'UploadLogFiles',
+  methodRemoveLogFiles: 'RemoveLogFiles',
 
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'

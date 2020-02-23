@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 
@@ -13,6 +13,27 @@ export class ProcessLogFilesService {
   constructor(
     private http: HttpClient
   ) { }
+
+  public CreateProcessLogSession() : Observable<any>  {
+
+    const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodCreateProcessLogSession;
+
+    var user = {
+      UserName: 'Vados'
+    };
+
+    return this.http.post(url, user)
+      .pipe(
+        map((sessionId: string) => sessionId),
+        catchError((error: HttpErrorResponse) => {
+          console.error('CreateProcessLogSession: ', error);       
+          return throwError(error);
+        })
+      );
+
+  }
+
+
 
   public postTestObjects(): Observable<any> {
     

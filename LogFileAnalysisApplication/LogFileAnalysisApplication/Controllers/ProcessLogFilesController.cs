@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
+using System;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -35,17 +36,57 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Methods: Public
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult> UploadLogFiles(IFormFileCollection files) {
-			var log = await _dbService.Logs.Get();
-			//var log = _dbService.GetById(new ObjectId("5e518db31d277a1ff4f041d9"));
-			
-			//if (files != null) {
-			//	foreach (var file in files) {
-			//		await _dbService.StoreLogFile(new ObjectId("5e518db31d277a1ff4f041d9"), file.OpenReadStream(), file.Name);
-			//	}
-			//}
-			return Ok();
+		public async Task<ActionResult> CreateProcessLogSession([FromBody]TestUser user) {
+			if (user == null) {
+				throw new ArgumentNullException("User name is null!!");
+			}
+			var randSessionIndex = new Random();
+			var processLogSesion = new ProcessLogSession();
+			processLogSesion.UserName = user.UserName;
+			processLogSesion.SessionTitle = string.Format("Session_{0}", randSessionIndex.Next(1, 100));
+			await _dbService.ProcessLogSessions.Create(processLogSesion);
+			return Ok(processLogSesion.Id.ToString().ToJson());
 		}
+
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> UploadLogFiles(IFormFileCollection files, [FromQuery(Name = "sessionId")] string sessionId) {
+			if (sessionId == "undefined") {
+				throw new ArgumentNullException("SessionId is null!!");
+			}
+			if (files != null) {
+				foreach (var file in files) {
+					var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), file.FileName);
+					var processSesionFile = new ProcessSessionFile();
+					processSesionFile.ProcessSessionId = new ObjectId(sessionId);
+					processSesionFile.FileId = fileId;
+					await _dbService.ProcessSessionFiles.Create(processSesionFile);
+				}
+			}
+			return Ok("success".ToJson());
+		}
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> RemoveLogFiles(string fileNames, [FromQuery(Name = "sessionId")] string sessionId) {
+
+			if (fileNames != null) {
+				//// путь к папке Files
+				//string path = "/Files/" + uploadedFile.FileName;
+				//// сохраняем файл в папку Files в каталоге wwwroot
+				//using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+				//{
+				//    await uploadedFile.CopyToAsync(fileStream);
+				//}
+				//FileModel file = new FileModel { Name = uploadedFile.FileName, Path = path };
+				//_context.Files.Add(file);
+				//_context.SaveChanges();
+			}
+
+
+			return Ok();
+
+		}
+
 
 		[HttpGet("[action]")]
 		public TestValue GetTestValue() {
@@ -62,6 +103,10 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#endregion
 
+	}
+
+	public class TestUser { 
+		public string UserName { get; set; }
 	}
 
 	#endregion

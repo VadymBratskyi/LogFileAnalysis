@@ -13,7 +13,7 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(h => h.HomeModule)
       },
       {
-        path: "process-log-files",
+        path: "process-log-files/:sessionId",
         loadChildren: () => import('../logs/process-log-files/process-log-files.module').then(p => p.ProcessLogFilesModule)
       },
       {

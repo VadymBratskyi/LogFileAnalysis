@@ -1,16 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CardHome } from '@log_models';
+import { ProcessLogFilesService } from '@log_services/process-log-files.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {  
+
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 
   homeCards: CardHome[];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private activatedRouter: ActivatedRoute,
+    private servProcessLogFiole: ProcessLogFilesService
+  ) { }
 
   ngOnInit() {
     this.homeCards = [
@@ -19,6 +29,30 @@ export class HomeComponent implements OnInit {
       this.CreateAnalysisLogObjectsCard()
     ];
   }
+
+  ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
+  }
+
+  public onProcessLogFile(card: CardHome) {
+    this.servProcessLogFiole.CreateProcessLogSession()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(sesionId => {
+        this.router.navigate([card.rouuterLink, sesionId], {relativeTo : this.activatedRouter});
+      });
+  }
+
+  public onShowLogObjects(card: CardHome) {
+
+
+  }
+
+  public onAnlysisLogObjects(card: CardHome) {
+
+
+  }
+
 
   private CreateProcessLogFileCard(): CardHome {
     var card = new CardHome();
