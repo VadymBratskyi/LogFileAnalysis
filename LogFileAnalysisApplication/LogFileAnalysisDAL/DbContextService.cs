@@ -4,7 +4,9 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisDAL {
@@ -58,14 +60,19 @@ namespace LogFileAnalysisDAL {
 			return await _gridFS.DownloadAsBytesAsync(new ObjectId(id));
 		}
 
+		public async Task<IEnumerable<GridFSFileInfo>> GetLogFilesInfoByName(string fileName) {
+			var filter = Builders<GridFSFileInfo>.Filter.Eq<string>(info => info.Filename, fileName);
+			var fileInfos = await _gridFS.FindAsync(filter);
+			return fileInfos.ToList();
+		}
+
 		public async Task<ObjectId> StoreLogFile(Stream logFileStream, string logFileName) {
 			return await _gridFS.UploadFromStreamAsync(logFileName, logFileStream);
 		}
 
-		public async Task RemoveLogFIle() { 
+		public async Task RemoveLogFile() { 
 		
 		}
-
 
 		#endregion
 

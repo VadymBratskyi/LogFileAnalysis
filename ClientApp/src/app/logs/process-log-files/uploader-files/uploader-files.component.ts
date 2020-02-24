@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 import { environment } from 'environments/environment';
+import { SuccessEvent, ErrorEvent, FileInfo, SelectEvent } from '@progress/kendo-angular-upload';
 
 @Component({
   selector: 'app-uploader-files',
@@ -10,34 +11,33 @@ import { environment } from 'environments/environment';
 export class UploaderFilesComponent implements OnInit, OnChanges {
   
   @Input() inSessionId: string;
+  @Output() onUploaded = new EventEmitter<boolean>();
+
 
   uploadSaveUrl = "";
   uploadRemoveUrl = "";
-  
+
   constructor(
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
 
   ngOnInit() {
+    this.servProcessLogFiles.uploadedFile = [];
   }
 
   ngOnChanges() {
     this.uploadSaveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodUploadLogFiles + "?sessionId=" + this.inSessionId;
     this.uploadRemoveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodRemoveLogFiles + "?sessionId=" + this.inSessionId;
   }
-
-  onGetMessage() {
-    this.servProcessLogFiles.getTestObjects()
-      .subscribe(rez => {
-        alert(rez.value);
-      });
+   
+  onSuccessEventHandler(e: SuccessEvent) {
+    console.log("onSuccessEventHandler",e);
+    this.onUploaded.emit(true);
   }
 
-  onPostMessage() {
-    this.servProcessLogFiles.postTestObjects()
-    .subscribe(rez => {
-      alert(rez.value);
-    });
+  onErrorEventHandler(e: ErrorEvent) {
+    console.error("onErrorEventHandler",e);
+    this.onUploaded.emit(false);
   }
 
 }

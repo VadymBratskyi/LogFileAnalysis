@@ -3,12 +3,15 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { environment } from 'environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { FileInfo } from '@progress/kendo-angular-upload';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProcessLogFilesService {
+
+  public uploadedFile: Array<FileInfo>;
 
   constructor(
     private http: HttpClient

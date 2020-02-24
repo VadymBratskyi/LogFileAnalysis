@@ -1,7 +1,9 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisDAL.Repository {
@@ -13,7 +15,7 @@ namespace LogFileAnalysisDAL.Repository {
 		#region Fields: Private
 
 		private readonly IMongoDatabase _mongoDatabase;
-		private readonly IMongoCollection<TEntity> _entities;
+		public  IMongoCollection<TEntity> _entities;
 
 		#endregion
 
@@ -44,10 +46,16 @@ namespace LogFileAnalysisDAL.Repository {
 
 		public async Task<IEnumerable<TEntity>> Get(Func<TEntity, bool> predicate) {
 			var builder = new FilterDefinitionBuilder<TEntity>();
-			//var filter = filterDefinition ?? builder.Empty;
 			var filter = builder.Empty;
 			return await _entities.Find(filter).ToListAsync();
 		}
+
+		//public async Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition) {
+		//	if (filterDefenition == null) {
+		//		throw new ArgumentNullException("FilterDefenition is null!!");
+		//	}
+		//	return await _entities.Find(filterDefenition).ToListAsync();
+		//}
 
 		public async Task Remove(ObjectId id) {
 			await _entities.DeleteOneAsync(new BsonDocument("_id", id));
@@ -56,6 +64,10 @@ namespace LogFileAnalysisDAL.Repository {
 		public async Task Update(TEntity item, ObjectId id) {
 			await _entities.ReplaceOneAsync(new BsonDocument("_id", id), item);
 		}
+
+		//public async Task<IEnumerable<TEntity>> Test(Func<TEntity, bool> predicate) {
+		//	return await _entities.AsQueryable<TEntity>().Where(predicate.).Select(o => o).ToListAsync<TEntity>();
+		//}
 
 		#endregion
 

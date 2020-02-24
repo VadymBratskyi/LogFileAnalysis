@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ProcessLogFilesRoutingModule } from './process-log-files-routing.module';
 import { ProcessLogFilesComponent } from './process-log-files.component';
 import { UploaderFilesComponent } from './uploader-files/uploader-files.component';
@@ -20,6 +21,7 @@ import {
   imports: [
     CommonModule,
     ProcessLogFilesRoutingModule,
+    FormsModule,
     
     /**material */
     MatCardModule,

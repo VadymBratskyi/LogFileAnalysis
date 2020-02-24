@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
+import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 
 @Component({
   selector: 'app-process-log-files',
@@ -12,11 +13,14 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
   
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
   
+  successUploaded: boolean;
+
   sessionId: string;
 
   constructor(
+    public servProcessLogFiles: ProcessLogFilesService,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap

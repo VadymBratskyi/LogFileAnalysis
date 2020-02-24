@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -33,6 +35,16 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#endregion
 
+		#region Method: Private
+
+		private string GenerateFileName(string fileName, string sessionId) {
+			var name = Path.GetFileNameWithoutExtension(fileName);
+			var ext = Path.GetExtension(fileName);
+			return string.Format("{0}_{1}{2}", name, sessionId, ext);
+		}
+
+		#endregion
+
 		#region Methods: Public
 
 		[HttpPost("[action]")]
@@ -54,9 +66,11 @@ namespace LogFileAnalysisApplication.Controllers {
 			if (sessionId == "undefined") {
 				throw new ArgumentNullException("SessionId is null!!");
 			}
+			//var processLogSession = _dbService.ProcessLogSessions.Get(s => s.Id == new ObjectId(sessionId));
 			if (files != null) {
 				foreach (var file in files) {
-					var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), file.FileName);
+					var fileName = GenerateFileName(file.FileName, sessionId);
+					var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), fileName);
 					var processSesionFile = new ProcessSessionFile();
 					processSesionFile.ProcessSessionId = new ObjectId(sessionId);
 					processSesionFile.FileId = fileId;
@@ -67,9 +81,22 @@ namespace LogFileAnalysisApplication.Controllers {
 		}
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult> RemoveLogFiles(string fileNames, [FromQuery(Name = "sessionId")] string sessionId) {
+		public async Task<ActionResult> RemoveLogFiles(List<string> fileNames, [FromQuery(Name = "sessionId")] string sessionId) {
 
 			if (fileNames != null) {
+				foreach (var item in fileNames) {
+					var fileName = GenerateFileName(item, sessionId);
+					var gridFsFiles = await _dbService.GetLogFilesInfoByName(fileName);
+					foreach (var fsFiles in gridFsFiles) {
+						//var query = _dbService.ProcessSessionFiles.CreateFilter();
+						//query.
+						////var procSessionFile = await _dbService.ProcessSessionFiles.Test(o => o.FileId == fsFiles.Id);
+						//var dd = _dbService.Test2(o => o.FileId == new ObjectId("5e540d8149989d6cc4025432"));
+					}
+					
+				}
+
+				//var gridFsFile = _dbService.GetLogFileByName()
 				//// путь к папке Files
 				//string path = "/Files/" + uploadedFile.FileName;
 				//// сохраняем файл в папку Files в каталоге wwwroot
@@ -81,7 +108,6 @@ namespace LogFileAnalysisApplication.Controllers {
 				//_context.Files.Add(file);
 				//_context.SaveChanges();
 			}
-
 
 			return Ok();
 
