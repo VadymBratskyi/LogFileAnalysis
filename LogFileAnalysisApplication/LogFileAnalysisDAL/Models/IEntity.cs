@@ -1,12 +1,19 @@
 ﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LogFileAnalysisDAL.Models {
+
+	#region Interface : IEntity
+
 	public interface IEntity {
+
+		#region Properites: Public
 
 		public ObjectId Id { get; set; }
 
+		#endregion
+
 	}
+
+	#endregion
+
 }
