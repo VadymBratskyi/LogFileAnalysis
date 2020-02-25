@@ -13,6 +13,7 @@ export const environment = {
   methodCreateProcessLogSession: 'CreateProcessLogSession',
   methodUploadLogFiles: 'UploadLogFiles',
   methodRemoveLogFiles: 'RemoveLogFiles',
+  methodStartProcessLogFile: 'StartProcessLogFile',
 
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'

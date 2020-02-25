@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-processing-log',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./processing-log.component.scss']
 })
 export class ProcessingLogComponent implements OnInit {
+
+  @Input() inSms: string[];
 
   constructor() { }
 

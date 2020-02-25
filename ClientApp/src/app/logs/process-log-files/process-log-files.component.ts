@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
@@ -17,7 +17,12 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
 
   sessionId: string;
 
+  arrMess: string [] = [];
+
+  startProcess: boolean;
+
   constructor(
+    private zone: NgZone,  
     public servProcessLogFiles: ProcessLogFilesService,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -33,6 +38,16 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroyed$.next(true);
     this.destroyed$.complete();
+  }
+
+  onStartProccesLogFiles() {
+    this.startProcess = true;
+    this.servProcessLogFiles.startProcessLogFiles(this.sessionId);
+    this.servProcessLogFiles.processNotification.subscribe((message: string) => {  
+      this.zone.run(() => {
+          this.arrMess.push(message);  
+      });  
+    }); 
   }
 
 }

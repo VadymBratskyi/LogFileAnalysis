@@ -1,7 +1,7 @@
 <div class="uploadFiles">
     <app-uploader-files [inSessionId]="sessionId" (onUploaded)="successUploaded = $event"></app-uploader-files>
 </div>
-<!-- <app-processing-log ></app-processing-log> -->
-<div class="container text-center paddSuccesContent" *ngIf="successUploaded && (servProcessLogFiles.uploadedFile && servProcessLogFiles.uploadedFile.length > 0)">
-    <button mat-raised-button class="paddSuccessButton">Почати обробку файлів</button>
+<app-processing-log *ngIf="startProcess" [inSms]="arrMess"></app-processing-log>
+<div class="container text-center paddSuccesContent" *ngIf="successUploaded && (servProcessLogFiles.uploadedFile && servProcessLogFiles.uploadedFile.length > 0) && !startProcess">
+    <button mat-raised-button class="paddSuccessButton" (click)="onStartProccesLogFiles()">Почати обробку файлів</button>
 </div>

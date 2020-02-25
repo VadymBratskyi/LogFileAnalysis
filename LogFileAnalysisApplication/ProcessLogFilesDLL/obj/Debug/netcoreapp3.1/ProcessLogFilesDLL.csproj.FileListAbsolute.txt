@@ -5,3 +5,4 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Pr
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfo.cs
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csprojAssemblyReference.cache

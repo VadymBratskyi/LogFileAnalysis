@@ -1,6 +1,8 @@
 ﻿using System;
 
 namespace ProcessLogFilesDLL {
-	public class Class1 {
+	public class ProcessLogFile {
+
+
 	}
 }
