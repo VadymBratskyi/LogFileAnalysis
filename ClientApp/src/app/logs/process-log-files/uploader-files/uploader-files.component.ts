@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 import { environment } from 'environments/environment';
-import { SuccessEvent, ErrorEvent, FileInfo, SelectEvent } from '@progress/kendo-angular-upload';
+import { SuccessEvent, ErrorEvent, FileRestrictions } from '@progress/kendo-angular-upload';
 
 @Component({
   selector: 'app-uploader-files',
@@ -13,10 +13,9 @@ export class UploaderFilesComponent implements OnInit, OnChanges {
   @Input() inSessionId: string;
   @Output() onUploaded = new EventEmitter<boolean>();
 
-
   uploadSaveUrl = "";
   uploadRemoveUrl = "";
-
+ 
   constructor(
     public servProcessLogFiles: ProcessLogFilesService
   ) { }

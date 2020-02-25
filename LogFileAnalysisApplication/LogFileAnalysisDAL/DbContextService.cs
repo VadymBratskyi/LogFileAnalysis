@@ -1,13 +1,8 @@
 ﻿using LogFileAnalysisDAL.Models;
 using LogFileAnalysisDAL.Repository;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LogFileAnalysisDAL {
 
@@ -30,6 +25,7 @@ namespace LogFileAnalysisDAL {
 
 		#region Properties: Public
 
+		public IGridFSBucket GridFs => _gridFS;
 		public DbSetMongoDB<Log> Logs => _logs ?? (_logs = new DbSetMongoDB<Log>(mongoDatabase, "Logs"));
 
 		public DbSetMongoDB<ProcessLogSession> ProcessLogSessions => _processLogSession ?? (_processLogSession = new DbSetMongoDB<ProcessLogSession>(mongoDatabase, "ProcessLogSessions"));

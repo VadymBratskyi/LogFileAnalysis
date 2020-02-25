@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
   </ItemGroup>
 
 </Project>

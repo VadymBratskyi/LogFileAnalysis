@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisDAL.Repository {
@@ -19,13 +20,12 @@ namespace LogFileAnalysisDAL.Repository {
 
 		#endregion
 
-
 		#region Methods: Public
 
-		public async Task<byte[]> GetLogFile(string id) {
-			return await _gridFS.DownloadAsBytesAsync(new ObjectId(id));
+		public async Task<byte[]> GetLogFile(ObjectId id) {
+			return await _gridFS.DownloadAsBytesAsync(id);
 		}
-
+		
 		public async Task<IEnumerable<GridFSFileInfo>> GetLogFilesInfoByName(string fileName) {
 			var filter = Builders<GridFSFileInfo>.Filter.Eq<string>(info => info.Filename, fileName);
 			var fileInfos = await _gridFS.FindAsync(filter);

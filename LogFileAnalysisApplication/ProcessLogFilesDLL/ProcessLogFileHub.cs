@@ -1,17 +1,23 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using LogFileAnalysisDAL;
+using Microsoft.AspNetCore.SignalR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProcessLogFilesDLL {
 	public class ProcessLogFileHub : Hub {
 
+		private readonly DbContextService _dbService;
+
+		public ProcessLogFileHub(DbContextService dbService) {
+			_dbService = dbService;
+		}
+
 		public async Task StartProcessLogFiles(string sessionId) {
 
-			for (int i = 0; i < 5; i++) {
-				Thread.Sleep(2000);
-				await this.Clients.All.SendAsync("ProcessNotification", sessionId + i);
-			}
-
+			ProcessLogFile processFiles = new ProcessLogFile(_dbService, sessionId);
+			processFiles.LoadFilesFromGridFs();
+			
+			await this.Clients.All.SendAsync("ProcessNotification", "Hello From Server!!");
 		}
 	}
 }

@@ -2545,6 +2545,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0",
           "Microsoft.AspNetCore.SignalR.Core": "1.1.0"
         },
         "compile": {
