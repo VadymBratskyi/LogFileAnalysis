@@ -4,7 +4,9 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisDAL {
@@ -14,13 +16,12 @@ namespace LogFileAnalysisDAL {
 	/// <summary>
 	/// Connect and work with database MongoDb.
 	/// </summary>
-	public class DbContextService {
+	public class DbContextService : GridFsMongoDb {
 
 		#region Fields: Private
 
 		private readonly IMongoDatabase mongoDatabase;
 		private readonly string _connectionString;
-		private IGridFSBucket _gridFS;
 
 		private DbSetMongoDB<Log> _logs;
 		private DbSetMongoDB<ProcessLogSession> _processLogSession;
@@ -49,23 +50,6 @@ namespace LogFileAnalysisDAL {
 			mongoDatabase = client.GetDatabase(connection.DatabaseName);
 			_gridFS = new GridFSBucket(mongoDatabase);
 		}
-
-		#endregion
-
-		#region Methods: Public
-
-		public async Task<byte[]> GetLogFile(string id) {
-			return await _gridFS.DownloadAsBytesAsync(new ObjectId(id));
-		}
-
-		public async Task<ObjectId> StoreLogFile(Stream logFileStream, string logFileName) {
-			return await _gridFS.UploadFromStreamAsync(logFileName, logFileStream);
-		}
-
-		public async Task RemoveLogFIle() { 
-		
-		}
-
 
 		#endregion
 

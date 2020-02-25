@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
+    <ProjectReference Include="..\ProcessLogFilesDLL\ProcessLogFilesDLL.csproj" />
   </ItemGroup>
 
 

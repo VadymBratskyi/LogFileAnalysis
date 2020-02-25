@@ -6,3 +6,11 @@ C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\o
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisDAL\obj\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb

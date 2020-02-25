@@ -1,18 +1,29 @@
 ﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LogFileAnalysisDAL.Models {
+
+	#region Class : ProcessLogSession
+
 	public class ProcessLogSession : Entity {
-	
+
+		#region Properties: Public
+
 		public string SessionTitle { get; set; }
 
 		public string UserName { get; set; }
+
+		#endregion
+
+		#region Constructor : Public
 
 		public ProcessLogSession() {
 			Id = ObjectId.GenerateNewId();
 		}
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

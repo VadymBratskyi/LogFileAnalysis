@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProcessLogFilesDLL;
 
 namespace LogFileAnalysisApplication {
 	public class Startup {
@@ -18,7 +19,7 @@ namespace LogFileAnalysisApplication {
 
 			var connectionstring = Configuration.GetConnectionString("DefaultConnection");
 			services.AddSingleton(new DbContextService(connectionstring));
-
+			services.AddSignalR();
 			services.AddCors(options =>
 			  options.AddPolicy("AllowOrigin",
 					  builder =>
@@ -45,6 +46,9 @@ namespace LogFileAnalysisApplication {
 			app.UseDefaultFiles();
 			app.UseStaticFiles();
 
+			app.UseSignalR(options =>	{
+				options.MapHub<ProcessLogFileHub>("/ProcessLogFileHub");
+			});
 			app.UseMvc();
 		}
 	}

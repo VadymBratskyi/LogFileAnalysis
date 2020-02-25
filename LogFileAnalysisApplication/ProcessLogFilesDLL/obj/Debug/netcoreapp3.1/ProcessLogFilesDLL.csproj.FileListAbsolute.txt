@@ -1,0 +1,8 @@
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csprojAssemblyReference.cache
