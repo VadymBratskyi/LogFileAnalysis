@@ -63,15 +63,24 @@ namespace LogFileAnalysisDAL {
 		public async Task<IEnumerable<GridFSFileInfo>> GetLogFilesInfoByName(string fileName) {
 			var filter = Builders<GridFSFileInfo>.Filter.Eq<string>(info => info.Filename, fileName);
 			var fileInfos = await _gridFS.FindAsync(filter);
-			return fileInfos.ToList();
+			return await fileInfos.ToListAsync();
 		}
 
 		public async Task<ObjectId> StoreLogFile(Stream logFileStream, string logFileName) {
 			return await _gridFS.UploadFromStreamAsync(logFileName, logFileStream);
 		}
 
-		public async Task RemoveLogFile() { 
-		
+		public async Task RemoveLogFile(ObjectId id) {
+			await _gridFS.DeleteAsync(id);
+		}
+
+		public async Task RemoveLogFile(string fileName) {
+			var builder = new FilterDefinitionBuilder<GridFSFileInfo>();
+			var filter = Builders<GridFSFileInfo>.Filter.Eq<string>(info => info.Filename, fileName);
+			var fileInfos = await _gridFS.FindAsync(filter);
+			foreach (var item in await fileInfos.ToListAsync()) {
+				await _gridFS.DeleteAsync(item.Id);
+			}
 		}
 
 		#endregion

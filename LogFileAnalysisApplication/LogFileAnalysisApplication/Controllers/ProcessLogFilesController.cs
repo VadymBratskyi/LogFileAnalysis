@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -88,10 +89,12 @@ namespace LogFileAnalysisApplication.Controllers {
 					var fileName = GenerateFileName(item, sessionId);
 					var gridFsFiles = await _dbService.GetLogFilesInfoByName(fileName);
 					foreach (var fsFiles in gridFsFiles) {
-						//var query = _dbService.ProcessSessionFiles.CreateFilter();
-						//query.
-						////var procSessionFile = await _dbService.ProcessSessionFiles.Test(o => o.FileId == fsFiles.Id);
-						//var dd = _dbService.Test2(o => o.FileId == new ObjectId("5e540d8149989d6cc4025432"));
+						var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileId", fsFiles.Id);
+						var processSessionFiles = await _dbService.ProcessSessionFiles.Get(queryBuilder);
+						foreach (var procSessFile in processSessionFiles) {
+							await _dbService.RemoveLogFile(procSessFile.FileId);
+							await _dbService.ProcessSessionFiles.Remove(procSessFile.Id);
+						}
 					}
 					
 				}

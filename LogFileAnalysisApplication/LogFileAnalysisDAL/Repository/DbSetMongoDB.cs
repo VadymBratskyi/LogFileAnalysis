@@ -37,7 +37,7 @@ namespace LogFileAnalysisDAL.Repository {
 		public async Task<TEntity> FindById(ObjectId id) {
 			return await _entities.Find(new BsonDocument("_id", id)).FirstOrDefaultAsync();
 		}
-
+		
 		public async Task<IEnumerable<TEntity>> Get() {
 			var builder = new FilterDefinitionBuilder<TEntity>();
 			var filter = builder.Empty;
@@ -49,13 +49,13 @@ namespace LogFileAnalysisDAL.Repository {
 			var filter = builder.Empty;
 			return await _entities.Find(filter).ToListAsync();
 		}
-
-		//public async Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition) {
-		//	if (filterDefenition == null) {
-		//		throw new ArgumentNullException("FilterDefenition is null!!");
-		//	}
-		//	return await _entities.Find(filterDefenition).ToListAsync();
-		//}
+		
+		public async Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition) {
+			if (filterDefenition == null) {
+				throw new ArgumentNullException("FilterDefenition is null!!");
+			}
+			return await _entities.Find(filterDefenition).ToListAsync();
+		}
 
 		public async Task Remove(ObjectId id) {
 			await _entities.DeleteOneAsync(new BsonDocument("_id", id));
@@ -64,10 +64,6 @@ namespace LogFileAnalysisDAL.Repository {
 		public async Task Update(TEntity item, ObjectId id) {
 			await _entities.ReplaceOneAsync(new BsonDocument("_id", id), item);
 		}
-
-		//public async Task<IEnumerable<TEntity>> Test(Func<TEntity, bool> predicate) {
-		//	return await _entities.AsQueryable<TEntity>().Where(predicate.).Select(o => o).ToListAsync<TEntity>();
-		//}
 
 		#endregion
 
