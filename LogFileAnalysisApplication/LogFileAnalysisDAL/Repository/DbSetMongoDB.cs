@@ -44,12 +44,6 @@ namespace LogFileAnalysisDAL.Repository {
 			return await _entities.Find(filter).ToListAsync();
 		}
 
-		public async Task<IEnumerable<TEntity>> Get(Func<TEntity, bool> predicate) {
-			var builder = new FilterDefinitionBuilder<TEntity>();
-			var filter = builder.Empty;
-			return await _entities.Find(filter).ToListAsync();
-		}
-		
 		public async Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition) {
 			if (filterDefenition == null) {
 				throw new ArgumentNullException("FilterDefenition is null!!");
