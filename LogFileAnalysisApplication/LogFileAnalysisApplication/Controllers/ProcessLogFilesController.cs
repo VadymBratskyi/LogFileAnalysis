@@ -52,7 +52,7 @@ namespace LogFileAnalysisApplication.Controllers {
 		[HttpPost("[action]")]
 		public async Task<ActionResult> CreateProcessLogSession([FromBody]TestUser user) {
 			if (user == null) {
-				throw new ArgumentNullException("User name is null!!");
+				throw new ArgumentNullException("CreateProcessLogSession User name is null!!");
 			}
 			var randSessionIndex = new Random();
 			var processLogSesion = new ProcessLogSession();
@@ -66,8 +66,8 @@ namespace LogFileAnalysisApplication.Controllers {
 		[HttpPost("[action]")]
 		public async Task<ActionResult> UploadLogFiles(IFormFileCollection files, [FromQuery(Name = "sessionId")] string sessionId) {
 			if (sessionId == "undefined") {
-				throw new ArgumentNullException("SessionId is null!!");
-			}			
+				throw new ArgumentNullException("UploadLogFiles SessionId is null!!");
+			}
 			if (files != null) {
 				foreach (var file in files) {
 					var fileName = GenerateFileName(file.FileName, sessionId);
