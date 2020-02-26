@@ -13,6 +13,7 @@ namespace ProcessLogFilesDLL.Process {
 		private TemplateAnalysis _templateAnalysis;
 
 		public List<Log> LogList => _logsList;
+		public List<Log> TempLogList => _tempLogsList;
 
 		private TemplateAnalysis Template => _templateAnalysis ?? (_templateAnalysis = new TemplateAnalysis());
 
@@ -28,7 +29,6 @@ namespace ProcessLogFilesDLL.Process {
 				_tempLogsList.Remove(log);
 			}
 		}
-
 
 		public void CreateLogObject(string messageId, DateTime requestDate, string request, DateTime responseDate,
 			string response) {

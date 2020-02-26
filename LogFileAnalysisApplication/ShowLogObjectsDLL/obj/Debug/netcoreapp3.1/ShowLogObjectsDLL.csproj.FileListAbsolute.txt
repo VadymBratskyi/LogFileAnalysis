@@ -5,3 +5,11 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Sh
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.AssemblyInfo.cs
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.deps.json
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.csprojAssemblyReference.cache
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.AssemblyInfoInputs.cache
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.AssemblyInfo.cs
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
