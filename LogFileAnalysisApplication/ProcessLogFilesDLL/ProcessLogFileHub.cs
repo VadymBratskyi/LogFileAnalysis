@@ -15,7 +15,7 @@ namespace ProcessLogFilesDLL {
 		public async Task StartProcessLogFiles(string sessionId) {
 
 			ProcessLogFile processFiles = new ProcessLogFile(_dbService, sessionId);
-			processFiles.LoadFilesFromGridFs();
+			await processFiles.LoadFilesFromGridFs();
 			
 			await this.Clients.All.SendAsync("ProcessNotification", "Hello From Server!!");
 		}

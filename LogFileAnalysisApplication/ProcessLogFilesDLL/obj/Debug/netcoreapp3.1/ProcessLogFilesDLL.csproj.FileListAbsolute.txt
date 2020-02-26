@@ -17,3 +17,6 @@ C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\o
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csproj.CopyComplete

@@ -16,9 +16,7 @@ namespace LogFileAnalysisDAL.Models {
         public BsonDocument Response { get; set; }
 
         public DateTime ResponseDate { get; set; }
-
-        public ObjectId LogFileId { get; set; }
-
+        
         public string MessageId { get; set; }
 
         #endregion
