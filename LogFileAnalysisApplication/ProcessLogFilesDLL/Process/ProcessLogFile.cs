@@ -5,9 +5,11 @@ using MongoDB.Driver;
 using ProcessLogFilesDLL.Process;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ProcessLogFilesDLL {
@@ -37,15 +39,42 @@ namespace ProcessLogFilesDLL {
         }
 
         private async Task ProcessFile(ObjectId fileId) {
-            var fileBytes = await _dbService.GetLogFile(fileId);
-            MemoryStream theMemStream = new MemoryStream();
-            theMemStream.Write(fileBytes, 0, fileBytes.Length);
-            using (StreamReader stream = new StreamReader(theMemStream, Encoding.UTF8)) {
+            //var fileBytes = await _dbService.GetLogFile(fileId);
+
+            DateTime dateStart = DateTime.MinValue;
+            DateTime dateEnd = DateTime.MinValue;
+
+            using (Stream fs = new FileStream(@"D:\test_log.log", FileMode.OpenOrCreate)) {
+                await _dbService.GridFs.DownloadToStreamAsync(fileId, fs);
+            }
+
+            using (StreamReader reader = new StreamReader(@"D:\test_log.log", Encoding.UTF8)) {
+
                 string value;
-                while (!string.IsNullOrEmpty(value = stream.ReadLine())) {
+
+                while (!string.IsNullOrEmpty(value = reader.ReadLine())) {
+
+                    var startDate = Regex.Match(value, Template.RegStart, RegexOptions.IgnoreCase);
+                    if (startDate.Success) {
+                        var time = Regex.Match(value, Template.RegDate, RegexOptions.IgnoreCase);
+                        if (time.Success) {
+                            dateStart = ConverterToDateTime(time.Value);
+                        }
+                    }
 
                 }
+
             }
+
+
+            //MemoryStream theMemStream = new MemoryStream();
+            //theMemStream.Write(fileBytes, 0, fileBytes.Length);
+            //using (StreamReader stream = new StreamReader(theMemStream, Encoding.UTF8)) {
+            //    string value;
+            //    while (!string.IsNullOrEmpty(value = stream.ReadLine())) {
+
+            //    }
+            //}
         }
 
         private async Task<IEnumerable<ProcessSessionFile>> GetSessionFiles(ObjectId sessionId) {
@@ -56,6 +85,18 @@ namespace ProcessLogFilesDLL {
             return await _dbService.ProcessSessionFiles.Get(queryBuilder);
         }
 
-       
+        private static DateTime ConverterToDateTime(string date) {
+            if (string.IsNullOrWhiteSpace(date)) {
+                return default(DateTime);
+            }
+
+            DateTime outputDateTime;
+            if (!DateTime.TryParse(date, CultureInfo.CreateSpecificCulture("en-US"), DateTimeStyles.None, out outputDateTime)) {
+                outputDateTime = DateTime.MinValue;
+            }
+            return outputDateTime;
+        }
+
+
     }
 }
