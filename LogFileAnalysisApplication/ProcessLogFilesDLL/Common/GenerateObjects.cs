@@ -3,24 +3,44 @@ using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace ProcessLogFilesDLL.Process {
+namespace ProcessLogFilesDLL.Common {
+
+	#region Class : GenerateObjects
+
 	public class GenerateObjects {
+
+		#region Fields : Pricate
 
 		private List<Log> _logsList;
 		private List<Log> _tempLogsList;
 		private TemplateAnalysis _templateAnalysis;
 
+		#endregion
+
+		#region Properties: Private
+
+		private TemplateAnalysis Template => _templateAnalysis ?? (_templateAnalysis = new TemplateAnalysis());
+
+		#endregion
+
+		#region Properties: Public
+
 		public List<Log> LogList => _logsList;
 		public List<Log> TempLogList => _tempLogsList;
 
-		private TemplateAnalysis Template => _templateAnalysis ?? (_templateAnalysis = new TemplateAnalysis());
+		#endregion
+
+		#region Constructor : Public
 
 		public GenerateObjects() {
 			_logsList = new List<Log>();
 			_tempLogsList = new List<Log>();
 		}
+
+		#endregion
+
+		#region Methods : Private
 
 		private void RemovefromTempList(Log log) {
 			if (log.MessageId != "" && log.Request != "" &&
@@ -29,6 +49,10 @@ namespace ProcessLogFilesDLL.Process {
 				_tempLogsList.Remove(log);
 			}
 		}
+
+		#endregion
+
+		#region Methods : Public
 
 		public void CreateLogObject(string messageId, DateTime requestDate, string request, DateTime responseDate,
 			string response) {
@@ -54,5 +78,10 @@ namespace ProcessLogFilesDLL.Process {
 			}
 		}
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

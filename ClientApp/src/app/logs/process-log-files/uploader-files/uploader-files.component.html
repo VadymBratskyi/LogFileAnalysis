@@ -7,8 +7,8 @@
     <mat-card-content>
         <kendo-upload *ngIf="uploadSaveUrl"
             [saveUrl]="uploadSaveUrl"
+            [restrictions]="myRestrictions"
             [removeUrl]="uploadRemoveUrl"
-            [batch]="true"
             [withCredentials]="false"
             [(ngModel)]="servProcessLogFiles.uploadedFile"        
             (success)="onSuccessEventHandler($event)"

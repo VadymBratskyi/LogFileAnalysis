@@ -5,13 +5,19 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysisApplication", "LogFileAnalysisApplication\LogFileAnalysisApplication.csproj", "{3CB3E86C-D097-4CBB-94CD-CC36E76F7206}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessLogFilesDLL", "ProcessLogFilesDLL\ProcessLogFilesDLL.csproj", "{D55E416C-2BF7-466F-AF4D-2716AB55C893}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessLogFilesDLL", "ProcessLogFilesDLL\ProcessLogFilesDLL.csproj", "{D55E416C-2BF7-466F-AF4D-2716AB55C893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowLogObjectsDLL", "ShowLogObjectsDLL\ShowLogObjectsDLL.csproj", "{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowLogObjectsDLL", "ShowLogObjectsDLL\ShowLogObjectsDLL.csproj", "{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalysisLogObjects", "AnalysisLogObjects\AnalysisLogObjects.csproj", "{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisLogObjects", "AnalysisLogObjects\AnalysisLogObjects.csproj", "{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileAnalysisDAL", "LogFileAnalysisDAL\LogFileAnalysisDAL.csproj", "{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysisDAL", "LogFileAnalysisDAL\LogFileAnalysisDAL.csproj", "{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4970B523-A1B4-4C07-9E5E-ED76EBC77AB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileAnalysDALNUnitTest", "LogFileAnalysDALNUnitTest\LogFileAnalysDALNUnitTest.csproj", "{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessLogFileNUnitTest", "ProcessLogFileNUnitTest\ProcessLogFileNUnitTest.csproj", "{F434B828-D19A-4195-A712-98F6ADB496A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +45,21 @@ Global
 		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F434B828-D19A-4195-A712-98F6ADB496A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F434B828-D19A-4195-A712-98F6ADB496A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F434B828-D19A-4195-A712-98F6ADB496A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F434B828-D19A-4195-A712-98F6ADB496A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAE8DC94-E635-49C0-9375-EE299A4F4FF8} = {4970B523-A1B4-4C07-9E5E-ED76EBC77AB8}
+		{F434B828-D19A-4195-A712-98F6ADB496A0} = {4970B523-A1B4-4C07-9E5E-ED76EBC77AB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA041D6E-3CE9-4003-8DEE-90D5815559BD}
