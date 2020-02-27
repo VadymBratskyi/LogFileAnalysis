@@ -50,7 +50,7 @@ namespace ProcessLogFilesDLL {
 
         private async Task<GridFSFileInfo<ObjectId>> ProcessFile(ObjectId fileId) {
             using (GridFSDownloadStream<ObjectId> stream = await _dbService.GridFs.OpenDownloadStreamAsync(fileId)) {
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8)) {                    
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8)) {
                     ProcessLog.ProcessingLog(reader);
                     return stream.FileInfo;
                 }

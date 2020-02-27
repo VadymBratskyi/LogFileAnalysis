@@ -18,7 +18,10 @@ namespace LogFileAnalysisApplication {
 		public void ConfigureServices(IServiceCollection services) {
 
 			var connectionstring = Configuration.GetConnectionString("DefaultConnection");
+
 			services.AddSingleton(new DbContextService(connectionstring));
+			services.AddTransient<LogFileService>();
+
 			services.AddSignalR();
 			services.AddCors(options =>
 			  options.AddPolicy("AllowOrigin",
