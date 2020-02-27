@@ -6,9 +6,9 @@ namespace LogFileAnalysisApplication {
 	public class Program {
 
 		public static void Process() {
-			ProcessStartInfo st = new ProcessStartInfo(@"c:\Program Files\MongoDB\Server\4.2\bin\mongod.exe");
+			ProcessStartInfo st = new ProcessStartInfo(@"c:\Program Files\MongoDB\Server\3.4\bin\mongod.exe");
 			st.WindowStyle = ProcessWindowStyle.Hidden;
-			st.Arguments = @"--dbpath C:\data\db --port 27017";
+			st.Arguments = @"--dbpath c:\data\db --port 27017";
 			System.Diagnostics.Process.Start(st);
 		}
 		public static void Main(string[] args) {

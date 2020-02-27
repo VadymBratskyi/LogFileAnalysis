@@ -17,6 +17,7 @@ namespace LogFileAnalysisDAL.Repository {
         Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition);
         Task<TEntity> FindById(ObjectId id);
         Task Create(TEntity item);
+        Task Create(IEnumerable<TEntity> entities);
         Task Update(TEntity item, ObjectId id);
         Task Remove(ObjectId id);
 

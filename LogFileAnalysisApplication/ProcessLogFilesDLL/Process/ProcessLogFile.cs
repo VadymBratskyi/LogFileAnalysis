@@ -30,37 +30,28 @@ namespace ProcessLogFilesDLL {
         }
 
         public async Task LoadFilesFromGridFs() {
-
             var sessionFiles = await GetSessionFiles(_sessionId);
             foreach (var item in sessionFiles) {
                 await ProcessFile(item.FileId);
+                await SaveLogObject(_generateObjects.LogList);
             }
+            await SaveLogObject(_generateObjects.TempLogList);
         }
 
         private async Task ProcessFile(ObjectId fileId) {
-
             using (Stream stream = await _dbService.GridFs.OpenDownloadStreamAsync(fileId)) {
-
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8)) {
-
                     DateTime dateStart = DateTime.MinValue;
                     DateTime dateEnd = DateTime.MinValue;
-
                     string value;
                     int index = 0;
-
                     while (!string.IsNullOrEmpty(value = reader.ReadLine())) {
-
-                        /*-------------------getDate from log file-----------------*/
                         if (GetMatchTemplate(value, Template.RegStart)) {
                             GetMatchDate(value, out dateStart);
                         }
                         if (GetMatchTemplate(value, Template.RegEnd)) {
                             GetMatchDate(value, out dateEnd);
                         }
-                        /*--------------------------------------------------------------*/
-
-                        /*-----------------getRequestAndResponse------------------------*/
                         string input;
                         if (GetMatchTemplate(value, Template.RegInput, out input)) {
                             var data = GetInput(value);
@@ -74,14 +65,15 @@ namespace ProcessLogFilesDLL {
                             var messageId = GetMessageId(data, index, "notFoundOutput_");
                             _generateObjects.CreateLogObject(messageId, DateTime.MinValue, null, dateEnd, data);
                         }
-                        /*--------------------------------------------------------------*/
-
                     }
-
                 }
             }
+        }
 
-            var dd = _generateObjects.LogList;
+        private async Task SaveLogObject(List<Log> logs) {
+            if (logs.Any()) {
+               await _dbService.Logs.Create(logs);
+            }
         }
 
         private async Task<IEnumerable<ProcessSessionFile>> GetSessionFiles(ObjectId sessionId) {

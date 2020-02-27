@@ -34,6 +34,10 @@ namespace LogFileAnalysisDAL.Repository {
 			await _entities.InsertOneAsync(item);
 		}
 
+		public async Task Create(IEnumerable<TEntity> items) {
+			await _entities.InsertManyAsync(items);
+		}
+
 		public async Task<TEntity> FindById(ObjectId id) {
 			return await _entities.Find(new BsonDocument("_id", id)).FirstOrDefaultAsync();
 		}
