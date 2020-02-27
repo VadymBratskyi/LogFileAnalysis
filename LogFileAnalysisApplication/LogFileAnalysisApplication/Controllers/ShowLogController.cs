@@ -27,18 +27,18 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#region Methods: Public
 
-		[HttpGet("[action]")]
-		public TestValue GetTestValue() {
-			var test = new TestValue();
-			test.Value = "Hello World from ShowLogController.GetTestValue";
-			return test;
-		}
+		//[HttpGet("[action]")]
+		//public TestValue GetTestValue() {
+		//	var test = new TestValue();
+		//	test.Value = "Hello World from ShowLogController.GetTestValue";
+		//	return test;
+		//}
 
-		[HttpPost("[action]")]
-		public TestValue PostTestValue([FromBody] TestValue test) {
-			test.Value = "Hello World from ShowLogController.PostTestValue";
-			return test;
-		}
+		//[HttpPost("[action]")]
+		//public TestValue PostTestValue([FromBody] TestValue test) {
+		//	test.Value = "Hello World from ShowLogController.PostTestValue";
+		//	return test;
+		//}
 
 		#endregion
 

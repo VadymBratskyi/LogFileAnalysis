@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Models {
-	public class TestValue {
-		public string Value { get; set; }
+	public enum StatusUploadedFile {
+
+		uploded = 0,
+		exist = 1
+
 	}
 }

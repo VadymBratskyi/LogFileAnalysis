@@ -11,6 +11,7 @@ using ProcessLogFilesDLL;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -39,10 +40,11 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#region Method: Private
 
-		private string GenerateFileName(string fileName, string sessionId) {
-			var name = Path.GetFileNameWithoutExtension(fileName);
-			var ext = Path.GetExtension(fileName);
-			return string.Format("{0}_{1}{2}", name, sessionId, ext);
+		private UploadeFile GenerateUploadedFile(string fileName, StatusUploadedFile state) {
+			var fileUploded = new UploadeFile();
+			fileUploded.FileName = fileName;
+			fileUploded.State = state;
+			return fileUploded;
 		}
 
 		#endregion
@@ -68,25 +70,31 @@ namespace LogFileAnalysisApplication.Controllers {
 			if (sessionId == "undefined") {
 				throw new ArgumentNullException("UploadLogFiles SessionId is null!!");
 			}
-			if (files != null) {
+			UploadeFile uploadeFile = new UploadeFile();
+			if (files.Any()) {
 				foreach (var file in files) {
-					var fileName = GenerateFileName(file.FileName, sessionId);
-					var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), fileName);
-					var processSesionFile = new ProcessSessionFile();
-					processSesionFile.ProcessSessionId = new ObjectId(sessionId);
-					processSesionFile.FileId = fileId;
-					await _dbService.ProcessSessionFiles.Create(processSesionFile);
+					var existFile = await _dbService.GetLogFilesInfoByName(file.FileName);
+					if (existFile.Any()) {
+						throw new ArgumentException();
+					} 
+					else { 
+						var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), file.FileName);
+						var processSesionFile = new ProcessSessionFile();
+						processSesionFile.ProcessSessionId = new ObjectId(sessionId);
+						processSesionFile.FileId = fileId;
+						await _dbService.ProcessSessionFiles.Create(processSesionFile);
+						uploadeFile = GenerateUploadedFile(file.FileName, StatusUploadedFile.uploded);
+					}
 				}
 			}
-			return Ok("success".ToJson());
+			return Ok(uploadeFile);
 		}
 
 		[HttpPost("[action]")]
 		public async Task<ActionResult> RemoveLogFiles(List<string> fileNames, [FromQuery(Name = "sessionId")] string sessionId) {
 			if (fileNames != null) {
 				foreach (var item in fileNames) {
-					var fileName = GenerateFileName(item, sessionId);
-					var gridFsFiles = await _dbService.GetLogFilesInfoByName(fileName);
+					var gridFsFiles = await _dbService.GetLogFilesInfoByName(item);
 					foreach (var fsFiles in gridFsFiles) {
 						var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileId", fsFiles.Id);
 						var processSessionFiles = await _dbService.ProcessSessionFiles.Get(queryBuilder);
