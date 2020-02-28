@@ -5,8 +5,10 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <p *ngFor="let arr of inSms">
-          <label >{{arr}}</label>
-        </p>        
+        <ul>
+          <li *ngFor="let notification of servProcessLogFiles.processNotifications">
+            <label >{{notification}}</label>
+          </li>
+        </ul>             
     </mat-card-content> 
 </mat-card>

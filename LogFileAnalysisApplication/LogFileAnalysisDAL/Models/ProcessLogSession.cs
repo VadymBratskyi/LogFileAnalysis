@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using System;
 
 namespace LogFileAnalysisDAL.Models {
 
@@ -8,8 +9,10 @@ namespace LogFileAnalysisDAL.Models {
 
 		#region Properties: Public
 
-		public string SessionTitle { get; set; }
+		public DateTime CreatedOn { get; set; }
 
+		public string SessionTitle { get; set; }
+		
 		public string UserName { get; set; }
 
 		#endregion
@@ -18,6 +21,7 @@ namespace LogFileAnalysisDAL.Models {
 
 		public ProcessLogSession() {
 			Id = ObjectId.GenerateNewId();
+			CreatedOn = DateTime.Now;
 		}
 
 		#endregion

@@ -32,10 +32,20 @@ namespace ProcessLogFilesDLL {
 
 		#region Method: Private
 
-		private ProcessSessionFile GenerateProcessSessionFile(string sessionId, ObjectId fileId) {
+		private ProcessSessionFile GenerateProcessSessionFile(ObjectId sessionId, ObjectId fileId, string fileName) {
 			return new ProcessSessionFile() {
-				ProcessSessionId = new ObjectId(sessionId),
-				FileId = fileId
+				ProcessSessionId = sessionId,
+				FileId = fileId,
+				FileName = fileName,
+				StatusFile = StatusSessionFile.newFile
+			};
+		}
+
+		private ProcessLogSession GenerateProcessLogSession(string userName) {
+			var randSessionIndex = new Random();
+			return new ProcessLogSession() {
+				UserName = userName,
+				SessionTitle = string.Format("Session_{0}", randSessionIndex.Next(1, 100))
 			};
 		}
 
@@ -43,15 +53,23 @@ namespace ProcessLogFilesDLL {
 
 		#region Methos : Public
 
-		public async Task<bool> UploadFile(IFormFileCollection files, string sessionId) {
+		public async Task<bool> UploadFile(IFormFileCollection files, ObjectId sessionId) {
 			if (files.Any()) {
 				foreach (var file in files) {
-					var existFile = await _dbService.GetLogFilesInfoByName(file.FileName);
-					if (existFile.Any()) {
+					var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileName", file.FileName);
+					var existFile = await _dbService.ProcessSessionFiles.Get(queryBuilder);
+					var sessionFile = existFile.FirstOrDefault();
+					if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.processedFile) {
 						throw new ExistFileException(string.Format(ExistLogFile, file.FileName));
-					} else {
+					} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && sessionFile.ProcessSessionId != sessionId) {
+						sessionFile.ProcessSessionId = sessionId;
+						await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
+					} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && sessionFile.ProcessSessionId == sessionId) {
+						return true;
+					} 
+					else {
 						var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), file.FileName);
-						var processSesionFile = GenerateProcessSessionFile(sessionId, fileId);
+						var processSesionFile = GenerateProcessSessionFile(sessionId, fileId, file.FileName);
 						await _dbService.ProcessSessionFiles.Create(processSesionFile);
 					}
 				}
@@ -69,7 +87,9 @@ namespace ProcessLogFilesDLL {
 						var processSessionFiles = await _dbService.ProcessSessionFiles.Get(queryBuilder);
 						foreach (var procSessFile in processSessionFiles) {
 							await _dbService.RemoveLogFile(procSessFile.FileId);
-							await _dbService.ProcessSessionFiles.Remove(procSessFile.Id);
+							if (procSessFile.StatusFile == StatusSessionFile.newFile) {
+								await _dbService.ProcessSessionFiles.Remove(procSessFile.Id);
+							}
 						}
 					}
 				}
@@ -79,10 +99,7 @@ namespace ProcessLogFilesDLL {
 		}
 
 		public async Task<string> CreateProcessLogSession(string userName) {
-			var randSessionIndex = new Random();
-			var processLogSesion = new ProcessLogSession();
-			processLogSesion.UserName = userName;
-			processLogSesion.SessionTitle = string.Format("Session_{0}", randSessionIndex.Next(1, 100));
+			var processLogSesion = GenerateProcessLogSession(userName);
 			await _dbService.ProcessLogSessions.Create(processLogSesion);
 			return processLogSesion.Id.ToString();
 		}

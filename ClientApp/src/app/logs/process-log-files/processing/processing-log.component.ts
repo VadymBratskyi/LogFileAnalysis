@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 
 @Component({
   selector: 'app-processing-log',
@@ -7,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProcessingLogComponent implements OnInit {
 
-  @Input() inSms: string[];
-
-  constructor() { }
+  constructor(
+    public servProcessLogFiles: ProcessLogFilesService
+  ) { }
 
   ngOnInit() {
+    this.servProcessLogFiles.processNotifications = [];
   }
 
 }

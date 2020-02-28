@@ -1,31 +1,46 @@
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title class="padd-title-header">
+        <mat-card-title class="padd-title-header linkText" (click)="isUploadCardExpanded = !isUploadCardExpanded">
           Завантаження Logs-файлів
+          <span *ngIf="servProcessLogFiles.uploadedFile && servProcessLogFiles.uploadedFile.length > 0" [matBadge]="servProcessLogFiles.uploadedFile.length" class="matBadg"></span>
         </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-        <kendo-upload *ngIf="uploadSaveUrl"
-            [saveUrl]="uploadSaveUrl"
-            [restrictions]="myRestrictions"
-            [removeUrl]="uploadRemoveUrl"
-            [withCredentials]="false"
-            [(ngModel)]="servProcessLogFiles.uploadedFile"        
-            (success)="onSuccessEventHandler($event)"
-            (error)="onErrorEventHandler($event)">
-            <kendo-upload-messages select="Обрати файл"
-                    invalidFileExtension="Недопустимий тип файла"
-                    uploadSelectedFiles="Завантажити обрані файли"
-                    clearSelectedFiles="Очистити вибрані файли"
-                    cancel="Відмінити"
-                    dropFilesHere="Перетягніть файли сюди"
-                    headerStatusUploaded="Завантажено"
-                    headerStatusUploading="Завантажується"
-                    invalidFiles="Недопустимі файли"
-                    invalidMaxFileSize="Недопустимий розмір файлу"
-                    remove="Видалити"
-                    retry="Спробувати ще раз">
-            </kendo-upload-messages>
-        </kendo-upload>
+    <mat-card-content [style.display]="isUploadCardExpanded ? 'none' : 'block'">
+        <div class="row">
+            <div class="col-md-11">
+                <kendo-upload *ngIf="uploadSaveUrl"
+                [saveUrl]="uploadSaveUrl"
+                [restrictions]="myRestrictions"
+                [removeUrl]="uploadRemoveUrl"
+                [withCredentials]="false"
+                [(ngModel)]="servProcessLogFiles.uploadedFile"        
+                (success)="onSuccessEventHandler($event)"
+                (error)="onErrorEventHandler($event)">
+                <kendo-upload-messages select="Обрати файл"
+                        invalidFileExtension="Недопустимий тип файла"
+                        uploadSelectedFiles="Завантажити обрані файли"
+                        clearSelectedFiles="Очистити вибрані файли"
+                        cancel="Відмінити"
+                        dropFilesHere="Перетягніть файли сюди"
+                        headerStatusUploaded="Завантажено"
+                        headerStatusUploading="Завантажується"
+                        invalidFiles="Недопустимі файли"
+                        invalidMaxFileSize="Недопустимий розмір файлу"
+                        remove="Видалити"
+                        retry="Спробувати ще раз">
+                </kendo-upload-messages>
+            </kendo-upload>
+            </div>
+            <div class="col-md-1">
+                <div class="run-procces-files">
+                    <div class="procces-header">
+                        <button class="k-button" (click)="onRunProccesFiles()">Обробити усі</button>
+                    </div>
+                    <div *ngFor="let file of servProcessLogFiles.uploadedFile" class="procces-file-status">                       
+                        <button class="k-button" (click)="onRunProccesSingFile(file)">Обробити</button>                 
+                    </div>                    
+                </div>
+            </div>
+        </div>       
     </mat-card-content> 
 </mat-card>

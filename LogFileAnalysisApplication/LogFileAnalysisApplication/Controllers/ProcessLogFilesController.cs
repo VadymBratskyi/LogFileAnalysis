@@ -48,7 +48,8 @@ namespace LogFileAnalysisApplication.Controllers {
 			if (sessionId == "undefined") {
 				throw new ArgumentNullException("UploadLogFiles SessionId is null!!");
 			}
-			var result = await _logService.UploadFile(files, sessionId);
+			var id = new ObjectId(sessionId);
+			var result = await _logService.UploadFile(files, id);
 			return Ok(result);
 		}
 

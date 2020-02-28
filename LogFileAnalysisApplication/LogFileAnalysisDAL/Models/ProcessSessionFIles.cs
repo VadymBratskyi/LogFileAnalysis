@@ -15,6 +15,10 @@ namespace LogFileAnalysisDAL.Models {
 
 		public ObjectId FileId { get; set; }
 
+		public string FileName { get; set; }
+
+		public StatusSessionFile StatusFile { get; set; }
+
 		#endregion
 
 	}
