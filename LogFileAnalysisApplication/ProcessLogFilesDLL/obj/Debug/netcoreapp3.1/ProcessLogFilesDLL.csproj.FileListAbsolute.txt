@@ -1,11 +1,3 @@
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.deps.json
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfoInputs.cache
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfo.cs
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csprojAssemblyReference.cache
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.deps.json
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
@@ -17,6 +9,14 @@ C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\o
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.AssemblyInfo.cs
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb

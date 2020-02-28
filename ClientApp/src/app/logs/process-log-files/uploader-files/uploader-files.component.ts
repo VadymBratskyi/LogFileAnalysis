@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, NgZone } from '@angular/core';
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 import { environment } from 'environments/environment';
-import { SuccessEvent, ErrorEvent, FileRestrictions, ChunkSettings } from '@progress/kendo-angular-upload';
+import { SuccessEvent, ErrorEvent, FileRestrictions, ChunkSettings, FileInfo } from '@progress/kendo-angular-upload';
 
 @Component({
   selector: 'app-uploader-files',
@@ -11,18 +11,16 @@ import { SuccessEvent, ErrorEvent, FileRestrictions, ChunkSettings } from '@prog
 export class UploaderFilesComponent implements OnInit, OnChanges {
   
   @Input() inSessionId: string;
-  @Output() onUploaded = new EventEmitter<boolean>();
 
+  isUploadCardExpanded: boolean;
   uploadSaveUrl = "";
   uploadRemoveUrl = "";
   myRestrictions: FileRestrictions = {
     allowedExtensions: ['.log']
   };
-  chunkSettings: ChunkSettings = {
-    size: 502400
-  };
  
   constructor(
+    private zone: NgZone,
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
 
@@ -36,13 +34,29 @@ export class UploaderFilesComponent implements OnInit, OnChanges {
   }
    
   onSuccessEventHandler(e: SuccessEvent) {  
-    console.error("onSuccessEventHandler",e);  
-    this.onUploaded.emit(true);
+    console.log("onSuccessEventHandler",e);
   }
 
   onErrorEventHandler(e: ErrorEvent) {
     console.error("onErrorEventHandler",e);
-    this.onUploaded.emit(false);
+  }
+
+  onRunProccesFiles() {
+    this.servProcessLogFiles.startProcessLogFiles(this.inSessionId);
+    this.servProcessLogFiles.onProcessNotification.subscribe((message: string) => {  
+      this.zone.run(() => {
+        this.servProcessLogFiles.processNotifications.push(message);  
+      });  
+    }); 
+  }
+
+  onRunProccesSingFile(file: FileInfo) {
+    this.servProcessLogFiles.startProcessSinglLogFile(file.name);
+    this.servProcessLogFiles.onProcessNotification.subscribe((message: string) => {  
+      this.zone.run(() => {
+        this.servProcessLogFiles.processNotifications.push(message);  
+      });  
+    }); 
   }
 
 }

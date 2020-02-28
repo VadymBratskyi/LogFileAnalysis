@@ -8,7 +8,8 @@ import { UploadModule } from '@progress/kendo-angular-upload';
 import { ProcessingLogComponent } from './processing/processing-log.component';
 import {
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
+  MatBadgeModule
 } from '@angular/material';
 
 
@@ -26,6 +27,7 @@ import {
     /**material */
     MatCardModule,
     MatButtonModule,
+    MatBadgeModule,
 
     /**progress */
     UploadModule

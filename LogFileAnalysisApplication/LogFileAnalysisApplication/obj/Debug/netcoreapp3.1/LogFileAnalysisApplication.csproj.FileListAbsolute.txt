@@ -100,7 +100,8 @@ C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisAppli
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\SharpCompress.dll
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.csprojAssemblyReference.cache
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\appsettings.json
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -192,7 +193,10 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Lo
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.csprojAssemblyReference.cache
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\staticwebassets\LogFileAnalysisApplication.StaticWebAssets.Manifest.cache
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\staticwebassets\LogFileAnalysisApplication.StaticWebAssets.xml
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.MvcApplicationPartsAssemblyInfo.cache
@@ -202,7 +206,3 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Lo
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.csproj.CopyComplete
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.pdb
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
-C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
-C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb

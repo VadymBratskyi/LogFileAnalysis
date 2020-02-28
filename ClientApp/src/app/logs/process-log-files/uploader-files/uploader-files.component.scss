@@ -6,3 +6,36 @@
     font-size: 16px;
     margin-bottom: 3px !important;
 }
+
+.linkText:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.run-procces-files {
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-left: 1px solid rgba(0,0,0,0.08);
+    border-right: 1px solid rgba(0,0,0,0.08);
+    color: #656565;
+    height: 100%;
+}
+
+.procces-header {
+    text-align: center;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    color: #656565;  
+    padding: 8px;
+}
+
+.procces-file-status {
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    color: #656565;  
+    padding: 12px;
+}
+
+.matBadg {
+    vertical-align: sub;
+    margin-left: 15px;
+}

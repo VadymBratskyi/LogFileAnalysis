@@ -16,16 +16,18 @@ export class ProcessLogFilesService {
   private _hubConnection: HubConnection; 
   private connectionIsEstablished = false;  
 
-  processNotification = new EventEmitter<string>(); 
-  connectionEstablished = new EventEmitter<Boolean>();  
+  onProcessNotification = new EventEmitter<string>(); 
+  OnConnectionEstablished = new EventEmitter<Boolean>();  
+
+  processNotifications: string[];
 
   constructor(
     private http: HttpClient
-  ) { 
+  ) {
     this.createConnection();
     this.registerOnServerEvents(); 
     this.startConnection(); 
-  }
+   }
 
   public CreateProcessLogSession() : Observable<string>  {
 
@@ -46,7 +48,11 @@ export class ProcessLogFilesService {
 
   }
 
-  startProcessLogFiles(sessionId: string) {  
+  startProcessSinglLogFile(fileName: string) {    
+    this._hubConnection.invoke('StartProcessSinglLogFiles', fileName);  
+  }  
+
+  startProcessLogFiles(sessionId: string) {    
     this._hubConnection.invoke('StartProcessLogFiles', sessionId);  
   }  
   
@@ -58,8 +64,13 @@ export class ProcessLogFilesService {
   
   private registerOnServerEvents(): void {  
     this._hubConnection.on('ProcessNotification', (data: any) => {  
-      this.processNotification.emit(data);  
+      this.onProcessNotification.emit(data);  
     });  
+
+    this._hubConnection.on('CompleteProcess', (data: any) => {
+      this._hubConnection.stop();      
+    });
+
   } 
 
   private startConnection(): void {  
@@ -68,7 +79,7 @@ export class ProcessLogFilesService {
       .then(() => {  
         this.connectionIsEstablished = true;  
         console.log('Hub connection started');  
-        this.connectionEstablished.emit(true);  
+        this.OnConnectionEstablished.emit(true);  
       })  
       .catch(err => {  
         console.log('Error while establishing connection, retrying...');  

@@ -1,5 +1,6 @@
 ﻿using LogFileAnalysisDAL;
 using Microsoft.AspNetCore.SignalR;
+using MongoDB.Bson;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,8 +14,14 @@ namespace ProcessLogFilesDLL {
 		}
 
 		public async Task StartProcessLogFiles(string sessionId) {
-			ProcessLogFile processFiles = new ProcessLogFile(_dbService, sessionId, this.Clients);
-			await processFiles.RunProcessLogFile();
+			var id = string.IsNullOrEmpty(sessionId) ? ObjectId.Empty : new ObjectId(sessionId);
+			ProcessLogFile processFiles = new ProcessLogFile(_dbService, id, this.Clients);
+			await processFiles.RunProcessLogFiles();
+		}
+
+		public async Task StartProcessSinglLogFiles(string fileName) {
+			ProcessLogFile processFiles = new ProcessLogFile(_dbService, fileName, this.Clients);
+			await processFiles.RunProcessSinglLogFile();
 		}
 	}
 }
