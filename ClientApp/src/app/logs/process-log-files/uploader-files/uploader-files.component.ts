@@ -2,8 +2,6 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 import { environment } from 'environments/environment';
 import { SuccessEvent, ErrorEvent, FileRestrictions, ChunkSettings } from '@progress/kendo-angular-upload';
-import { UploadeFile } from 'app/_models/upload/uploadeFile';
-import { StatusUploadedFile } from 'app/_models/upload/StatusUploadedFile';
 
 @Component({
   selector: 'app-uploader-files',
@@ -34,14 +32,12 @@ export class UploaderFilesComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.uploadSaveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodUploadLogFiles + "?sessionId=" + this.inSessionId;
-    this.uploadRemoveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodRemoveLogFiles + "?sessionId=" + this.inSessionId;
+    this.uploadRemoveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodRemoveLogFiles;
   }
    
-  onSuccessEventHandler(e: SuccessEvent) {    
-    let uploadedFile = e.response.body as UploadeFile;
-    if(uploadedFile.state == StatusUploadedFile.uploded) {
-      this.onUploaded.emit(true);
-    }
+  onSuccessEventHandler(e: SuccessEvent) {  
+    console.error("onSuccessEventHandler",e);  
+    this.onUploaded.emit(true);
   }
 
   onErrorEventHandler(e: ErrorEvent) {

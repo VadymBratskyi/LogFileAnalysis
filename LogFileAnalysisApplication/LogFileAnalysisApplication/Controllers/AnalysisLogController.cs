@@ -1,5 +1,4 @@
-﻿using LogFileAnalysisApplication.Models;
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
