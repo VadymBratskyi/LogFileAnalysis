@@ -17,26 +17,30 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
 
   sessionId: string;
 
-  arrMess: string [] = [];
-
-  startProcess: boolean;
-
   constructor(    
     public servProcessLogFiles: ProcessLogFilesService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.servProcessLogFiles.onProcessNotification
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe((message: string) => {
+        this.servProcessLogFiles.processNotifications.push(message);  
+    });
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroyed$))
       .subscribe(p => {
-        this.sessionId = p.get("sessionId");        
+        this.sessionId = p.get("sessionId");
+        this.servProcessLogFiles.startHubConnection();        
       });
   }
 
   ngOnDestroy() {
     this.destroyed$.next(true);
     this.destroyed$.complete();
+    this.servProcessLogFiles.stopHubConnection();
   }
 
 

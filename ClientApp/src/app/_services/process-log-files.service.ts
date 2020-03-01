@@ -14,20 +14,13 @@ export class ProcessLogFilesService {
 
   public uploadedFile: Array<FileInfo>;
   private _hubConnection: HubConnection; 
-  private connectionIsEstablished = false;  
 
-  onProcessNotification = new EventEmitter<string>(); 
-  OnConnectionEstablished = new EventEmitter<Boolean>();  
-
+  onProcessNotification = new EventEmitter<string>();
   processNotifications: string[];
 
   constructor(
     private http: HttpClient
-  ) {
-    this.createConnection();
-    this.registerOnServerEvents(); 
-    this.startConnection(); 
-   }
+  ) {}
 
   public CreateProcessLogSession() : Observable<string>  {
 
@@ -56,6 +49,18 @@ export class ProcessLogFilesService {
     this._hubConnection.invoke('StartProcessLogFiles', sessionId);  
   }  
   
+  startHubConnection() {
+    this.createConnection();
+    this.registerOnServerEvents(); 
+    this.startConnection(); 
+    this.uploadedFile = [];
+  }
+
+  stopHubConnection() {
+    this._hubConnection.stop();
+    console.log("HUB Connection stoped");
+  }
+
   private createConnection() {  
     this._hubConnection = new HubConnectionBuilder()  
       .withUrl(environment.localhostApp + 'ProcessLogFileHub')  
@@ -66,20 +71,13 @@ export class ProcessLogFilesService {
     this._hubConnection.on('ProcessNotification', (data: any) => {  
       this.onProcessNotification.emit(data);  
     });  
-
-    this._hubConnection.on('CompleteProcess', (data: any) => {
-      this._hubConnection.stop();      
-    });
-
   } 
 
   private startConnection(): void {  
     this._hubConnection  
       .start()  
       .then(() => {  
-        this.connectionIsEstablished = true;  
         console.log('Hub connection started');  
-        this.OnConnectionEstablished.emit(true);  
       })  
       .catch(err => {  
         console.log('Error while establishing connection, retrying...');  
@@ -89,35 +87,6 @@ export class ProcessLogFilesService {
   
   
 
-
-  // createConnection(scanServUrl: string): signalR.HubConnection {
-
-  //   const connection = new HubConnectionBuilder()
-  //     .withUrl(scanServUrl)
-  //     .build();
-
-  //   connection.on('Progress', (message: string) => {
-  //     console.log(message);
-  //   });
-
-  //   // connection.on('Error', (jobId: string, message: string) => {
-  //   //   this.initScanError(jobId, message);
-  //   //   this.successScaned = false;
-  //   // });
-
-  //   // connection.on('Complete', (jobId: string) => {
-  //   //   connection.stop();
-  //   //   if (this.successScaned) {
-  //   //     this.getScannedResultbyJobId(jobId)
-  //   //       .subscribe((result: ScannedResult) => {
-  //   //         this.setScanResult(result);
-  //   //         this.router.navigate(['/oshb','ea', 'scanns', 'scanning', 'sessions', result.SessionId]);
-  //   //       });
-  //   //   }     
-  //   // });
-
-  //   return connection;
-  // }
 
 
 

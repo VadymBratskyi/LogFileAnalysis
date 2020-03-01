@@ -49,6 +49,23 @@ namespace ProcessLogFilesDLL {
 			};
 		}
 
+		private async Task<bool> CheckSessionFiles(IFormFile file, ObjectId sessionId) {
+			var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileName", file.FileName);
+			var existFile = await _dbService.ProcessSessionFiles.Get(queryBuilder);
+			var sessionFile = existFile.FirstOrDefault();
+			if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.processedFile) {
+				throw new ExistFileException(string.Format(ExistLogFile, file.FileName));
+			} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && sessionFile.ProcessSessionId != sessionId) {
+				sessionFile.ProcessSessionId = sessionId;
+				await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
+				return true;
+			} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && 
+				sessionFile.ProcessSessionId == sessionId) {
+				return true;
+			}
+			return false;
+		}
+
 		#endregion
 
 		#region Methos : Public
@@ -56,18 +73,9 @@ namespace ProcessLogFilesDLL {
 		public async Task<bool> UploadFile(IFormFileCollection files, ObjectId sessionId) {
 			if (files.Any()) {
 				foreach (var file in files) {
-					var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileName", file.FileName);
-					var existFile = await _dbService.ProcessSessionFiles.Get(queryBuilder);
-					var sessionFile = existFile.FirstOrDefault();
-					if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.processedFile) {
-						throw new ExistFileException(string.Format(ExistLogFile, file.FileName));
-					} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && sessionFile.ProcessSessionId != sessionId) {
-						sessionFile.ProcessSessionId = sessionId;
-						await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
-					} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && sessionFile.ProcessSessionId == sessionId) {
-						return true;
-					} 
-					else {
+					if (await CheckSessionFiles(file, sessionId)) {
+						continue;
+					} else {
 						var fileId = await _dbService.StoreLogFile(file.OpenReadStream(), file.FileName);
 						var processSesionFile = GenerateProcessSessionFile(sessionId, fileId, file.FileName);
 						await _dbService.ProcessSessionFiles.Create(processSesionFile);

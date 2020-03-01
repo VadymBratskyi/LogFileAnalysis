@@ -1,15 +1,19 @@
-import { Component, OnInit, Input, OnChanges, NgZone } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 import { environment } from 'environments/environment';
 import { SuccessEvent, ErrorEvent, FileRestrictions, ChunkSettings, FileInfo } from '@progress/kendo-angular-upload';
+import { ReplaySubject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-uploader-files',
   templateUrl: './uploader-files.component.html',
   styleUrls: ['./uploader-files.component.scss']
 })
-export class UploaderFilesComponent implements OnInit, OnChanges {
-  
+export class UploaderFilesComponent implements OnInit, OnChanges, OnDestroy {
+    
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
+
   @Input() inSessionId: string;
 
   isUploadCardExpanded: boolean;
@@ -20,17 +24,20 @@ export class UploaderFilesComponent implements OnInit, OnChanges {
   };
  
   constructor(
-    private zone: NgZone,
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
 
   ngOnInit() {
-    this.servProcessLogFiles.uploadedFile = [];
   }
 
   ngOnChanges() {
     this.uploadSaveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodUploadLogFiles + "?sessionId=" + this.inSessionId;
     this.uploadRemoveUrl = environment.localhostApp + environment.urlProcessLogApi + environment.methodRemoveLogFiles;
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
    
   onSuccessEventHandler(e: SuccessEvent) {  
@@ -42,21 +49,11 @@ export class UploaderFilesComponent implements OnInit, OnChanges {
   }
 
   onRunProccesFiles() {
-    this.servProcessLogFiles.startProcessLogFiles(this.inSessionId);
-    this.servProcessLogFiles.onProcessNotification.subscribe((message: string) => {  
-      this.zone.run(() => {
-        this.servProcessLogFiles.processNotifications.push(message);  
-      });  
-    }); 
+    this.servProcessLogFiles.startProcessLogFiles(this.inSessionId);  
   }
 
   onRunProccesSingFile(file: FileInfo) {
-    this.servProcessLogFiles.startProcessSinglLogFile(file.name);
-    this.servProcessLogFiles.onProcessNotification.subscribe((message: string) => {  
-      this.zone.run(() => {
-        this.servProcessLogFiles.processNotifications.push(message);  
-      });  
-    }); 
+    this.servProcessLogFiles.startProcessSinglLogFile(file.name);     
   }
 
 }

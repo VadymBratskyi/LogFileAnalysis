@@ -1,6 +1,5 @@
 ﻿using LogFileAnalysisDAL;
 using LogFileAnalysisDAL.Models;
-using Microsoft.AspNetCore.SignalR;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
@@ -25,7 +24,7 @@ namespace ProcessLogFilesDLL {
         private readonly ObjectId _sessionId;
         private readonly string _fileName;
         private readonly GenerateObjects _generateObjects;
-        private readonly IHubCallerClients _hubCaller;
+        private readonly ProcessLogNotifier _processLogNotifier;
         private ProcessLog _processLog;
 
         #endregion
@@ -38,16 +37,16 @@ namespace ProcessLogFilesDLL {
 
         #region Constructor : Public
 
-        public ProcessLogFile(DbContextService dbService, string fileName, IHubCallerClients hubCaller) {
+        public ProcessLogFile(DbContextService dbService, string fileName, ProcessLogNotifier logNotifier) {
             _dbService = dbService;
-            _hubCaller = hubCaller;
+            _processLogNotifier = logNotifier;
             _fileName = fileName;
             _generateObjects = new GenerateObjects();
         }
 
-        public ProcessLogFile(DbContextService dbService, ObjectId sessionId, IHubCallerClients hubCaller) {
+        public ProcessLogFile(DbContextService dbService, ObjectId sessionId, ProcessLogNotifier logNotifier) {
             _dbService = dbService;
-            _hubCaller = hubCaller;
+            _processLogNotifier = logNotifier;
             _sessionId = sessionId;
             _generateObjects = new GenerateObjects();
         }
@@ -67,7 +66,7 @@ namespace ProcessLogFilesDLL {
 
         private async Task<IEnumerable<ProcessSessionFile>> GetSessionFiles(ObjectId sessionId) {
             if (_sessionId == ObjectId.Empty) {
-                throw new ArgumentNullException("RunProcessLogFile SessionId is null!!!");
+                throw new ArgumentNullException("GetSessionFiles SessionId is null!!!");
             }
             var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("ProcessSessionId", sessionId);
             return await _dbService.ProcessSessionFiles.Get(queryBuilder);
@@ -75,7 +74,7 @@ namespace ProcessLogFilesDLL {
 
         private async Task<IEnumerable<ProcessSessionFile>> GetSessionSinglFile(string fileName) {
             if (string.IsNullOrEmpty(fileName)) {
-                throw new ArgumentNullException("RunProcessLogFile fileName is null!!!");
+                throw new ArgumentNullException("GetSessionSinglFile fileName is null!!!");
             }
             var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileName", fileName);
             return await _dbService.ProcessSessionFiles.Get(queryBuilder);
@@ -84,8 +83,26 @@ namespace ProcessLogFilesDLL {
         private async Task SaveLogObject(List<Log> logs, string fileName) {
             if (logs.Any()) {
                 await _dbService.Logs.Create(logs);
-                await _hubCaller.All.SendAsync("ProcessNotification", $"Файл: {fileName} оброблено");
+                await _processLogNotifier.Notify($"Файл: {fileName} оброблено");
             }
+        }
+
+        private async Task UpdateSessionFiles(ProcessSessionFile sessionFile) {
+            if (sessionFile == null) {
+                throw new ArgumentNullException("UpdateSessionFiles() sessionFile is null!");
+            }
+            sessionFile.StatusFile = StatusSessionFile.processedFile;
+            await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
+        }
+
+        private async Task ProcessSessionFile(IEnumerable<ProcessSessionFile> sessionFiles) {
+            foreach (var item in sessionFiles) {
+                var fileInfo = await ProcessFile(item.FileId);
+                await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
+                await UpdateSessionFiles(item);
+            }
+            var files = sessionFiles.Count() > 1 ? "файлів" : "файлу";
+            await _processLogNotifier.Notify($"Процес обробки {files} завершено");
         }
 
         #endregion
@@ -94,21 +111,12 @@ namespace ProcessLogFilesDLL {
 
         public async Task RunProcessLogFiles() {
             var sessionFiles = await GetSessionFiles(_sessionId);
-            foreach (var item in sessionFiles) {
-                var fileInfo = await ProcessFile(item.FileId);
-                await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
-            }
-            await _hubCaller.All.SendAsync("CompleteProcess", $"Процес обробки файлів завершено");
+            await ProcessSessionFile(sessionFiles);
         }
 
         public async Task RunProcessSinglLogFile() {
             var sessionFiles = await GetSessionSinglFile(_fileName);
-            foreach (var item in sessionFiles) {
-                var fileInfo = await ProcessFile(item.FileId);
-                await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
-            }
-            //await SaveLogObject(_generateObjects.TempLogList, $"Кількість: {_generateObjects.TempLogList.Count} - збережених об'єктів для яких не знайдено Input або Output");
-            await _hubCaller.All.SendAsync("CompleteProcess", $"Процес обробки файлу завершено");
+            await ProcessSessionFile(sessionFiles);
         }
 
         #endregion

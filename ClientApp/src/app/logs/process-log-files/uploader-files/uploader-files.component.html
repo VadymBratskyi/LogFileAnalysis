@@ -7,7 +7,7 @@
     </mat-card-header>
     <mat-card-content [style.display]="isUploadCardExpanded ? 'none' : 'block'">
         <div class="row">
-            <div class="col-md-11">
+            <div class="col-md-10">
                 <kendo-upload *ngIf="uploadSaveUrl"
                 [saveUrl]="uploadSaveUrl"
                 [restrictions]="myRestrictions"
@@ -31,7 +31,7 @@
                 </kendo-upload-messages>
             </kendo-upload>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <div class="run-procces-files">
                     <div class="procces-header">
                         <button class="k-button" (click)="onRunProccesFiles()">Обробити усі</button>
