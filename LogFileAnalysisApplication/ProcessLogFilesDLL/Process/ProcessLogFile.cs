@@ -83,7 +83,7 @@ namespace ProcessLogFilesDLL {
         private async Task SaveLogObject(List<Log> logs, string fileName) {
             if (logs.Any()) {
                 await _dbService.Logs.Create(logs);
-                await _processLogNotifier.Notify($"Файл: {fileName} оброблено");
+                await _processLogNotifier.Notify(fileName);
             }
         }
 
@@ -101,8 +101,6 @@ namespace ProcessLogFilesDLL {
                 await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
                 await UpdateSessionFiles(item);
             }
-            var files = sessionFiles.Count() > 1 ? "файлів" : "файлу";
-            await _processLogNotifier.Notify($"Процес обробки {files} завершено");
         }
 
         #endregion

@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title class="padd-title-header linkText" (click)="isUploadCardExpanded = !isUploadCardExpanded">
           Завантаження Logs-файлів
-          <span *ngIf="servProcessLogFiles.uploadedFile && servProcessLogFiles.uploadedFile.length > 0" [matBadge]="servProcessLogFiles.uploadedFile.length" class="matBadg"></span>
+          <span *ngIf="servProcessLogFiles.processingFiles && servProcessLogFiles.processingFiles.length > 0" [matBadge]="servProcessLogFiles.processingFiles.length" class="matBadg"></span>
         </mat-card-title>
     </mat-card-header>
     <mat-card-content [style.display]="isUploadCardExpanded ? 'none' : 'block'">
@@ -13,7 +13,8 @@
                 [restrictions]="myRestrictions"
                 [removeUrl]="uploadRemoveUrl"
                 [withCredentials]="false"
-                [(ngModel)]="servProcessLogFiles.uploadedFile"        
+                (select)="onSelectEventHandler($event)"
+                (remove)="onRemoveEventHandler($event)"
                 (success)="onSuccessEventHandler($event)"
                 (error)="onErrorEventHandler($event)">
                 <kendo-upload-messages select="Обрати файл"
@@ -32,12 +33,25 @@
             </kendo-upload>
             </div>
             <div class="col-md-2">
-                <div class="run-procces-files">
-                    <div class="procces-header">
-                        <button class="k-button" (click)="onRunProccesFiles()">Обробити усі</button>
+                <div class="run-process-files">
+                    <div class="process-header">
+                        <button class="k-button" (click)="onRunProcessFiles()">Обробити усі</button>
                     </div>
-                    <div *ngFor="let file of servProcessLogFiles.uploadedFile" class="procces-file-status">                       
-                        <button class="k-button" (click)="onRunProccesSingFile(file)">Обробити</button>                 
+                    <div *ngFor="let process of servProcessLogFiles.processingFiles" class="process-file-status">   
+                        <div [ngSwitch]="process.processState">                            
+                            <div *ngSwitchCase="0" class="errorBlock">
+                               <span (click)="onShowDetailsError(process)" class="errorTxt">Помилка</span>
+                            </div>
+                            <div *ngSwitchCase="1" class="spinnerBlock">
+                                <mat-spinner [diameter]="22" style="left: 50%;"></mat-spinner>
+                            </div>
+                            <div *ngSwitchCase="2" class="complateBlock">
+                                <mat-icon aria-hidden="false" aria-label="Оброблено">done_outline</mat-icon>
+                            </div>
+                            <div *ngSwitchCase="3">
+                                <button class="k-button" (click)="onRunProcessSinglFile(process)" [disabled]="process.uploadedFile.state != 3">Обробити</button>
+                            </div>
+                        </div>
                     </div>                    
                 </div>
             </div>
