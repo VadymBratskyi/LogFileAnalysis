@@ -10,8 +10,10 @@ namespace ProcessLogFilesDLL.Common {
 			_hubCaller = hubCaller;
 		}
 
-		public async Task Notify(string message) {
-			await _hubCaller.All.SendAsync("ProcessNotification", message);
+		public async Task Notify(string fileName) {
+			var logNotify = new LogNotify(fileName);
+			logNotify.Message = $"Файл: {fileName} оброблено";
+			await _hubCaller.All.SendAsync("ProcessNotification", logNotify);
 		}
 
 	}

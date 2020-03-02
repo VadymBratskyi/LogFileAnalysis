@@ -12,7 +12,7 @@
     text-decoration: underline;
 }
 
-.run-procces-files {
+.run-process-files {
     border-top: 1px solid rgba(0,0,0,0.08);
     border-left: 1px solid rgba(0,0,0,0.08);
     border-right: 1px solid rgba(0,0,0,0.08);
@@ -20,7 +20,7 @@
     height: 100%;
 }
 
-.procces-header {
+.process-header {
     text-align: center;
     background-color: #f6f6f6;
     border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -28,7 +28,7 @@
     padding: 8px;
 }
 
-.procces-file-status {
+.process-file-status {
     text-align: center;
     border-bottom: 1px solid rgba(0,0,0,0.08);
     color: #656565;  
@@ -38,4 +38,27 @@
 .matBadg {
     vertical-align: sub;
     margin-left: 15px;
+}
+
+.errorTxt {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+.errorTxt:hover {   
+    cursor: pointer;
+}
+
+.errorBlock {
+    padding: 4px;
+}
+
+
+.spinnerBlock {
+    padding: 4px;
+    text-align: center;
+}
+
+mat-icon {
+    color: #00d000;
 }

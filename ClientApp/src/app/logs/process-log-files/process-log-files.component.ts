@@ -20,13 +20,7 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
   constructor(    
     public servProcessLogFiles: ProcessLogFilesService,
     private activatedRoute: ActivatedRoute
-  ) {
-    this.servProcessLogFiles.onProcessNotification
-    .pipe(takeUntil(this.destroyed$))
-    .subscribe((message: string) => {
-        this.servProcessLogFiles.processNotifications.push(message);  
-    });
-  }
+  ) {  }
 
   ngOnInit() {
     this.activatedRoute.paramMap

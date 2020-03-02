@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ProcessLogFilesService } from '@log_services/process-log-files.service';
 import { environment } from 'environments/environment';
-import { SuccessEvent, ErrorEvent, FileRestrictions, ChunkSettings, FileInfo } from '@progress/kendo-angular-upload';
+import { SuccessEvent, SelectEvent, RemoveEvent, FileRestrictions } from '@progress/kendo-angular-upload';
 import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { FileProcess, ProcessState } from '@log_models';
+
+
 
 @Component({
   selector: 'app-uploader-files',
@@ -22,7 +24,7 @@ export class UploaderFilesComponent implements OnInit, OnChanges, OnDestroy {
   myRestrictions: FileRestrictions = {
     allowedExtensions: ['.log']
   };
- 
+   
   constructor(
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
@@ -44,16 +46,49 @@ export class UploaderFilesComponent implements OnInit, OnChanges, OnDestroy {
     console.log("onSuccessEventHandler",e);
   }
 
-  onErrorEventHandler(e: ErrorEvent) {
-    console.error("onErrorEventHandler",e);
+  onErrorEventHandler(e: any) {
+    let fl = e.files[0];
+    let file = this.servProcessLogFiles.processingFiles.find(pr => pr.uploadedFile.uid == fl.uid) as FileProcess;
+    file.processState = ProcessState.failed;
+    file.errorMessage = e.response.error;      
   }
 
-  onRunProccesFiles() {
+  onSelectEventHandler(e: SelectEvent) {
+    e.files.forEach(file => {
+      let proccFile = new FileProcess({uploadedFile:file, sessionId: this.inSessionId});
+      this.servProcessLogFiles.processingFiles.push(proccFile);
+    });
+  }
+
+  onRemoveEventHandler(e: RemoveEvent): void {
+    e.files.forEach(file => {
+      let flIndex = this.servProcessLogFiles.processingFiles.findIndex(pr => pr.uploadedFile.uid == file.uid);
+      if(flIndex >= 0) {
+        this.servProcessLogFiles.processingFiles.splice(flIndex, 1);
+      }
+      let notifyIndex = this.servProcessLogFiles.processNotifications.findIndex(nt => nt.fileName == file.name);
+      if(notifyIndex >= 0) {
+        this.servProcessLogFiles.processNotifications.splice(notifyIndex, 1);
+      }
+    });
+  }
+
+  onShowDetailsError(procFile: FileProcess) {
+    alert(procFile.errorMessage);
+  }
+
+  onRunProcessFiles() {
     this.servProcessLogFiles.startProcessLogFiles(this.inSessionId);  
+    this.servProcessLogFiles.processingFiles.forEach(pr => {
+      if(pr.processState == ProcessState.default) {
+        pr.processState = ProcessState.processing;
+      }      
+    });
   }
 
-  onRunProccesSingFile(file: FileInfo) {
-    this.servProcessLogFiles.startProcessSinglLogFile(file.name);     
+  onRunProcessSinglFile(procFile: FileProcess) {    
+    this.servProcessLogFiles.startProcessSinglLogFile(procFile.uploadedFile.name);    
+    procFile.processState = ProcessState.processing;   
   }
 
 }

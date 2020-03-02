@@ -4,7 +4,7 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { environment } from 'environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { FileInfo } from '@progress/kendo-angular-upload';
+import { FileProcess, LogNotify } from '@log_models';
 
 
 @Injectable({
@@ -12,12 +12,12 @@ import { FileInfo } from '@progress/kendo-angular-upload';
 })
 export class ProcessLogFilesService {
 
-  public uploadedFile: Array<FileInfo>;
+  public processingFiles: Array<FileProcess>;
   private _hubConnection: HubConnection; 
 
-  onProcessNotification = new EventEmitter<string>();
-  processNotifications: string[];
-
+  onProcessNotification = new EventEmitter<LogNotify>();
+  processNotifications: LogNotify[];
+  
   constructor(
     private http: HttpClient
   ) {}
@@ -53,7 +53,7 @@ export class ProcessLogFilesService {
     this.createConnection();
     this.registerOnServerEvents(); 
     this.startConnection(); 
-    this.uploadedFile = [];
+    this.processingFiles = [];
   }
 
   stopHubConnection() {

@@ -9,9 +9,10 @@ import { ProcessingLogComponent } from './processing/processing-log.component';
 import {
   MatCardModule,
   MatButtonModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatProgressSpinnerModule,
+  MatIconModule
 } from '@angular/material';
-
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import {
     MatCardModule,
     MatButtonModule,
     MatBadgeModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
 
     /**progress */
     UploadModule
