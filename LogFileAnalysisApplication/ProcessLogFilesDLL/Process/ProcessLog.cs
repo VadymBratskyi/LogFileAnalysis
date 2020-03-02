@@ -111,7 +111,7 @@ namespace ProcessLogFilesDLL.Process {
                 }
                 string input;
                 if (GetMatchTemplate(value, Template.RegInput, out input)) {
-                    var data = GetInput(value);
+                    var data = GetInput(input);
                     var messageId = GetMessageId(data, index, "notFoundInput_");
                     _generateObjects.CreateLogObject(messageId, dateStart, data, DateTime.MinValue, null);
                 }
@@ -122,6 +122,7 @@ namespace ProcessLogFilesDLL.Process {
                     var messageId = GetMessageId(data, index, "notFoundOutput_");
                     _generateObjects.CreateLogObject(messageId, DateTime.MinValue, null, dateEnd, data);
                 }
+                index++;
             }
         }
 

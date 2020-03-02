@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private activatedRouter: ActivatedRoute,
     private servProcessLogFiole: ProcessLogFilesService
   ) { }
 
@@ -38,18 +37,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   public onProcessLogFile(card: CardHome) {
     this.servProcessLogFiole.CreateProcessLogSession()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(sesionId => {
-        this.router.navigate([card.rouuterLink, sesionId], {relativeTo : this.activatedRouter});
-      });
+      .subscribe(sessionId => {
+        this.router.navigate([card.rouuterLink, sessionId]);
+    });
   }
 
   public onShowLogObjects(card: CardHome) {
-
-
+    this.router.navigate([card.rouuterLink]);
   }
 
   public onAnlysisLogObjects(card: CardHome) {
-
 
   }
 

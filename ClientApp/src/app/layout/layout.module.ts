@@ -17,7 +17,7 @@ import {
 @NgModule({
   declarations: [
     LayoutComponent,
-    FooterLayoutComponent    
+    FooterLayoutComponent        
   ],
   imports: [
     CommonModule,

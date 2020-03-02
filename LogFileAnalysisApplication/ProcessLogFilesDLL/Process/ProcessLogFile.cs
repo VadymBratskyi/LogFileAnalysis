@@ -68,7 +68,9 @@ namespace ProcessLogFilesDLL {
             if (_sessionId == ObjectId.Empty) {
                 throw new ArgumentNullException("GetSessionFiles SessionId is null!!!");
             }
-            var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("ProcessSessionId", sessionId);
+            var filter1 = Builders<ProcessSessionFile>.Filter.Eq("ProcessSessionId", sessionId);
+            var filter2 = Builders<ProcessSessionFile>.Filter.Eq("StatusFile", StatusSessionFile.newFile);
+            var queryBuilder = Builders<ProcessSessionFile>.Filter.And(filter1, filter2);
             return await _dbService.ProcessSessionFiles.Get(queryBuilder);
         }
 
@@ -76,14 +78,16 @@ namespace ProcessLogFilesDLL {
             if (string.IsNullOrEmpty(fileName)) {
                 throw new ArgumentNullException("GetSessionSinglFile fileName is null!!!");
             }
-            var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileName", fileName);
+            var filter1 = Builders<ProcessSessionFile>.Filter.Eq("FileName", fileName);
+            var filter2 = Builders<ProcessSessionFile>.Filter.Eq("StatusFile", StatusSessionFile.newFile);
+            var queryBuilder = Builders<ProcessSessionFile>.Filter.And(filter1, filter2);
             return await _dbService.ProcessSessionFiles.Get(queryBuilder);
         }
 
         private async Task SaveLogObject(List<Log> logs, string fileName) {
             if (logs.Any()) {
                 await _dbService.Logs.Create(logs);
-                await _processLogNotifier.Notify(fileName);
+                await _processLogNotifier.Notify(fileName, logs.Count);
             }
         }
 
