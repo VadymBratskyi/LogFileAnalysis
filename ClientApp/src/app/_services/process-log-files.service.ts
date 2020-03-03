@@ -20,7 +20,7 @@ export class ProcessLogFilesService {
   
   constructor(
     private http: HttpClient
-  ) {}
+  ) {  }
 
   public CreateProcessLogSession() : Observable<string>  {
 

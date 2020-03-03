@@ -12,3 +12,4 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Sh
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.AssemblyInfo.cs
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.csprojAssemblyReference.cache
