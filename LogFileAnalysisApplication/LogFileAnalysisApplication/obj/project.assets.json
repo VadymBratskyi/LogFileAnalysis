@@ -2554,6 +2554,19 @@
         "runtime": {
           "bin/placeholder/ProcessLogFilesDLL.dll": {}
         }
+      },
+      "ShowLogObjectsDLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ShowLogObjectsDLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShowLogObjectsDLL.dll": {}
+        }
       }
     }
   },
@@ -8103,13 +8116,19 @@
       "type": "project",
       "path": "../ProcessLogFilesDLL/ProcessLogFilesDLL.csproj",
       "msbuildProject": "../ProcessLogFilesDLL/ProcessLogFilesDLL.csproj"
+    },
+    "ShowLogObjectsDLL/1.0.0": {
+      "type": "project",
+      "path": "../ShowLogObjectsDLL/ShowLogObjectsDLL.csproj",
+      "msbuildProject": "../ShowLogObjectsDLL/ShowLogObjectsDLL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "LogFileAnalysisDAL >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
-      "ProcessLogFilesDLL >= 1.0.0"
+      "ProcessLogFilesDLL >= 1.0.0",
+      "ShowLogObjectsDLL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8150,6 +8169,9 @@
             },
             "C:\\GithubProject\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj": {
               "projectPath": "C:\\GithubProject\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj"
+            },
+            "C:\\GithubProject\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj": {
+              "projectPath": "C:\\GithubProject\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj"
             }
           }
         }

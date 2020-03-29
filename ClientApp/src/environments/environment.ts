@@ -15,6 +15,8 @@ export const environment = {
   methodRemoveLogFiles: 'RemoveLogFiles',
   methodStartProcessLogFile: 'StartProcessLogFile',
 
+  methodGetTreeData: 'GetTreeData',
+
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'
 };

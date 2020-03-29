@@ -27,6 +27,7 @@
           "LogFileAnalysisDAL": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
           "ProcessLogFilesDLL": "1.0.0",
+          "ShowLogObjectsDLL": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -2003,6 +2004,17 @@
         },
         "compile": {
           "ProcessLogFilesDLL.dll": {}
+        }
+      },
+      "ShowLogObjectsDLL/1.0.0": {
+        "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0"
+        },
+        "runtime": {
+          "ShowLogObjectsDLL.dll": {}
+        },
+        "compile": {
+          "ShowLogObjectsDLL.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -4747,6 +4759,11 @@
       "sha512": ""
     },
     "ProcessLogFilesDLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ShowLogObjectsDLL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

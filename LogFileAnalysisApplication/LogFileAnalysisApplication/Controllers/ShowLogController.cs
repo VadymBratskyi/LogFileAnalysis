@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ShowLogObjectsDLL;
 
 namespace LogFileAnalysisApplication.Controllers {
 
@@ -13,25 +14,26 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Fields: Private
 
 		private readonly ILogger<ShowLogController> _logger;
+		private readonly ShowLogsService _showLogService;
 
 		#endregion
 
 		#region Constructor: Public
 
-		public ShowLogController(ILogger<ShowLogController> logger) {
+		public ShowLogController(ILogger<ShowLogController> logger, ShowLogsService showLogsService) {
 			_logger = logger;
+			_showLogService = showLogsService;
 		}
 
 		#endregion
 
 		#region Methods: Public
 
-		//[HttpGet("[action]")]
-		//public TestValue GetTestValue() {
-		//	var test = new TestValue();
-		//	test.Value = "Hello World from ShowLogController.GetTestValue";
-		//	return test;
-		//}
+		[HttpGet("[action]")]
+		public string GetTreeData() {
+			_showLogService.LoadDataForTree();
+			return "succes";
+		}
 
 		//[HttpPost("[action]")]
 		//public TestValue PostTestValue([FromBody] TestValue test) {
