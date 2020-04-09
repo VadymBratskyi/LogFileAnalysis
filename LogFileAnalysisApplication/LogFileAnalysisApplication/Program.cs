@@ -8,7 +8,7 @@ namespace LogFileAnalysisApplication {
 		public static void Process() {
 			//c:\Program Files\MongoDB\Server\3.4\bin
 			//c:\Program Files\MongoDB\Server\4.2\bin
-			ProcessStartInfo st = new ProcessStartInfo(@"c:\Program Files\MongoDB\Server\4.2\bin\mongod.exe");
+			ProcessStartInfo st = new ProcessStartInfo(@"c:\Program Files\MongoDB\Server\3.4\bin\mongod.exe");
 			st.WindowStyle = ProcessWindowStyle.Hidden;
 			st.Arguments = @"--dbpath c:\data\db --port 27017";
 			System.Diagnostics.Process.Start(st);

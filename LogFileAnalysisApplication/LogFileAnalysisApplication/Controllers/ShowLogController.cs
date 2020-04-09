@@ -37,9 +37,9 @@ namespace LogFileAnalysisApplication.Controllers {
 		}
 
 
-		[HttpGet("[action]")]
-		public async Task<ActionResult> GetAllLogsData() {
-			var result = await _showLogService.GetLogs();
+		[HttpPost("[action]")]
+		public async Task<ActionResult> GetAllLogsData([FromBody]FilterParameters filterParameters) {
+			var result = await _showLogService.GetLogs(filterParameters.Skip, filterParameters.Take);
 			return Ok(result);
 		}
 
@@ -51,6 +51,11 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#endregion
 
+	}
+
+	public class FilterParameters { 
+		public int Skip { get; set; }
+		public int Take { get; set; }
 	}
 
 	#endregion

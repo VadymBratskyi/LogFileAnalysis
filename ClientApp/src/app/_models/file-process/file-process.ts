@@ -1,11 +1,11 @@
-import { ProcessState } from './ProcessState';
-import { FileInfo, FileState } from '@progress/kendo-angular-upload';
+import { ProcessState } from './process-state';
+import { FileInfo } from '@progress/kendo-angular-upload';
 
 export class FileProcess {
-    uploadedFile: FileInfo;
-    processState: ProcessState;
-    errorMessage: string;
-    sessionId: string;
+    public uploadedFile: FileInfo;
+    public processState: ProcessState;
+    public errorMessage: string;
+    public sessionId: string;
 
     constructor(options : {
       sessionId: string,  

@@ -17,12 +17,16 @@ export class QueryBuilderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+   
+  }
+
+  onLoadData() {
     this.showLogObjectsService.getTreeData()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(dataTree => {
-        console.log(dataTree);
-        alert("success");
-      });
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(dataTree => {
+      console.log(dataTree);
+      alert("success");
+    });
   }
 
   ngOnDestroy()  {

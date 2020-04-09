@@ -12,7 +12,7 @@ namespace LogFileAnalysisDAL.Repository {
 
         #region Methods: Public
 
-        Task<IEnumerable<TEntity>> Get();
+        Task<IEnumerable<TEntity>> Get(int skip, int take);
         //Task<IEnumerable<TEntity>> Get(Func<TEntity, bool> predicate); //todo
         Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition);
         Task<TEntity> FindById(ObjectId id);
