@@ -96,7 +96,7 @@ namespace ProcessLogFilesDLL.Process {
 
         #region Methods: Public
 
-        public void ProcessingLog(StreamReader reader) {            
+        public void ProcessingLog(StreamReader reader) {
             _generateObjects.LogList.Clear();
             DateTime dateStart = DateTime.MinValue;
             DateTime dateEnd = DateTime.MinValue;

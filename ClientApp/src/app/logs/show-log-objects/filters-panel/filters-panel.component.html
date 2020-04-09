@@ -1,16 +1,20 @@
 <mat-card class="example-card">
-    <mat-card-header>
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle (click)="isQueryBuilderCardExpanded = !isQueryBuilderCardExpanded">
-                <img src="./assets/images/filter.png"/>
+    <mat-card-header class="header-toolbox">
+        <div class="toggle-button">
+            <mat-button-toggle (click)="isQueryBuilderCardExpanded = !isQueryBuilderCardExpanded" matTooltip="Вікрити фільтр">
+                <mat-icon aria-hidden="false" aria-label="Filter_list icon">filter_list</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle value="Скинути фільтр">
-                <img src="./assets/images/clear-filters.png"/>
-            </mat-button-toggle>
-            <mat-button-toggle value="Виконати фільтр"><mat-icon aria-hidden="false" aria-label="Виконати фільтр">play_arrow</mat-icon></mat-button-toggle>            
-        </mat-button-toggle-group>
+        </div>
+        <div class="action-button">
+            <button mat-stroked-button matTooltip="Очистити фільтр">
+                <mat-icon aria-hidden="false" aria-label="Clear icon">clear</mat-icon>
+            </button>
+            <button mat-stroked-button  matTooltip="Примінити фільтр">
+                <mat-icon aria-hidden="false" aria-label="Play_arrow icon">play_arrow</mat-icon>
+            </button>
+        </div>
     </mat-card-header>
     <mat-card-content [style.display]="isQueryBuilderCardExpanded ? 'block' : 'none'">
-        <app-query-builder></app-query-builder>
-    </mat-card-content> 
+      <app-query-builder></app-query-builder>
+    </mat-card-content>
 </mat-card>

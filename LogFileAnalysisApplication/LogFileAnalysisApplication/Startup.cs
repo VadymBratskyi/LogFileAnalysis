@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProcessLogFilesDLL;
-using System.Text;
+using ShowLogObjectsDLL;
 
 namespace LogFileAnalysisApplication {
 	public class Startup {
@@ -22,6 +22,7 @@ namespace LogFileAnalysisApplication {
 
 			services.AddSingleton(new DbContextService(connectionstring));
 			services.AddTransient<LogFileService>();
+			services.AddTransient<ShowLogsService>();
 
 			services.AddSignalR();
 			services.AddCors(options =>
