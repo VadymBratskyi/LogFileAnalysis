@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowLogObjectsDLL;
+using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
 
@@ -33,6 +34,13 @@ namespace LogFileAnalysisApplication.Controllers {
 		public string GetTreeData() {
 			_showLogService.LoadDataForTree();
 			return "succes";
+		}
+
+
+		[HttpGet("[action]")]
+		public async Task<ActionResult> GetAllLogsData() {
+			var result = await _showLogService.GetLogs();
+			return Ok(result);
 		}
 
 		//[HttpPost("[action]")]

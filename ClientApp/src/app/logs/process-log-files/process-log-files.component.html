@@ -1,4 +1,4 @@
 <div class="uploadFiles">
     <app-uploader-files [inSessionId]="sessionId" (onUploaded)="successUploaded = $event"></app-uploader-files>
 </div>
-<app-processing-log></app-processing-log>
+<app-processing-log *ngIf="servProcessLogFiles.processNotifications && servProcessLogFiles.processNotifications.length > 0"></app-processing-log>
