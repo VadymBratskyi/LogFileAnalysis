@@ -16,6 +16,7 @@ export const environment = {
   methodStartProcessLogFile: 'StartProcessLogFile',
 
   methodGetTreeData: 'GetTreeData',
+  methodGetAllLogsData: 'GetAllLogsData',
 
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'

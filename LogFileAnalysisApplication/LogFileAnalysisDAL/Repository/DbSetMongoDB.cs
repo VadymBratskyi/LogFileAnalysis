@@ -42,10 +42,10 @@ namespace LogFileAnalysisDAL.Repository {
 			return await _entities.Find(new BsonDocument("_id", id)).FirstOrDefaultAsync();
 		}
 		
-		public async Task<IEnumerable<TEntity>> Get() {
+		public async Task<IEnumerable<TEntity>> Get(int skip = 0, int take = Int32.MaxValue) {
 			var builder = new FilterDefinitionBuilder<TEntity>();
 			var filter = builder.Empty;
-			return await _entities.Find(filter).ToListAsync();
+			return await _entities.Find(filter).Skip(skip).Limit(take).ToListAsync();
 		}
 
 		public async Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition) {
