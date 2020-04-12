@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ProcessLogFilesService } from '@log_services/process-log-files.service';
+import { ProcessLogFilesService } from '@log_services';
 
 @Component({
   selector: 'app-layout',

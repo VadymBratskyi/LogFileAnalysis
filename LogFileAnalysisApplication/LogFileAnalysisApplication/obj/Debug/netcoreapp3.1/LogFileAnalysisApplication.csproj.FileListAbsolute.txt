@@ -210,3 +210,4 @@ C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisAppli
 C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
+C:\GithubProject\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

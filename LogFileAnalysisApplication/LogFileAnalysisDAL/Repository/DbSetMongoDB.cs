@@ -41,7 +41,20 @@ namespace LogFileAnalysisDAL.Repository {
 		public async Task<TEntity> FindById(ObjectId id) {
 			return await _entities.Find(new BsonDocument("_id", id)).FirstOrDefaultAsync();
 		}
-		
+
+		public async Task<long> Count() {
+			var builder = new FilterDefinitionBuilder<TEntity>();
+			var filter = builder.Empty;
+			return await _entities.Find(filter).CountDocumentsAsync();
+		}
+
+		public async Task<long> Count(FilterDefinition<TEntity> filterDefenition) {
+			if (filterDefenition == null) {
+				throw new ArgumentNullException("FilterDefenition is null!!");
+			}
+			return await _entities.Find(filterDefenition).CountDocumentsAsync();
+		}
+
 		public async Task<IEnumerable<TEntity>> Get(int skip = 0, int take = Int32.MaxValue) {
 			var builder = new FilterDefinitionBuilder<TEntity>();
 			var filter = builder.Empty;

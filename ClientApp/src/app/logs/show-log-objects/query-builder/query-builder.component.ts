@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShowLogObjectsService } from '@log_services/show-log-objects.service';
+import { ShowLogObjectsService } from '@log_services';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 

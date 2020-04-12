@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CardHome } from '@log_models';
-import { ProcessLogFilesService } from '@log_services/process-log-files.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ProcessLogFilesService } from '@log_services';
+import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

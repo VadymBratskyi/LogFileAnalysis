@@ -8,7 +8,7 @@ import { QueryBuilderComponent } from './query-builder/query-builder.component';
 import { ResultPanelComponent } from './result-panel/result-panel.component';
 import { MatButtonModule, MatButtonToggleModule, MatIconModule, MatCardModule, MatTooltipModule, MatTreeModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatTableModule } from '@angular/material';
 import { TreeChecklistComponent } from './query-builder/tree-checklist/tree-checklist.component';
-
+import { LogTableModule } from '@log_shareds';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { TreeChecklistComponent } from './query-builder/tree-checklist/tree-chec
   imports: [
     CommonModule,
     ShowLogObjectsRoutingModule,
+    LogTableModule,
     /**material*/
     MatButtonModule,
     MatButtonToggleModule,
@@ -29,9 +30,7 @@ import { TreeChecklistComponent } from './query-builder/tree-checklist/tree-chec
     MatTreeModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatTableModule
-
+    MatInputModule
   ]
 })
 export class ShowLogObjectsModule { }

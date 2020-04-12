@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowLogObjectsDLL;
+using ShowLogObjectsDLL.Models;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -36,11 +37,10 @@ namespace LogFileAnalysisApplication.Controllers {
 			return "succes";
 		}
 
-
 		[HttpPost("[action]")]
 		public async Task<ActionResult> GetAllLogsData([FromBody]FilterParameters filterParameters) {
-			var result = await _showLogService.GetLogs(filterParameters.Skip, filterParameters.Take);
-			return Ok(result);
+			var logData = await _showLogService.GetGridLogs(filterParameters.Skip, filterParameters.Take);
+			return Ok(logData);
 		}
 
 		//[HttpPost("[action]")]
