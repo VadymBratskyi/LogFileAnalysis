@@ -1,18 +1,11 @@
 ﻿using MongoDB.Bson;
 using Newtonsoft.Json.Linq;
 using ShowLogObjectsDLL.Models;
-using ShowLogObjectsDLL.Process.TreeBuilder;
 using System;
 
 namespace ShowLogObjectsDLL.Process {
 	class ProcessLogTree : IProcessLogTree {
-
-		private readonly BuilderLogTree _logTreeBuilder;
-
-		public ProcessLogTree() {
-			_logTreeBuilder = new BuilderLogTree();
-		}
-
+	
 		private JObject _getParceObject(BsonDocument document) {
 			return JObject.Parse(document.ToJson()
 				.Replace("ObjectId(", "")
