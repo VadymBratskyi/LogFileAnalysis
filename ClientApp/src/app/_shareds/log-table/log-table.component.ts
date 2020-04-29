@@ -69,7 +69,9 @@ export class LogTableComponent implements OnInit {
     ]
   };
   
-  singleRootTree: Node<any> = {
+  singleRootTree: Node<any>[] = 
+  [
+    {
     value: {
       key: 'Reports',
       value: 'Eric'
@@ -127,6 +129,66 @@ export class LogTableComponent implements OnInit {
         ]
       }
     ]
+  },
+  {
+    value: {
+      key: 'Reports2',
+      value: 'Eric'
+    },
+    children: [
+      {
+        value: {
+          key: 'Charts',
+          value: 'Stephanie',
+        },
+        children: []
+      },
+      {
+        value: {
+          key: 'Sales',
+          value: 'Virginia',
+        },
+        children: []
+      },
+      {
+        value: {
+          key: 'US',
+          value: 'Alison',
+        },
+        children: [
+          {
+            value: {
+              key: 'California',
+              value: 'Claire',
+            },
+            children: []
+          },
+          {
+            value: {
+              key: 'Washington',
+              value: 'Colin',
+            },
+            children: [
+              {
+                value: {
+                  key: 'Domestic',
+                  value: 'Oliver',
+                },
+                children: []
+              },
+              {
+                value: {
+                  key: 'International',
+                  value: 'Oliver',
+                },
+                children: []
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
+]
 
 }

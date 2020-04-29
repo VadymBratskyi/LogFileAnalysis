@@ -1,6 +1,13 @@
-﻿namespace ShowLogObjectsDLL.Models {
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ShowLogObjectsDLL.Models {
 	public class LogTreeNode {
-		public string Key { get; set; }
-		public string Value { get; set; }
+		public LogTreeNodeData Value { get; set; }
+		public IList<LogTreeNode> Children { get; set; }
+		public LogTreeNode() {
+			Children = new List<LogTreeNode>();
+		}
 	}
 }

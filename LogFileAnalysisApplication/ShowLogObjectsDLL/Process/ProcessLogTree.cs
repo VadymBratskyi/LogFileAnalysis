@@ -1,7 +1,9 @@
 ﻿using MongoDB.Bson;
 using Newtonsoft.Json.Linq;
 using ShowLogObjectsDLL.Models;
+using ShowLogObjectsDLL.Process.LogTreeBuilder;
 using System;
+using System.Collections.Generic;
 
 namespace ShowLogObjectsDLL.Process {
 	class ProcessLogTree : IProcessLogTree {
@@ -14,15 +16,15 @@ namespace ShowLogObjectsDLL.Process {
 			);
 		}
 
-		public LogTree GetTree(BsonDocument log) {
-			var logTree = new LogTree();
+		public List<LogTreeNode> GetTree(BsonDocument log) {
+			var logTree = new LogTreeNode();
 			var jObject = _getParceObject(log);
-		
+			var treeNodeList = jObject.JsonToLogTreeNode();
 
-			return logTree;
+			return treeNodeList;
 		}
 
-		public LogTreeNode GetTreeNode() {
+		public LogTreeNodeData GetTreeNode() {
 			throw new NotImplementedException();
 		}
 	}

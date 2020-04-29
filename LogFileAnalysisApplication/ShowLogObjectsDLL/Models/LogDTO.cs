@@ -10,9 +10,9 @@ namespace ShowLogObjectsDLL.Models {
 
 		public string MessageId { get; set; }
 		public DateTime RequestDate { get; set; }
-		public LogTree Request { get; set; }
+		public IEnumerable<LogTreeNode> Request { get; set; }
 		public DateTime ResponseDate { get; set; }
-		public LogTree Response { get; set; }
+		public IEnumerable<LogTreeNode> Response { get; set; }
 
 	}
 
