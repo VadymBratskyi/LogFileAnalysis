@@ -19,6 +19,7 @@ export class ResultPanelComponent implements OnInit {
 
   logTableOptions = {
     displayTableColumns: ['messageId','requestDate', 'responseDate'],
+    expandableColumns: ['request', 'response'],
     pageSizeOptions: [10, 25, 50, 100],
     logTableState: {
       count: 0,
@@ -26,8 +27,6 @@ export class ResultPanelComponent implements OnInit {
       take: 10
     }
   } as LogTableOptions;
-
-  expandedElement: LogsDtoModel;
 
   constructor(
     private showLogObjectsService: ShowLogObjectsService
@@ -55,6 +54,5 @@ export class ResultPanelComponent implements OnInit {
     this.destroyed$.next(true);
     this.destroyed$.complete();
   }
-
 
 }

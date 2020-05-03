@@ -12,7 +12,7 @@
         <div class="example-element-detail"
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <treetable style="width: 100%;"
-                [tree]="element.request"
+                [tree]="getExpandTreeData(element)"
                 [options]="treeOptions">
             </treetable>        
         </div>

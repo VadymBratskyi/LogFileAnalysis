@@ -1,30 +1,34 @@
 ﻿using Newtonsoft.Json.Linq;
 using ShowLogObjectsDLL.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 	public static class LogTreeBuilder {
 
-		public static List<LogTreeNode> logTreee = new List<LogTreeNode>();
-
-		private static JTokenType GetTokenValueTyep(KeyValuePair<string, JToken> token) {
-			return token.Value.Type;
+		private static JTokenType GetTokenValueType(JToken token) {
+			return token.Type;
 		}
 
 		private static LogTreeNodeData GetLogTreeNodeData(KeyValuePair<string, JToken> token) {
 			var nodeData = new LogTreeNodeData(token.Key);
 			nodeData.Value = token.Value.ToString();
-			if (nodeData.Value == "BARS-MESS-6717782") { 
-			}
 			return nodeData;
+		}
+
+		public static LogTreeNode GetSimpleArrayItem(int index, JToken tokenValue) {
+			var keyToken = $"[{index}]";
+			var nodeData = new LogTreeNodeData(keyToken);
+			nodeData.Value = tokenValue.ToString();
+			var treeNode = new LogTreeNode();
+			treeNode.Value = nodeData;
+			index++;
+			return treeNode;
 		}
 
 		private static LogTreeNode GetLogTreeNode(KeyValuePair<string, JToken> token) {
 			var treeNode = new LogTreeNode();
 			treeNode.Value = GetLogTreeNodeData(token);
-			switch (GetTokenValueTyep(token)) {
+			switch (GetTokenValueType(token.Value)) {
 				case JTokenType.Object:
 					var data = (JObject)token.Value;
 					foreach (var item in data) {
@@ -34,9 +38,19 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 				case JTokenType.Array:
 					var datas = (JArray)token.Value;
 					foreach (var item in datas) {
-						var dt = (JObject)item;
-						foreach (var it in dt) {
-							treeNode.Children.Add(GetLogTreeNode(it));
+						switch (GetTokenValueType(item)) {
+							case JTokenType.Object:
+								var dt = (JObject)item;
+								foreach (var it in dt) {
+									treeNode.Children.Add(GetLogTreeNode(it));
+								}
+								break;
+							default:
+								var i = 0;
+								foreach (var tokenValue in token.Value) {
+									treeNode.Children.Add(GetSimpleArrayItem(i, tokenValue));
+								}
+								break;
 						}
 					}
 					break;
@@ -44,18 +58,11 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 			return treeNode;
 		}
 
-
-
 		public static List<LogTreeNode> JsonToLogTreeNode(this JObject jObj) {
-
 			var treeNodeList = new List<LogTreeNode>();
-
 			foreach (var token in jObj) {
-
 				treeNodeList.Add(GetLogTreeNode(token));
-
 			}
-
 			return treeNodeList;
 		}
 

@@ -8,7 +8,6 @@ namespace ShowLogObjectsDLL.Process {
 	interface IProcessLogTree {
 
 		public List<LogTreeNode> GetTree(BsonDocument log);
-		public LogTreeNodeData GetTreeNode();
 
 	}
 }

@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace ShowLogObjectsDLL.Process {
 	class ProcessLogTree : IProcessLogTree {
-	
 		private JObject _getParceObject(BsonDocument document) {
 			return JObject.Parse(document.ToJson()
 				.Replace("ObjectId(", "")
@@ -17,15 +16,9 @@ namespace ShowLogObjectsDLL.Process {
 		}
 
 		public List<LogTreeNode> GetTree(BsonDocument log) {
-			var logTree = new LogTreeNode();
 			var jObject = _getParceObject(log);
 			var treeNodeList = jObject.JsonToLogTreeNode();
-
 			return treeNodeList;
-		}
-
-		public LogTreeNodeData GetTreeNode() {
-			throw new NotImplementedException();
 		}
 	}
 }

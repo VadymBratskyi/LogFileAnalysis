@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LogTableComponent } from './log-table.component';
+import { LogTableComponent } from './components/log-table.component';
 import { MatTableModule, MatPaginatorModule } from '@angular/material';
 import { TreetableModule } from 'ng-material-treetable';
 
