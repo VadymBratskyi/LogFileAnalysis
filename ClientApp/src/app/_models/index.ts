@@ -1,11 +1,10 @@
 /**home */
-export * from './home/card-home';
+export * from './home';
 /**file-process */
-export * from './file-process/file-process';
-export * from './file-process/process-state';
+export * from './file-process'; 
 /**log-notify*/
-export * from './log-notify/log-notify';
+export * from './log-notify';
 /**show-log */
-export * from './show-logs/filter-parameter';
-export * from './show-logs/logs-dto-model';
-
+export * from './show-logs';
+/**components */
+export * from './component'

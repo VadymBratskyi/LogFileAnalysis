@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeChecklistComponent } from './tree-checklist.component';
+import { LogQueryBuilderComponent } from './log-query-builder.component';
 
-describe('TreeChecklistComponent', () => {
-  let component: TreeChecklistComponent;
-  let fixture: ComponentFixture<TreeChecklistComponent>;
+describe('LogQueryBuilderComponent', () => {
+  let component: LogQueryBuilderComponent;
+  let fixture: ComponentFixture<LogQueryBuilderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TreeChecklistComponent ]
+      declarations: [ LogQueryBuilderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TreeChecklistComponent);
+    fixture = TestBed.createComponent(LogQueryBuilderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

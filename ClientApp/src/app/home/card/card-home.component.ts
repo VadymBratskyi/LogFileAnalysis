@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardHome } from '@log_models';
-import { ProcessLogFilesService } from '@log_services/process-log-files.service';
+import { ProcessLogFilesService } from '@log_services';
 
 @Component({
   selector: 'app-card-home',

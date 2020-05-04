@@ -3,8 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@log_services/*": [ "app/_services/*" ],
-      "@log_models": [ "app/_models/index.ts" ]
+      "@log_services": [ "app/_services/index.ts" ],
+      "@log_models": [ "app/_models/index.ts" ],
+      "@log_shareds": [ "app/_shareds" ]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

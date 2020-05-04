@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
-import { ProcessLogFilesService } from '@log_services/process-log-files.service';
+import { ProcessLogFilesService } from '@log_services';
 import { LogNotify, ProcessState, FileProcess } from '@log_models';
 
 @Component({
