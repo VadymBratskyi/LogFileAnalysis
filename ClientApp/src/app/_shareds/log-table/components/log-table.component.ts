@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { LogTableState, LogTableOptions, LogTreeNode, LogTreeModel } from '@log_models';
-import { PageEvent } from '@angular/material';
+import { PageEvent } from '@angular/material/paginator';
 import { Options, Node } from 'ng-material-treetable';
 
 
@@ -24,6 +24,8 @@ export class LogTableComponent {
   @Input() logTableOptions: LogTableOptions;
   
   @Output() dataChanges = new EventEmitter<LogTableState>();
+
+  public expandedElement: boolean;
 
   public get displayColumn(): string[] {
     if(this.dataSource && this.dataSource.length > 0) {

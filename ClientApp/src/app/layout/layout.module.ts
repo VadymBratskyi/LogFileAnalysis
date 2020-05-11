@@ -4,14 +4,12 @@ import { CommonModule } from '@angular/common';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { FooterLayoutComponent } from './footer/footer-layout.component';
-import {
-  MatToolbarModule,
-  MatSidenavModule,
-  MatButtonModule,
-  MatBadgeModule,
-  MatListModule,
-  MatIconModule
-} from '@angular/material';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
