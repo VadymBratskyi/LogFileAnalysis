@@ -1,0 +1,15 @@
+mat-card {
+    padding: 2px !important;
+
+    nav {
+        width: 100%;
+
+        .mat-tab-link {
+            height: 35px;
+
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

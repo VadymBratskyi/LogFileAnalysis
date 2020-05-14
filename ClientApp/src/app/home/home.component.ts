@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public onAnlysisLogObjects(card: CardHome) {
-
+    this.router.navigate([card.rouuterLink]);
   }
 
 
