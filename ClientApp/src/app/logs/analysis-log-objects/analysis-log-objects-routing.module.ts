@@ -15,6 +15,11 @@ const routes: Routes = [
       {
         path: "known-error",
         loadChildren: () => import('./../known-error/known-error.module').then(o => o.KnownErrorModule)        
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'unknown-error'
       }
     ]
   }

@@ -1,7 +1,6 @@
 <table mat-table *ngIf="dataSource"
     [dataSource]="dataSource" multiTemplateDataRows
     class="mat-elevation-z8">
-
     
     <ng-container matColumnDef="{{column}}" *ngFor="let column of displayColumn">
         <th mat-header-cell *matHeaderCellDef> {{column}} </th>
@@ -11,12 +10,11 @@
     <ng-container matColumnDef="expandedDetail">
         <td mat-cell *matCellDef="let element" [attr.colspan]="displayColumn.length">
         <div class="example-element-detail"
-            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-            treedata
-            <!-- <treetable style="width: 100%;"
-                [tree]="getExpandTreeData(element)"
+            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">             
+            <app-tree-table style="width: 100%;"
+                [treeDataSource]="getExpandTreeData(element)"
                 [options]="treeOptions">
-            </treetable>         -->
+            </app-tree-table>
         </div>
         </td>
     </ng-container>

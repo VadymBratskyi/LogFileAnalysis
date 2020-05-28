@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { LogTableState, LogTableOptions, LogTreeNode, LogTreeModel } from '@log_models';
+import { LogTableState, LogTableOptions, LogTreeModel } from '@log_models';
+import { Options } from 'ng-material-treetable';
 import { PageEvent } from '@angular/material/paginator';
-import { Options, Node } from 'ng-material-treetable';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
