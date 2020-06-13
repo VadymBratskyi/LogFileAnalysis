@@ -8,10 +8,7 @@ import { LogTableOptions, LogTableState } from '@log_models';
 })
 export class ErrorTableComponent implements OnInit {
 
-  data: any[] = [
-    { countFounded: 77, errorText: 'lalal eror' },
-    { countFounded: 160, errorText: 'rnk eror' }
-  ];
+  data: any[] = [ ];
 
   logTableOptions = {
     displayTableColumns: ['countFounded','errorText'],    

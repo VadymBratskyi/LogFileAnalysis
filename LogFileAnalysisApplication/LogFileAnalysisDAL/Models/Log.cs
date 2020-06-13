@@ -8,7 +8,7 @@ namespace LogFileAnalysisDAL.Models {
     public class Log : Entity {
 
         #region Properties: Public
-    
+
         public DateTime RequestDate { get; set; }
 
         public BsonDocument Request { get; set; }

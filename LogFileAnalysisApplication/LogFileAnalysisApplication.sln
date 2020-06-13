@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysisDAL", "LogFi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4970B523-A1B4-4C07-9E5E-ED76EBC77AB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileAnalysDALNUnitTest", "LogFileAnalysDALNUnitTest\LogFileAnalysDALNUnitTest.csproj", "{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysDALNUnitTest", "LogFileAnalysDALNUnitTest\LogFileAnalysDALNUnitTest.csproj", "{EAE8DC94-E635-49C0-9375-EE299A4F4FF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessLogFileNUnitTest", "ProcessLogFileNUnitTest\ProcessLogFileNUnitTest.csproj", "{F434B828-D19A-4195-A712-98F6ADB496A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessLogFileNUnitTest", "ProcessLogFileNUnitTest\ProcessLogFileNUnitTest.csproj", "{F434B828-D19A-4195-A712-98F6ADB496A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,7 +21,8 @@ import { InnerTableComponent } from './components/tree-table/inner-table/inner-t
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    
   ],
   exports: [LogTableComponent]
 })

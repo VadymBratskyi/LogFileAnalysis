@@ -14,15 +14,12 @@ export class TreeTableComponent implements OnInit {
 
   public data = new MatTreeNestedDataSource<LogTreeModel>();
 
-  @Input() options: any;
-
   treeControl = new NestedTreeControl<LogTreeModel>(node => node.children);
-
+  
   constructor() { }
 
   ngOnInit(): void {
     this.data.data = this.treeDataSource;
-    console.log(this.treeDataSource)
   }
 
   hasChild = (_: number, node: any) => !!node.children && node.children.length > 0;

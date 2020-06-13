@@ -91,6 +91,12 @@ namespace ProcessLogFilesDLL {
             }
         }
 
+        private async Task SaveErrorLogObject(IEnumerable<Error> errors) {
+            if (errors.Any()) {
+                await _dbService.Errors.Create(errors);
+            }
+        }
+
         private async Task UpdateSessionFiles(ProcessSessionFile sessionFile) {
             if (sessionFile == null) {
                 throw new ArgumentNullException("UpdateSessionFiles() sessionFile is null!");
@@ -103,6 +109,7 @@ namespace ProcessLogFilesDLL {
             foreach (var item in sessionFiles) {
                 var fileInfo = await ProcessFile(item.FileId);
                 await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
+                await SaveErrorLogObject(ProcessLog.GetErrorList());
                 await UpdateSessionFiles(item);
             }
         }

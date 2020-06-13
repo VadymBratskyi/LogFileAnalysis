@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using LogFileAnalysisDAL.Models;
+using Newtonsoft.Json.Linq;
 using ProcessLogFilesDLL.Common;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -14,6 +16,7 @@ namespace ProcessLogFilesDLL.Process {
         #region Fields : Private
 
         private TemplateAnalysis _templateAnalysis;
+        private ProcessError _processError;
         private readonly GenerateObjects _generateObjects;
 
         #endregion
@@ -29,6 +32,8 @@ namespace ProcessLogFilesDLL.Process {
         #region Properties : Public
 
 		private TemplateAnalysis Template => _templateAnalysis ?? (_templateAnalysis = new TemplateAnalysis());
+
+		private ProcessError ProcessError => _processError ?? (_processError = new ProcessError());
 
         #endregion
 
@@ -77,7 +82,7 @@ namespace ProcessLogFilesDLL.Process {
         private void FoundError(string json) {
             var parsError = Regex.Match(json, Template.RegError, RegexOptions.IgnoreCase);
             if (parsError.Success) {
-                //DataProcessor.CreateError(json);
+                ProcessError.CheckErrorObjectInLog(json);
             }
         }
 
@@ -124,6 +129,10 @@ namespace ProcessLogFilesDLL.Process {
                 }
                 index++;
             }
+        }
+
+        public IEnumerable<Error> GetErrorList() {
+            return ProcessError.ErrorsList;
         }
 
 		#endregion

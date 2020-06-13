@@ -12,9 +12,8 @@
         <div class="example-element-detail"
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">             
             <app-tree-table style="width: 100%;"
-                [treeDataSource]="getExpandTreeData(element)"
-                [options]="treeOptions">
-            </app-tree-table>
+                [treeDataSource]="getExpandTreeData(element)">
+            </app-tree-table>        
         </div>
         </td>
     </ng-container>

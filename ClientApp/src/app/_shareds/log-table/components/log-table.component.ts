@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LogTableState, LogTableOptions, LogTreeModel } from '@log_models';
-import { Options } from 'ng-material-treetable';
 import { PageEvent } from '@angular/material/paginator';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
@@ -72,11 +71,5 @@ export class LogTableComponent {
     this.logTableOptions.logTableState.skip = skip;
     this.dataChanges.emit(this.logTableOptions.logTableState);
   }
-  
-  public treeOptions: Options<any> = {
-    customColumnOrder: [
-      'key', 'value'
-    ]
-  };
 
 }
