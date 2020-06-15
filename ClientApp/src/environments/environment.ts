@@ -18,6 +18,9 @@ export const environment = {
   methodGetTreeData: 'GetTreeData',
   methodGetAllLogsData: 'GetAllLogsData',
 
+  methodGetAllUnKnownErrorData: 'GetAllUnKnownErrorData',
+  methodGetAllKnownErrorData: 'GetAllKnownErrorData',
+
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'
 };

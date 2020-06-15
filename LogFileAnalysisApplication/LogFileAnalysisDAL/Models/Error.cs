@@ -1,7 +1,4 @@
 ﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LogFileAnalysisDAL.Models {
 
@@ -12,6 +9,8 @@ namespace LogFileAnalysisDAL.Models {
 		#region Properties: Public
 
 		public string Message { get; set; }
+
+		public string MessageId { get; set; }
 
 		public string Details { get; set; }
 

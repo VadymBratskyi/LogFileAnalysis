@@ -22,6 +22,8 @@ namespace LogFileAnalysisDAL {
 		private DbSetMongoDB<ProcessLogSession> _processLogSession;
 		private DbSetMongoDB<ProcessSessionFile> _processSessionFile;
 		private DbSetMongoDB<Error> _errors;
+		private DbSetMongoDB<UnKnownError> _unKnownError;
+		private DbSetMongoDB<KnownError> _knownError;
 		#endregion
 
 		#region Properties: Public
@@ -35,6 +37,10 @@ namespace LogFileAnalysisDAL {
 		public DbSetMongoDB<ProcessSessionFile> ProcessSessionFiles => _processSessionFile ?? (_processSessionFile = new DbSetMongoDB<ProcessSessionFile>(mongoDatabase, "ProcessSessionFiles"));
 
 		public DbSetMongoDB<Error> Errors => _errors ?? (_errors = new DbSetMongoDB<Error>(mongoDatabase, "Errors"));
+
+		public DbSetMongoDB<UnKnownError> UnKnownErrors => _unKnownError ?? (_unKnownError = new DbSetMongoDB<UnKnownError>(mongoDatabase, "UnKnownErrors"));
+
+		public DbSetMongoDB<KnownError> KnownErrors => _knownError ?? (_knownError = new DbSetMongoDB<KnownError>(mongoDatabase, "KnownErrors"));
 
 		#endregion
 

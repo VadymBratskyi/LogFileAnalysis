@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿namespace ShowLogObjectsDLL.Models {
 
-namespace ShowLogObjectsDLL.Models {
+	#region Class: LogTreeNodeData
+
 	public class LogTreeNodeData {
 		public string Key { get; set; }
 		public string Value { get; set; }
@@ -9,4 +10,7 @@ namespace ShowLogObjectsDLL.Models {
 			Key = key;
 		}
 	}
+
+	#endregion
+
 }

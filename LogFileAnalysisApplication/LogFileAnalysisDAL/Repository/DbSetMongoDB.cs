@@ -15,7 +15,7 @@ namespace LogFileAnalysisDAL.Repository {
 		#region Fields: Private
 
 		private readonly IMongoDatabase _mongoDatabase;
-		public  IMongoCollection<TEntity> _entities;
+		private IMongoCollection<TEntity> _entities;
 
 		#endregion
 

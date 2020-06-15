@@ -25,13 +25,16 @@ namespace ProcessLogFilesDLL {
         private readonly string _fileName;
         private readonly GenerateObjects _generateObjects;
         private readonly ProcessLogNotifier _processLogNotifier;
-        private ProcessLog _processLog;
+        private ProcessLog _processLog; 
+        private ProcessAnalysisError _processAnalysisError; 
 
         #endregion
 
         #region Properties : Private
 
         private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(_generateObjects));
+
+        private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService));
 
         #endregion
 
@@ -94,6 +97,7 @@ namespace ProcessLogFilesDLL {
         private async Task SaveErrorLogObject(IEnumerable<Error> errors) {
             if (errors.Any()) {
                 await _dbService.Errors.Create(errors);
+                ProcessAnalysisError.AnalysisErrorMessage(errors);
             }
         }
 

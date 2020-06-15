@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LogsDtoModel, LogTableState, LogsDataGrid } from '@log_models';
 
 import { ShowLogObjectsService } from '@log_services';
@@ -11,7 +11,7 @@ import { LogTableOptions } from 'app/_models/component/log-table/log-table-optio
   templateUrl: './result-panel.component.html',
   styleUrls: ['./result-panel.component.scss'],
 })
-export class ResultPanelComponent implements OnInit {
+export class ResultPanelComponent implements OnInit, OnDestroy {
 
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 

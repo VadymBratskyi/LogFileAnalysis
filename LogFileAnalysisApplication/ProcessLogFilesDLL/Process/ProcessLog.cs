@@ -56,14 +56,14 @@ namespace ProcessLogFilesDLL.Process {
             return time.Success;
         }
 
-        private string GetMessageId(string json, int index, string notFoundTemplate) {
+        private string GetMessageId(string json, string notFoundTemplate) {
             if (string.IsNullOrEmpty(json)) {
-                return notFoundTemplate + index;
+                return notFoundTemplate + Guid.NewGuid();
             }
-            dynamic msId = JObject.Parse(json);
-            var foudMessageId = msId.message_id.ToString();
+            var msId = JObject.Parse(json);
+            var foudMessageId = msId.Value<string>("message_id");
             if (string.IsNullOrEmpty(foudMessageId)) {
-                return "idIsNull_" + index;
+                return "idIsNull_" + Guid.NewGuid();
             }
             return foudMessageId;
             
@@ -79,10 +79,10 @@ namespace ProcessLogFilesDLL.Process {
             return output.Remove(0, 8);
         }
 
-        private void FoundError(string json) {
+        private void FoundError(string json, string messageId) {
             var parsError = Regex.Match(json, Template.RegError, RegexOptions.IgnoreCase);
             if (parsError.Success) {
-                ProcessError.CheckErrorObjectInLog(json);
+                ProcessError.ProcessErrorObjectInLog(json, messageId);
             }
         }
 
@@ -106,7 +106,6 @@ namespace ProcessLogFilesDLL.Process {
             DateTime dateStart = DateTime.MinValue;
             DateTime dateEnd = DateTime.MinValue;
             string value;
-            int index = 0;
             while (!string.IsNullOrEmpty(value = reader.ReadLine())) {
                 if (GetMatchTemplate(value, Template.RegStart)) {
                     GetMatchDate(value, out dateStart);
@@ -117,17 +116,16 @@ namespace ProcessLogFilesDLL.Process {
                 string input;
                 if (GetMatchTemplate(value, Template.RegInput, out input)) {
                     var data = GetInput(input);
-                    var messageId = GetMessageId(data, index, "notFoundInput_");
+                    var messageId = GetMessageId(data, "notFoundInput_");
                     _generateObjects.CreateLogObject(messageId, dateStart, data, DateTime.MinValue, null);
                 }
                 string output;
                 if (GetMatchTemplate(value, Template.RegOutput, out output)) {
                     var data = GetOutput(output);
-                    FoundError(data);
-                    var messageId = GetMessageId(data, index, "notFoundOutput_");
+                    var messageId = GetMessageId(data, "notFoundOutput_");
                     _generateObjects.CreateLogObject(messageId, DateTime.MinValue, null, dateEnd, data);
+                    FoundError(data, messageId);
                 }
-                index++;
             }
         }
 

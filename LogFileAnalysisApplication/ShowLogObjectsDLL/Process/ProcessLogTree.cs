@@ -2,11 +2,14 @@
 using Newtonsoft.Json.Linq;
 using ShowLogObjectsDLL.Models;
 using ShowLogObjectsDLL.Process.LogTreeBuilder;
-using System;
 using System.Collections.Generic;
 
 namespace ShowLogObjectsDLL.Process {
+
+	#region Class: ProcessLogTree
+
 	class ProcessLogTree : IProcessLogTree {
+
 		private JObject _getParceObject(BsonDocument document) {
 			return JObject.Parse(document.ToJson()
 				.Replace("ObjectId(", "")
@@ -21,4 +24,7 @@ namespace ShowLogObjectsDLL.Process {
 			return treeNodeList;
 		}
 	}
+
+	#endregion
+
 }

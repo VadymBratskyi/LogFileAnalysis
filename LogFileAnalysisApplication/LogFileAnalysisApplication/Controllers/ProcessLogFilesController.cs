@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using LogFileAnalysisApplication.Common;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -61,10 +62,6 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#endregion
 
-	}
-
-	public class TestUser { 
-		public string UserName { get; set; }
 	}
 
 	#endregion

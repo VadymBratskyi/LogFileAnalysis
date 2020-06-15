@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using LogFileAnalysisApplication.Common;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ShowLogObjectsDLL;
+using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
 
@@ -13,18 +16,32 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Fields: Private
 
 		private readonly ILogger<AnalysisLogController> _logger;
+		private readonly ShowLogsService _showLogService;
 
 		#endregion
 
 		#region Constructor: Public 
 
-		public AnalysisLogController(ILogger<AnalysisLogController> logger) {
+		public AnalysisLogController(ILogger<AnalysisLogController> logger, ShowLogsService showLogsService) {
 			_logger = logger;
+			_showLogService = showLogsService;
 		}
 
 		#endregion
 
 		#region Methods: Public
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> GetAllUnKnownErrorData([FromBody]FilterParameters filterParameters) {
+			var unKnownErrorData = await _showLogService.GetGridUnKnownError(filterParameters.Skip, filterParameters.Take);
+			return Ok(unKnownErrorData);
+		}
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> GetAllKnownErrorData([FromBody]FilterParameters filterParameters) {
+			var logData = await _showLogService.GetGridLogs(filterParameters.Skip, filterParameters.Take);
+			return Ok(logData);
+		}
 
 		//[HttpGet("[action]")]
 		//public TestValue GetTestValue() {

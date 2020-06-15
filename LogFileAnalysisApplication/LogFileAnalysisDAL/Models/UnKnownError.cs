@@ -12,7 +12,9 @@ namespace LogFileAnalysisDAL.Models {
 
         public int CountFounded { get; set; }
 
-        public string ErrorText { get; set; }
+        public string MessageId { get; set; }
+
+        public string Message { get; set; }
 
         public BsonDocument Error { get; set; }
 

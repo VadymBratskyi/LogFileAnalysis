@@ -9,10 +9,11 @@ namespace ProcessLogFilesDLL.Process {
 
 	public class ProcessError {
 
-		public List<Error> ErrorsList { get; private set; }
+		#region Methods: Private
 
 		private Error CreateError(JToken jtError, string keyErrorMessage) {
 			return new Error {
+				MessageId = MessageId,
 				Message = jtError.Value<string>(keyErrorMessage),
 				Details = jtError.Value<string>("data"),
 				ResponsError = BsonDocument.Parse(jtError.ToString())
@@ -24,11 +25,32 @@ namespace ProcessLogFilesDLL.Process {
 			ErrorsList.Add(error);
 		}
 
+		#endregion
+
+		#region Properties: Public
+
+		public List<Error> ErrorsList { get; private set; }
+
+		#endregion
+
+		#region Properties: Private
+
+		public string MessageId { get; set; }
+
+		#endregion
+
+		#region Constructor: Public
+
 		public ProcessError() {
 			ErrorsList = new List<Error>();
 		}
 
-		public void CheckErrorObjectInLog(string output) {
+		#endregion
+
+		#region Methods: Public
+
+		public void ProcessErrorObjectInLog(string output, string messageId) {
+			MessageId = messageId;
 			var jsOutput = JObject.Parse(output);
 			var status = jsOutput.Value<string>("status");
 			if (status != null && status == "OK") {
@@ -44,7 +66,7 @@ namespace ProcessLogFilesDLL.Process {
 			}
 		}
 
-
+		#endregion
 
 	}
 

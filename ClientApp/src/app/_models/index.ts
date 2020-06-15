@@ -8,3 +8,5 @@ export * from './log-notify';
 export * from './show-logs';
 /**components */
 export * from './component'
+
+export * from './filter-parameter';

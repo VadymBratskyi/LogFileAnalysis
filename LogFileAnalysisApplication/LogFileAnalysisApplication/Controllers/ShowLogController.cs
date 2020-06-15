@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using LogFileAnalysisApplication.Common;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowLogObjectsDLL;
-using ShowLogObjectsDLL.Models;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -51,11 +51,6 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		#endregion
 
-	}
-
-	public class FilterParameters { 
-		public int Skip { get; set; }
-		public int Take { get; set; }
 	}
 
 	#endregion
