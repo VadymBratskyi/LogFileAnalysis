@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-known-error',
   templateUrl: './known-error.component.html',
   styleUrls: ['./known-error.component.scss']
 })
-export class KnownErrorComponent implements OnInit {
+export class KnownErrorComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,13 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { LogTableState, LogTableOptions, LogTreeModel } from '@log_models';
 import { PageEvent } from '@angular/material/paginator';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-
+import { LogTableOptions, LogTableState } from '@log_models';
 
 @Component({
-  selector: 'app-log-table',
-  templateUrl: './log-table.component.html',
-  styleUrls: ['./log-table.component.scss'],
+  selector: 'app-error-table',
+  templateUrl: './error-table.component.html',
+  styleUrls: ['./error-table.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -16,7 +15,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     ]),
   ],
 })
-export class LogTableComponent {
+export class ErrorTableComponent {
 
   @Input() dataSource: any[];
 
@@ -26,39 +25,10 @@ export class LogTableComponent {
 
   public expandedElement: boolean;
 
-  public get displayColumn(): string[] {
-    if(this.dataSource && this.dataSource.length > 0) {
-      let keys = Object.keys(this.dataSource[0]);
-      return keys.filter(k => {
-          let index = this.logTableOptions.displayTableColumns.findIndex(o => o == k);
-          if(index >= 0) {
-            return k;
-          }
-      });
-    }
-  }
-
   public get tableState(): LogTableState {
     if(this.logTableOptions && this.logTableOptions.logTableState) {
       return this.logTableOptions.logTableState;
     }
-  }
-
-  public getExpandTreeData(elemnt: any) {
-    var treeModels: LogTreeModel[] = [];        
-    if(this.logTableOptions.expandableColumns) {
-      this.logTableOptions.expandableColumns.forEach(column => {
-        let treeModel = new LogTreeModel();
-        let treeNode = {
-          key: column,
-          value: JSON.stringify(elemnt[column])
-        };      
-        treeModel.value = treeNode;
-        treeModel.children = elemnt[column];      
-        treeModels.push(treeModel);
-      });
-    }    
-    return treeModels;
   }
 
   public get pageSizeOptions() : number[] {

@@ -1,13 +1,12 @@
 ﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LogFileAnalysisDAL.Models {
 
     #region Class: KnownError
 
     public class KnownError : Entity {
+
+        #region Properties: Public
 
         public int CountFounded { get; set; }
 
@@ -19,7 +18,9 @@ namespace LogFileAnalysisDAL.Models {
 
         public BsonDocument Answer { get; set; }
 
-    }
+		#endregion
+
+	}
 
 	#endregion
 

@@ -1,0 +1,24 @@
+<mat-card class="example-card">
+    <mat-card-content>  
+        <p>
+            <mat-form-field class="example-full-width">
+                <mat-label>Статус</mat-label>
+                <input  matInput  [disabled]="true" [required]="true"/>
+                <button
+                    mat-icon-button
+                    matSuffix
+                    class="localizable-icon"
+                    (click)="onOpenStatusDialog()">
+                    <mat-icon class="example-icon" aria-hidden="false" aria-label="Settings icon">settings</mat-icon>
+                </button>
+            </mat-form-field>            
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Варіант рішення</mat-label>
+                <textarea matInput placeholder="Задати рішення"></textarea>
+            </mat-form-field>
+        </p>
+    </mat-card-content>
+</mat-card>
+

@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LogTableOptions, LogTableState } from '@log_models';
+import { Component, OnInit } from '@angular/core';
+import { LogTableState, LogTableOptions } from '@log_models';
+import { takeUntil } from 'rxjs/operators';
 import { AnalysisLogObjectsService } from '@log_services';
 import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-unknown-error',
-  templateUrl: './unknown-error.component.html',
-  styleUrls: ['./unknown-error.component.scss']
+  selector: 'app-known-error-table',
+  templateUrl: './known-error-table.component.html',
+  styleUrls: ['./known-error-table.component.scss']
 })
-export class UnknownErrorComponent implements OnInit, OnDestroy {
+export class KnownErrorTableComponent implements OnInit {
 
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 

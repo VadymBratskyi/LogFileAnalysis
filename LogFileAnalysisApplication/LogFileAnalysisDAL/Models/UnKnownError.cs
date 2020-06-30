@@ -10,6 +10,8 @@ namespace LogFileAnalysisDAL.Models {
 
     public class UnKnownError : Entity {
 
+        #region Properties: Public
+
         public int CountFounded { get; set; }
 
         public string MessageId { get; set; }
@@ -21,7 +23,9 @@ namespace LogFileAnalysisDAL.Models {
         [BsonIgnore]
         public bool IsModified { get; set; }
 
-    }
+		#endregion
+
+	}
 
 	#endregion
 
