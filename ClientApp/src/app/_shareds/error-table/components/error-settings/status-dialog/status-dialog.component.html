@@ -1,12 +1,45 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [value]="data.animal">
-  </mat-form-field>
+<div class="dialog-header">
+  <h1 mat-dialog-title>Задати статус</h1>
+  <button mat-icon-button aria-label="add new error status" 
+    matTooltip="{{getTooltipButton}}"
+    (click)="onShowAddForm()">
+    <mat-icon>{{getButtonIcon}}</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="showAddNewStatus"
+    aria-label="save new error status" 
+    matTooltip="Зберегти"
+    (click)="onSaveNewStatus()">
+    <mat-icon>save</mat-icon>
+  </button>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-</div>
+<mat-dialog-content class="mat-typography">
+  <div class="row">
+    <div [ngClass]="getTreeColumnClass">
+      <div class="status-tree">
+        <app-error-statuses-tree *ngIf="errorStstusesData"
+          [dataSource]="errorStstusesData"
+          (selectedStatusItem)="onTreeSelctedItem($event)">
+        </app-error-statuses-tree>
+      </div>
+    </div>
+    <div class="col-md-6" *ngIf="showAddNewStatus && newErrorStatusesModel">
+      <div class="status-form">
+        <app-error-status-form
+          [errorStatusesModel]="newErrorStatusesModel">
+          
+        </app-error-status-form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-selected-status>
+
+      </app-selected-status>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Ні</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Так</button>
+</mat-dialog-actions>

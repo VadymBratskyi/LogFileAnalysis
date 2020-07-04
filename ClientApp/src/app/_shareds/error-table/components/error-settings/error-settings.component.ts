@@ -17,8 +17,7 @@ export class ErrorSettingsComponent implements OnInit {
 
   onOpenStatusDialog() {
     this.dialog.open(StatusDialogComponent, {
-      width: '250px',
-      data: {name: 'test', animal: 'bla-bla'}
+        data: {name: 'test', animal: 'bla-bla'}
     }).afterClosed().subscribe(result => {
         if(result) {
           console.log(result);

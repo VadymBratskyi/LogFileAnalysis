@@ -26,7 +26,23 @@ export class AnalysisLogObjectsService {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getTestObjects: ', error);       
+        console.error('getAllUnKnownErrorData: ', error);       
+        return Observable.throw(error);
+      })
+    );
+  }
+
+  public getAllErrorStatusesData(): Observable<any> {
+    
+    const url = environment.localhostApp + environment.urlAnalysisLogApi + environment.methodGetAllErrorStatuses;
+      
+    return this.http.post(url, null)
+    .pipe(
+        map((response: any) => {        
+          return response;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('getAllErrorStatusesData: ', error);       
         return Observable.throw(error);
       })
     );

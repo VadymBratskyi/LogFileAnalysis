@@ -14,19 +14,26 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StatusDialogComponent } from './components/error-settings/status-dialog/status-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorStatusesTreeComponent } from './components/error-settings/status-dialog/error-statuses-tree/error-statuses-tree.component';
+import { ErrorStatusFormComponent } from './components/error-settings/status-dialog/error-status-form/error-status-form.component';
+import { SelectedStatusComponent } from './components/error-settings/status-dialog/selected-status/selected-status.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [ErrorTableComponent, ErrorSettingsComponent, StatusDialogComponent],
+  declarations: [ErrorTableComponent, ErrorSettingsComponent, StatusDialogComponent, ErrorStatusesTreeComponent, ErrorStatusFormComponent, SelectedStatusComponent],
   imports: [
     CommonModule,
+    FormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatTreeModule,
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    MatTooltipModule,
     MatDividerModule,
     MatCardModule,
     MatFormFieldModule,

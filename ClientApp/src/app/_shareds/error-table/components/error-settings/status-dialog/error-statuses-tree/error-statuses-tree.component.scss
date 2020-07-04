@@ -1,0 +1,22 @@
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+  mat-card {
+    height: 100%;
+  }
+
+.mat-tree-node:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
+.node-item-selected {
+  background-color: whitesmoke;
+}

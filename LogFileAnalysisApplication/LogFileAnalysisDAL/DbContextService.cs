@@ -24,6 +24,8 @@ namespace LogFileAnalysisDAL {
 		private DbSetMongoDB<Error> _errors;
 		private DbSetMongoDB<UnKnownError> _unKnownError;
 		private DbSetMongoDB<KnownError> _knownError;
+		private DbSetMongoDB<Answer> _answer;
+		private DbSetMongoDB<StatusError> _statusError;
 		#endregion
 
 		#region Properties: Public
@@ -41,6 +43,10 @@ namespace LogFileAnalysisDAL {
 		public DbSetMongoDB<UnKnownError> UnKnownErrors => _unKnownError ?? (_unKnownError = new DbSetMongoDB<UnKnownError>(mongoDatabase, "UnKnownErrors"));
 
 		public DbSetMongoDB<KnownError> KnownErrors => _knownError ?? (_knownError = new DbSetMongoDB<KnownError>(mongoDatabase, "KnownErrors"));
+
+		public DbSetMongoDB<Answer> Answer => _answer ?? (_answer = new DbSetMongoDB<Answer>(mongoDatabase, "Answers"));
+
+		public DbSetMongoDB<StatusError> StatusError => _statusError ?? (_statusError = new DbSetMongoDB<StatusError>(mongoDatabase, "StatusError"));
 
 		#endregion
 

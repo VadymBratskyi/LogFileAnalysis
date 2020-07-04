@@ -43,6 +43,12 @@ namespace LogFileAnalysisApplication.Controllers {
 			return Ok(logData);
 		}
 
+		[HttpPost("[action]")]
+		public async Task<ActionResult> GetAllErrorStatuses() {
+			var statusesData = await _showLogService.GetErrorStatuses();
+			return Ok(statusesData);
+		}
+
 		//[HttpGet("[action]")]
 		//public TestValue GetTestValue() {
 		//	var test = new TestValue();

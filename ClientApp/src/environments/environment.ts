@@ -20,6 +20,7 @@ export const environment = {
 
   methodGetAllUnKnownErrorData: 'GetAllUnKnownErrorData',
   methodGetAllKnownErrorData: 'GetAllKnownErrorData',
+  methodGetAllErrorStatuses: 'GetAllErrorStatuses',
 
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'

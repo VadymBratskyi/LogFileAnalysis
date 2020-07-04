@@ -3,7 +3,12 @@ using ShowLogObjectsDLL.Models;
 using System.Collections.Generic;
 
 namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
+
+	#region Class: LogTreeBuilder
+
 	public static class LogTreeBuilder {
+
+		#region Methods: Private
 
 		private static JTokenType GetTokenValueType(JToken token) {
 			return token.Type;
@@ -15,7 +20,7 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 			return nodeData;
 		}
 
-		public static LogTreeNode GetSimpleArrayItem(int index, JToken tokenValue) {
+		private static LogTreeNode GetSimpleArrayItem(int index, JToken tokenValue) {
 			var keyToken = $"[{index}]";
 			var nodeData = new LogTreeNodeData(keyToken);
 			nodeData.Value = tokenValue.ToString();
@@ -58,6 +63,10 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 			return treeNode;
 		}
 
+		#endregion
+
+		#region Methods: Public
+
 		public static List<LogTreeNode> JsonToLogTreeNode(this JObject jObj) {
 			var treeNodeList = new List<LogTreeNode>();
 			foreach (var token in jObj) {
@@ -66,6 +75,10 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 			return treeNodeList;
 		}
 
+		#endregion
+
 	}
+
+	#endregion
 
 }

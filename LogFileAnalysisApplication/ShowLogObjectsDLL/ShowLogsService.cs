@@ -3,6 +3,10 @@ using ShowLogObjectsDLL.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using ShowLogObjectsDLL.Process;
+using LogFileAnalysisDAL.Models;
+using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 
 namespace ShowLogObjectsDLL {
 
@@ -46,6 +50,12 @@ namespace ShowLogObjectsDLL {
 			});
 			logGrid.CountLogs = await _dbService.Logs.Count();
 			return logGrid;
+		}
+
+		public async Task<IEnumerable<StatusTreeNode>> GetErrorStatuses() {
+			ProcessErrorStatuses procesStatuses = new ProcessErrorStatuses(_dbService);
+			var tree = await procesStatuses.GetErrorStatusesAsTree();
+			return tree;
 		}
 
 	}

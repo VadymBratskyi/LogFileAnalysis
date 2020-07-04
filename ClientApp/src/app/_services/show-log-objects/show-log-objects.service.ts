@@ -42,7 +42,7 @@ export class ShowLogObjectsService {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getTestObjects: ', error);       
+        console.error('getAllLogs: ', error);       
         return Observable.throw(error);
       })
     );

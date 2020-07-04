@@ -10,6 +10,8 @@ namespace ShowLogObjectsDLL.Process {
 
 	class ProcessLogTree : IProcessLogTree {
 
+		#region Methods: Private
+
 		private JObject _getParceObject(BsonDocument document) {
 			return JObject.Parse(document.ToJson()
 				.Replace("ObjectId(", "")
@@ -18,11 +20,18 @@ namespace ShowLogObjectsDLL.Process {
 			);
 		}
 
+		#endregion
+
+		#region Methods: Public
+
 		public List<LogTreeNode> GetTree(BsonDocument log) {
 			var jObject = _getParceObject(log);
 			var treeNodeList = jObject.JsonToLogTreeNode();
 			return treeNodeList;
 		}
+
+		#endregion
+
 	}
 
 	#endregion
