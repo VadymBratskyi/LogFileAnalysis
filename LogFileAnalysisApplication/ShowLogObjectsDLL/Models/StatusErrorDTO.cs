@@ -12,6 +12,7 @@ namespace ShowLogObjectsDLL.Models {
         public ObjectId Id { get; set; }
         public int StatusCode { get; set; }
         public string StatusTitle { get; set; }
+        public ObjectId SubStatusId { get; set; }
         public List<string> KeyWords { get; set; }
 
         #endregion

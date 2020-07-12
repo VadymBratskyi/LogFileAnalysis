@@ -110,6 +110,7 @@ namespace ShowLogObjectsDLL.Process {
 		private StatusErrorDTO CreateStatusDTO(StatusError status) { 
 			return new StatusErrorDTO() {
 				Id = status.Id,
+				SubStatusId = status.SubStatusId,
 				StatusTitle = status.StatusTitle,
 				StatusCode = status.StatusCode,
 				KeyWords = status.KeyWords != null ? status.KeyWords.Select(o => o.ToString()).ToList() : null

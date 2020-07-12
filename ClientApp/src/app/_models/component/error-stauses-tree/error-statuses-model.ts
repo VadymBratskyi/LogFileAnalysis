@@ -3,6 +3,7 @@ export class ErrorStatusesModel {
     public statusCode: number;
     public statusTitle: string;
     public keyWords: Array<string>;
-    public selectedParent: any;
+    public subStatusId: any;
+    public subStatusTitle: string;
     public selected: boolean;
 }

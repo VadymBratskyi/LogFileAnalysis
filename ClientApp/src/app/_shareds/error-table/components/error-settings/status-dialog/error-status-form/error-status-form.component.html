@@ -1,27 +1,39 @@
 <mat-card class="example-card">
     <mat-card-header class="card-form-header">
-      <mat-card-title>Додати новий</mat-card-title>
+        <mat-card-title>Новий</mat-card-title>
+        <span fxFlex></span>
+        <button mat-icon-button aria-label="add new error status" 
+            matTooltip="Відмінити"
+            (click)="onCancelNewModel()">
+            <mat-icon>block</mat-icon>
+        </button>
+        <button mat-icon-button
+            aria-label="save new error status" 
+            matTooltip="Зберегти"
+            (click)="onSaveNewModel()">
+            <mat-icon>save</mat-icon>
+        </button>
     </mat-card-header>
     <mat-card-content>
         <div class="example-container">
             <mat-form-field>
                 <mat-label>Назва</mat-label>
-                <input matInput [(ngModel)]="errorStatusesModel.statusTitle">
+                <input matInput [(ngModel)]="model.statusTitle">
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Код</mat-label>
-                <input matInput [(ngModel)]="errorStatusesModel.statusCode">
+                <input matInput [(ngModel)]="model.statusCode">
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Підстатус</mat-label>
-                <input matInput [(ngModel)]="errorStatusesModel.selectedParent">
+                <input matInput [(ngModel)]="model.subStatusTitle">
                 </mat-form-field>
                 <br>
             <mat-form-field>
                 <mat-label>Ключові слова</mat-label>
-                <textarea matInput [(ngModel)]="errorStatusesModel.keyWords"></textarea>
+                <textarea matInput [(ngModel)]="model.keyWords"></textarea>
             </mat-form-field>
         </div>
     </mat-card-content>

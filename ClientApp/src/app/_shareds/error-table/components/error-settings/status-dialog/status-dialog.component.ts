@@ -20,12 +20,7 @@ export class StatusDialogComponent implements OnInit{
 
   public newErrorStatusesModel: ErrorStatusesModel;
 
-  get getTooltipButton(): string {
-    if (!this.showAddNewStatus) {
-      return `Додати`;
-    }
-    return `Відмінити`;
-  }
+  public selectedItem: ErrorStatusesModel;
 
   get getTreeColumnClass(): string {
     if (!this.showAddNewStatus) {
@@ -34,18 +29,22 @@ export class StatusDialogComponent implements OnInit{
     return `col-md-6`;
   }
 
-  get getButtonIcon(): string {
-    if (!this.showAddNewStatus) {
-      return `add`;
-    }
-    return `block`;
-  }
-
   constructor(
     private analysisLogObjectsService: AnalysisLogObjectsService,
     public dialogRef: MatDialogRef<StatusDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
   
+   private _createNewStatus() {
+      this.newErrorStatusesModel = new ErrorStatusesModel();
+      this.newErrorStatusesModel.statusTitle = '';
+      this.newErrorStatusesModel.statusCode = 0;
+      this.newErrorStatusesModel.keyWords = [''];
+      if(this.selectedItem) {
+        this.newErrorStatusesModel.subStatusId = this.selectedItem.id;
+        this.newErrorStatusesModel.subStatusTitle = this.selectedItem.statusTitle;
+      }      
+  }
+
   ngOnInit() {
     this.onLoadData();
   }
@@ -63,22 +62,23 @@ export class StatusDialogComponent implements OnInit{
   }
   
   onShowAddForm() {
+    this._createNewStatus();
     this.showAddNewStatus = !this.showAddNewStatus;
-    this.newErrorStatusesModel = new ErrorStatusesModel();
-    this.newErrorStatusesModel.statusTitle = 'lalal';
-    this.newErrorStatusesModel.statusCode = 0;
-    this.newErrorStatusesModel.keyWords = [''];
   }
 
-  onTreeSelctedItem(statusModel: ErrorStatusesModel) {
-    console.log(statusModel);
-    if(this.newErrorStatusesModel) {
-      this.newErrorStatusesModel.selectedParent = statusModel.statusTitle;
-    }   
+  onTreeSelectedItem(statusModel: ErrorStatusesModel) {
+      this.selectedItem = statusModel;
+      if(this.newErrorStatusesModel) {
+        this.newErrorStatusesModel.subStatusId = this.selectedItem.id;
+        this.newErrorStatusesModel.subStatusTitle = this.selectedItem.subStatusTitle;
+      }    
   }
 
-  onSaveNewStatus() {
-    console.log(this.newErrorStatusesModel);
+  onSaveNewStatus(newModel: ErrorStatusesModel) {
+    if(newModel) {
+      console.log(newModel);
+    }
+    this.showAddNewStatus = false;    
   }
 
   ngOnDestroy() {
