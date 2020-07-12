@@ -33,45 +33,45 @@ namespace ShowLogObjectsDLL.Process {
 		private IEnumerable<StatusError> CreateDefaultErrorStatuses() {
 			var serveError = new StatusError() { 
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(), 
-				StatusCode = 500, 
-				StatusTitle = "Server Error" 
+				Code = 500, 
+				Title = "Server Error" 
 			}; 
 			
 			var subServerError = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 501,
-				StatusTitle = "Not found Item",
+				Code = 501,
+				Title = "Not found Item",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item" }),
 				SubStatusId = serveError.Id
 			};
 
 			var subServerError2 = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 502,
-				StatusTitle = "Not found Item 2",
+				Code = 502,
+				Title = "Not found Item 2",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item2" }),
 				SubStatusId = subServerError.Id
 			};
 
 			var subServerError3 = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 503,
-				StatusTitle = "Not found Item 3",
+				Code = 503,
+				Title = "Not found Item 3",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item3" }),
 				SubStatusId = subServerError2.Id
 			};
 
 			var requestError = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 400,
-				StatusTitle = "Bad Request",
+				Code = 400,
+				Title = "Bad Request",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "request" })
 			};
 
 			var requestError2 = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 402,
-				StatusTitle = "Not corect request ",
+				Code = 402,
+				Title = "Not corect request ",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "request" }),
 				SubStatusId = requestError.Id
 			};
@@ -111,8 +111,8 @@ namespace ShowLogObjectsDLL.Process {
 			return new StatusErrorDTO() {
 				Id = status.Id,
 				SubStatusId = status.SubStatusId,
-				StatusTitle = status.StatusTitle,
-				StatusCode = status.StatusCode,
+				Title = status.Title,
+				Code = status.Code,
 				KeyWords = status.KeyWords != null ? status.KeyWords.Select(o => o.ToString()).ToList() : null
 			};
 		}

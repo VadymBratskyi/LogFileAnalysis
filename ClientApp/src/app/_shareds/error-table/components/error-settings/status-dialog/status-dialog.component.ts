@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AnalysisLogObjectsService } from '@log_services';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
-import { ErrorStatusesTreeModel, ErrorStatusesModel } from 'app/_models/component/error-stauses-tree';
+import { ErrorStatusesTreeModel, ErrorStatusesModel } from '@log_models';
 
 @Component({
   selector: 'app-status-dialog',
@@ -34,15 +34,19 @@ export class StatusDialogComponent implements OnInit{
     public dialogRef: MatDialogRef<StatusDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
   
+   private _initSubStatus(model: ErrorStatusesModel) {
+      if(model) {
+        this.newErrorStatusesModel.subStatusId = this.selectedItem.id;
+        this.newErrorStatusesModel.subStatusTitle = this.selectedItem.title;
+      }  
+   }
+
    private _createNewStatus() {
       this.newErrorStatusesModel = new ErrorStatusesModel();
-      this.newErrorStatusesModel.statusTitle = '';
-      this.newErrorStatusesModel.statusCode = 0;
-      this.newErrorStatusesModel.keyWords = [''];
-      if(this.selectedItem) {
-        this.newErrorStatusesModel.subStatusId = this.selectedItem.id;
-        this.newErrorStatusesModel.subStatusTitle = this.selectedItem.statusTitle;
-      }      
+      this.newErrorStatusesModel.title = '';
+      this.newErrorStatusesModel.code = 0;
+      this.newErrorStatusesModel.keyWords = [];
+      this._initSubStatus(this.selectedItem);
   }
 
   ngOnInit() {
@@ -68,10 +72,7 @@ export class StatusDialogComponent implements OnInit{
 
   onTreeSelectedItem(statusModel: ErrorStatusesModel) {
       this.selectedItem = statusModel;
-      if(this.newErrorStatusesModel) {
-        this.newErrorStatusesModel.subStatusId = this.selectedItem.id;
-        this.newErrorStatusesModel.subStatusTitle = this.selectedItem.subStatusTitle;
-      }    
+      this._initSubStatus(this.newErrorStatusesModel); 
   }
 
   onSaveNewStatus(newModel: ErrorStatusesModel) {

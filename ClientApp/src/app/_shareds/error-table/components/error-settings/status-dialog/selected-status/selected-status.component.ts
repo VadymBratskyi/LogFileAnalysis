@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ErrorStatusesModel } from '@log_models';
 
 @Component({
   selector: 'app-selected-status',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./selected-status.component.scss']
 })
 export class SelectedStatusComponent implements OnInit {
+
+  @Input() model: ErrorStatusesModel;
 
   constructor() { }
 

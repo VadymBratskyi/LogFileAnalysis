@@ -1,7 +1,7 @@
 export class ErrorStatusesModel {
     public id: any;
-    public statusCode: number;
-    public statusTitle: string;
+    public code: number;
+    public title: string;
     public keyWords: Array<string>;
     public subStatusId: any;
     public subStatusTitle: string;

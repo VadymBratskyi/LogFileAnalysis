@@ -18,17 +18,17 @@
         <div class="example-container">
             <mat-form-field>
                 <mat-label>Назва</mat-label>
-                <input matInput [(ngModel)]="model.statusTitle">
+                <input matInput [(ngModel)]="model.title">
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Код</mat-label>
-                <input matInput [(ngModel)]="model.statusCode">
+                <input matInput [(ngModel)]="model.code">
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Підстатус</mat-label>
-                <input matInput [(ngModel)]="model.subStatusTitle">
+                <input matInput [value]="model?.subStatusTitle">
                 </mat-form-field>
                 <br>
             <mat-form-field>

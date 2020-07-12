@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ErrorStatusesModel } from 'app/_models/component/error-stauses-tree';
+import { ErrorStatusesModel } from '@log_models';
 
 
 @Component({

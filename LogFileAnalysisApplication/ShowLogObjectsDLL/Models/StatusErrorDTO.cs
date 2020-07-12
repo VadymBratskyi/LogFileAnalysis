@@ -10,8 +10,8 @@ namespace ShowLogObjectsDLL.Models {
         #region Properties: Public
 
         public ObjectId Id { get; set; }
-        public int StatusCode { get; set; }
-        public string StatusTitle { get; set; }
+        public int Code { get; set; }
+        public string Title { get; set; }
         public ObjectId SubStatusId { get; set; }
         public List<string> KeyWords { get; set; }
 
