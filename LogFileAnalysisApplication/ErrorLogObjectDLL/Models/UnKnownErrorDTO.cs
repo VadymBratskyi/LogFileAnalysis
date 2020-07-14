@@ -1,4 +1,6 @@
-﻿namespace ShowLogObjectsDLL.Models {
+﻿using ViewModelsDLL.Models;
+
+namespace ErrorLogObjectDLL.Models {
 
 	#region: UnKnownErrorDTO
 

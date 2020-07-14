@@ -1,0 +1,8 @@
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Debug\netcoreapp3.1\ViewModelsDLL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Debug\netcoreapp3.1\ViewModelsDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Debug\netcoreapp3.1\ViewModelsDLL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Debug\netcoreapp3.1\ViewModelsDLL.pdb

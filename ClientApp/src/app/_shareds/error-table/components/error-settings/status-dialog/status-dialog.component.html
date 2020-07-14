@@ -28,13 +28,13 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-selected-status>
-
+      <app-selected-status *ngIf="selectedItem"
+        [model]="selectedItem">
       </app-selected-status>
     </div>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Ні</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Так</button>
+  <button mat-button [mat-dialog-close]="selectedItem" cdkFocusInitial>Так</button>
 </mat-dialog-actions>

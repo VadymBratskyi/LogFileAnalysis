@@ -212,3 +212,7 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Lo
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.csproj.CopyComplete
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ErrorLogObjectDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ErrorLogObjectDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb

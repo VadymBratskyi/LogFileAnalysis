@@ -28,12 +28,12 @@
             <br>
             <mat-form-field>
                 <mat-label>Підстатус</mat-label>
-                <input matInput [value]="model?.subStatusTitle">
+                <input matInput [value]="getSubstatusTitle" [readonly]="true">
                 </mat-form-field>
                 <br>
             <mat-form-field>
                 <mat-label>Ключові слова</mat-label>
-                <textarea matInput [(ngModel)]="model.keyWords"></textarea>
+                <textarea matInput [(ngModel)]="keyWords"></textarea>
             </mat-form-field>
         </div>
     </mat-card-content>

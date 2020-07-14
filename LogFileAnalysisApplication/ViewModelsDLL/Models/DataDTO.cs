@@ -1,4 +1,4 @@
-﻿namespace ShowLogObjectsDLL.Models {
+﻿namespace ViewModelsDLL.Models {
 
 	#region Class: DataDTO
 

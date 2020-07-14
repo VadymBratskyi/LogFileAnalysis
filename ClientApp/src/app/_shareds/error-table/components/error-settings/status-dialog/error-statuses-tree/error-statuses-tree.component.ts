@@ -18,11 +18,11 @@ export class ErrorStatusesTreeComponent {
 
   selectedNode: ErrorStatusesModel;
 
-  private _selectedItem(item: ErrorStatusesModel) {
-    item.selected = true;
+  private _selectedItem(item: ErrorStatusesModel) {    
     if(this.selectedNode) {
       this.selectedNode.selected = false;
     }
+    item.selected = true;
     this.selectedNode = item;
   }
 

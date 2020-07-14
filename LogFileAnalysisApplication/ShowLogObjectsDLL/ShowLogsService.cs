@@ -3,10 +3,7 @@ using ShowLogObjectsDLL.Models;
 using System.Linq;
 using System.Threading.Tasks;
 using ShowLogObjectsDLL.Process;
-using LogFileAnalysisDAL.Models;
-using System.Collections.Generic;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
+using ViewModelsDLL.Models;
 
 namespace ShowLogObjectsDLL {
 
@@ -26,36 +23,18 @@ namespace ShowLogObjectsDLL {
 			var data = _dbService.Logs.Get();
 		}
 
-		public async Task<LogsGrid<LogDTO>> GetGridLogs(int skip, int take) {
+		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(int skip, int take) {
 			var logs = await _dbService.Logs.Get(skip, take);
-			var logGrid = new LogsGrid<LogDTO>();
-			logGrid.LogData = logs.Select(o => new LogDTO() {
+			var dataSource = new DataSourceGrid<LogDTO>();
+			dataSource.LogData = logs.Select(o => new LogDTO() {
 				MessageId = o.MessageId,
 				RequestDate = o.RequestDate,
 				Request = _processLogTree.GetTree(o.Request),
 				ResponseDate = o.ResponseDate,
 				Response = _processLogTree.GetTree(o.Response)
 			});
-			logGrid.CountLogs = await _dbService.Logs.Count();
-			return logGrid;
-		}
-
-		public async Task<LogsGrid<UnKnownErrorDTO>> GetGridUnKnownError(int skip, int take) {
-			var logs = await _dbService.UnKnownErrors.Get(skip, take);
-			var logGrid = new LogsGrid<UnKnownErrorDTO>();
-			logGrid.LogData = logs.Select(o => new UnKnownErrorDTO() {
-				MessageId = o.MessageId,
-				Message = o.Message,
-				Count = o.CountFounded
-			});
-			logGrid.CountLogs = await _dbService.Logs.Count();
-			return logGrid;
-		}
-
-		public async Task<IEnumerable<StatusTreeNode>> GetErrorStatuses() {
-			ProcessErrorStatuses procesStatuses = new ProcessErrorStatuses(_dbService);
-			var tree = await procesStatuses.GetErrorStatusesAsTree();
-			return tree;
+			dataSource.CountLogs = await _dbService.Logs.Count();
+			return dataSource;
 		}
 
 	}

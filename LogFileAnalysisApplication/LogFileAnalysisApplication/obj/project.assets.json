@@ -2536,6 +2536,20 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "ErrorLogObjectDLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0",
+          "ViewModelsDLL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ErrorLogObjectDLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ErrorLogObjectDLL.dll": {}
+        }
+      },
       "LogFileAnalysisDAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2572,13 +2586,24 @@
           "MongoDB.Driver": "2.10.3",
           "MongoDB.Driver.Core": "2.10.3",
           "Newtonsoft.Json": "12.0.3",
-          "Newtonsoft.Json.Bson": "1.0.2"
+          "Newtonsoft.Json.Bson": "1.0.2",
+          "ViewModelsDLL": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ShowLogObjectsDLL.dll": {}
         },
         "runtime": {
           "bin/placeholder/ShowLogObjectsDLL.dll": {}
+        }
+      },
+      "ViewModelsDLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ViewModelsDLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ViewModelsDLL.dll": {}
         }
       }
     }
@@ -8145,6 +8170,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "ErrorLogObjectDLL/1.0.0": {
+      "type": "project",
+      "path": "../ErrorLogObjectDLL/ErrorLogObjectDLL.csproj",
+      "msbuildProject": "../ErrorLogObjectDLL/ErrorLogObjectDLL.csproj"
+    },
     "LogFileAnalysisDAL/1.0.0": {
       "type": "project",
       "path": "../LogFileAnalysisDAL/LogFileAnalysisDAL.csproj",
@@ -8159,10 +8189,16 @@
       "type": "project",
       "path": "../ShowLogObjectsDLL/ShowLogObjectsDLL.csproj",
       "msbuildProject": "../ShowLogObjectsDLL/ShowLogObjectsDLL.csproj"
+    },
+    "ViewModelsDLL/1.0.0": {
+      "type": "project",
+      "path": "../ViewModelsDLL/ViewModelsDLL.csproj",
+      "msbuildProject": "../ViewModelsDLL/ViewModelsDLL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "ErrorLogObjectDLL >= 1.0.0",
       "LogFileAnalysisDAL >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
       "ProcessLogFilesDLL >= 1.0.0",
@@ -8199,6 +8235,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj": {
+              "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj"
+            },
             "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
               "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
             },

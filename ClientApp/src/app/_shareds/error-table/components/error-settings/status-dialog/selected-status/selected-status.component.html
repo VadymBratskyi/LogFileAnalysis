@@ -4,7 +4,20 @@
     </mat-card-header>
     <mat-card-content>
         <div class="example-container">
-            seletedItem
+            <mat-form-field>
+                <mat-label>Назва</mat-label>
+                <input matInput [value]="model?.title" [readonly]="true">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Код</mat-label>
+                <input matInput [value]="model?.code" [readonly]="true">
+            </mat-form-field>
+            <br>            
+            <mat-form-field>
+                <mat-label>Ключові слова</mat-label>
+                <textarea matInput [value]="model?.keyWords" [readonly]="true"></textarea>
+            </mat-form-field>
         </div>
     </mat-card-content>
   </mat-card>

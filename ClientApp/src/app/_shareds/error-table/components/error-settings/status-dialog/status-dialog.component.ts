@@ -36,7 +36,7 @@ export class StatusDialogComponent implements OnInit{
   
    private _initSubStatus(model: ErrorStatusesModel) {
       if(model) {
-        this.newErrorStatusesModel.subStatusId = this.selectedItem.id;
+        this.newErrorStatusesModel.subStatusId = this.selectedItem.objetcId;
         this.newErrorStatusesModel.subStatusTitle = this.selectedItem.title;
       }  
    }
@@ -70,14 +70,19 @@ export class StatusDialogComponent implements OnInit{
     this.showAddNewStatus = !this.showAddNewStatus;
   }
 
-  onTreeSelectedItem(statusModel: ErrorStatusesModel) {
+  onTreeSelectedItem(statusModel: ErrorStatusesModel) {    
       this.selectedItem = statusModel;
-      this._initSubStatus(this.newErrorStatusesModel); 
+      this._initSubStatus(this.newErrorStatusesModel);      
   }
 
   onSaveNewStatus(newModel: ErrorStatusesModel) {
     if(newModel) {
       console.log(newModel);
+      this.analysisLogObjectsService.saveNewErrorStatusData(newModel)
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(res => {
+        this.onLoadData(); 
+      }); 
     }
     this.showAddNewStatus = false;    
   }

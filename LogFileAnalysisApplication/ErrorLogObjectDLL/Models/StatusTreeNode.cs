@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ShowLogObjectsDLL.Models {
+namespace ErrorLogObjectDLL.Models {
 
 	#region: StatusTreeNode
 

@@ -1838,6 +1838,16 @@
         "runtime": {
           "bin/placeholder/LogFileAnalysisDAL.dll": {}
         }
+      },
+      "ViewModelsDLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ViewModelsDLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ViewModelsDLL.dll": {}
+        }
       }
     }
   },
@@ -6247,6 +6257,11 @@
       "type": "project",
       "path": "../LogFileAnalysisDAL/LogFileAnalysisDAL.csproj",
       "msbuildProject": "../LogFileAnalysisDAL/LogFileAnalysisDAL.csproj"
+    },
+    "ViewModelsDLL/1.0.0": {
+      "type": "project",
+      "path": "../ViewModelsDLL/ViewModelsDLL.csproj",
+      "msbuildProject": "../ViewModelsDLL/ViewModelsDLL.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6255,7 +6270,8 @@
       "MongoDB.Driver >= 2.10.3",
       "MongoDB.Driver.Core >= 2.10.3",
       "Newtonsoft.Json >= 12.0.3",
-      "Newtonsoft.Json.Bson >= 1.0.2"
+      "Newtonsoft.Json.Bson >= 1.0.2",
+      "ViewModelsDLL >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6290,6 +6306,9 @@
           "projectReferences": {
             "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
               "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+            },
+            "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
+              "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj"
             }
           }
         }

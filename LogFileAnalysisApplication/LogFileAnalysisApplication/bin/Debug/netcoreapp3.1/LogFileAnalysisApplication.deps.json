@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "LogFileAnalysisApplication/1.0.0": {
         "dependencies": {
+          "ErrorLogObjectDLL": "1.0.0",
           "LogFileAnalysisDAL": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
           "ProcessLogFilesDLL": "1.0.0",
@@ -1993,6 +1994,18 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "ErrorLogObjectDLL/1.0.0": {
+        "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0",
+          "ViewModelsDLL": "1.0.0"
+        },
+        "runtime": {
+          "ErrorLogObjectDLL.dll": {}
+        },
+        "compile": {
+          "ErrorLogObjectDLL.dll": {}
+        }
+      },
       "LogFileAnalysisDAL/1.0.0": {
         "dependencies": {
           "MongoDB.Driver": "2.10.3",
@@ -2023,13 +2036,22 @@
           "MongoDB.Driver": "2.10.3",
           "MongoDB.Driver.Core": "2.10.3",
           "Newtonsoft.Json": "12.0.3",
-          "Newtonsoft.Json.Bson": "1.0.2"
+          "Newtonsoft.Json.Bson": "1.0.2",
+          "ViewModelsDLL": "1.0.0"
         },
         "runtime": {
           "ShowLogObjectsDLL.dll": {}
         },
         "compile": {
           "ShowLogObjectsDLL.dll": {}
+        }
+      },
+      "ViewModelsDLL/1.0.0": {
+        "runtime": {
+          "ViewModelsDLL.dll": {}
+        },
+        "compile": {
+          "ViewModelsDLL.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -4775,6 +4797,11 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
+    "ErrorLogObjectDLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "LogFileAnalysisDAL/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -4786,6 +4813,11 @@
       "sha512": ""
     },
     "ShowLogObjectsDLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ViewModelsDLL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

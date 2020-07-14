@@ -1,3 +1,4 @@
+using ErrorLogObjectDLL;
 using LogFileAnalysisDAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,8 @@ namespace LogFileAnalysisApplication {
 			services.AddSingleton(new DbContextService(connectionstring));
 			services.AddTransient<LogFileService>();
 			services.AddTransient<ShowLogsService>();
+			services.AddTransient<ErrorService>();
+			services.AddTransient<ErrorStatusService>();
 
 			services.AddSignalR();
 			services.AddCors(options =>
