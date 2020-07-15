@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ErrorLogObjectDLL\ErrorLogObjectDLL.csproj" />
     <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
     <ProjectReference Include="..\ProcessLogFilesDLL\ProcessLogFilesDLL.csproj" />
     <ProjectReference Include="..\ShowLogObjectsDLL\ShowLogObjectsDLL.csproj" />

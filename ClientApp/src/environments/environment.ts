@@ -21,6 +21,7 @@ export const environment = {
   methodGetAllUnKnownErrorData: 'GetAllUnKnownErrorData',
   methodGetAllKnownErrorData: 'GetAllKnownErrorData',
   methodGetAllErrorStatuses: 'GetAllErrorStatuses',
+  methodSetNewErrorStatus: 'SetNewErrorStatus',
 
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'

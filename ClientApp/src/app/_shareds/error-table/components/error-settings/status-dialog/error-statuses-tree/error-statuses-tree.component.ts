@@ -1,7 +1,7 @@
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {Component, Input, EventEmitter, Output} from '@angular/core';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
-import { ErrorStatusesTreeModel, ErrorStatusesModel } from 'app/_models/component/error-stauses-tree';
+import { ErrorStatusesTreeModel, ErrorStatusesModel } from '@log_models';
 
 @Component({
   selector: 'app-error-statuses-tree',
@@ -16,15 +16,14 @@ export class ErrorStatusesTreeComponent {
 
   treeControl = new NestedTreeControl<ErrorStatusesTreeModel>(node => node.children);
 
-  selectedNodes: ErrorStatusesModel[] = [];
+  selectedNode: ErrorStatusesModel;
 
-  private _selectedItem(item: ErrorStatusesModel) {
+  private _selectedItem(item: ErrorStatusesModel) {    
+    if(this.selectedNode) {
+      this.selectedNode.selected = false;
+    }
     item.selected = true;
-    this.selectedNodes.forEach(node => {
-      node.selected = false;
-    });
-    this.selectedNodes = [];
-    this.selectedNodes.push(item);
+    this.selectedNode = item;
   }
 
   hasChild = (_: number, node: ErrorStatusesTreeModel) => !!node.children && node.children.length > 0;

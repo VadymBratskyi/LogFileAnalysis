@@ -1,12 +1,13 @@
-﻿using LogFileAnalysisDAL;
+﻿using ErrorLogObjectDLL.Models;
+using LogFileAnalysisDAL;
 using LogFileAnalysisDAL.Models;
 using MongoDB.Bson;
-using ShowLogObjectsDLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShowLogObjectsDLL.Process {
+namespace ErrorLogObjectDLL.Process {
 
 	#region Class: ProcessErrorStatuses
 
@@ -33,45 +34,45 @@ namespace ShowLogObjectsDLL.Process {
 		private IEnumerable<StatusError> CreateDefaultErrorStatuses() {
 			var serveError = new StatusError() { 
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(), 
-				StatusCode = 500, 
-				StatusTitle = "Server Error" 
+				Code = 500, 
+				Title = "Server Error" 
 			}; 
 			
 			var subServerError = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 501,
-				StatusTitle = "Not found Item",
-				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item" }),
+				Code = 501,
+				Title = "Not found Item",
+				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item", "item1", "item2", "item3", "item4" }),
 				SubStatusId = serveError.Id
 			};
 
 			var subServerError2 = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 502,
-				StatusTitle = "Not found Item 2",
+				Code = 502,
+				Title = "Not found Item 2",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item2" }),
 				SubStatusId = subServerError.Id
 			};
 
 			var subServerError3 = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 503,
-				StatusTitle = "Not found Item 3",
+				Code = 503,
+				Title = "Not found Item 3",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item3" }),
 				SubStatusId = subServerError2.Id
 			};
 
 			var requestError = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 400,
-				StatusTitle = "Bad Request",
+				Code = 400,
+				Title = "Bad Request",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "request" })
 			};
 
 			var requestError2 = new StatusError() {
 				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-				StatusCode = 402,
-				StatusTitle = "Not corect request ",
+				Code = 402,
+				Title = "Not corect request ",
 				KeyWords = new MongoDB.Bson.BsonArray(new[] { "request" }),
 				SubStatusId = requestError.Id
 			};
@@ -81,14 +82,19 @@ namespace ShowLogObjectsDLL.Process {
 		}
 
 		private async Task InitDefaultErrorStatus() {
+			try {
+
+			} catch (System.Exception ex) {
+				throw new System.Exception(ex.Message);
+			}
 			var defStatuses = CreateDefaultErrorStatuses();
 			await _dbService.StatusError.Create(defStatuses);
 		}
 
-		private StatusTreeNode GetParentNode(IEnumerable<StatusTreeNode> statusTree, ObjectId parentNodeId) {
+		private StatusTreeNode GetParentNode(IEnumerable<StatusTreeNode> statusTree, string parentNodeId) {
 			var arr = statusTree.ToArray();
 			for (int i = 0; i < arr.Length; i++) {
-				if (arr[i].Value.Id.Equals(parentNodeId)) {
+				if (arr[i].Value.ObjetcId.Equals(parentNodeId)) {
 					return arr[i];
 				}
 				if (arr[i].Children != null) {
@@ -109,9 +115,10 @@ namespace ShowLogObjectsDLL.Process {
 
 		private StatusErrorDTO CreateStatusDTO(StatusError status) { 
 			return new StatusErrorDTO() {
-				Id = status.Id,
-				StatusTitle = status.StatusTitle,
-				StatusCode = status.StatusCode,
+				ObjetcId = status.Id.ToString(),
+				SubStatusId = status.SubStatusId.ToString(),
+				Title = status.Title,
+				Code = status.Code,
 				KeyWords = status.KeyWords != null ? status.KeyWords.Select(o => o.ToString()).ToList() : null
 			};
 		}
@@ -119,7 +126,7 @@ namespace ShowLogObjectsDLL.Process {
 		private List<StatusTreeNode> BuildStatusTree(IEnumerable<StatusError> statuses) {
 			var statusTree = new List<StatusTreeNode>();
 			foreach (var status in statuses) {
-				var parent = GetParentNode(statusTree, status.SubStatusId);
+				var parent = GetParentNode(statusTree, status.SubStatusId.ToString());
 				var treeNode = CreateStatusTreeNode(status);
 				if (parent is null) {
 					statusTree.Add(treeNode);
@@ -147,6 +154,24 @@ namespace ShowLogObjectsDLL.Process {
 			var statuses = await GetErrorStatuses();
 			var statusTree = BuildStatusTree(statuses);
 			return statusTree;
+		}
+
+		public async Task AddNewErrorStatuses(StatusErrorDTO newStatus) {
+			if (newStatus == null) {
+				throw new ArgumentNullException();
+			}
+			try {
+				var newErrorStatus = new StatusError() {
+					Id = MongoDB.Bson.ObjectId.GenerateNewId(),
+					Code = newStatus.Code,
+					Title = newStatus.Title,
+					KeyWords = new MongoDB.Bson.BsonArray(newStatus.KeyWords),
+					SubStatusId = newStatus.SubStatusId != null ? new ObjectId(newStatus.SubStatusId.ToString()) : ObjectId.Empty
+				};
+				await _dbService.StatusError.Create(newErrorStatus);
+			} catch (System.Exception ex) {
+				throw new System.Exception(ex.Message);
+			}
 		}
 
 		#endregion

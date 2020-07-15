@@ -1,4 +1,6 @@
-﻿using LogFileAnalysisApplication.Common;
+﻿using ErrorLogObjectDLL;
+using ErrorLogObjectDLL.Models;
+using LogFileAnalysisApplication.Common;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,14 +19,18 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		private readonly ILogger<AnalysisLogController> _logger;
 		private readonly ShowLogsService _showLogService;
+		private readonly ErrorService _errorService;
+		private readonly ErrorStatusService _errorStatusService;
 
 		#endregion
 
 		#region Constructor: Public 
 
-		public AnalysisLogController(ILogger<AnalysisLogController> logger, ShowLogsService showLogsService) {
+		public AnalysisLogController(ILogger<AnalysisLogController> logger, ShowLogsService showLogsService, ErrorService errorService, ErrorStatusService errorStatusService) {
 			_logger = logger;
 			_showLogService = showLogsService;
+			_errorService = errorService;
+			_errorStatusService = errorStatusService;
 		}
 
 		#endregion
@@ -33,7 +39,7 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		[HttpPost("[action]")]
 		public async Task<ActionResult> GetAllUnKnownErrorData([FromBody]FilterParameters filterParameters) {
-			var unKnownErrorData = await _showLogService.GetGridUnKnownError(filterParameters.Skip, filterParameters.Take);
+			var unKnownErrorData = await _errorService.GetGridUnKnownError(filterParameters.Skip, filterParameters.Take);
 			return Ok(unKnownErrorData);
 		}
 
@@ -45,8 +51,14 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		[HttpPost("[action]")]
 		public async Task<ActionResult> GetAllErrorStatuses() {
-			var statusesData = await _showLogService.GetErrorStatuses();
+			var statusesData = await _errorStatusService.GetErrorStatuses();
 			return Ok(statusesData);
+		}
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> SetNewErrorStatus([FromBody]StatusErrorDTO statusErrorDTO) {
+			await _errorStatusService.SetNewErrorStatus(statusErrorDTO);
+			return Ok();
 		}
 
 		//[HttpGet("[action]")]

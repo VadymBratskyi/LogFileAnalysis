@@ -1,7 +1,7 @@
-﻿using MongoDB.Bson;
+﻿using System;
 using System.Collections.Generic;
 
-namespace ShowLogObjectsDLL.Models {
+namespace ErrorLogObjectDLL.Models {
 
     #region: StatusErrorDTO
 
@@ -9,9 +9,10 @@ namespace ShowLogObjectsDLL.Models {
 
         #region Properties: Public
 
-        public ObjectId Id { get; set; }
-        public int StatusCode { get; set; }
-        public string StatusTitle { get; set; }
+        public string ObjetcId { get; set; }
+        public int Code { get; set; }
+        public string Title { get; set; }
+        public string SubStatusId { get; set; }
         public List<string> KeyWords { get; set; }
 
         #endregion

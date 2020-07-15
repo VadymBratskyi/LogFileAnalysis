@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysDALNUnitTest",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessLogFileNUnitTest", "ProcessLogFileNUnitTest\ProcessLogFileNUnitTest.csproj", "{F434B828-D19A-4195-A712-98F6ADB496A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorLogObjectDLL", "ErrorLogObjectDLL\ErrorLogObjectDLL.csproj", "{714ACFF1-0A96-44E2-AC65-07F620D735D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelsDLL", "ViewModelsDLL\ViewModelsDLL.csproj", "{246063A5-CD9C-4393-B778-6535F2205097}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{F434B828-D19A-4195-A712-98F6ADB496A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F434B828-D19A-4195-A712-98F6ADB496A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F434B828-D19A-4195-A712-98F6ADB496A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714ACFF1-0A96-44E2-AC65-07F620D735D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714ACFF1-0A96-44E2-AC65-07F620D735D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714ACFF1-0A96-44E2-AC65-07F620D735D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714ACFF1-0A96-44E2-AC65-07F620D735D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{246063A5-CD9C-4393-B778-6535F2205097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{246063A5-CD9C-4393-B778-6535F2205097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{246063A5-CD9C-4393-B778-6535F2205097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{246063A5-CD9C-4393-B778-6535F2205097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

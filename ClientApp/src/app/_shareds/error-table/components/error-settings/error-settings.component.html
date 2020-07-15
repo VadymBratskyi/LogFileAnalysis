@@ -3,7 +3,7 @@
         <p>
             <mat-form-field class="example-full-width">
                 <mat-label>Статус</mat-label>
-                <input  matInput  [disabled]="true" [required]="true"/>
+                <input  matInput [readonly]="true" [required]="true" [value]="geStatusCodeTitle"/>
                 <button
                     mat-icon-button
                     matSuffix
@@ -16,8 +16,11 @@
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>Варіант рішення</mat-label>
-                <textarea matInput placeholder="Задати рішення"></textarea>
+                <textarea matInput placeholder="Задати рішення" [(ngModel)]="answer.text"></textarea>
             </mat-form-field>
+        </p>
+        <p align="end">
+            <button mat-stroked-button (click)="onSaveAnswer()">Зберегти</button>
         </p>
     </mat-card-content>
 </mat-card>

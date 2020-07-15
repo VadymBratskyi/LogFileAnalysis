@@ -1,8 +1,9 @@
 export class ErrorStatusesModel {
-    public id: any;
-    public statusCode: number;
-    public statusTitle: string;
+    public objetcId: string;
+    public code: number;
+    public title: string;
+    public subStatusId: string;
     public keyWords: Array<string>;
-    public selectedParent: any;
+    public subStatusTitle: string;
     public selected: boolean;
 }

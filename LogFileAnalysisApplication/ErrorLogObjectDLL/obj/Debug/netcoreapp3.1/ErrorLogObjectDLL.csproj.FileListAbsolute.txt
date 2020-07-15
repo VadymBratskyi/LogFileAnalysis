@@ -1,0 +1,13 @@
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ErrorLogObjectDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ErrorLogObjectDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ErrorLogObjectDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.pdb

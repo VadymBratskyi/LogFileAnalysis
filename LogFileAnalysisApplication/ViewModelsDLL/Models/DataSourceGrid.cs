@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace ShowLogObjectsDLL.Models {
+namespace ViewModelsDLL.Models {
 
 	#region Class: LogsGrid
 
-	public class LogsGrid<T> {
+	public class DataSourceGrid<T> {
 
 		#region Properties: Public
 
