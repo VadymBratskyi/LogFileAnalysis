@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj": {}
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj": {}
   },
   "projects": {
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj",
         "projectName": "AnalysisLogObjects",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\AnalysisLogObjects.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnalysisLogObjects\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
