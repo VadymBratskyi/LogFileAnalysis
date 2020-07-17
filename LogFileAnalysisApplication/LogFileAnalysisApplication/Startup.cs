@@ -1,3 +1,4 @@
+using AnswerLogObjectDLL;
 using ErrorLogObjectDLL;
 using LogFileAnalysisDAL;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProcessLogFilesDLL;
 using ShowLogObjectsDLL;
+using StatusErrorDLL;
 
 namespace LogFileAnalysisApplication {
 	public class Startup {
@@ -25,7 +27,8 @@ namespace LogFileAnalysisApplication {
 			services.AddTransient<LogFileService>();
 			services.AddTransient<ShowLogsService>();
 			services.AddTransient<ErrorService>();
-			services.AddTransient<ErrorStatusService>();
+			services.AddTransient<StatusService>();
+			services.AddTransient<AnswerServices>();
 
 			services.AddSignalR();
 			services.AddCors(options =>

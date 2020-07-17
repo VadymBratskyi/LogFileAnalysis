@@ -16,7 +16,7 @@ export class AnalysisLogObjectsService {
 
   public getAllUnKnownErrorData(logTableModel: LogTableState): Observable<any> {
     
-    const url = environment.localhostApp + environment.urlAnalysisLogApi + environment.methodGetAllUnKnownErrorData;
+    const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllUnKnownErrorData;
 
     var body = new FilterParameters(logTableModel.skip, logTableModel.take);
          
@@ -34,7 +34,7 @@ export class AnalysisLogObjectsService {
 
   public getAllErrorStatusesData(): Observable<any> {
     
-    const url = environment.localhostApp + environment.urlAnalysisLogApi + environment.methodGetAllErrorStatuses;
+    const url = environment.localhostApp + environment.urlStatusesApi + environment.methodGetAllErrorStatuses;
       
     return this.http.post(url, null)
     .pipe(
@@ -50,7 +50,7 @@ export class AnalysisLogObjectsService {
 
   public saveNewErrorStatusData(model: ErrorStatusesModel): Observable<boolean> {
     
-    const url = environment.localhostApp + environment.urlAnalysisLogApi + environment.methodSetNewErrorStatus;
+    const url = environment.localhostApp + environment.urlStatusesApi + environment.methodSetNewErrorStatus;
       
     const body = {
       code: +model.code,

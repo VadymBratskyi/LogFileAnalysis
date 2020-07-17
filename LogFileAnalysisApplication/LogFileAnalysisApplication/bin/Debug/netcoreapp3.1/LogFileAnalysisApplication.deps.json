@@ -24,11 +24,13 @@
     ".NETCoreApp,Version=v3.1": {
       "LogFileAnalysisApplication/1.0.0": {
         "dependencies": {
+          "AnswerLogObjectDLL": "1.0.0",
           "ErrorLogObjectDLL": "1.0.0",
           "LogFileAnalysisDAL": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
           "ProcessLogFilesDLL": "1.0.0",
           "ShowLogObjectsDLL": "1.0.0",
+          "StatusErrorDLL": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -808,7 +810,7 @@
           "System.Runtime.InteropServices": "4.3.0"
         }
       },
-      "MongoDB.Bson/2.10.3": {
+      "MongoDB.Bson/2.10.4": {
         "dependencies": {
           "NETStandard.Library": "1.6.1",
           "System.Collections.NonGeneric": "4.0.1",
@@ -819,18 +821,18 @@
         },
         "runtime": {
           "lib/netstandard1.5/MongoDB.Bson.dll": {
-            "assemblyVersion": "2.10.3.0",
-            "fileVersion": "2.10.3.0"
+            "assemblyVersion": "2.10.4.0",
+            "fileVersion": "2.10.4.0"
           }
         },
         "compile": {
           "lib/netstandard1.5/MongoDB.Bson.dll": {}
         }
       },
-      "MongoDB.Driver/2.10.3": {
+      "MongoDB.Driver/2.10.4": {
         "dependencies": {
-          "MongoDB.Bson": "2.10.3",
-          "MongoDB.Driver.Core": "2.10.3",
+          "MongoDB.Bson": "2.10.4",
+          "MongoDB.Driver.Core": "2.10.4",
           "MongoDB.Libmongocrypt": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "System.ComponentModel.TypeConverter": "4.1.0",
@@ -838,18 +840,18 @@
         },
         "runtime": {
           "lib/netstandard1.5/MongoDB.Driver.dll": {
-            "assemblyVersion": "2.10.3.0",
-            "fileVersion": "2.10.3.0"
+            "assemblyVersion": "2.10.4.0",
+            "fileVersion": "2.10.4.0"
           }
         },
         "compile": {
           "lib/netstandard1.5/MongoDB.Driver.dll": {}
         }
       },
-      "MongoDB.Driver.Core/2.10.3": {
+      "MongoDB.Driver.Core/2.10.4": {
         "dependencies": {
           "DnsClient": "1.3.1",
-          "MongoDB.Bson": "2.10.3",
+          "MongoDB.Bson": "2.10.4",
           "MongoDB.Libmongocrypt": "1.0.0",
           "NETStandard.Library": "1.6.1",
           "SharpCompress": "0.23.0",
@@ -863,8 +865,8 @@
         },
         "runtime": {
           "lib/netstandard1.5/MongoDB.Driver.Core.dll": {
-            "assemblyVersion": "2.10.3.0",
-            "fileVersion": "2.10.3.0"
+            "assemblyVersion": "2.10.4.0",
+            "fileVersion": "2.10.4.0"
           }
         },
         "compile": {
@@ -873,9 +875,9 @@
       },
       "MongoDB.Driver.GridFS/2.10.2": {
         "dependencies": {
-          "MongoDB.Bson": "2.10.3",
-          "MongoDB.Driver": "2.10.3",
-          "MongoDB.Driver.Core": "2.10.3",
+          "MongoDB.Bson": "2.10.4",
+          "MongoDB.Driver": "2.10.4",
+          "MongoDB.Driver.Core": "2.10.4",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -1994,6 +1996,18 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "AnswerLogObjectDLL/1.0.0": {
+        "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0",
+          "MongoDB.Driver": "2.10.4"
+        },
+        "runtime": {
+          "AnswerLogObjectDLL.dll": {}
+        },
+        "compile": {
+          "AnswerLogObjectDLL.dll": {}
+        }
+      },
       "ErrorLogObjectDLL/1.0.0": {
         "dependencies": {
           "LogFileAnalysisDAL": "1.0.0",
@@ -2008,7 +2022,7 @@
       },
       "LogFileAnalysisDAL/1.0.0": {
         "dependencies": {
-          "MongoDB.Driver": "2.10.3",
+          "MongoDB.Driver": "2.10.4",
           "MongoDB.Driver.GridFS": "2.10.2"
         },
         "runtime": {
@@ -2033,8 +2047,8 @@
       "ShowLogObjectsDLL/1.0.0": {
         "dependencies": {
           "LogFileAnalysisDAL": "1.0.0",
-          "MongoDB.Driver": "2.10.3",
-          "MongoDB.Driver.Core": "2.10.3",
+          "MongoDB.Driver": "2.10.4",
+          "MongoDB.Driver.Core": "2.10.4",
           "Newtonsoft.Json": "12.0.3",
           "Newtonsoft.Json.Bson": "1.0.2",
           "ViewModelsDLL": "1.0.0"
@@ -2044,6 +2058,18 @@
         },
         "compile": {
           "ShowLogObjectsDLL.dll": {}
+        }
+      },
+      "StatusErrorDLL/1.0.0": {
+        "dependencies": {
+          "LogFileAnalysisDAL": "1.0.0",
+          "MongoDB.Driver": "2.10.4"
+        },
+        "runtime": {
+          "StatusErrorDLL.dll": {}
+        },
+        "compile": {
+          "StatusErrorDLL.dll": {}
         }
       },
       "ViewModelsDLL/1.0.0": {
@@ -3992,26 +4018,26 @@
       "path": "microsoft.win32.registry/4.0.0",
       "hashPath": "microsoft.win32.registry.4.0.0.nupkg.sha512"
     },
-    "MongoDB.Bson/2.10.3": {
+    "MongoDB.Bson/2.10.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UT6w7vsiXlCH7mABxj/NuaGR0KWfXIW5zP5RHW16JrviiygSoEb6fEUhs1QgrjdcNHP+gns1/T9Sfqi4KUPPew==",
-      "path": "mongodb.bson/2.10.3",
-      "hashPath": "mongodb.bson.2.10.3.nupkg.sha512"
+      "sha512": "sha512-hLk3nlr2YMe8O5LBi6us9JQTEBT/Kabb92eAxgDIXlENS17FOFOmxbGnB5rvKEK1qOaoYWFfyEnLqTt/6hTlpw==",
+      "path": "mongodb.bson/2.10.4",
+      "hashPath": "mongodb.bson.2.10.4.nupkg.sha512"
     },
-    "MongoDB.Driver/2.10.3": {
+    "MongoDB.Driver/2.10.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KArEHjZrga9cGM8/OcYpr5vkQq4V8P54L3L/D8oUNAVREwzJ2BExX8LNNV7Y2qt9lWk3kO8JkUcjgoD77DyDog==",
-      "path": "mongodb.driver/2.10.3",
-      "hashPath": "mongodb.driver.2.10.3.nupkg.sha512"
+      "sha512": "sha512-RhARXhIRirbmXxNbokYn+TCmZXnVP/0XNQncz8wySmyUNmVGUhNxiHpUniBCu+wIR+LkZ77+tFHzc+38ShSFUg==",
+      "path": "mongodb.driver/2.10.4",
+      "hashPath": "mongodb.driver.2.10.4.nupkg.sha512"
     },
-    "MongoDB.Driver.Core/2.10.3": {
+    "MongoDB.Driver.Core/2.10.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YnHsNpIVDzjrDDagg1mhu7F7i11zAdSxQlmhbD3+VuU5Yb2fcjVrS2s90QsrshxuAAXg3DreYNx7hWBK4JvKGg==",
-      "path": "mongodb.driver.core/2.10.3",
-      "hashPath": "mongodb.driver.core.2.10.3.nupkg.sha512"
+      "sha512": "sha512-FF9Matyemmup3wvaicOm/ZKDJITI0mHA1G+9dF+A9lLuU6k3eo6mGvCXgBVPxTXqHHd70AgKwIOFvszIUxqpSA==",
+      "path": "mongodb.driver.core/2.10.4",
+      "hashPath": "mongodb.driver.core.2.10.4.nupkg.sha512"
     },
     "MongoDB.Driver.GridFS/2.10.2": {
       "type": "package",
@@ -4797,6 +4823,11 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
+    "AnswerLogObjectDLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "ErrorLogObjectDLL/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -4813,6 +4844,11 @@
       "sha512": ""
     },
     "ShowLogObjectsDLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StatusErrorDLL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

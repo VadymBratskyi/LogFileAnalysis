@@ -1,0 +1,12 @@
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\StatusErrorDLL.deps.json
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\StatusErrorDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\StatusErrorDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csprojAssemblyReference.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.AssemblyInfoInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.AssemblyInfo.cs
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csproj.CoreCompileInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csproj.CopyComplete
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.pdb

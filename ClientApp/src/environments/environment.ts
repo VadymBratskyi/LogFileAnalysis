@@ -9,6 +9,9 @@ export const environment = {
   urlProcessLogApi: 'api/ProcessLogFiles/',
   urlShowLogApi: 'api/ShowLog/',
   urlAnalysisLogApi: 'api/AnalysisLog/',
+  urlErrorLogApi: 'api/ErrorLog/',
+  urlStatusesApi: 'api/Statuses/',
+  urlAnsweLogApi: 'api/AnsweLog/',
   
   methodCreateProcessLogSession: 'CreateProcessLogSession',
   methodUploadLogFiles: 'UploadLogFiles',

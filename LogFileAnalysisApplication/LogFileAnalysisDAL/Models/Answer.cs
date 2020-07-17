@@ -10,6 +10,7 @@ namespace LogFileAnalysisDAL.Models {
 
 		public ObjectId Id { get; set; }
 		public string Text { get; set; }
+		public ObjectId StatusId { get; set; }
 
 		#endregion
 

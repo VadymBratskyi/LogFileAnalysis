@@ -22,3 +22,17 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Sh
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.deps.json
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.csprojAssemblyReference.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.AssemblyInfoInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.AssemblyInfo.cs
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.csproj.CoreCompileInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.csproj.CopyComplete
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ShowLogObjectsDLL\obj\Debug\netcoreapp3.1\ShowLogObjectsDLL.pdb
