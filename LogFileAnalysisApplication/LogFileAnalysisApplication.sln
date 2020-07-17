@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessLogFilesDLL", "Proce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowLogObjectsDLL", "ShowLogObjectsDLL\ShowLogObjectsDLL.csproj", "{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalysisLogObjects", "AnalysisLogObjects\AnalysisLogObjects.csproj", "{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysisDAL", "LogFileAnalysisDAL\LogFileAnalysisDAL.csproj", "{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4970B523-A1B4-4C07-9E5E-ED76EBC77AB8}"
@@ -19,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogFileAnalysDALNUnitTest",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessLogFileNUnitTest", "ProcessLogFileNUnitTest\ProcessLogFileNUnitTest.csproj", "{F434B828-D19A-4195-A712-98F6ADB496A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorLogObjectDLL", "ErrorLogObjectDLL\ErrorLogObjectDLL.csproj", "{714ACFF1-0A96-44E2-AC65-07F620D735D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorLogObjectDLL", "ErrorLogObjectDLL\ErrorLogObjectDLL.csproj", "{714ACFF1-0A96-44E2-AC65-07F620D735D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModelsDLL", "ViewModelsDLL\ViewModelsDLL.csproj", "{246063A5-CD9C-4393-B778-6535F2205097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModelsDLL", "ViewModelsDLL\ViewModelsDLL.csproj", "{246063A5-CD9C-4393-B778-6535F2205097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnswerLogObjectDLL", "AnswerLogObjectDLL\AnswerLogObjectDLL.csproj", "{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusErrorDLL", "StatusErrorDLL\StatusErrorDLL.csproj", "{2A2FFD51-E101-432A-8924-F3159DE96572}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,6 @@ Global
 		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{741409BE-CC5F-4C60-89D5-BEAE2A16AE49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{88DDE38F-196B-456F-B8F5-7A9AC1911CC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15AB2541-8AB5-4BB9-AACD-2C383E37DE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,6 +63,14 @@ Global
 		{246063A5-CD9C-4393-B778-6535F2205097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{246063A5-CD9C-4393-B778-6535F2205097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{246063A5-CD9C-4393-B778-6535F2205097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A2FFD51-E101-432A-8924-F3159DE96572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A2FFD51-E101-432A-8924-F3159DE96572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A2FFD51-E101-432A-8924-F3159DE96572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A2FFD51-E101-432A-8924-F3159DE96572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

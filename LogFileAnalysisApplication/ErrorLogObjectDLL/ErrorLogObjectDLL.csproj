@@ -9,4 +9,8 @@
     <ProjectReference Include="..\ViewModelsDLL\ViewModelsDLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Process\" />
+  </ItemGroup>
+
 </Project>

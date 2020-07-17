@@ -9,10 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AnswerLogObjectDLL\AnswerLogObjectDLL.csproj" />
     <ProjectReference Include="..\ErrorLogObjectDLL\ErrorLogObjectDLL.csproj" />
     <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
     <ProjectReference Include="..\ProcessLogFilesDLL\ProcessLogFilesDLL.csproj" />
     <ProjectReference Include="..\ShowLogObjectsDLL\ShowLogObjectsDLL.csproj" />
+    <ProjectReference Include="..\StatusErrorDLL\StatusErrorDLL.csproj" />
   </ItemGroup>
 
 
