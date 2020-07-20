@@ -10,3 +10,14 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csproj.CopyComplete
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\StatusErrorDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\StatusErrorDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\StatusErrorDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.pdb

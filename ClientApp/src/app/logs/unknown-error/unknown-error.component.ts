@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LogTableOptions, LogTableState } from '@log_models';
-import { AnalysisLogObjectsService } from '@log_services';
+import { ErrorLogObjectsService } from '@log_services';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -25,7 +25,7 @@ export class UnknownErrorComponent implements OnInit, OnDestroy {
     }
   } as LogTableOptions;
 
-  constructor(private analysisLogObjectsService: AnalysisLogObjectsService) 
+  constructor(private errorLogObjectsService: ErrorLogObjectsService) 
   { }
 
   public ngOnInit() {
@@ -33,7 +33,7 @@ export class UnknownErrorComponent implements OnInit, OnDestroy {
   }
 
   private onLoadData() {
-    this.analysisLogObjectsService.getAllUnKnownErrorData(this.logTableOptions.logTableState)
+    this.errorLogObjectsService.getAllUnKnownErrorData(this.logTableOptions.logTableState)
       .pipe(takeUntil(this.destroyed$))
       .subscribe((unKnownErrorsData: any) => {
           this.data = unKnownErrorsData.logData;
