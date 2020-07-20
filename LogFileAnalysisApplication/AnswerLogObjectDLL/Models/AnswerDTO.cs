@@ -13,6 +13,7 @@ namespace AnswerLogObjectDLL.Models
 
 		public string StatusId { get; set; }
 		public string Text { get; set; }
+		public string UnKnownErrorId { get; set; }
 
 		#endregion
 
