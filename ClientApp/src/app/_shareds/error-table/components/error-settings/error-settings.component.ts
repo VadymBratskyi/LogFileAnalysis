@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusDialogComponent } from './status-dialog/status-dialog.component';
 import { ErrorStatusesModel, Answer } from '@log_models';
+import { AnswerObjectsService } from '@log_services';
 
 @Component({
   selector: 'app-error-settings',
@@ -10,7 +11,8 @@ import { ErrorStatusesModel, Answer } from '@log_models';
 })
 export class ErrorSettingsComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    private answerObjectsService: AnswerObjectsService) { }
 
   answer = new Answer();
 
@@ -34,8 +36,7 @@ export class ErrorSettingsComponent implements OnInit {
   }
 
   onSaveAnswer() {
-    console.log(this.answer);
-
+      this.answerObjectsService
   }
 
 }

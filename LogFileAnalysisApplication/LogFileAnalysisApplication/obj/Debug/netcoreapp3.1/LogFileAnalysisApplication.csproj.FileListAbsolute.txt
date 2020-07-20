@@ -333,3 +333,7 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisAppl
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\obj\Debug\netcoreapp3.1\LogFileAnalysisApplication.genruntimeconfig.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\StatusErrorDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\StatusErrorDLL.pdb

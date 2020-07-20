@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AnalysisLogObjectsService } from '@log_services';
+import { StatusesErrorObjectsService } from '@log_services';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { ErrorStatusesTreeModel, ErrorStatusesModel } from '@log_models';
@@ -30,7 +30,7 @@ export class StatusDialogComponent implements OnInit{
   }
 
   constructor(
-    private analysisLogObjectsService: AnalysisLogObjectsService,
+    private statusesErrorObjectsService: StatusesErrorObjectsService,
     public dialogRef: MatDialogRef<StatusDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
   
@@ -54,7 +54,7 @@ export class StatusDialogComponent implements OnInit{
   }
 
   onLoadData() {
-    this.analysisLogObjectsService.getAllErrorStatusesData()
+    this.statusesErrorObjectsService.getAllErrorStatusesData()
     .pipe(takeUntil(this.destroyed$))
     .subscribe(res => {
       this.errorStstusesData = res;
@@ -78,7 +78,7 @@ export class StatusDialogComponent implements OnInit{
   onSaveNewStatus(newModel: ErrorStatusesModel) {
     if(newModel) {
       console.log(newModel);
-      this.analysisLogObjectsService.saveNewErrorStatusData(newModel)
+      this.statusesErrorObjectsService.saveNewErrorStatusData(newModel)
       .pipe(takeUntil(this.destroyed$))
       .subscribe(res => {
         this.onLoadData(); 

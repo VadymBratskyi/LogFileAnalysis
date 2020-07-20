@@ -10,3 +10,14 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csproj.CopyComplete
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb

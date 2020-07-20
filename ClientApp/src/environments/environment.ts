@@ -26,6 +26,9 @@ export const environment = {
   methodGetAllErrorStatuses: 'GetAllErrorStatuses',
   methodSetNewErrorStatus: 'SetNewErrorStatus',
 
+  methodGetAllAnswers: 'GetAllAnswers',
+  methodSetNewAnswer: 'SetNewAnswer',
+
   methodPostTestValue: 'PostTestValue',
   methodGetTestValue: 'GetTestValue'
 };

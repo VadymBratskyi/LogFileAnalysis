@@ -4,7 +4,20 @@ using System.Text;
 
 namespace AnswerLogObjectDLL.Models
 {
+
+	#region Class: AnswerDTO
+
 	public class AnswerDTO
 	{
+		#region Properties: Public
+
+		public string StatusId { get; set; }
+		public string Text { get; set; }
+
+		#endregion
+
 	}
+
+	#endregion
+
 }
