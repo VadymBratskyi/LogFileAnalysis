@@ -33,7 +33,7 @@ export class AnswerObjectsService {
   public saveNewAnswerData(model: Answer): Observable<boolean> {
     
     const url = environment.localhostApp + environment.urlAnsweLogApi + environment.methodSetNewAnswer;
-  
+
     return this.http.post(url, model)
     .pipe(
         map((response: any) => {        

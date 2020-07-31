@@ -6,6 +6,10 @@ export * from './file-process';
 export * from './log-notify';
 /**show-log */
 export * from './show-logs';
+/**answer*/
+export * from './answer';
+/**error*/
+export * from './errors';
 /**components */
 export * from './component'
 

@@ -24,7 +24,7 @@ namespace LogFileAnalysisApplication.Controllers
 		}
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult> SetNewAnswer(AnswerDTO answer)
+		public async Task<ActionResult> SetNewAnswer([FromBody]AnswerDTO answer)
 		{
 
 			return Ok();

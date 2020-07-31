@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj": {}
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj": {}
   },
   "projects": {
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj",
         "projectName": "AnswerLogObjectDLL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               }
             }
           }
@@ -65,24 +62,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj",
         "projectName": "ErrorLogObjectDLL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,11 +89,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj"
               }
             }
           }
@@ -127,24 +121,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj",
         "projectName": "LogFileAnalysisApplication",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\LogFileAnalysisApplication.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisApplication\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -157,23 +148,23 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ErrorLogObjectDLL\\ErrorLogObjectDLL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj"
               }
             }
           }
@@ -210,24 +201,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj",
         "projectName": "LogFileAnalysisDAL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -275,24 +263,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj",
         "projectName": "ProcessLogFilesDLL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -305,8 +290,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               }
             }
           }
@@ -340,24 +325,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj",
         "projectName": "ShowLogObjectsDLL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -370,11 +352,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               },
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj"
               }
             }
           }
@@ -420,24 +402,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj",
         "projectName": "StatusErrorDLL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\StatusErrorDLL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\StatusErrorDLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -450,8 +429,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
-                "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               }
             }
           }
@@ -485,24 +464,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
+    "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj",
+        "projectUniqueName": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj",
         "projectName": "ViewModelsDLL",
-        "projectPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj",
-        "packagesPath": "C:\\Users\\v.bratskyi\\.nuget\\packages\\",
-        "outputPath": "C:\\VadimBratskyi\\Git\\VadymBratskyi\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\obj\\",
+        "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj",
+        "packagesPath": "C:\\Users\\Vadim-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\v.bratskyi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vadim-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -540,7 +516,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
