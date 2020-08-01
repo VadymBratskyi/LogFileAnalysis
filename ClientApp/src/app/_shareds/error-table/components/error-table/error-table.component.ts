@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { LogTableOptions, LogTableState } from '@log_models';
+import { LogTableOptions, LogTableState, KnownErrorConfig } from '@log_models';
 
 @Component({
   selector: 'app-error-table',
@@ -23,6 +23,8 @@ export class ErrorTableComponent {
   
   @Output() dataChanges = new EventEmitter<LogTableState>();
 
+  @Output() setAnswer = new EventEmitter<KnownErrorConfig>();
+
   public expandedElement: boolean;
 
   public get tableState(): LogTableState {
@@ -42,6 +44,10 @@ export class ErrorTableComponent {
     let skip = changeData.pageIndex * this.logTableOptions.logTableState.take;
     this.logTableOptions.logTableState.skip = skip;
     this.dataChanges.emit(this.logTableOptions.logTableState);
+  }
+
+  public onSaveErrorSettings(config: KnownErrorConfig) {
+    this.setAnswer.emit(config);
   }
 
 }

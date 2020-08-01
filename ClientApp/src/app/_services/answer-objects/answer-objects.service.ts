@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Answer } from '@log_models';
+import { Answer, ResponseItem } from '@log_models';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 import { map, catchError } from 'rxjs/operators';
@@ -30,17 +30,17 @@ export class AnswerObjectsService {
     );
   }
 
-  public saveNewAnswerData(model: Answer): Observable<boolean> {
+  public saveNewAnswerData(model: Answer): Observable<string> {
     
     const url = environment.localhostApp + environment.urlAnsweLogApi + environment.methodSetNewAnswer;
 
     return this.http.post(url, model)
     .pipe(
-        map((response: any) => {        
-          return true;
+        map((response: ResponseItem) => {        
+          return response.id;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getAllErrorStatusesData: ', error);       
+        console.error('saveNewAnswerData: ', error);       
         return Observable.throw(error);
       })
     );

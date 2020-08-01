@@ -8,7 +8,7 @@ namespace ViewModelsDLL.Models {
 
 		#region Properties: Public
 
-		public IEnumerable<T> LogData { get; set; }
+		public IEnumerable<T> Data { get; set; }
 		public long CountLogs { get; set; }
 
 		#endregion

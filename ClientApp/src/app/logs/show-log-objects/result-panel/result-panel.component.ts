@@ -40,7 +40,7 @@ export class ResultPanelComponent implements OnInit, OnDestroy {
     this.showLogObjectsService.getAllLogs(this.logTableOptions.logTableState)
       .pipe(takeUntil(this.destroyed$))
       .subscribe((logsData:LogsDataGrid) => {
-          this.data = logsData.logData;
+          this.data = logsData.data;
           this.logTableOptions.logTableState.count = logsData.countLogs;         
       });
   }

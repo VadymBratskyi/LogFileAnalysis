@@ -44,9 +44,9 @@ namespace LogFileAnalysisDAL {
 
 		public DbSetMongoDB<KnownError> KnownErrors => _knownError ?? (_knownError = new DbSetMongoDB<KnownError>(mongoDatabase, "KnownErrors"));
 
-		public DbSetMongoDB<Answer> Answer => _answer ?? (_answer = new DbSetMongoDB<Answer>(mongoDatabase, "Answers"));
+		public DbSetMongoDB<Answer> Answers => _answer ?? (_answer = new DbSetMongoDB<Answer>(mongoDatabase, "Answers"));
 
-		public DbSetMongoDB<StatusError> StatusError => _statusError ?? (_statusError = new DbSetMongoDB<StatusError>(mongoDatabase, "StatusError"));
+		public DbSetMongoDB<StatusError> StatusErrors => _statusError ?? (_statusError = new DbSetMongoDB<StatusError>(mongoDatabase, "StatusError"));
 
 		#endregion
 

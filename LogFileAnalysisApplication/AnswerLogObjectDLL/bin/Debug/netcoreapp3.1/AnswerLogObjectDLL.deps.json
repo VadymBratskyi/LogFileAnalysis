@@ -9,7 +9,8 @@
       "AnswerLogObjectDLL/1.0.0": {
         "dependencies": {
           "LogFileAnalysisDAL": "1.0.0",
-          "MongoDB.Driver": "2.10.4"
+          "MongoDB.Driver": "2.10.4",
+          "ViewModelsDLL": "1.0.0"
         },
         "runtime": {
           "AnswerLogObjectDLL.dll": {}
@@ -1065,6 +1066,11 @@
         "runtime": {
           "LogFileAnalysisDAL.dll": {}
         }
+      },
+      "ViewModelsDLL/1.0.0": {
+        "runtime": {
+          "ViewModelsDLL.dll": {}
+        }
       }
     }
   },
@@ -1803,6 +1809,11 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "LogFileAnalysisDAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ViewModelsDLL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

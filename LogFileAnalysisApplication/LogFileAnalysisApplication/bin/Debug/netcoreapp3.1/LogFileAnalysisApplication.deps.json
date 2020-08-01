@@ -1999,7 +1999,8 @@
       "AnswerLogObjectDLL/1.0.0": {
         "dependencies": {
           "LogFileAnalysisDAL": "1.0.0",
-          "MongoDB.Driver": "2.10.4"
+          "MongoDB.Driver": "2.10.4",
+          "ViewModelsDLL": "1.0.0"
         },
         "runtime": {
           "AnswerLogObjectDLL.dll": {}

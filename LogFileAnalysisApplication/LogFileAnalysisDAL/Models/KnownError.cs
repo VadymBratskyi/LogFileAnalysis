@@ -12,8 +12,6 @@ namespace LogFileAnalysisDAL.Models {
 
         public string Message { get; set; }
 
-        public BsonDocument Error { get; set; }
-
         public BsonDocument Status { get; set; }
 
         public BsonDocument Answer { get; set; }

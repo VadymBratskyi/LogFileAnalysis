@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StatusDialogComponent } from './status-dialog/status-dialog.component';
-import { ErrorStatusesModel, Answer, UnKnownError } from '@log_models';
+import { ErrorStatusesModel, Answer, UnKnownError, KnownErrorConfig } from '@log_models';
 import { AnswerObjectsService } from '@log_services';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
@@ -17,6 +17,8 @@ export class ErrorSettingsComponent implements OnInit, OnDestroy {
 
   @Input() unKnownError: UnKnownError;
 
+  @Output() setSettings = new EventEmitter();
+
   constructor(public dialog: MatDialog,
     private answerObjectsService: AnswerObjectsService) { }
   
@@ -24,6 +26,20 @@ export class ErrorSettingsComponent implements OnInit, OnDestroy {
 
   public get geStatusCodeTitle() {
     return this.answer.statusCode >= 0 && this.answer.statusTitle ? `${this.answer.statusCode} - ${this.answer.statusTitle}` : '';
+  }
+
+  private setAnswer(result: ErrorStatusesModel) {
+    this.answer.statusCode = result.code;
+    this.answer.statusTitle = result.title;
+    this.answer.statusId = result.objetcId;
+  }
+  
+  private generateKnownConfig(answerId: string) {
+    return {
+      unKnownErrorId: this.unKnownError.objectId,
+      statusErrorId: this.answer.statusId,
+      answerId: answerId
+    } as KnownErrorConfig;
   }
 
   ngOnInit(): void {
@@ -34,9 +50,7 @@ export class ErrorSettingsComponent implements OnInit, OnDestroy {
         data: {}
     }).afterClosed().subscribe((result: ErrorStatusesModel) => {
         if(result) {
-          this.answer.statusCode = result.code;
-          this.answer.statusTitle = result.title;
-          this.answer.statusId = result.objetcId;
+          this.setAnswer(result);
         }      
     });
   }
@@ -49,7 +63,8 @@ export class ErrorSettingsComponent implements OnInit, OnDestroy {
       this.answerObjectsService.saveNewAnswerData(this.answer)
         .pipe(takeUntil(this.destroyed$))
         .subscribe(result => {
-          console.log(result)
+          let config = this.generateKnownConfig(result);
+          this.setSettings.emit(config);
         });
   }
 

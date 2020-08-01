@@ -11,7 +11,7 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="logTableOptions.displayTableColumns.length">
         <div class="example-element-detail"
             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">             
-            <app-error-settings class="error-settings" [unKnownError]="element"></app-error-settings>     
+            <app-error-settings class="error-settings" [unKnownError]="element" (setSettings)="onSaveErrorSettings($event)"></app-error-settings>     
         </div>
         </td>
     </ng-container>

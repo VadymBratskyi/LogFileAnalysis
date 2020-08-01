@@ -2,7 +2,8 @@
     <mat-card-content >
       <app-error-table
           [dataSource]="data" 
-          [logTableOptions]="logTableOptions" 
+          [logTableOptions]="logTableOptions"
+          (setAnswer)="onSetKnowError($event)"
           (dataChanges)="dataGridChanges($event)">
       </app-error-table>
     </mat-card-content>

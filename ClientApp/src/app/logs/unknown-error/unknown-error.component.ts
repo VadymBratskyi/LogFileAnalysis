@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { LogTableOptions, LogTableState } from '@log_models';
+import { LogTableOptions, LogTableState, LogsDataGrid, KnownErrorConfig } from '@log_models';
 import { ErrorLogObjectsService } from '@log_services';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -35,16 +35,23 @@ export class UnknownErrorComponent implements OnInit, OnDestroy {
   private onLoadData() {
     this.errorLogObjectsService.getAllUnKnownErrorData(this.logTableOptions.logTableState)
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((unKnownErrorsData: any) => {
-          this.data = unKnownErrorsData.logData;
+      .subscribe((unKnownErrorsData: LogsDataGrid) => {
+          this.data = unKnownErrorsData.data;
           this.logTableOptions.logTableState.count = unKnownErrorsData.countLogs;         
       });
   }
 
-
   public dataGridChanges(state: LogTableState) {
     this.logTableOptions.logTableState = state;
     this.onLoadData();
+  }
+
+  public onSetKnowError(knownConfig: KnownErrorConfig) {
+    this.errorLogObjectsService.setKnownError(knownConfig)
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(result => {
+        this.onLoadData();
+      });
   }
 
   ngOnDestroy() {
