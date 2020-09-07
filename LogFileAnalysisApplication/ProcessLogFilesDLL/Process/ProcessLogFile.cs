@@ -97,7 +97,7 @@ namespace ProcessLogFilesDLL {
         private async Task SaveErrorLogObject(IEnumerable<Error> errors) {
             if (errors.Any()) {
                 await _dbService.Errors.Create(errors);
-                ProcessAnalysisError.AnalysisErrorMessage(errors);
+                await ProcessAnalysisError.AnalysisErrorMessage(errors);
             }
         }
 
