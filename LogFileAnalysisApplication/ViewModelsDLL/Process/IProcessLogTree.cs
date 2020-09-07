@@ -1,8 +1,8 @@
 ﻿using MongoDB.Bson;
-using ShowLogObjectsDLL.Models;
 using System.Collections.Generic;
+using ViewModelsDLL.Models;
 
-namespace ShowLogObjectsDLL.Process {
+namespace ViewModelsDLL.Process {
 
 	#region Interface: IProcessLogTree
 
@@ -10,7 +10,7 @@ namespace ShowLogObjectsDLL.Process {
 
 		#region Properties: Public
 
-		public List<LogTreeNode> GetTree(BsonDocument log);
+		public List<TreeNode> GetTree(BsonDocument log);
 
 		#endregion
 

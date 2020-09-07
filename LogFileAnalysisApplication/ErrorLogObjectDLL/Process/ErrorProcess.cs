@@ -2,17 +2,25 @@
 using LogFileAnalysisDAL;
 using LogFileAnalysisDAL.Models;
 using MongoDB.Bson;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using ViewModelsDLL.Models;
+using ViewModelsDLL.Process;
 
 namespace ErrorLogObjectDLL.Process
 {
+
+	#region Class: ErrorProcess 
+
 	class ErrorProcess {
+
 		#region Fields: Private
 
 		private readonly DbContextService _dbService;
+		private readonly ProcessLogTree _processLogTree;
 
 		#endregion
 
@@ -20,6 +28,7 @@ namespace ErrorLogObjectDLL.Process
 
 		public ErrorProcess(DbContextService service) {
 			_dbService = service;
+			_processLogTree = new ProcessLogTree();
 		}
 
 		#endregion
@@ -41,6 +50,8 @@ namespace ErrorLogObjectDLL.Process
 
 		#endregion
 
+		#region Methods: Public
+
 		public async Task<IEnumerable<UnKnownError>> GetUnKnownErrors(int skip, int take) {
 			var unKnownErrors = await _dbService.UnKnownErrors.Get(skip, take);
 			return unKnownErrors;
@@ -56,5 +67,19 @@ namespace ErrorLogObjectDLL.Process
 			await _dbService.KnownErrors.Create(knownError);
 			return knownError;
 		}
+
+		public IEnumerable<TreeNode> GetTreeAnswer(BsonDocument answerDocument) {
+			return _processLogTree.GetTree(answerDocument);
+		}
+
+		public IEnumerable<TreeNode> GetTreeStatus(BsonDocument statusrDocument) {
+			return _processLogTree.GetTree(statusrDocument);
+		}
+
+		#endregion
+
 	}
+
+	#endregion
+
 }

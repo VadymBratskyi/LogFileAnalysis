@@ -45,7 +45,9 @@ namespace ErrorLogObjectDLL {
 			dataSource.Data = knownErrors.Select(o => new KnownErrorDTO()
 			{
 				CountFounded = o.CountFounded,
-				Message = o.Message
+				Message = o.Message,
+				Status = ErrorProcess.GetTreeStatus(o.Status),
+				Answer = ErrorProcess.GetTreeAnswer(o.Answer),
 			});
 			dataSource.CountLogs = await _dbService.Logs.Count();
 			return dataSource;

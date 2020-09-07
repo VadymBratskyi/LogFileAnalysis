@@ -2,8 +2,8 @@
 using ShowLogObjectsDLL.Models;
 using System.Linq;
 using System.Threading.Tasks;
-using ShowLogObjectsDLL.Process;
 using ViewModelsDLL.Models;
+using ViewModelsDLL.Process;
 
 namespace ShowLogObjectsDLL {
 

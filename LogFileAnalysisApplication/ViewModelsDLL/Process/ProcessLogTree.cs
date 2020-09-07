@@ -1,14 +1,14 @@
 ﻿using MongoDB.Bson;
 using Newtonsoft.Json.Linq;
-using ShowLogObjectsDLL.Models;
-using ShowLogObjectsDLL.Process.LogTreeBuilder;
 using System.Collections.Generic;
+using ViewModelsDLL.Models;
+using ViewModelsDLL.Process.LogTreeBuilder;
 
-namespace ShowLogObjectsDLL.Process {
+namespace ViewModelsDLL.Process {
 
 	#region Class: ProcessLogTree
 
-	class ProcessLogTree : IProcessLogTree {
+	public class ProcessLogTree : IProcessLogTree {
 
 		#region Methods: Private
 
@@ -24,7 +24,7 @@ namespace ShowLogObjectsDLL.Process {
 
 		#region Methods: Public
 
-		public List<LogTreeNode> GetTree(BsonDocument log) {
+		public List<TreeNode> GetTree(BsonDocument log) {
 			var jObject = _getParceObject(log);
 			var treeNodeList = jObject.JsonToLogTreeNode();
 			return treeNodeList;

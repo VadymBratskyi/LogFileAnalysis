@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
-using ShowLogObjectsDLL.Models;
 using System.Collections.Generic;
+using ViewModelsDLL.Models;
 
-namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
+namespace ViewModelsDLL.Process.LogTreeBuilder {
 
 	#region Class: LogTreeBuilder
 
@@ -14,24 +14,24 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 			return token.Type;
 		}
 
-		private static LogTreeNodeData GetLogTreeNodeData(KeyValuePair<string, JToken> token) {
-			var nodeData = new LogTreeNodeData(token.Key);
+		private static TreeNodeData GetLogTreeNodeData(KeyValuePair<string, JToken> token) {
+			var nodeData = new TreeNodeData(token.Key);
 			nodeData.Value = token.Value.ToString();
 			return nodeData;
 		}
 
-		private static LogTreeNode GetSimpleArrayItem(int index, JToken tokenValue) {
+		private static TreeNode GetSimpleArrayItem(int index, JToken tokenValue) {
 			var keyToken = $"[{index}]";
-			var nodeData = new LogTreeNodeData(keyToken);
+			var nodeData = new TreeNodeData(keyToken);
 			nodeData.Value = tokenValue.ToString();
-			var treeNode = new LogTreeNode();
+			var treeNode = new TreeNode();
 			treeNode.Value = nodeData;
 			index++;
 			return treeNode;
 		}
 
-		private static LogTreeNode GetLogTreeNode(KeyValuePair<string, JToken> token) {
-			var treeNode = new LogTreeNode();
+		private static TreeNode GetLogTreeNode(KeyValuePair<string, JToken> token) {
+			var treeNode = new TreeNode();
 			treeNode.Value = GetLogTreeNodeData(token);
 			switch (GetTokenValueType(token.Value)) {
 				case JTokenType.Object:
@@ -67,8 +67,8 @@ namespace ShowLogObjectsDLL.Process.LogTreeBuilder {
 
 		#region Methods: Public
 
-		public static List<LogTreeNode> JsonToLogTreeNode(this JObject jObj) {
-			var treeNodeList = new List<LogTreeNode>();
+		public static List<TreeNode> JsonToLogTreeNode(this JObject jObj) {
+			var treeNodeList = new List<TreeNode>();
 			foreach (var token in jObj) {
 				treeNodeList.Add(GetLogTreeNode(token));
 			}

@@ -47,7 +47,7 @@
           "dependencies": {
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.10.4, )"
+              "version": "[2.11.1, )"
             }
           },
           "imports": [
@@ -105,11 +105,11 @@
           "dependencies": {
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.10.2, )"
+              "version": "[2.11.1, )"
             },
             "MongoDB.Driver.GridFS": {
               "target": "Package",
-              "version": "[2.10.2, )"
+              "version": "[2.11.1, )"
             }
           },
           "imports": [
@@ -164,6 +164,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

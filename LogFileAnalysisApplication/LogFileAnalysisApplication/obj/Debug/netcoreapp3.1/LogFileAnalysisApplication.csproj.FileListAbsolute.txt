@@ -337,3 +337,9 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Lo
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\StatusErrorDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\StatusErrorDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\snappy32.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\snappy64.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\libzstd.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysisApplication\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll

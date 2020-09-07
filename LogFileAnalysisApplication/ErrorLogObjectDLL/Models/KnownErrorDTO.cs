@@ -11,10 +11,9 @@ namespace ErrorLogObjectDLL.Models
 
 		public string Message { get; set; }
 
-		//public BsonDocument Error { get; set; }
+		public IEnumerable<TreeNode> Status { get; set; }
 
-		//public BsonDocument Status { get; set; }
+		public IEnumerable<TreeNode> Answer { get; set; }
 
-		//public BsonDocument Answer { get; set; }
 	}
 }

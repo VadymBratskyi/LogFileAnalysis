@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { LogsDataGrid, LogTableOptions } from '@log_models';
+import { LogsDataGrid, LogTableOptions, LogTableState } from '@log_models';
 import { ErrorLogObjectsService } from '@log_services';
 import { ReplaySubject } from 'rxjs';
 
@@ -16,7 +16,8 @@ export class KnownErrorComponent {
   data: any[] = [ ];
 
   logTableOptions = {
-    displayTableColumns: [ 'countFounded', 'message' ],    
+    displayTableColumns: [ 'message', 'countFounded' ],    
+    expandableColumns: ['answer', 'status'],
     pageSizeOptions: [10, 25, 50, 100],
     logTableState: {
       count: 0,
@@ -36,10 +37,14 @@ export class KnownErrorComponent {
     this.errorLogObjectsService.getAllKnownErrorData(this.logTableOptions.logTableState)
       .pipe(takeUntil(this.destroyed$))
       .subscribe((knownErrorsData: LogsDataGrid) => {
-        console.log(knownErrorsData)
-          // this.data = unKnownErrorsData.data;
-          // this.logTableOptions.logTableState.count = unKnownErrorsData.countLogs;         
+        this.data = knownErrorsData.data;
+        this.logTableOptions.logTableState.count = knownErrorsData.countLogs;       
       });
+  }
+
+  public dataGridChanges(state: LogTableState) {
+    this.logTableOptions.logTableState = state;
+    this.onLoadData();
   }
 
   ngOnDestroy() {

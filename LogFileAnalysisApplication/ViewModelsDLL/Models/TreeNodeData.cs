@@ -1,8 +1,7 @@
-﻿namespace ShowLogObjectsDLL.Models {
+﻿#region Class: TreeNodeData
 
-	#region Class: LogTreeNodeData
-
-	public class LogTreeNodeData {
+namespace ViewModelsDLL.Models {
+	public class TreeNodeData {
 
 		#region Properties: Public
 
@@ -13,12 +12,11 @@
 
 		#region Constructor: Public
 
-		public LogTreeNodeData(string key) {
+		public TreeNodeData(string key) {
 			Key = key;
 		}
 
 		#endregion
-
 	}
 
 	#endregion
