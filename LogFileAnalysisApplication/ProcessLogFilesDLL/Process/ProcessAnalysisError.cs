@@ -13,9 +13,11 @@ namespace ProcessLogFilesDLL.Process {
 	public class ProcessAnalysisError {
 
 		private readonly DbContextService _dbService;
+		private List<KnownError> offerKnownError;
 
 		public ProcessAnalysisError(DbContextService dbContextService) {
 			_dbService = dbContextService;
+			offerKnownError = new List<KnownError>();
 		}
 
 		public async Task AnalysisErrorMessage(IEnumerable<Error> errors) {
@@ -51,8 +53,35 @@ namespace ProcessLogFilesDLL.Process {
 						await _dbService.UnKnownErrors.Update(item, item.Id);
 					}
 
-				} else if (knownErrors.Any()) { 
+				} else if (knownErrors.Any()) {
 
+					foreach (var knownerror in knownErrors) {
+						var existOffer = offerKnownError.Find(model => model.Id == knownerror.Id);
+						if (existOffer == null) {
+							offerKnownError.Add(knownerror);
+						}
+					}
+
+					
+
+					//var existOffer = offerAnswers.Find(o => o.Message == findKnownError.Message);
+					//if (existOffer == null) {
+					//	var st = BsonSerializer.Deserialize<StatusError>(findKnownError.Status.ToJson());
+					//	var an = BsonSerializer.Deserialize<Answer>(findKnownError.Answer.ToJson());
+
+					//	var knowView = new KnownErrorView() {
+					//		Message = findKnownError.Message,
+					//		Count = 1,
+					//		StatusCode = st.StatusCode,
+					//		StatusTitle = st.StatusTitle,
+					//		Answer = an.Text
+					//	};
+
+					//	offerAnswers.Add(knowView);
+					//}
+					//else {
+					//	existOffer.Count++;
+					//}
 
 				}
 
