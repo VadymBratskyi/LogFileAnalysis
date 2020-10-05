@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using ViewModelsDLL.Models;
 
 namespace ErrorLogObjectDLL {
+
+	#region Class: ErrorService
+
 	public class ErrorService {
 
 		#region Fields: Private
@@ -22,9 +25,15 @@ namespace ErrorLogObjectDLL {
 
 		#endregion
 
+		#region Constructor: Public
+
 		public ErrorService(DbContextService service) {
 			_dbService = service;
 		}
+
+		#endregion
+
+		#region Methods: Public
 
 		public async Task<DataSourceGrid<UnKnownErrorDTO>> GetGridUnKnownError(int skip, int take) {
 			var unKnownErrors = await ErrorProcess.GetUnKnownErrors(skip, take);
@@ -59,5 +68,10 @@ namespace ErrorLogObjectDLL {
 			return knownError.Id.ToString();
 		}
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

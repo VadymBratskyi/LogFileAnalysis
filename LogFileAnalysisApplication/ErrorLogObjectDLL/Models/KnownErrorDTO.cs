@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using ViewModelsDLL.Models;
 
 namespace ErrorLogObjectDLL.Models
 {
+
+	#region Class: KnownErrorDTO
+
 	public class KnownErrorDTO
 	{
+
+		#region Properties: Public
+
 		public int CountFounded { get; set; }
 
 		public string Message { get; set; }
@@ -15,5 +19,10 @@ namespace ErrorLogObjectDLL.Models
 
 		public IEnumerable<TreeNode> Answer { get; set; }
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

@@ -27,7 +27,6 @@ namespace ProcessLogFilesDLL.Common {
 		#region Properties: Public
 
 		public List<Log> LogList => _logsList;
-		public List<Log> TempLogList => _tempLogsList;
 
 		#endregion
 

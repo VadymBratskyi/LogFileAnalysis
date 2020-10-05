@@ -11,13 +11,23 @@ namespace ShowLogObjectsDLL {
 
 	public class ShowLogsService {
 
+		#region Fields: Private
+
 		private readonly DbContextService _dbService;
 		private readonly ProcessLogTree _processLogTree;
+
+		#endregion
+
+		#region Constructor: Public
 
 		public ShowLogsService(DbContextService service) {
 			_dbService = service;
 			_processLogTree = new ProcessLogTree();
 		}
+
+		#endregion
+
+		#region Fields: Public
 
 		public void LoadDataForTree() {
 			var data = _dbService.Logs.Get();
@@ -36,6 +46,8 @@ namespace ShowLogObjectsDLL {
 			dataSource.CountLogs = await _dbService.Logs.Count();
 			return dataSource;
 		}
+
+		#endregion
 
 	}
 

@@ -12,82 +12,61 @@ namespace ProcessLogFilesDLL.Process {
 
 	public class ProcessAnalysisError {
 
-		private readonly DbContextService _dbService;
-		private List<KnownError> offerKnownError;
+		#region Fields: Private
 
-		public ProcessAnalysisError(DbContextService dbContextService) {
+		private readonly DbContextService _dbService;
+		private ProcessOffer _processOffer;
+
+		#endregion
+
+		#region Constructor: Public
+
+		public ProcessAnalysisError(DbContextService dbContextService, ProcessOffer processOffer) {
 			_dbService = dbContextService;
-			offerKnownError = new List<KnownError>();
+			_processOffer = processOffer;
 		}
 
+		#endregion
+
+		#region Methods: Public
+
 		public async Task AnalysisErrorMessage(IEnumerable<Error> errors) {
-
 			foreach (var error in errors) {
-
 				var unQueryBuilder = Builders<UnKnownError>.Filter.Eq("Message", error.Message);
 				var unKnownErrors = await _dbService.UnKnownErrors.Get(unQueryBuilder);
-
 				var queryBuilder = Builders<KnownError>.Filter.Eq("Message", error.Message);
 				var knownErrors = await _dbService.KnownErrors.Get(queryBuilder);
-
 				if (!unKnownErrors.Any() && !knownErrors.Any()) {
-
 					var unError = new UnKnownError() {
 						MessageId = error.MessageId,
 						Message = error.Message,
 						Error = error.ResponsError,
 						CountFounded = 1
 					};
-
 					await _dbService.UnKnownErrors.Create(unError);
-
 				} else if (unKnownErrors.Any()) {
-
 					foreach (var item in unKnownErrors) {
-
 						item.CountFounded++;
 						if (item.Id != ObjectId.Empty) {
 							item.IsModified = true;
 						}
-
 						await _dbService.UnKnownErrors.Update(item, item.Id);
 					}
-
 				} else if (knownErrors.Any()) {
-
 					foreach (var knownerror in knownErrors) {
-						var existOffer = offerKnownError.Find(model => model.Id == knownerror.Id);
+						var existOffer = _processOffer.getExistOffer(knownerror.Id);
 						if (existOffer == null) {
-							offerKnownError.Add(knownerror);
+							_processOffer.AddKnowErrorToOffer(knownerror);
+						}
+						else {
+							existOffer.CountFounded++;
 						}
 					}
-
-					
-
-					//var existOffer = offerAnswers.Find(o => o.Message == findKnownError.Message);
-					//if (existOffer == null) {
-					//	var st = BsonSerializer.Deserialize<StatusError>(findKnownError.Status.ToJson());
-					//	var an = BsonSerializer.Deserialize<Answer>(findKnownError.Answer.ToJson());
-
-					//	var knowView = new KnownErrorView() {
-					//		Message = findKnownError.Message,
-					//		Count = 1,
-					//		StatusCode = st.StatusCode,
-					//		StatusTitle = st.StatusTitle,
-					//		Answer = an.Text
-					//	};
-
-					//	offerAnswers.Add(knowView);
-					//}
-					//else {
-					//	existOffer.Count++;
-					//}
-
 				}
-
 			}
-
 		}
+
+		#endregion
 
 	}
 

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { ProcessLogFilesService } from '@log_services';
-import { LogNotify, ProcessState, FileProcess } from '@log_models';
+import { LogNotify, ProcessState, FileProcess, OfferNotify } from '@log_models';
 
 @Component({
   selector: 'app-process-log-files',
@@ -28,7 +28,14 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
         let file = this.servProcessLogFiles.processingFiles.find(pr => pr.uploadedFile.name == logNotify.fileName) as FileProcess;
         file.processState = ProcessState.complate;
         this.servProcessLogFiles.processNotifications.push(logNotify);  
-    });    
+    });   
+
+    this.servProcessLogFiles.onOfferNotification
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe((offerNotify: OfferNotify) => {
+        this.servProcessLogFiles.offerNotification = offerNotify; 
+        console.log('onOfferNotification', offerNotify); 
+    }); 
   }
 
   ngOnInit() {

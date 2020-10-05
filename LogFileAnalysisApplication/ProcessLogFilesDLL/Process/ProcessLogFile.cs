@@ -26,6 +26,7 @@ namespace ProcessLogFilesDLL {
         private readonly GenerateObjects _generateObjects;
         private readonly ProcessLogNotifier _processLogNotifier;
         private ProcessLog _processLog; 
+        private ProcessOffer _processOffer;
         private ProcessAnalysisError _processAnalysisError; 
 
         #endregion
@@ -33,25 +34,28 @@ namespace ProcessLogFilesDLL {
         #region Properties : Private
 
         private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(_generateObjects));
+        private ProcessOffer ProcessOffer => _processOffer ?? (_processOffer = new ProcessOffer());
 
-        private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService));
+        private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService, ProcessOffer));
 
         #endregion
 
         #region Constructor : Public
 
-        public ProcessLogFile(DbContextService dbService, string fileName, ProcessLogNotifier logNotifier) {
+        public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier) {
             _dbService = dbService;
             _processLogNotifier = logNotifier;
-            _fileName = fileName;
             _generateObjects = new GenerateObjects();
         }
 
-        public ProcessLogFile(DbContextService dbService, ObjectId sessionId, ProcessLogNotifier logNotifier) {
-            _dbService = dbService;
-            _processLogNotifier = logNotifier;
+        public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier, string fileName) : 
+                this(dbService, logNotifier) {
+            _fileName = fileName;
+        }
+
+        public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier, ObjectId sessionId): 
+                this(dbService, logNotifier) {
             _sessionId = sessionId;
-            _generateObjects = new GenerateObjects();
         }
 
         #endregion
@@ -115,6 +119,7 @@ namespace ProcessLogFilesDLL {
                 await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
                 await SaveErrorLogObject(ProcessLog.GetErrorList());
                 await UpdateSessionFiles(item);
+                await _processLogNotifier.NotifyOffers(ProcessOffer.GetOffers());
             }
         }
 
