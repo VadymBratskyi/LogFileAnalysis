@@ -1,4 +1,5 @@
-﻿using LogFileAnalysisDAL.Models;
+﻿using LogFileAnalysisDAL.Extentions;
+using LogFileAnalysisDAL.Models;
 using Microsoft.AspNetCore.SignalR;
 using MongoDB.Bson.Serialization;
 using System.Collections.Generic;
@@ -38,8 +39,8 @@ namespace ProcessLogFilesDLL.Common {
 			foreach (var item in knownErrors) {
 				var offer = new Offer();
 				offer.ErrorMessage = item.Message;
-				var answer = BsonSerializer.Deserialize<Answer>(item.Answer);
-				var status = BsonSerializer.Deserialize<StatusError>(item.Status);
+				var answer = item.Answer.ConvertToEntity<Answer>();
+				var status = item.Status.ConvertToEntity<StatusError>();
 				offer.StatusCode = status.Code;
 				offer.AnswerMessage = answer.Text;
 				offerNotify.OfferMessages.Add(offer);

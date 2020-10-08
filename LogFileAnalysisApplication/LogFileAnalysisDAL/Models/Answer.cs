@@ -4,11 +4,10 @@ namespace LogFileAnalysisDAL.Models {
 
 	#region Class: Answer
 
-	public class Answer {
+	public class Answer : Entity {
 
 		#region Properties: Public
 
-		public ObjectId Id { get; set; }
 		public string Text { get; set; }
 		public ObjectId StatusId { get; set; }
 
