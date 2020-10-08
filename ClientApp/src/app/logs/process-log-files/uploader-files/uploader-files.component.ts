@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
-import { ProcessLogFilesService } from '@log_services';
+import { NotificationsService, ProcessLogFilesService } from '@log_services';
 import { environment } from 'environments/environment';
 import { SuccessEvent, SelectEvent, RemoveEvent, FileRestrictions } from '@progress/kendo-angular-upload';
 import { ReplaySubject } from 'rxjs';
 import { FileProcess, ProcessState } from '@log_models';
-
-
 
 @Component({
   selector: 'app-uploader-files',
@@ -26,6 +24,7 @@ export class UploaderFilesComponent implements OnInit, OnChanges, OnDestroy {
   };
    
   constructor(
+    public servNotifications: NotificationsService,
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
 
@@ -66,10 +65,7 @@ export class UploaderFilesComponent implements OnInit, OnChanges, OnDestroy {
       if(flIndex >= 0) {
         this.servProcessLogFiles.processingFiles.splice(flIndex, 1);
       }
-      let notifyIndex = this.servProcessLogFiles.processNotifications.findIndex(nt => nt.fileName == file.name);
-      if(notifyIndex >= 0) {
-        this.servProcessLogFiles.processNotifications.splice(notifyIndex, 1);
-      }
+      this.servNotifications.deleProcessLogNotify(file.name);
     });
   }
 

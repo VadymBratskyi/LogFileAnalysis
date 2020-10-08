@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 using MongoDB.Bson.Serialization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ViewModelsDLL.Models;
 
 namespace ProcessLogFilesDLL.Common {
 
@@ -38,6 +39,8 @@ namespace ProcessLogFilesDLL.Common {
 				var offer = new Offer();
 				offer.ErrorMessage = item.Message;
 				var answer = BsonSerializer.Deserialize<Answer>(item.Answer);
+				var status = BsonSerializer.Deserialize<StatusError>(item.Status);
+				offer.StatusCode = status.Code;
 				offer.AnswerMessage = answer.Text;
 				offerNotify.OfferMessages.Add(offer);
 			}

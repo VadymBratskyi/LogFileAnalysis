@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OffersComponent } from './offers/offers.component';
+import { LogTableModule } from '@log_shareds';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OffersComponent } from './offers/offers.component';
     CommonModule,
     ProcessLogFilesRoutingModule,
     FormsModule,
+    LogTableModule,
     
     /**material */
     MatCardModule,

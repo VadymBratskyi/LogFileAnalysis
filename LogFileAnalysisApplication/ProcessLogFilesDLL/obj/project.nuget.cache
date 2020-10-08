@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OibTSa/XmGU2ob8YWXftxnzwWxduykQ6ratHuP5b0Iyf91wQ0V4fPuVeQVecrRBg6sWWCupAGl4LX5LFZFiESw==",
+  "dgSpecHash": "XNe4CP6gjL2hvBCm4z+ZFBFLY43PxL929o+GZ78flSVf32f/+spgXJkPN6/Xx+czXMxOZcWBQ4YVF4omprtXEw==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj",
   "expectedPackageFiles": [
@@ -24,7 +24,7 @@
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.gridfs\\2.11.1\\mongodb.driver.gridfs.2.11.1.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.libmongocrypt\\1.0.0\\mongodb.libmongocrypt.1.0.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

@@ -16,9 +16,7 @@ export class ProcessLogFilesService {
 
   onProcessNotification = new EventEmitter<LogNotify>();
   onOfferNotification = new EventEmitter<OfferNotify>();
-  processNotifications: LogNotify[];
-  offerNotification: OfferNotify;
-  
+
   constructor(
     private http: HttpClient
   ) {  }
@@ -93,53 +91,4 @@ export class ProcessLogFilesService {
       });  
   }  
   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  public postTestObjects(): Observable<any> {
-    
-    const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodPostTestValue;
-
-    var body = {
-      value: "Angular "
-    };
-         
-    return this.http.post(url, body)
-    .pipe(
-        map((response: any) => {        
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getTestObjects: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
-
-  public getTestObjects(): Observable<any> {
-    
-    const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodGetTestValue;         
-
-    return this.http.get(url)
-    .pipe(
-        map((response: any) => {
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getTestObjects: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
-
 }

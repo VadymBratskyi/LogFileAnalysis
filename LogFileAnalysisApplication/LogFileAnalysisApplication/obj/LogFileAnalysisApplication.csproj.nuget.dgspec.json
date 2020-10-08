@@ -301,6 +301,9 @@
             "projectReferences": {
               "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
                 "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
+              },
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ViewModelsDLL\\ViewModelsDLL.csproj"
               }
             }
           }

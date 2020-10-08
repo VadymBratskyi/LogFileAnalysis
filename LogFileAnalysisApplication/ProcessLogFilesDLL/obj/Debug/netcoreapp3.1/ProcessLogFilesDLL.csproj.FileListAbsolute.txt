@@ -32,3 +32,5 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.csproj.CopyComplete
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\obj\Debug\netcoreapp3.1\ProcessLogFilesDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
