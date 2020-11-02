@@ -12,7 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { OffersComponent } from './offers/offers.component';
-import { LogTableModule } from '@log_shareds';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,6 @@ import { LogTableModule } from '@log_shareds';
     CommonModule,
     ProcessLogFilesRoutingModule,
     FormsModule,
-    LogTableModule,
     
     /**material */
     MatCardModule,
@@ -32,6 +32,8 @@ import { LogTableModule } from '@log_shareds';
     MatBadgeModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
 
     /**progress */
     UploadModule

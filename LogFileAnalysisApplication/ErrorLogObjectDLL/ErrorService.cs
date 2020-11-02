@@ -44,7 +44,7 @@ namespace ErrorLogObjectDLL {
 				Message = o.Message,
 				Count = o.CountFounded
 			});
-			dataSource.CountLogs = await _dbService.Logs.Count();
+			dataSource.CountLogs = await _dbService.UnKnownErrors.Count();
 			return dataSource;
 		}
 
@@ -58,7 +58,7 @@ namespace ErrorLogObjectDLL {
 				Status = ErrorProcess.GetTreeStatus(o.Status),
 				Answer = ErrorProcess.GetTreeAnswer(o.Answer),
 			});
-			dataSource.CountLogs = await _dbService.Logs.Count();
+			dataSource.CountLogs = await _dbService.KnownErrors.Count();
 			return dataSource;
 		}
 

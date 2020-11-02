@@ -17,3 +17,4 @@ export * from './component'
 
 export * from './filter-parameter';
 export * from './response-item';
+export * from './response-grid-data';

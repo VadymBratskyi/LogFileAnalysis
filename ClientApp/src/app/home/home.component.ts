@@ -75,12 +75,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   private CreateAnalysisLogObjectsCard(): CardHome {
     var card = new CardHome();
-    card.title = "Аналіз Log-об'єктів.";
+    card.title = "Аналіз помилок.";
     card.subTitle = "Навчання системи.";
     card.contentImage ="assets/images/study_system.png";
     card.contentParagraph ="Система обирає усі Log-об'єкти з помилковим статусом і дяє Вам можливість їх обробити" 
     +"і навчити систему для подальшого автоматичного реагування. ";
-    card.rouuterLink = '/analysis-log-objects';
+    card.rouuterLink = '/analysis-errors';
     return card;    
   }  
 

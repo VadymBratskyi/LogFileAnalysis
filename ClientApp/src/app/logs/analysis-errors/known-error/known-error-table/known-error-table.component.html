@@ -1,0 +1,45 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults || isRateLimitReached">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+        Сервіс тимчасово недоступний.
+      </div>
+    </div>
+  
+    <div class="example-table-container">
+  
+        <table mat-table
+            [dataSource]="dataSource" multiTemplateDataRows
+            class="mat-elevation-z8">
+            
+            <ng-container matColumnDef="message">
+                <th mat-header-cell *matHeaderCellDef>Помилка</th>
+                <td mat-cell *matCellDef="let row">{{row.message}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="countFounded">
+                <th mat-header-cell *matHeaderCellDef>Кількість</th>
+                <td mat-cell *matCellDef="let row">{{row.countFounded}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="displayTableColumns.length">
+                    <div class="example-element-detail"
+                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <app-log-tree-table style="width: 100%;" [treeDataSource]="getExpandTreeData(element)"></app-log-tree-table>
+                    </div>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayTableColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayTableColumns;"
+                class="example-element-row"
+                [class.example-expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </table>
+    </div>  
+    <mat-paginator [length]="resultsLength" [pageSizeOptions]="pageSizeOptions" (page)="pageChanges($event)" showFirstLastButtons></mat-paginator>
+  </div>

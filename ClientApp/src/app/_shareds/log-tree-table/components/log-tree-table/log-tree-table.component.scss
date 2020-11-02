@@ -1,0 +1,22 @@
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree {
+  width: inherit;
+}
+
+.mat-tree-node {
+  width: 100%;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+div.mat-tree-node {
+  border-bottom: 1px solid #e0e0e0;
+}

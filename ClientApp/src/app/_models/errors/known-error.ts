@@ -1,7 +1,9 @@
+import { LogTreeModel } from '../component';
+
 export class KnownErrorDTO
 {
     public countFounded: number;
     public message: string;
-    //public BsonDocument Status { get; set; }
-    //public BsonDocument Answer { get; set; }
+    public status: LogTreeModel[];
+    public answer: LogTreeModel[];
 }

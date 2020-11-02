@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CardHome } from '@log_models';
 import { ProcessLogFilesService } from '@log_services';
 
@@ -7,21 +7,12 @@ import { ProcessLogFilesService } from '@log_services';
   templateUrl: './card-home.component.html',
   styleUrls: ['./card-home.component.scss']
 })
-export class CardHomeComponent implements OnInit {
+export class CardHomeComponent {
 
   @Input() cardHome: CardHome;
 
   constructor(
     public servProcesLogFile: ProcessLogFilesService
   ) { }
-
-  ngOnInit() {
-  }
-
-  public CreateSession() {
-    this.servProcesLogFile.CreateProcessLogSession().subscribe(sessionId => {
-      alert(sessionId);
-    });
-  }
 
 }

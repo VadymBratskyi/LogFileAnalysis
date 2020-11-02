@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LogTableOptions, LogTableState } from '@log_models';
+import { LogTableState } from '@log_models';
 import { NotificationsService, ProcessLogFilesService } from '@log_services';
 
 @Component({
@@ -9,18 +9,16 @@ import { NotificationsService, ProcessLogFilesService } from '@log_services';
 })
 export class OffersComponent {
 
-  isProcessCardExpanded: boolean;
+  public displayTableColumns = ['statusCode', 'errorMessage', 'answerMessage' ];
+  public pageSizeOptions = [10, 25, 50, 100];
+  public resultsLength = 0;
+  public logTableState = {
+    count: 0,
+    skip: 0,
+    take: 10
+  } as LogTableState;
 
-  logTableOptions = {
-    displayTableColumns: ['statusCode', 'errorMessage', 'answerMessage' ],    
-    expandableColumns: [],
-    pageSizeOptions: [10, 25, 50, 100],
-    logTableState: {
-      count: 0,
-      skip: 0,
-      take: 10
-    }
-  } as LogTableOptions;
+  public isProcessCardExpanded: boolean;
 
   public get offerMessages() {
     return this.servNotifications?.offerNotification?.offerMessages;
@@ -31,7 +29,7 @@ export class OffersComponent {
     public servProcessLogFiles: ProcessLogFilesService
   ) { }
 
-  public dataGridChanges(state: LogTableState) {
+  public pageChanges(state: LogTableState) {
     
   }
 }

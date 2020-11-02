@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ShowLogObjectsRoutingModule } from './show-log-objects-routing.module';
 import { ShowLogObjectsComponent } from './show-log-objects.component';
 import { FiltersPanelComponent } from './filters-panel/filters-panel.component';
-import { QueryBuilderComponent } from './query-builder/query-builder.component';
-import { ResultPanelComponent } from './result-panel/result-panel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -15,20 +13,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { LogTableModule, LogQueryBuilderModule } from '@log_shareds';
+import { LogQueryBuilderModule, LogTreeTableModule } from '@log_shareds';
+import { LogObjectsTableComponent } from './log-objects-table/log-objects-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     ShowLogObjectsComponent, 
-    FiltersPanelComponent, 
-    QueryBuilderComponent, 
-    ResultPanelComponent
+    FiltersPanelComponent,     
+    LogObjectsTableComponent
   ],
   imports: [
     CommonModule,
-    ShowLogObjectsRoutingModule,
-    LogTableModule,
+    ShowLogObjectsRoutingModule,    
     LogQueryBuilderModule,
+    LogTreeTableModule,
+
     /**material*/
     MatButtonModule,
     MatButtonToggleModule,
@@ -38,7 +40,10 @@ import { LogTableModule, LogQueryBuilderModule } from '@log_shareds';
     MatTreeModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ]
 })
 export class ShowLogObjectsModule { }

@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'environments/environment';
-import { LogTableState, FilterParameters, LogsDataGrid, KnownErrorConfig } from '@log_models';
+import { LogTableState, FilterParameters, KnownErrorConfig, ErrorPageType } from '@log_models';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { UnknownErrorDataGrid } from 'app/_models/errors/unknown-error-data-grid';
+import { KnownErrorDataGrid } from 'app/_models/errors/known-error-data-grid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorLogObjectsService {
 
+  private _errorPageType: ErrorPageType;
+
+  public get errorPageType(): ErrorPageType {
+    return this._errorPageType;
+  }
+
+  public set errorPageType(value: ErrorPageType) {
+    this._errorPageType = value;
+  }
+
   constructor(
     private http: HttpClient
   ) { }
 
-  public getAllUnKnownErrorData(logTableModel: LogTableState): Observable<LogsDataGrid> {
+  public getAllUnKnownErrorData(logTableModel: LogTableState): Observable<UnknownErrorDataGrid> {
     
     const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllUnKnownErrorData;
 
@@ -22,7 +34,7 @@ export class ErrorLogObjectsService {
          
     return this.http.post(url, body)
     .pipe(
-        map((response: LogsDataGrid) => {        
+        map((response: UnknownErrorDataGrid) => {        
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
@@ -32,7 +44,7 @@ export class ErrorLogObjectsService {
     );
   }
 
-  public getAllKnownErrorData(logTableModel: LogTableState): Observable<LogsDataGrid> {
+  public getAllKnownErrorData(logTableModel: LogTableState): Observable<KnownErrorDataGrid> {
     
     const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllKnownErrorData;
 
@@ -40,7 +52,7 @@ export class ErrorLogObjectsService {
          
     return this.http.post(url, body)
     .pipe(
-        map((response: LogsDataGrid) => {        
+        map((response: KnownErrorDataGrid) => {        
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
