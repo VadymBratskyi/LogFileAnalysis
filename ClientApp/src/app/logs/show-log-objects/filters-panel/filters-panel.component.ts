@@ -41,6 +41,14 @@ export class FiltersPanelComponent {
     });
   }
 
+  onRunFilter() {
+
+  }
+
+  onClearFilter() {
+    
+  }
+
   ngOnDestroy()  {
     this.destroyed$.next(true);
     this.destroyed$.complete();

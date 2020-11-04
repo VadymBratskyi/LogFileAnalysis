@@ -1,5 +1,6 @@
 ﻿using LogFileAnalysisDAL;
 using LogFileAnalysisDAL.Models;
+using LogQueryBuilderDLL;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
@@ -23,18 +24,21 @@ namespace ProcessLogFilesDLL {
         private readonly DbContextService _dbService;
         private readonly ObjectId _sessionId;
         private readonly string _fileName;
-        private readonly GenerateObjects _generateObjects;
         private readonly ProcessLogNotifier _processLogNotifier;
+        private ObjectsGenerator _objectsGenerator;
         private ProcessLog _processLog; 
         private ProcessOffer _processOffer;
-        private ProcessAnalysisError _processAnalysisError; 
+        private ProcessQueryBuilding _proceQueryBuilding;
+        private ProcessAnalysisError _processAnalysisError;
 
         #endregion
 
         #region Properties : Private
 
-        private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(_generateObjects));
+        private ObjectsGenerator ObjectsGenerator => _objectsGenerator ?? (_objectsGenerator = new ObjectsGenerator());
+        private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(ObjectsGenerator));
         private ProcessOffer ProcessOffer => _processOffer ?? (_processOffer = new ProcessOffer());
+        private ProcessQueryBuilding ProcessQueryBuilding => _proceQueryBuilding ?? (_proceQueryBuilding = new ProcessQueryBuilding(_dbService));
 
         private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService, ProcessOffer));
 
@@ -45,7 +49,6 @@ namespace ProcessLogFilesDLL {
         public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier) {
             _dbService = dbService;
             _processLogNotifier = logNotifier;
-            _generateObjects = new GenerateObjects();
         }
 
         public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier, string fileName) : 
@@ -113,13 +116,18 @@ namespace ProcessLogFilesDLL {
             await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
         }
 
+        private async Task GenerateQueries(List<Log> logs) {
+           await ProcessQueryBuilding.AnalysisLogObjectToQuery(logs);
+        }
+
         private async Task ProcessSessionFile(IEnumerable<ProcessSessionFile> sessionFiles) {
             foreach (var item in sessionFiles) {
                 var fileInfo = await ProcessFile(item.FileId);
-                await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
+                await SaveLogObject(ObjectsGenerator.GetLogList(), fileInfo.Filename);
                 await SaveErrorLogObject(ProcessLog.GetErrorList());
                 await UpdateSessionFiles(item);
                 await _processLogNotifier.NotifyOffers(ProcessOffer.GetOffers());
+                await GenerateQueries(ObjectsGenerator.GetLogList());
             }
         }
 

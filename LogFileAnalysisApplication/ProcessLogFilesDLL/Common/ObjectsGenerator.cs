@@ -8,7 +8,7 @@ namespace ProcessLogFilesDLL.Common {
 
 	#region Class : GenerateObjects
 
-	public class GenerateObjects {
+	public class ObjectsGenerator {
 
 		#region Fields : Pricate
 
@@ -24,15 +24,9 @@ namespace ProcessLogFilesDLL.Common {
 
 		#endregion
 
-		#region Properties: Public
-
-		public List<Log> LogList => _logsList;
-
-		#endregion
-
 		#region Constructor : Public
 
-		public GenerateObjects() {
+		public ObjectsGenerator() {
 			_logsList = new List<Log>();
 			_tempLogsList = new List<Log>();
 		}
@@ -41,12 +35,23 @@ namespace ProcessLogFilesDLL.Common {
 
 		#region Methods : Private
 
-		private void RemovefromTempList(Log log) {
+		private void AddDbListAndRemovefromTempList(Log log) {
 			if (log.MessageId != "" && log.Request != "" &&
 				log.Response != "") {
 				_logsList.Add(log);
 				_tempLogsList.Remove(log);
 			}
+		}
+
+		private Log CreateLog(string messageId, DateTime requestDate, string request, DateTime responseDate,
+			string response) { 
+			return new Log() {
+				MessageId = messageId,
+				RequestDate = requestDate,
+				Request = string.IsNullOrEmpty(request) ? BsonDocument.Parse(Template.RegIsEmpty) : BsonDocument.Parse(request),
+				Response = string.IsNullOrEmpty(response) ? BsonDocument.Parse(Template.RegIsEmpty) : BsonDocument.Parse(response),
+				ResponseDate = responseDate
+			};
 		}
 
 		#endregion
@@ -57,13 +62,7 @@ namespace ProcessLogFilesDLL.Common {
 			string response) {
 			var log = _tempLogsList.FirstOrDefault(o => o.MessageId == messageId);
 			if (log == null) {
-				var newlog = new Log() {
-					MessageId = messageId,
-					RequestDate = requestDate,
-					Request = string.IsNullOrEmpty(request) ? BsonDocument.Parse(Template.RegIsEmpty) : BsonDocument.Parse(request),
-					Response = string.IsNullOrEmpty(response) ? BsonDocument.Parse(Template.RegIsEmpty) : BsonDocument.Parse(response),
-					ResponseDate = responseDate
-				};
+				var newlog = CreateLog(messageId, requestDate, request, responseDate, response);
 				_tempLogsList.Add(newlog);
 			} else if (!string.IsNullOrEmpty(request)) {
 				log.RequestDate = requestDate;
@@ -73,8 +72,16 @@ namespace ProcessLogFilesDLL.Common {
 				log.Response = string.IsNullOrEmpty(response) ? BsonDocument.Parse(Template.RegIsEmpty) : BsonDocument.Parse(response);
 			}
 			if (log != null) {
-				RemovefromTempList(log);
+				AddDbListAndRemovefromTempList(log);
 			}
+		}
+
+		public List<Log> GetLogList() {
+			return _logsList;
+		}
+
+		public void ClearLogList() {
+			_logsList.Clear();
 		}
 
 		#endregion

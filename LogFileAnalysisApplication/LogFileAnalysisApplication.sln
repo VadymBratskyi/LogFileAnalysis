@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorLogObjectDLL", "ErrorL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModelsDLL", "ViewModelsDLL\ViewModelsDLL.csproj", "{246063A5-CD9C-4393-B778-6535F2205097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnswerLogObjectDLL", "AnswerLogObjectDLL\AnswerLogObjectDLL.csproj", "{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnswerLogObjectDLL", "AnswerLogObjectDLL\AnswerLogObjectDLL.csproj", "{EF3FE8D4-3835-4382-92AB-37D6E6922CAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusErrorDLL", "StatusErrorDLL\StatusErrorDLL.csproj", "{2A2FFD51-E101-432A-8924-F3159DE96572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusErrorDLL", "StatusErrorDLL\StatusErrorDLL.csproj", "{2A2FFD51-E101-432A-8924-F3159DE96572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogQueryBuilderDLL", "LogQueryBuilderDLL\LogQueryBuilderDLL.csproj", "{3A325C0A-F77E-4D68-9CEC-E28FBC788852}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{2A2FFD51-E101-432A-8924-F3159DE96572}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A2FFD51-E101-432A-8924-F3159DE96572}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A2FFD51-E101-432A-8924-F3159DE96572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A325C0A-F77E-4D68-9CEC-E28FBC788852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A325C0A-F77E-4D68-9CEC-E28FBC788852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A325C0A-F77E-4D68-9CEC-E28FBC788852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A325C0A-F77E-4D68-9CEC-E28FBC788852}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

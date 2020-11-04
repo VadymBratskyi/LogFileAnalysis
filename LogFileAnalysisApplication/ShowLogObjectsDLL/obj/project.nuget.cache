@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZyTdwUYPlYZPFbaN9PEh50ryKI+LUaJ0ZL4nEgHB+oiqhqRz/fr+4n0aEAP0dyId3PT4JIjjwNkzOyMxAjd/jw==",
+  "dgSpecHash": "1E1ixn4cvtxLZUu01Jw4kMlynteBEakDh3+E8ViVdKevofJKYH6ZTh4DGaDclXvmuFmZlUKj/RwPnvSlfkDqWw==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ShowLogObjectsDLL\\ShowLogObjectsDLL.csproj",
   "expectedPackageFiles": [
@@ -8,9 +8,9 @@
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.bson\\2.11.1\\mongodb.bson.2.11.1.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver\\2.11.1\\mongodb.driver.2.11.1.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.core\\2.11.1\\mongodb.driver.core.2.11.1.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.bson\\2.11.3\\mongodb.bson.2.11.3.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver\\2.11.3\\mongodb.driver.2.11.3.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.core\\2.11.3\\mongodb.driver.core.2.11.3.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.gridfs\\2.11.1\\mongodb.driver.gridfs.2.11.1.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.libmongocrypt\\1.0.0\\mongodb.libmongocrypt.1.0.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",

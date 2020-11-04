@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+1sHgn5qbAm9DgdLOY0nb+DDwudba4yjceRdr/ZLRB5gG/lSteeEBGwfxzdAeEgqH/RSm8JsA8qDhcspOIFUSg==",
+  "dgSpecHash": "OTQjEWxaVJzmP6zkUIRNyy1nKVkE3yDNdnnS0WGTugCthSG3xwysREfLAPxKEdxM6nhH5Fo75iZiDUWO1Y3y0Q==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj",
   "expectedPackageFiles": [

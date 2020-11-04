@@ -6,10 +6,10 @@
             </mat-button-toggle>
         </div>
         <div class="action-button">
-            <button mat-stroked-button matTooltip="Очистити фільтр">
+            <button mat-stroked-button matTooltip="Очистити фільтр" (click)="onClearFilter()">
                 <mat-icon aria-hidden="false" aria-label="Clear icon">clear</mat-icon>
             </button>
-            <button mat-stroked-button  matTooltip="Примінити фільтр">
+            <button mat-stroked-button  matTooltip="Примінити фільтр" (click)="onRunFilter()">
                 <mat-icon aria-hidden="false" aria-label="Play_arrow icon">play_arrow</mat-icon>
             </button>
         </div>

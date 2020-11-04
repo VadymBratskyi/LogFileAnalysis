@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Rls7FARo9kp6FbZLKaMBUkTOmM1HAIr6n2hLdLBPFnrPAyQ59/yAT9bfzhRfONErBUULpIjZ4vacyrn2N6yXmg==",
+  "dgSpecHash": "XHGfOpZk7hcr5r1RTY8ntICzzBqF4lSUw9f6z11UvxBcS4xXXOEeMKtlSvIHn7jcM9ovuwI5aXMN++a3ysZgEg==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysDALNUnitTest\\LogFileAnalysDALNUnitTest.csproj",
   "expectedPackageFiles": [
