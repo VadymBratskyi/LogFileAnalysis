@@ -51,7 +51,7 @@ namespace ProcessLogFilesDLL {
 
 		private async Task<bool> CheckSessionFiles(IFormFile file, ObjectId sessionId) {
 			var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileName", file.FileName);
-			var existFile = await _dbService.ProcessSessionFiles.Get(queryBuilder);
+			var existFile = await _dbService.ProcessSessionFiles.GetAsync(queryBuilder);
 			var sessionFile = existFile.FirstOrDefault();
 			if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.processedFile) {
 				throw new ExistFileException(string.Format(ExistLogFile, file.FileName));
@@ -91,8 +91,8 @@ namespace ProcessLogFilesDLL {
 				foreach (var item in fileNames) {
 					var gridFsFiles = await _dbService.GetLogFilesInfoByName(item);
 					foreach (var fsFiles in gridFsFiles) {
-						var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq("FileId", fsFiles.Id);
-						var processSessionFiles = await _dbService.ProcessSessionFiles.Get(queryBuilder);
+						var queryBuilder = Builders<ProcessSessionFile>.Filter.Eq(file => file.FileId, fsFiles.Id);
+						var processSessionFiles = await _dbService.ProcessSessionFiles.GetAsync(queryBuilder);
 						foreach (var procSessFile in processSessionFiles) {
 							await _dbService.RemoveLogFile(procSessFile.FileId);
 							if (procSessFile.StatusFile == StatusSessionFile.newFile) {

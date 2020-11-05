@@ -53,12 +53,12 @@ namespace ErrorLogObjectDLL.Process
 		#region Methods: Public
 
 		public async Task<IEnumerable<UnKnownError>> GetUnKnownErrors(int skip, int take) {
-			var unKnownErrors = await _dbService.UnKnownErrors.Get(skip, take);
+			var unKnownErrors = await _dbService.UnKnownErrors.GetAsync(skip, take);
 			return unKnownErrors;
 		}
 
 		public async Task<IEnumerable<KnownError>> GetKnownErrors(int skip, int take) {
-			var knownErrors = await _dbService.KnownErrors.Get(skip, take);
+			var knownErrors = await _dbService.KnownErrors.GetAsync(skip, take);
 			return knownErrors;
 		}
 

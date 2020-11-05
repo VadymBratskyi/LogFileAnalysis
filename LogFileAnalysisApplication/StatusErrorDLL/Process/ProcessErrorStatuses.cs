@@ -151,10 +151,10 @@ namespace ErrorLogObjectDLL.Process {
 		#region Methods: Public
 
 		public async Task<IEnumerable<StatusError>> GetErrorStatuses() {
-			var statusErrors = await _dbService.StatusErrors.Get();
+			var statusErrors = await _dbService.StatusErrors.GetAsync();
 			if (!statusErrors.Any()) {
 				await InitDefaultErrorStatus();
-				statusErrors = await _dbService.StatusErrors.Get();
+				statusErrors = await _dbService.StatusErrors.GetAsync();
 			}
 			return statusErrors;
 		}

@@ -3,7 +3,6 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csprojAssemblyReference.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.AssemblyInfoInputs.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.AssemblyInfo.cs
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csproj.CoreCompileInputs.cache
@@ -23,3 +22,4 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\An
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csprojAssemblyReference.cache

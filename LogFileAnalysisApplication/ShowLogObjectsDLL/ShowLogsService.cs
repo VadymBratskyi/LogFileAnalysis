@@ -34,7 +34,7 @@ namespace ShowLogObjectsDLL {
 		}
 
 		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(int skip, int take) {
-			var logs = await _dbService.Logs.Get(skip, take);
+			var logs = await _dbService.Logs.GetAsync(skip, take);
 			var dataSource = new DataSourceGrid<LogDTO>();
 			dataSource.Data = logs.Select(o => new LogDTO() {
 				MessageId = o.MessageId,

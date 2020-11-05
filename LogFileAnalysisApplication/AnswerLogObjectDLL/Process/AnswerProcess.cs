@@ -36,7 +36,7 @@ namespace AnswerLogObjectDLL.Process
 
 		public async Task<IEnumerable<Answer>> GetAnswers(int skip, int take)
 		{
-			var answers = await _dbService.Answers.Get(skip, take);
+			var answers = await _dbService.Answers.GetAsync(skip, take);
 			return answers;
 		}
 

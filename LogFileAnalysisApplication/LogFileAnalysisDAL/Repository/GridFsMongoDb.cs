@@ -41,7 +41,6 @@ namespace LogFileAnalysisDAL.Repository {
 		}
 
 		public async Task RemoveLogFile(string fileName) {
-			var builder = new FilterDefinitionBuilder<GridFSFileInfo>();
 			var filter = Builders<GridFSFileInfo>.Filter.Eq<string>(info => info.Filename, fileName);
 			var fileInfos = await _gridFS.FindAsync(filter);
 			foreach (var item in await fileInfos.ToListAsync()) {

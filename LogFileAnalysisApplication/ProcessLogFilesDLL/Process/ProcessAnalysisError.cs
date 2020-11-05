@@ -32,10 +32,10 @@ namespace ProcessLogFilesDLL.Process {
 
 		public async Task AnalysisErrorMessage(IEnumerable<Error> errors) {
 			foreach (var error in errors) {
-				var unQueryBuilder = Builders<UnKnownError>.Filter.Eq("Message", error.Message);
-				var unKnownErrors = await _dbService.UnKnownErrors.Get(unQueryBuilder);
-				var queryBuilder = Builders<KnownError>.Filter.Eq("Message", error.Message);
-				var knownErrors = await _dbService.KnownErrors.Get(queryBuilder);
+				var unQueryBuilder = Builders<UnKnownError>.Filter.Eq(error => error.Message, error.Message);
+				var unKnownErrors = await _dbService.UnKnownErrors.GetAsync(unQueryBuilder);
+				var queryBuilder = Builders<KnownError>.Filter.Eq(error => error.Message, error.Message);
+				var knownErrors = await _dbService.KnownErrors.GetAsync(queryBuilder);
 				if (!unKnownErrors.Any() && !knownErrors.Any()) {
 					var unError = new UnKnownError() {
 						MessageId = error.MessageId,
