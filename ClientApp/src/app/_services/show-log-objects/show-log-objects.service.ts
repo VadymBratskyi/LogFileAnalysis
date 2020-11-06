@@ -14,9 +14,9 @@ export class ShowLogObjectsService {
     private http: HttpClient
   ) { }
 
-  public getTreeData(): Observable<any> {
+  public getQueryDataConfig(): Observable<any> {
     
-    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetTreeData;         
+    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetQueryDataConfig;         
 
     return this.http.get(url)
     .pipe(

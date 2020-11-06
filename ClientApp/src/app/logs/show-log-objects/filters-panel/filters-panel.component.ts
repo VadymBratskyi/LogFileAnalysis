@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ShowLogObjectsService } from '@log_services';
 import { QueryBuilderConfig } from 'angular2-query-builder';
-import { ReplaySubject } from 'rxjs';
+import { strict } from 'assert';
+import { config, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -10,21 +11,22 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./filters-panel.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class FiltersPanelComponent {
+export class FiltersPanelComponent implements OnInit {
 
   public isQueryBuilderCardExpanded: boolean;
 
   public destroyed$: ReplaySubject<boolean> = new ReplaySubject<boolean>(); 
 
-  config: QueryBuilderConfig = {
+  public loadedConfig: boolean;
+  public config: QueryBuilderConfig = {
     fields: {
-      messageId: {name: 'MessageId', type: 'string'},     
-      requestDate: {name: 'RequestDate', type: 'date', operators: ['=', '<=', '>'],
-        defaultValue: (() => new Date())
-      },
-      responseDate: {name: 'ResponseDate', type: 'date', operators: ['=', '<=', '>'],
-        defaultValue: (() => new Date())
-      }      
+      // messageId: {name: 'MessageId', type: 'string'},     
+      // requestDate: {name: 'RequestDate', type: 'date', operators: ['=', '<=', '>'],
+      //   defaultValue: (() => new Date())
+      // },
+      // responseDate: {name: 'ResponseDate', type: 'date', operators: ['=', '<=', '>'],
+      //   defaultValue: (() => new Date())
+      // }      
     }
   }
 
@@ -32,12 +34,44 @@ export class FiltersPanelComponent {
     private showLogObjectsService: ShowLogObjectsService
   ) { }
 
+  ngOnInit() {
+    this.onLoadData();
+  }
+
+  private getType(query: any) {
+    switch(query.logQueryType) {
+      case 1:
+        return 'string';
+      case 2:
+        return 'number';
+      case 3:
+        return 'boolean'
+      case 4:
+        return 'date';
+      default:
+        return 'string';
+    }
+  }
+
+  private createGonfig(query: any) {
+    return {name: query.key, type: this.getType(query)};
+  }
+
+  private buildConfig(queryconfig: any) {
+    var conf = {};
+    queryconfig.fields.forEach(element => {
+      conf[element.key.toLocaleLowerCase()] = this.createGonfig(element);
+    });
+    return conf;
+  }
+
   onLoadData() {
-    this.showLogObjectsService.getTreeData()
+    this.loadedConfig = false;
+    this.showLogObjectsService.getQueryDataConfig()
     .pipe(takeUntil(this.destroyed$))
-    .subscribe(dataTree => {
-      console.log(dataTree);
-      alert("success");
+    .subscribe(queryconfig => {
+      this.loadedConfig = true;
+      this.config.fields  = this.buildConfig(queryconfig);
     });
   }
 

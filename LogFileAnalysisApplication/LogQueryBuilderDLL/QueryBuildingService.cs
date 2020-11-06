@@ -1,5 +1,6 @@
 ﻿using LogFileAnalysisDAL;
 using LogFileAnalysisDAL.Models;
+using LogQueryBuilderDLL.Models;
 using LogQueryBuilderDLL.Process;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -11,7 +12,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 namespace LogQueryBuilderDLL {
-	public class ProcessQueryBuilding {
+	public class QueryBuildingService {
 
 		private readonly DbContextService _dbService;
 		private List<LogQuery> _logQueries;
@@ -19,7 +20,7 @@ namespace LogQueryBuilderDLL {
 
 		private QueryGenerator QueryGenerator => _queryGenerator ?? (_queryGenerator = new QueryGenerator());
 
-		public ProcessQueryBuilding(DbContextService dbService) {
+		public QueryBuildingService(DbContextService dbService) {
 			_logQueries = new List<LogQuery>();
 			_dbService = dbService;
 		}
@@ -56,6 +57,15 @@ namespace LogQueryBuilderDLL {
 			}
 		}
 
+		public LogQueryType GetCsharptType(Type propertyType) {
+			 switch (propertyType.Name) {
+				case nameof(DateTime):
+					return LogQueryType.date;
+				default:
+					return LogQueryType.text;
+			}
+		}
+
 		private void GetLogQueriesByLogProperties(Log log) {
 			var properties = GetLogProperties(log);
 			foreach (var property in properties) {
@@ -63,6 +73,7 @@ namespace LogQueryBuilderDLL {
 				if (!QueryGenerator.GetIsExistQueryByName(_logQueries, property.Name) &&
 					!GetIsBsonDocumentType(property.PropertyType)) {
 					var query = new LogQuery(property.Name);
+					query.LogQueryType = GetCsharptType(property.PropertyType);
 					_logQueries.Add(query);
 				}
 				else if (GetIsBsonDocumentType(property.PropertyType)) {
@@ -87,9 +98,11 @@ namespace LogQueryBuilderDLL {
 			await CreateOrUpdateQueryItem();
 		}
 
-		public void GetQueryBuilderConfig() {
-			
-
+		public async Task<QueryBuilderConfig> GetQueryBuilderConfig() {
+			var config = new QueryBuilderConfig();
+			var queries = await _dbService.LogQueries.GetAsync();
+			config.Fields = queries.ToList();
+			return config;
 		}
 
 	}

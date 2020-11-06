@@ -27,6 +27,7 @@
           "AnswerLogObjectDLL": "1.0.0",
           "ErrorLogObjectDLL": "1.0.0",
           "LogFileAnalysisDAL": "1.0.0",
+          "LogQueryBuilderDLL": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "ProcessLogFilesDLL": "1.0.0",
           "ShowLogObjectsDLL": "1.0.0",

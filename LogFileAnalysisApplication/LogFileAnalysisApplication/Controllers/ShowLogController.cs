@@ -1,4 +1,6 @@
 ﻿using LogFileAnalysisApplication.Common;
+using LogQueryBuilderDLL;
+using LogQueryBuilderDLL.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,14 +19,17 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		private readonly ILogger<ShowLogController> _logger;
 		private readonly ShowLogsService _showLogService;
+		private readonly QueryBuildingService _queryBuildingService;
 
 		#endregion
 
 		#region Constructor: Public
 
-		public ShowLogController(ILogger<ShowLogController> logger, ShowLogsService showLogsService) {
+		public ShowLogController(ILogger<ShowLogController> logger, ShowLogsService showLogsService,
+			QueryBuildingService queryBuildingService) {
 			_logger = logger;
 			_showLogService = showLogsService;
+			_queryBuildingService = queryBuildingService;
 		}
 
 		#endregion
@@ -32,9 +37,8 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Methods: Public
 
 		[HttpGet("[action]")]
-		public string GetTreeData() {
-			_showLogService.LoadDataForTree();
-			return "succes";
+		public async Task<QueryBuilderConfig> GetQueryDataConfig() {
+			return await _queryBuildingService.GetQueryBuilderConfig();
 		}
 
 		[HttpPost("[action]")]

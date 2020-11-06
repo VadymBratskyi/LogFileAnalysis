@@ -29,10 +29,6 @@ namespace ShowLogObjectsDLL {
 
 		#region Fields: Public
 
-		public void LoadDataForTree() {
-			var data = _dbService.Logs.Get();
-		}
-
 		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(int skip, int take) {
 			var logs = await _dbService.Logs.GetAsync(skip, take);
 			var dataSource = new DataSourceGrid<LogDTO>();

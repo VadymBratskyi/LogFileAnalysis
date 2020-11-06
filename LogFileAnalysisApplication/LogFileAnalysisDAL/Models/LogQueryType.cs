@@ -1,11 +1,9 @@
 ﻿namespace LogFileAnalysisDAL.Models {
 	public enum LogQueryType {
-
-		text = 0,
-		number = 1,
-		boolean = 2,
-		datetime = 3,
-		select = 4
-
+		none = 0,
+		text = 1,
+		number = 2,
+		boolean = 3,
+		date = 4,
 	}
 }

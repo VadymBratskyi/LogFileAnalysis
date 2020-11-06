@@ -166,6 +166,9 @@
               "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj": {
                 "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj"
               },
+              "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogQueryBuilderDLL\\LogQueryBuilderDLL.csproj": {
+                "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogQueryBuilderDLL\\LogQueryBuilderDLL.csproj"
+              },
               "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj": {
                 "projectPath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\ProcessLogFilesDLL\\ProcessLogFilesDLL.csproj"
               },

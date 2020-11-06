@@ -28,7 +28,7 @@ namespace ProcessLogFilesDLL {
         private ObjectsGenerator _objectsGenerator;
         private ProcessLog _processLog; 
         private ProcessOffer _processOffer;
-        private ProcessQueryBuilding _proceQueryBuilding;
+        private QueryBuildingService _proceQueryBuilding;
         private ProcessAnalysisError _processAnalysisError;
 
         #endregion
@@ -38,7 +38,7 @@ namespace ProcessLogFilesDLL {
         private ObjectsGenerator ObjectsGenerator => _objectsGenerator ?? (_objectsGenerator = new ObjectsGenerator());
         private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(ObjectsGenerator));
         private ProcessOffer ProcessOffer => _processOffer ?? (_processOffer = new ProcessOffer());
-        private ProcessQueryBuilding ProcessQueryBuilding => _proceQueryBuilding ?? (_proceQueryBuilding = new ProcessQueryBuilding(_dbService));
+        private QueryBuildingService ProcessQueryBuilding => _proceQueryBuilding ?? (_proceQueryBuilding = new QueryBuildingService(_dbService));
 
         private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService, ProcessOffer));
 

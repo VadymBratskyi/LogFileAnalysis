@@ -4,7 +4,6 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace LogQueryBuilderDLL.Process {
 	public class QueryGenerator {
@@ -48,6 +47,23 @@ namespace LogQueryBuilderDLL.Process {
 			}
 		}
 
+
+		private LogQueryType GetJsType(KeyValuePair<string, JToken> token) {
+			switch (token.Value.Type) {
+				case JTokenType.String:
+					return LogQueryType.text;
+				case JTokenType.Date:
+					return LogQueryType.date;
+				case JTokenType.Integer:
+					return LogQueryType.number;
+				case JTokenType.Boolean:
+					return LogQueryType.boolean;
+				default:
+					return LogQueryType.none;
+
+			}
+		}
+
 		private void ActionAddLogQuery(List<LogQuery> logQueries, KeyValuePair<string, JToken> item) {
 			if (GetIsExistQueryByName(logQueries, item.Key)) {
 				logQueries.Add(CreateLogQuery(item));
@@ -56,6 +72,7 @@ namespace LogQueryBuilderDLL.Process {
 
 		private LogQuery CreateLogQuery(KeyValuePair<string, JToken> token) {
 			var logQuery = new LogQuery(token.Key);
+			var tp = GetJsType(token);
 			logQuery.ObjectType = GetJObjectType(token);
 			AnalysisLogQuery(logQuery, token, ActionAddLogQuery);
 			return logQuery;
