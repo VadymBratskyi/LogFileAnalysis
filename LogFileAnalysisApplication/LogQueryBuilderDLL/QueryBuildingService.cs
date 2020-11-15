@@ -91,6 +91,26 @@ namespace LogQueryBuilderDLL {
 			}
 		}
 
+		private IEnumerable<QueryConfig> CreateDefaultQueryConfigs() {
+			return new List<QueryConfig>() {
+				new QueryConfig() {
+					Key = "RequestDate",
+					Name = "RequestDate",
+					Type = LogQueryType.date
+				},
+				new QueryConfig() {
+					Key = "ResponseDate",
+					Name = "ResponseDate",
+					Type = LogQueryType.date
+				},
+				new QueryConfig() {
+					Key = "MessageId",
+					Name = "MessageId",
+					Type = LogQueryType.text
+				}
+			};
+		}
+
 		public async Task AnalysisLogObjectToQuery(List<Log> logList) {
 			foreach (var log in logList) {
 				GetLogQueriesByLogProperties(log);
@@ -98,11 +118,24 @@ namespace LogQueryBuilderDLL {
 			await CreateOrUpdateQueryItem();
 		}
 
-		public async Task<QueryBuilderConfig> GetQueryBuilderConfig() {
+		public async Task<QueryBuilderConfig> GetAccesFieldsForQueryBuilder() {
 			var config = new QueryBuilderConfig();
 			var queries = await _dbService.LogQueries.GetAsync();
 			config.Fields = queries.ToList();
 			return config;
+		}
+
+		public async Task<IEnumerable<QueryConfig>> GetConfig() {
+			var config = await _dbService.QueryConfigs.GetAsync();
+			if (!config.Any()) {
+				config = CreateDefaultQueryConfigs();
+				await _dbService.QueryConfigs.Create(config);
+			}
+			return config;
+		}
+
+		public async Task AddNewItem() { 
+		
 		}
 
 	}

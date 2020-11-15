@@ -12,6 +12,9 @@
             <button mat-stroked-button  matTooltip="Примінити фільтр" (click)="onRunFilter()">
                 <mat-icon aria-hidden="false" aria-label="Play_arrow icon">play_arrow</mat-icon>
             </button>
+            <button mat-stroked-button  matTooltip="Додати новий фільтр" (click)="onAddFilter()">
+                <mat-icon aria-hidden="false" aria-label="Play_arrow icon">add</mat-icon>
+            </button>
         </div>
     </mat-card-header>
     <mat-card-content [style.display]="isQueryBuilderCardExpanded ? 'block' : 'none'">

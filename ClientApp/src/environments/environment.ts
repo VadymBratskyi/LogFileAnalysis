@@ -18,7 +18,8 @@ export const environment = {
   methodRemoveLogFiles: 'RemoveLogFiles',
   methodStartProcessLogFile: 'StartProcessLogFile',
 
-  methodGetQueryDataConfig: 'GetQueryDataConfig',
+  methodGetAccessFieldsForQuery: 'GetAccessFieldsForQuery',
+  methodGetQueryBuilderConfig: 'GetQueryBuilderConfig',
   methodGetAllLogsData: 'GetAllLogsData',
 
   /**Error */

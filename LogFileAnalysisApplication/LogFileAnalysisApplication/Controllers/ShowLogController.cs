@@ -1,10 +1,12 @@
 ﻿using LogFileAnalysisApplication.Common;
+using LogFileAnalysisDAL.Models;
 using LogQueryBuilderDLL;
 using LogQueryBuilderDLL.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowLogObjectsDLL;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -37,8 +39,18 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Methods: Public
 
 		[HttpGet("[action]")]
-		public async Task<QueryBuilderConfig> GetQueryDataConfig() {
-			return await _queryBuildingService.GetQueryBuilderConfig();
+		public async Task<QueryBuilderConfig> GetAccessFieldsForQuery() {
+			return await _queryBuildingService.GetAccesFieldsForQueryBuilder();
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IEnumerable<QueryConfig>> GetQueryBuilderConfig() {
+			return await _queryBuildingService.GetConfig();
+		}
+		
+		[HttpPost("[action]")]
+		public async Task AddNewItemToQueryBuilder() { 
+		
 		}
 
 		[HttpPost("[action]")]

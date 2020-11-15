@@ -13,9 +13,9 @@ export class LogQueryBuilderComponent {
   allowRuleset=true; 
   allowCollapse=true;
 
-  query = {
-    condition: 'and',
-    rules: [ ]
-  }
+  // query = {
+  //   condition: 'and',
+  //   rules: [ ]
+  // }
 
 }

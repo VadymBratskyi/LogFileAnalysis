@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { QueryConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
-import { QueryBuilderConfig } from 'angular2-query-builder';
+import { QueryBuilderConfig, Rule, RuleSet } from 'angular2-query-builder';
 import { strict } from 'assert';
 import { config, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,16 +19,19 @@ export class FiltersPanelComponent implements OnInit {
   public destroyed$: ReplaySubject<boolean> = new ReplaySubject<boolean>(); 
 
   public loadedConfig: boolean;
+
   public config: QueryBuilderConfig = {
     fields: {
-      // messageId: {name: 'MessageId', type: 'string'},     
-      // requestDate: {name: 'RequestDate', type: 'date', operators: ['=', '<=', '>'],
-      //   defaultValue: (() => new Date())
-      // },
-      // responseDate: {name: 'ResponseDate', type: 'date', operators: ['=', '<=', '>'],
-      //   defaultValue: (() => new Date())
-      // }      
-    }
+      age: {name: 'Age', type: 'number'},
+      gender: {
+        name: 'Gender',
+        type: 'category',
+        options: [
+          {name: 'Male', value: 'm'},
+          {name: 'Female', value: 'f'}
+        ]
+      }    
+    },
   }
 
   constructor(
@@ -38,8 +42,8 @@ export class FiltersPanelComponent implements OnInit {
     this.onLoadData();
   }
 
-  private getType(query: any) {
-    switch(query.logQueryType) {
+  private getType(query: QueryConfig) {
+    switch(query.type) {
       case 1:
         return 'string';
       case 2:
@@ -57,9 +61,9 @@ export class FiltersPanelComponent implements OnInit {
     return {name: query.key, type: this.getType(query)};
   }
 
-  private buildConfig(queryconfig: any) {
+  private buildConfig(queryconfigs: QueryConfig[]) {
     var conf = {};
-    queryconfig.fields.forEach(element => {
+    queryconfigs.forEach(element => {
       conf[element.key.toLocaleLowerCase()] = this.createGonfig(element);
     });
     return conf;
@@ -76,48 +80,19 @@ export class FiltersPanelComponent implements OnInit {
   }
 
   onRunFilter() {
-
+    
   }
 
   onClearFilter() {
     
   }
 
+  onAddFilter() {
+
+  }
+
   ngOnDestroy()  {
     this.destroyed$.next(true);
     this.destroyed$.complete();
   }
-
-
-
-  // config: QueryBuilderConfig = {
-  //   fields: {
-  //     age: {name: 'Age', type: 'number'},
-  //     gender: {
-  //       name: 'Gender',
-  //       type: 'category',
-  //       options: [
-  //         {name: 'Male', value: 'm'},
-  //         {name: 'Female', value: 'f'}
-  //       ]
-  //     },
-  //     name: {name: 'Name', type: 'string'},
-  //     notes: {name: 'Notes', type: 'textarea', operators: ['=', '!=']},
-  //     educated: {name: 'College Degree?', type: 'boolean'},
-  //     birthday: {name: 'Birthday', type: 'date', operators: ['=', '<=', '>'],
-  //       defaultValue: (() => new Date())
-  //     },
-  //     school: {name: 'School', type: 'string', nullable: true},
-  //     occupation: {
-  //       name: 'Occupation',
-  //       type: 'multiselect',
-  //       options: [
-  //         {name: 'Student', value: 'student'},
-  //         {name: 'Teacher', value: 'teacher'},
-  //         {name: 'Unemployed', value: 'unemployed'},
-  //         {name: 'Scientist', value: 'scientist'}
-  //       ]
-  //     }
-  //   }
-  // }
 }

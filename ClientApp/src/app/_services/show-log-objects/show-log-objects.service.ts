@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 import { map, catchError } from 'rxjs/operators';
-import { FilterParameters, LogTableState, LogsDataGrid } from '@log_models';
+import { FilterParameters, LogTableState, LogsDataGrid, QueryConfig } from '@log_models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +14,17 @@ export class ShowLogObjectsService {
     private http: HttpClient
   ) { }
 
-  public getQueryDataConfig(): Observable<any> {
+  public getQueryDataConfig(): Observable<QueryConfig[]> {
     
-    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetQueryDataConfig;         
+    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetQueryBuilderConfig;         
 
     return this.http.get(url)
     .pipe(
-        map((response: any) => {
+        map((response: QueryConfig[]) => {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getTreeData: ', error);       
+        console.error('getQueryDataConfig: ', error);       
         return Observable.throw(error);
       })
     );
