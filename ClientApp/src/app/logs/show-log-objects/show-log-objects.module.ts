@@ -18,12 +18,14 @@ import { LogObjectsTableComponent } from './log-objects-table/log-objects-table.
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewQueryDialogComponent } from './new-query-dialog/new-query-dialog.component';
 
 @NgModule({
   declarations: [
     ShowLogObjectsComponent, 
     FiltersPanelComponent,     
-    LogObjectsTableComponent
+    LogObjectsTableComponent, NewQueryDialogComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTooltipModule,
     MatTreeModule,
     MatCheckboxModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,

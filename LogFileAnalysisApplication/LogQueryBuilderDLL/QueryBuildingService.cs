@@ -121,7 +121,7 @@ namespace LogQueryBuilderDLL {
 		public async Task<QueryBuilderConfig> GetAccesFieldsForQueryBuilder() {
 			var config = new QueryBuilderConfig();
 			var queries = await _dbService.LogQueries.GetAsync();
-			config.Fields = queries.ToList();
+			config.Fields = queries.Where(model => model.Key != "Id").ToList();
 			return config;
 		}
 

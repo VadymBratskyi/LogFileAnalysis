@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { QueryConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { QueryBuilderConfig, Rule, RuleSet } from 'angular2-query-builder';
 import { strict } from 'assert';
 import { config, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NewQueryDialogComponent } from '../new-query-dialog/new-query-dialog.component';
 
 @Component({
   selector: 'app-filters-panel',
@@ -35,6 +37,7 @@ export class FiltersPanelComponent implements OnInit {
   }
 
   constructor(
+    private dialog: MatDialog,
     private showLogObjectsService: ShowLogObjectsService
   ) { }
 
@@ -87,8 +90,14 @@ export class FiltersPanelComponent implements OnInit {
     
   }
 
-  onAddFilter() {
-
+  onAddFilter() {   
+      const dialogRef = this.dialog.open(NewQueryDialogComponent, {
+        data: {name: "Test Name"}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed', result);
+      });
   }
 
   ngOnDestroy()  {
