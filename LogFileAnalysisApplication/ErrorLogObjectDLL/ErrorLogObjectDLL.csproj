@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
-    <ProjectReference Include="..\ViewModelsDLL\ViewModelsDLL.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Process\" />
+    <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
+    <ProjectReference Include="..\ViewModelsDLL\ViewModelsDLL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,3 +6,6 @@ export * from './log-tree';
 
 /**error-stauses-tree*/
 export * from './error-stauses-tree';
+
+/**query-builder*/
+export * from './query-builder';

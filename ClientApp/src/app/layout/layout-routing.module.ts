@@ -21,8 +21,8 @@ const routes: Routes = [
         loadChildren: () => import('../logs/show-log-objects/show-log-objects.module').then(s => s.ShowLogObjectsModule)
       },
       {
-        path: "analysis-log-objects",
-        loadChildren: () => import('../logs/analysis-log-objects/analysis-log-objects.module').then(a => a.AnalysisLogObjectsModule)
+        path: "analysis-errors",
+        loadChildren: () => import('../logs/analysis-errors/analysis-errors.module').then(a => a.AnalysisErrorsModule)
       },
       {
         path: '',

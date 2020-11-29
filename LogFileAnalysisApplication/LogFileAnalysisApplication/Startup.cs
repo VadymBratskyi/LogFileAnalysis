@@ -1,6 +1,7 @@
 using AnswerLogObjectDLL;
 using ErrorLogObjectDLL;
 using LogFileAnalysisDAL;
+using LogQueryBuilderDLL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,7 @@ namespace LogFileAnalysisApplication {
 			services.AddTransient<ErrorService>();
 			services.AddTransient<StatusService>();
 			services.AddTransient<AnswerServices>();
+			services.AddTransient<QueryBuildingService>();
 
 			services.AddSignalR();
 			services.AddCors(options =>

@@ -1,5 +1,6 @@
 ﻿using LogFileAnalysisDAL;
 using LogFileAnalysisDAL.Models;
+using LogQueryBuilderDLL;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
@@ -23,35 +24,41 @@ namespace ProcessLogFilesDLL {
         private readonly DbContextService _dbService;
         private readonly ObjectId _sessionId;
         private readonly string _fileName;
-        private readonly GenerateObjects _generateObjects;
         private readonly ProcessLogNotifier _processLogNotifier;
+        private ObjectsGenerator _objectsGenerator;
         private ProcessLog _processLog; 
-        private ProcessAnalysisError _processAnalysisError; 
+        private ProcessOffer _processOffer;
+        private QueryBuildingService _proceQueryBuilding;
+        private ProcessAnalysisError _processAnalysisError;
 
         #endregion
 
         #region Properties : Private
 
-        private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(_generateObjects));
+        private ObjectsGenerator ObjectsGenerator => _objectsGenerator ?? (_objectsGenerator = new ObjectsGenerator());
+        private ProcessLog ProcessLog => _processLog ?? (_processLog = new ProcessLog(ObjectsGenerator));
+        private ProcessOffer ProcessOffer => _processOffer ?? (_processOffer = new ProcessOffer());
+        private QueryBuildingService ProcessQueryBuilding => _proceQueryBuilding ?? (_proceQueryBuilding = new QueryBuildingService(_dbService));
 
-        private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService));
+        private ProcessAnalysisError ProcessAnalysisError => _processAnalysisError ?? (_processAnalysisError = new ProcessAnalysisError(_dbService, ProcessOffer));
 
         #endregion
 
         #region Constructor : Public
 
-        public ProcessLogFile(DbContextService dbService, string fileName, ProcessLogNotifier logNotifier) {
+        public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier) {
             _dbService = dbService;
             _processLogNotifier = logNotifier;
-            _fileName = fileName;
-            _generateObjects = new GenerateObjects();
         }
 
-        public ProcessLogFile(DbContextService dbService, ObjectId sessionId, ProcessLogNotifier logNotifier) {
-            _dbService = dbService;
-            _processLogNotifier = logNotifier;
+        public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier, string fileName) : 
+                this(dbService, logNotifier) {
+            _fileName = fileName;
+        }
+
+        public ProcessLogFile(DbContextService dbService, ProcessLogNotifier logNotifier, ObjectId sessionId): 
+                this(dbService, logNotifier) {
             _sessionId = sessionId;
-            _generateObjects = new GenerateObjects();
         }
 
         #endregion
@@ -71,20 +78,20 @@ namespace ProcessLogFilesDLL {
             if (_sessionId == ObjectId.Empty) {
                 throw new ArgumentNullException("GetSessionFiles SessionId is null!!!");
             }
-            var filter1 = Builders<ProcessSessionFile>.Filter.Eq("ProcessSessionId", sessionId);
-            var filter2 = Builders<ProcessSessionFile>.Filter.Eq("StatusFile", StatusSessionFile.newFile);
+            var filter1 = Builders<ProcessSessionFile>.Filter.Eq(file => file.ProcessSessionId, sessionId);
+            var filter2 = Builders<ProcessSessionFile>.Filter.Eq(file => file.StatusFile, StatusSessionFile.newFile);
             var queryBuilder = Builders<ProcessSessionFile>.Filter.And(filter1, filter2);
-            return await _dbService.ProcessSessionFiles.Get(queryBuilder);
+            return await _dbService.ProcessSessionFiles.GetAsync(queryBuilder);
         }
 
         private async Task<IEnumerable<ProcessSessionFile>> GetSessionSinglFile(string fileName) {
             if (string.IsNullOrEmpty(fileName)) {
                 throw new ArgumentNullException("GetSessionSinglFile fileName is null!!!");
             }
-            var filter1 = Builders<ProcessSessionFile>.Filter.Eq("FileName", fileName);
-            var filter2 = Builders<ProcessSessionFile>.Filter.Eq("StatusFile", StatusSessionFile.newFile);
+            var filter1 = Builders<ProcessSessionFile>.Filter.Eq(file => file.FileName, fileName);
+            var filter2 = Builders<ProcessSessionFile>.Filter.Eq(file => file.StatusFile, StatusSessionFile.newFile);
             var queryBuilder = Builders<ProcessSessionFile>.Filter.And(filter1, filter2);
-            return await _dbService.ProcessSessionFiles.Get(queryBuilder);
+            return await _dbService.ProcessSessionFiles.GetAsync(queryBuilder);
         }
 
         private async Task SaveLogObject(List<Log> logs, string fileName) {
@@ -97,7 +104,7 @@ namespace ProcessLogFilesDLL {
         private async Task SaveErrorLogObject(IEnumerable<Error> errors) {
             if (errors.Any()) {
                 await _dbService.Errors.Create(errors);
-                ProcessAnalysisError.AnalysisErrorMessage(errors);
+                await ProcessAnalysisError.AnalysisErrorMessage(errors);
             }
         }
 
@@ -109,12 +116,18 @@ namespace ProcessLogFilesDLL {
             await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
         }
 
+        private async Task GenerateQueries(List<Log> logs) {
+           await ProcessQueryBuilding.AnalysisLogObjectToQuery(logs);
+        }
+
         private async Task ProcessSessionFile(IEnumerable<ProcessSessionFile> sessionFiles) {
             foreach (var item in sessionFiles) {
                 var fileInfo = await ProcessFile(item.FileId);
-                await SaveLogObject(_generateObjects.LogList, fileInfo.Filename);
+                await SaveLogObject(ObjectsGenerator.GetLogList(), fileInfo.Filename);
                 await SaveErrorLogObject(ProcessLog.GetErrorList());
                 await UpdateSessionFiles(item);
+                await _processLogNotifier.NotifyOffers(ProcessOffer.GetOffers());
+                await GenerateQueries(ObjectsGenerator.GetLogList());
             }
         }
 

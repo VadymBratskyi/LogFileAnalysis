@@ -18,10 +18,10 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\b
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csprojAssemblyReference.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.AssemblyInfoInputs.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.AssemblyInfo.cs
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csproj.CoreCompileInputs.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csproj.CopyComplete
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csproj.CoreCompileInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ErrorLogObjectDLL\obj\Debug\netcoreapp3.1\ErrorLogObjectDLL.csprojAssemblyReference.cache

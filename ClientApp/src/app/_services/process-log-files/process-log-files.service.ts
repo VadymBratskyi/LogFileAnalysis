@@ -4,8 +4,7 @@ import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { environment } from 'environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { FileProcess, LogNotify } from '@log_models';
-
+import { FileProcess, LogNotify, OfferNotify } from '@log_models';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +15,8 @@ export class ProcessLogFilesService {
   private _hubConnection: HubConnection; 
 
   onProcessNotification = new EventEmitter<LogNotify>();
-  processNotifications: LogNotify[];
-  
+  onOfferNotification = new EventEmitter<OfferNotify>();
+
   constructor(
     private http: HttpClient
   ) {  }
@@ -51,7 +50,8 @@ export class ProcessLogFilesService {
   
   startHubConnection() {
     this.createConnection();
-    this.registerOnServerEvents(); 
+    this.registerOnLogServerEvents();
+    this.registerOnOfferServerEvents(); 
     this.startConnection(); 
     this.processingFiles = [];
   }
@@ -67,11 +67,17 @@ export class ProcessLogFilesService {
       .build();  
   }  
   
-  private registerOnServerEvents(): void {  
+  private registerOnLogServerEvents(): void {  
     this._hubConnection.on('ProcessNotification', (data: any) => {  
       this.onProcessNotification.emit(data);  
     });  
-  } 
+  }
+
+  private registerOnOfferServerEvents(): void {  
+    this._hubConnection.on('OfferNotification', (data: any) => {  
+      this.onOfferNotification.emit(data);  
+    });  
+  }  
 
   private startConnection(): void {  
     this._hubConnection  
@@ -85,53 +91,4 @@ export class ProcessLogFilesService {
       });  
   }  
   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  public postTestObjects(): Observable<any> {
-    
-    const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodPostTestValue;
-
-    var body = {
-      value: "Angular "
-    };
-         
-    return this.http.post(url, body)
-    .pipe(
-        map((response: any) => {        
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getTestObjects: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
-
-  public getTestObjects(): Observable<any> {
-    
-    const url = environment.localhostApp + environment.urlProcessLogApi + environment.methodGetTestValue;         
-
-    return this.http.get(url)
-    .pipe(
-        map((response: any) => {
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getTestObjects: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
-
 }

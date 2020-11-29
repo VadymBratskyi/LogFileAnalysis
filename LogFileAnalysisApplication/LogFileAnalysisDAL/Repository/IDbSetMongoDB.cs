@@ -13,10 +13,14 @@ namespace LogFileAnalysisDAL.Repository {
 
         Task<long> Count();
         Task<long> Count(FilterDefinition<TEntity> filterDefenition);
-        Task<IEnumerable<TEntity>> Get(int skip, int take);
+        IEnumerable<TEntity> Get(int skip, int take);
+        Task<IEnumerable<TEntity>> GetAsync(int skip, int take);
         //Task<IEnumerable<TEntity>> Get(Func<TEntity, bool> predicate); //todo
-        Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition);
-        Task<TEntity> FindById(ObjectId id);
+        IEnumerable<TEntity> Get(FilterDefinition<TEntity> filterDefenition);
+        Task<IEnumerable<TEntity>> GetAsync(FilterDefinition<TEntity> filterDefenition);
+        TEntity GetSingle(FilterDefinition<TEntity> filterDefenition);
+        Task<TEntity> GetSingleAsync(FilterDefinition<TEntity> filterDefenition);
+         Task<TEntity> FindById(ObjectId id);
         Task Create(TEntity item);
         Task Create(IEnumerable<TEntity> entities);
         Task Update(TEntity item, ObjectId id);

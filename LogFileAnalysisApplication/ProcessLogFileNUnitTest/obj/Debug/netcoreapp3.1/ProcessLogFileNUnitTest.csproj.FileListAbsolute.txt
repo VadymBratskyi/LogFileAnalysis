@@ -309,3 +309,6 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnit
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.genruntimeconfig.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll

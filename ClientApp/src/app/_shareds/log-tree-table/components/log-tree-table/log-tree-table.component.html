@@ -1,0 +1,23 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+    <!-- This is the tree node template for leaf nodes -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      <app-inner-table class="mat-tree-node" [data]="node.value"></app-inner-table>
+    </mat-tree-node>
+    <!-- This is the tree node template for expandable nodes -->
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <li>
+        <div class="mat-tree-node">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.value.key}}
+        </div>
+        <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </ul>
+      </li>
+    </mat-nested-tree-node>
+  </mat-tree>

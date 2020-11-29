@@ -1,0 +1,38 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title class="padd-title-header linkText" (click)="isProcessCardExpanded = !isProcessCardExpanded">
+          Можливі рішення для знайдених помилок
+          <span *ngIf="offerMessages.length > 0" [matBadge]="offerMessages.length" class="matBadg"></span>     
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content [style.display]="isProcessCardExpanded ? 'none' : 'block'">
+      <div class="example-container mat-elevation-z8">
+        <div class="example-table-container">
+            <table mat-table
+                [dataSource]="offerMessages" multiTemplateDataRows
+                class="mat-elevation-z8" style="width: 100%;">
+                
+                <ng-container matColumnDef="statusCode">
+                    <th mat-header-cell *matHeaderCellDef>Статус</th>
+                    <td mat-cell *matCellDef="let row">{{row.statusCode}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="errorMessage">
+                    <th mat-header-cell *matHeaderCellDef>Помилка</th>
+                    <td mat-cell *matCellDef="let row">{{row.errorMessage}}</td>
+                </ng-container>
+    
+                <ng-container matColumnDef="answerMessage">
+                    <th mat-header-cell *matHeaderCellDef>Можливі рішення</th>
+                    <td mat-cell *matCellDef="let row">{{row.answerMessage}}</td>
+                </ng-container>
+      
+                <tr mat-header-row *matHeaderRowDef="displayTableColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayTableColumns;"></tr>
+            </table>
+        </div>  
+        <mat-paginator [length]="resultsLength" [pageSizeOptions]="pageSizeOptions" (page)="pageChanges($event)" showFirstLastButtons></mat-paginator>
+      </div>
+      
+    </mat-card-content> 
+</mat-card>

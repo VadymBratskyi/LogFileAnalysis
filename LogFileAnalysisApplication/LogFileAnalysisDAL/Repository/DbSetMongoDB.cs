@@ -55,17 +55,44 @@ namespace LogFileAnalysisDAL.Repository {
 			return await _entities.Find(filterDefenition).CountDocumentsAsync();
 		}
 
-		public async Task<IEnumerable<TEntity>> Get(int skip = 0, int take = Int32.MaxValue) {
+		public IEnumerable<TEntity> Get(int skip = 0, int take = Int32.MaxValue) {
+			var builder = new FilterDefinitionBuilder<TEntity>();
+			var filter = builder.Empty;
+			return _entities.Find(filter).Skip(skip).Limit(take).ToList();
+		}
+
+		public async Task<IEnumerable<TEntity>> GetAsync(int skip = 0, int take = Int32.MaxValue) {
 			var builder = new FilterDefinitionBuilder<TEntity>();
 			var filter = builder.Empty;
 			return await _entities.Find(filter).Skip(skip).Limit(take).ToListAsync();
 		}
 
-		public async Task<IEnumerable<TEntity>> Get(FilterDefinition<TEntity> filterDefenition) {
+		public IEnumerable<TEntity> Get(FilterDefinition<TEntity> filterDefenition) {
+			if (filterDefenition == null) {
+				throw new ArgumentNullException("FilterDefenition is null!!");
+			}
+			return _entities.Find(filterDefenition).ToList();
+		}
+
+		public async Task<IEnumerable<TEntity>> GetAsync(FilterDefinition<TEntity> filterDefenition) {
 			if (filterDefenition == null) {
 				throw new ArgumentNullException("FilterDefenition is null!!");
 			}
 			return await _entities.Find(filterDefenition).ToListAsync();
+		}
+
+		public TEntity GetSingle(FilterDefinition<TEntity> filterDefenition) {
+			if (filterDefenition == null) {
+				throw new ArgumentNullException("FilterDefenition is null!!");
+			}
+			return _entities.Find(filterDefenition).SingleOrDefault();
+		}
+
+		public async Task<TEntity> GetSingleAsync(FilterDefinition<TEntity> filterDefenition) {
+			if (filterDefenition == null) {
+				throw new ArgumentNullException("FilterDefenition is null!!");
+			}
+			return await _entities.Find(filterDefenition).SingleOrDefaultAsync();
 		}
 
 		public async Task Remove(ObjectId id) {

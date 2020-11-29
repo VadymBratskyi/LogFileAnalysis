@@ -2,8 +2,8 @@
 using ShowLogObjectsDLL.Models;
 using System.Linq;
 using System.Threading.Tasks;
-using ShowLogObjectsDLL.Process;
 using ViewModelsDLL.Models;
+using ViewModelsDLL.Process;
 
 namespace ShowLogObjectsDLL {
 
@@ -11,22 +11,28 @@ namespace ShowLogObjectsDLL {
 
 	public class ShowLogsService {
 
+		#region Fields: Private
+
 		private readonly DbContextService _dbService;
 		private readonly ProcessLogTree _processLogTree;
+
+		#endregion
+
+		#region Constructor: Public
 
 		public ShowLogsService(DbContextService service) {
 			_dbService = service;
 			_processLogTree = new ProcessLogTree();
 		}
 
-		public void LoadDataForTree() {
-			var data = _dbService.Logs.Get();
-		}
+		#endregion
+
+		#region Fields: Public
 
 		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(int skip, int take) {
-			var logs = await _dbService.Logs.Get(skip, take);
+			var logs = await _dbService.Logs.GetAsync(skip, take);
 			var dataSource = new DataSourceGrid<LogDTO>();
-			dataSource.LogData = logs.Select(o => new LogDTO() {
+			dataSource.Data = logs.Select(o => new LogDTO() {
 				MessageId = o.MessageId,
 				RequestDate = o.RequestDate,
 				Request = _processLogTree.GetTree(o.Request),
@@ -36,6 +42,8 @@ namespace ShowLogObjectsDLL {
 			dataSource.CountLogs = await _dbService.Logs.Count();
 			return dataSource;
 		}
+
+		#endregion
 
 	}
 

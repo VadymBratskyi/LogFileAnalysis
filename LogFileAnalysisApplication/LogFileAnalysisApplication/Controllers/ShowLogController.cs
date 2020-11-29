@@ -1,8 +1,12 @@
 ﻿using LogFileAnalysisApplication.Common;
+using LogFileAnalysisDAL.Models;
+using LogQueryBuilderDLL;
+using LogQueryBuilderDLL.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowLogObjectsDLL;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
@@ -17,14 +21,17 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		private readonly ILogger<ShowLogController> _logger;
 		private readonly ShowLogsService _showLogService;
+		private readonly QueryBuildingService _queryBuildingService;
 
 		#endregion
 
 		#region Constructor: Public
 
-		public ShowLogController(ILogger<ShowLogController> logger, ShowLogsService showLogsService) {
+		public ShowLogController(ILogger<ShowLogController> logger, ShowLogsService showLogsService,
+			QueryBuildingService queryBuildingService) {
 			_logger = logger;
 			_showLogService = showLogsService;
+			_queryBuildingService = queryBuildingService;
 		}
 
 		#endregion
@@ -32,9 +39,18 @@ namespace LogFileAnalysisApplication.Controllers {
 		#region Methods: Public
 
 		[HttpGet("[action]")]
-		public string GetTreeData() {
-			_showLogService.LoadDataForTree();
-			return "succes";
+		public async Task<QueryBuilderConfig> GetAccessFieldsForQuery() {
+			return await _queryBuildingService.GetAccesFieldsForQueryBuilder();
+		}
+
+		[HttpGet("[action]")]
+		public async Task<IEnumerable<QueryConfig>> GetQueryBuilderConfig() {
+			return await _queryBuildingService.GetConfig();
+		}
+		
+		[HttpPost("[action]")]
+		public async Task AddNewItemToQueryBuilder() { 
+		
 		}
 
 		[HttpPost("[action]")]

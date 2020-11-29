@@ -17,8 +17,6 @@ namespace ErrorLogObjectDLL.Process {
 
 		private readonly DbContextService _dbService;
 
-		private IEnumerable<StatusError> _statusErrors;
-
 		#endregion
 
 		#region Constructor: Public
@@ -33,47 +31,47 @@ namespace ErrorLogObjectDLL.Process {
 
 		private IEnumerable<StatusError> CreateDefaultErrorStatuses() {
 			var serveError = new StatusError() { 
-				Id = MongoDB.Bson.ObjectId.GenerateNewId(), 
+				Id = ObjectId.GenerateNewId(), 
 				Code = 500, 
 				Title = "Server Error" 
 			}; 
 			
 			var subServerError = new StatusError() {
-				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
+				Id = ObjectId.GenerateNewId(),
 				Code = 501,
 				Title = "Not found Item",
-				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item", "item1", "item2", "item3", "item4" }),
+				KeyWords = new BsonArray(new[] { "item", "item1", "item2", "item3", "item4" }),
 				SubStatusId = serveError.Id
 			};
 
 			var subServerError2 = new StatusError() {
-				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
+				Id = ObjectId.GenerateNewId(),
 				Code = 502,
 				Title = "Not found Item 2",
-				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item2" }),
+				KeyWords = new BsonArray(new[] { "item2" }),
 				SubStatusId = subServerError.Id
 			};
 
 			var subServerError3 = new StatusError() {
-				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
+				Id = ObjectId.GenerateNewId(),
 				Code = 503,
 				Title = "Not found Item 3",
-				KeyWords = new MongoDB.Bson.BsonArray(new[] { "item3" }),
+				KeyWords = new BsonArray(new[] { "item3" }),
 				SubStatusId = subServerError2.Id
 			};
 
 			var requestError = new StatusError() {
-				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
+				Id = ObjectId.GenerateNewId(),
 				Code = 400,
 				Title = "Bad Request",
-				KeyWords = new MongoDB.Bson.BsonArray(new[] { "request" })
+				KeyWords = new BsonArray(new[] { "request" })
 			};
 
 			var requestError2 = new StatusError() {
-				Id = MongoDB.Bson.ObjectId.GenerateNewId(),
+				Id = ObjectId.GenerateNewId(),
 				Code = 402,
 				Title = "Not corect request ",
-				KeyWords = new MongoDB.Bson.BsonArray(new[] { "request" }),
+				KeyWords = new BsonArray(new[] { "request" }),
 				SubStatusId = requestError.Id
 			};
 
@@ -84,11 +82,11 @@ namespace ErrorLogObjectDLL.Process {
 		private async Task InitDefaultErrorStatus() {
 			try {
 
-			} catch (System.Exception ex) {
-				throw new System.Exception(ex.Message);
+			} catch (Exception ex) {
+				throw new Exception(ex.Message);
 			}
 			var defStatuses = CreateDefaultErrorStatuses();
-			await _dbService.StatusError.Create(defStatuses);
+			await _dbService.StatusErrors.Create(defStatuses);
 		}
 
 		private StatusTreeNode GetParentNode(IEnumerable<StatusTreeNode> statusTree, string parentNodeId) {
@@ -137,17 +135,28 @@ namespace ErrorLogObjectDLL.Process {
 			return statusTree;
 		}
 
+		private StatusError CreateStatusError(StatusErrorDTO newStatus) { 
+			return new StatusError()
+			{
+				Id = ObjectId.GenerateNewId(),
+				Code = newStatus.Code,
+				Title = newStatus.Title,
+				KeyWords = new BsonArray(newStatus.KeyWords),
+				SubStatusId = newStatus.SubStatusId != null ? new ObjectId(newStatus.SubStatusId) : ObjectId.Empty
+			};
+		}
+
 		#endregion
 
 		#region Methods: Public
 
 		public async Task<IEnumerable<StatusError>> GetErrorStatuses() {
-			_statusErrors = await _dbService.StatusError.Get();
-			if (!_statusErrors.Any()) {
+			var statusErrors = await _dbService.StatusErrors.GetAsync();
+			if (!statusErrors.Any()) {
 				await InitDefaultErrorStatus();
-				_statusErrors = await _dbService.StatusError.Get();
+				statusErrors = await _dbService.StatusErrors.GetAsync();
 			}
-			return _statusErrors;
+			return statusErrors;
 		}
 
 		public async Task<IEnumerable<StatusTreeNode>> GetErrorStatusesAsTree() {
@@ -161,16 +170,10 @@ namespace ErrorLogObjectDLL.Process {
 				throw new ArgumentNullException();
 			}
 			try {
-				var newErrorStatus = new StatusError() {
-					Id = MongoDB.Bson.ObjectId.GenerateNewId(),
-					Code = newStatus.Code,
-					Title = newStatus.Title,
-					KeyWords = new MongoDB.Bson.BsonArray(newStatus.KeyWords),
-					SubStatusId = newStatus.SubStatusId != null ? new ObjectId(newStatus.SubStatusId.ToString()) : ObjectId.Empty
-				};
-				await _dbService.StatusError.Create(newErrorStatus);
-			} catch (System.Exception ex) {
-				throw new System.Exception(ex.Message);
+				var newErrorStatus = CreateStatusError(newStatus);
+				await _dbService.StatusErrors.Create(newErrorStatus);
+			} catch (Exception ex) {
+				throw new Exception(ex.Message);
 			}
 		}
 

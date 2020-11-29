@@ -1,0 +1,10 @@
+<mat-card class="example-card">
+    <mat-card-header class="header-toolbox">
+        <nav mat-tab-nav-bar>
+            <a mat-tab-link *ngFor="let link of links"
+               [routerLink]="[link.link]"
+               (click)="errorLogObjectsService.errorPageType = link.link"
+               [active]="errorLogObjectsService.errorPageType == link.link"> {{link.title}} </a>
+        </nav>
+    </mat-card-header>
+</mat-card>

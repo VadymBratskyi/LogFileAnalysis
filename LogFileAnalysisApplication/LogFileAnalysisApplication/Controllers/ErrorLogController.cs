@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using ErrorLogObjectDLL;
+using ErrorLogObjectDLL.Models;
 using LogFileAnalysisApplication.Common;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +42,14 @@ namespace LogFileAnalysisApplication.Controllers
 		[HttpPost("[action]")]
 		public async Task<ActionResult> GetAllKnownErrorData([FromBody] FilterParameters filterParameters)
 		{
-			return Ok();
+			var knownErrorData = await _errorService.GetGridKnownError(filterParameters.Skip, filterParameters.Take);
+			return Ok(knownErrorData);
+		}
+
+		[HttpPost("[action]")]
+		public async Task<ActionResult> SetKnownErrorData([FromBody] KnownErrorConfig knownErrorConfig) {
+			var knownErrorId = await _errorService.SetKnownDeleteUnKnownError(knownErrorConfig);
+			return Ok(new ResponseItem(knownErrorId));
 		}
 
 		#endregion

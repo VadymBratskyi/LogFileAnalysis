@@ -11,12 +11,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { OffersComponent } from './offers/offers.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     ProcessLogFilesComponent, 
     UploaderFilesComponent, 
-    ProcessingLogComponent
+    ProcessingLogComponent, OffersComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +32,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatBadgeModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
 
     /**progress */
     UploadModule

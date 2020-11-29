@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AnswerLogObjectDLL\AnswerLogObjectDLL.csproj" />
     <ProjectReference Include="..\ErrorLogObjectDLL\ErrorLogObjectDLL.csproj" />
     <ProjectReference Include="..\LogFileAnalysisDAL\LogFileAnalysisDAL.csproj" />
+    <ProjectReference Include="..\LogQueryBuilderDLL\LogQueryBuilderDLL.csproj" />
     <ProjectReference Include="..\ProcessLogFilesDLL\ProcessLogFilesDLL.csproj" />
     <ProjectReference Include="..\ShowLogObjectsDLL\ShowLogObjectsDLL.csproj" />
     <ProjectReference Include="..\StatusErrorDLL\StatusErrorDLL.csproj" />

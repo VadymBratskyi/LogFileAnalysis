@@ -11,9 +11,9 @@ namespace ShowLogObjectsDLL.Models {
 		#region Properties: Public
 
 		public DateTime RequestDate { get; set; }
-		public IEnumerable<LogTreeNode> Request { get; set; }
+		public IEnumerable<TreeNode> Request { get; set; }
 		public DateTime ResponseDate { get; set; }
-		public IEnumerable<LogTreeNode> Response { get; set; }
+		public IEnumerable<TreeNode> Response { get; set; }
 
 		#endregion
 

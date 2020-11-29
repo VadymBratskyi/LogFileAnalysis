@@ -17,13 +17,13 @@ namespace ProcessLogFilesDLL.Process {
 
         private TemplateAnalysis _templateAnalysis;
         private ProcessError _processError;
-        private readonly GenerateObjects _generateObjects;
+        private readonly ObjectsGenerator _generateObjects;
 
         #endregion
 
         #region Constructor : Public
 
-        public ProcessLog(GenerateObjects generateObjects) {
+        public ProcessLog(ObjectsGenerator generateObjects) {
             _generateObjects = generateObjects;
         }
 
@@ -102,7 +102,7 @@ namespace ProcessLogFilesDLL.Process {
         #region Methods: Public
 
         public void ProcessingLog(StreamReader reader) {
-            _generateObjects.LogList.Clear();
+            _generateObjects.ClearLogList();
             DateTime dateStart = DateTime.MinValue;
             DateTime dateEnd = DateTime.MinValue;
             string value;

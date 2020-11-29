@@ -35,12 +35,12 @@ namespace ProcessLogFilesDLL {
 
 		public async Task StartProcessLogFiles(string sessionId) {
 			var id = string.IsNullOrEmpty(sessionId) ? ObjectId.Empty : new ObjectId(sessionId);
-			ProcessLogFile processFiles = new ProcessLogFile(_dbService, id, ProcessLogNotifier);
+			ProcessLogFile processFiles = new ProcessLogFile(_dbService, ProcessLogNotifier, id);
 			await processFiles.RunProcessLogFiles();
 		}
 
 		public async Task StartProcessSinglLogFiles(string fileName) {
-			ProcessLogFile processFiles = new ProcessLogFile(_dbService, fileName, ProcessLogNotifier);
+			ProcessLogFile processFiles = new ProcessLogFile(_dbService, ProcessLogNotifier, fileName);
 			await processFiles.RunProcessSinglLogFile();
 		}
 
