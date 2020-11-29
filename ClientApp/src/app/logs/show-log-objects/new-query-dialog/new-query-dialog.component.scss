@@ -1,3 +1,13 @@
-.tree-block {
-    min-width: 300px;
+.query-block {
+	display: flex;
+
+	.tree-block {
+		padding-right: 15px;
+		border-right: 1px solid #d3d3d3;
+	}
+	
+	.new-query-settings {
+		padding-left: 15px;
+	}
+
 }

@@ -50,7 +50,7 @@
           "dependencies": {
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.11.3, )"
+              "version": "[2.11.4, )"
             }
           },
           "imports": [
@@ -111,11 +111,11 @@
           "dependencies": {
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.11.1, )"
+              "version": "[2.11.4, )"
             },
             "MongoDB.Driver.GridFS": {
               "target": "Package",
-              "version": "[2.11.1, )"
+              "version": "[2.11.4, )"
             }
           },
           "imports": [
@@ -176,7 +176,7 @@
           "dependencies": {
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.11.3, )"
+              "version": "[2.11.4, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

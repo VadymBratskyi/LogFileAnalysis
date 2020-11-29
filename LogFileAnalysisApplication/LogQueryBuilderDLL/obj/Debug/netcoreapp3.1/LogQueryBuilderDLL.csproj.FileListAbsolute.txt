@@ -10,3 +10,14 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.csproj.CopyComplete
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.csproj.CoreCompileInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.deps.json
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.csprojAssemblyReference.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.AssemblyInfoInputs.cache
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.AssemblyInfo.cs
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.csproj.CopyComplete
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderDLL\obj\Debug\netcoreapp3.1\LogQueryBuilderDLL.pdb

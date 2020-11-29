@@ -36,3 +36,7 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\LogQueryBuilderDLL.pdb
+C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFilesDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
