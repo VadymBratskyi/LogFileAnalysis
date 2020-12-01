@@ -12,7 +12,6 @@ export class TodoItemNode {
 	item: string;
 	value: string;
 	jObjectType: JObjectType;
-	parentName: string;
 	path: string;
 }
 
@@ -22,7 +21,6 @@ export class TodoItemFlatNode {
 	level: number;
 	expandable: boolean;
 	objectType: JObjectType;
-	parentName: string;
 	path: string;
 }
 
@@ -78,7 +76,6 @@ export class QuerySettingsItem {
 					break;
 			}
 			node.value = jobject.key;
-			node.parentName = parentName;
 			node.path = pathNode ? `${pathNode}.${jobject.key}` : jobject.key;
 			if (jobject.childrens.length > 0) {
 			node.children = this.buildTreeFields(jobject.childrens, jobject.key, node.path);
@@ -172,7 +169,6 @@ export class QuerySettingsItem {
 		flatNode.level = level;
 		flatNode.value = node.value;
 		flatNode.objectType = node.jObjectType;
-		flatNode.parentName = node.parentName;
 		flatNode.path = node.path;
 		flatNode.expandable = !!node.children?.length;
 		this.flatNodeMap.set(flatNode, node);

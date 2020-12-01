@@ -43,6 +43,12 @@ namespace ShowLogObjectsDLL {
 			return dataSource;
 		}
 
+		public async Task<DataSourceGrid<LogDTO>> GetGridLogsByFilter() {
+			var logs = await _dbService.Logs.GetAsync();
+			var dataSource = new DataSourceGrid<LogDTO>();
+			return dataSource;
+		}
+
 		#endregion
 
 	}

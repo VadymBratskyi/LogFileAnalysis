@@ -59,6 +59,12 @@ namespace LogFileAnalysisApplication.Controllers {
 			return Ok(logData);
 		}
 
+		[HttpPost("[action]")]
+		public async Task<ActionResult> GetLogsDataByFilter() {
+			var data = await _showLogService.GetGridLogsByFilter();
+			return Ok(data);
+		}
+
 		//[HttpPost("[action]")]
 		//public TestValue PostTestValue([FromBody] TestValue test) {
 		//	test.Value = "Hello World from ShowLogController.PostTestValue";

@@ -16,7 +16,7 @@ export class ShowLogObjectsService {
 
   public getAccesQueryForConfig(): Observable<QueryBuilderConfig> {
     
-    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAccessFieldsForQuery;         
+    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAccessFieldsForQuery;
 
     return this.http.get(url)
     .pipe(
@@ -24,7 +24,7 @@ export class ShowLogObjectsService {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getQueryDataConfig: ', error);       
+        console.error('getQueryDataConfig: ', error);
         return Observable.throw(error);
       })
     );
@@ -32,7 +32,7 @@ export class ShowLogObjectsService {
 
   public getQueryDataConfig(): Observable<QueryConfig[]> {
     
-    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetQueryBuilderConfig;         
+    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetQueryBuilderConfig;
 
     return this.http.get(url)
     .pipe(
@@ -40,28 +40,39 @@ export class ShowLogObjectsService {
           return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.error('getQueryDataConfig: ', error);       
+        console.error('getQueryDataConfig: ', error);
         return Observable.throw(error);
       })
     );
   }
 
-  public getAllLogs(logTableModel: LogTableState): Observable<LogsDataGrid> {
-    
-    const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAllLogsData;
+	public getAllLogs(logTableModel: LogTableState): Observable<LogsDataGrid> {
+		const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAllLogsData;
+		var body = new FilterParameters(logTableModel.skip, logTableModel.take);
+		return this.http.post(url, body)
+		.pipe(
+			map((response: LogsDataGrid) => {
+				return response;
+		}),
+		catchError((error: HttpErrorResponse) => {
+			console.error('getAllLogs: ', error);
+			return Observable.throw(error);
+		})
+		);
+	}
 
-    var body = new FilterParameters(logTableModel.skip, logTableModel.take);
-         
-    return this.http.post(url, body)
-    .pipe(
-        map((response: LogsDataGrid) => {        
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getAllLogs: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
+	public runLogsFilter(): Observable<LogsDataGrid> {
+		const url = environment.localhostApp + environment.urlShowLogApi + 'GetLogsDataByFilter';
+		return this.http.post(url, null)
+		.pipe(
+			map((response: LogsDataGrid) => {
+				return response;
+		}),
+		catchError((error: HttpErrorResponse) => {
+			console.error('getAllLogs: ', error);
+			return Observable.throw(error);
+		})
+		);
+	}
 
 }
