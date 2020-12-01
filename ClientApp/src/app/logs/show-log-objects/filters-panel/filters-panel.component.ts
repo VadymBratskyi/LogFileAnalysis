@@ -83,7 +83,6 @@ export class FiltersPanelComponent implements OnInit {
   }
 
   onRunFilter() {
-	this.loadedConfig = false;
 	this.showLogObjectsService.runLogsFilter()
 	.pipe(takeUntil(this.destroyed$))
 	.subscribe(data => {
