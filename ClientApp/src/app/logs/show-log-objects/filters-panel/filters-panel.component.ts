@@ -94,7 +94,7 @@ export class FiltersPanelComponent implements OnInit {
     
   }
 
-  onAddFilter() {   
+  onFilterSettings() {
       const dialogRef = this.dialog.open(NewQueryDialogComponent, {
         data: {name: "Test Name"}
       });

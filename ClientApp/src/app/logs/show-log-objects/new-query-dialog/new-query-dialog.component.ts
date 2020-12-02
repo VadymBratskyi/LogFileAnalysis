@@ -6,6 +6,8 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { JObjectType, LogQuery, QueryBuilderConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { difference } from 'lodash';
+import { FormGroup } from '@angular/forms';
 
 export class TodoItemNode {
 	children: TodoItemNode[];
@@ -24,20 +26,15 @@ export class TodoItemFlatNode {
 	path: string;
 }
 
-
-export class QuerySettingsKey {
-	public key: string;
-	public level: number;
-}
-
 export class QuerySettingsItem {
-	public name: string
-	public keys: QuerySettingsKey[];
+	public name: string;
+	public queryPath: string;
 
-	constructor() {
+	constructor(path: string) {
+		this.queryPath = path;
 		this.name = '';
-		this.keys = [];
 	}
+
 }
 
 @Injectable()
@@ -155,6 +152,11 @@ export class QuerySettingsItem {
 
 	hasChild = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.expandable;
 
+	get isNotValidSettings(): boolean {
+		return this.queriesToSettins.length === 0 ||
+		this.queriesToSettins.findIndex(model => model.name === '') >= 0;
+	}
+
 	// hasNoContent = (_: number, _nodeData: TodoItemFlatNode) => _nodeData.item === '';
 
 	/**
@@ -193,8 +195,24 @@ export class QuerySettingsItem {
 	}
 
 	private _buildQuerySettings(isSelected: boolean) {
-		const items = this.checklistSelection.selected;
-		console.log(items);
+		const selectedItems = this.checklistSelection.selected;
+		if (isSelected) {
+			selectedItems.filter(selectedModel => selectedModel.objectType !== JObjectType.jobject).forEach(item => {
+				const selectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === item.path);
+				if (selectedExistIndex < 0) {
+					this.queriesToSettins.push(new QuerySettingsItem(item.path));
+				}
+			});
+		} else {
+			const unselectedItems = this.queriesToSettins.filter(query => selectedItems.findIndex(model => model.path === query.queryPath) === -1);
+			unselectedItems.forEach(unSelectedModel => {
+				const unselectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === unSelectedModel.queryPath);
+				if (unselectedExistIndex >= 0) {
+					this.queriesToSettins.splice(unselectedExistIndex, 1);
+				}
+			});
+		}
+		
 	}
 
   /** Toggle the to-do item selection. Select/deselect all the descendants node */

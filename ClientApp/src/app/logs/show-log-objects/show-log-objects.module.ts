@@ -20,16 +20,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NewQueryDialogComponent } from './new-query-dialog/new-query-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    ShowLogObjectsComponent, 
-    FiltersPanelComponent,     
+    ShowLogObjectsComponent,
+    FiltersPanelComponent,
     LogObjectsTableComponent, NewQueryDialogComponent
   ],
   imports: [
-    CommonModule,
-    ShowLogObjectsRoutingModule,    
+	 CommonModule,
+	 FormsModule,
+    ShowLogObjectsRoutingModule,
     LogQueryBuilderModule,
     LogTreeTableModule,
 

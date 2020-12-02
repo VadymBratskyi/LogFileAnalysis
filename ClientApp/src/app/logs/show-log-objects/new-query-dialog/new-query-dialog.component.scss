@@ -1,13 +1,33 @@
+.mat-dialog-content {
+	overflow: hidden;
+}
+
 .query-block {
 	display: flex;
-
-	.tree-block {
+	
+	.query-tree {
 		padding-right: 15px;
 		border-right: 1px solid #d3d3d3;
+		
+		.tree-block {
+			max-height: 100vh;
+			overflow-y: auto;
+		}
 	}
 	
-	.new-query-settings {
+	.query-settings {
 		padding-left: 15px;
+		padding-right: 15px;
+
+		.new-query-settings {
+			max-height: 100vh;
+			overflow-y: auto;
+	
+			ul li {
+				list-style: decimal;
+			}
+		}
 	}
+	
 
 }
