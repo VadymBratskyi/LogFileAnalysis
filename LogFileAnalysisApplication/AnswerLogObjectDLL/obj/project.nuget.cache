@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LCJTKn+DorfqpRycDwTwgsnlu8+uW9DJRp0pVWydMadRuTRSNMSbg71swyL6jAecbeQAZsEywxG+a5wpkMralA==",
+  "dgSpecHash": "OSdHwYwSACjE7L92m6L8mMR2hMSGVsVto0+z7I/LK2kli6gHtVchs6dak2WmT38eRPulX7ZJW+FEY/jhpcSOdg==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\AnswerLogObjectDLL\\AnswerLogObjectDLL.csproj",
   "expectedPackageFiles": [
@@ -8,10 +8,10 @@
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.bson\\2.11.3\\mongodb.bson.2.11.3.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver\\2.11.3\\mongodb.driver.2.11.3.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.core\\2.11.3\\mongodb.driver.core.2.11.3.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.gridfs\\2.11.1\\mongodb.driver.gridfs.2.11.1.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.bson\\2.11.4\\mongodb.bson.2.11.4.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver\\2.11.4\\mongodb.driver.2.11.4.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.core\\2.11.4\\mongodb.driver.core.2.11.4.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.gridfs\\2.11.4\\mongodb.driver.gridfs.2.11.4.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.libmongocrypt\\1.0.0\\mongodb.libmongocrypt.1.0.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",

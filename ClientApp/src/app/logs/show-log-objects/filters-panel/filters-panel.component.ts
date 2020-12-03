@@ -6,7 +6,7 @@ import { QueryBuilderConfig, Rule, RuleSet } from 'angular2-query-builder';
 import { strict } from 'assert';
 import { config, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NewQueryDialogComponent } from '../new-query-dialog/new-query-dialog.component';
+import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/new-query-dialog.component';
 
 @Component({
   selector: 'app-filters-panel',
@@ -22,19 +22,11 @@ export class FiltersPanelComponent implements OnInit {
 
   public loadedConfig: boolean;
 
+  private _queryConfigs: QueryConfig[];
+
   public config: QueryBuilderConfig = {
-    fields: {
-      age: {name: 'Age', type: 'number'},
-      gender: {
-        name: 'Gender',
-        type: 'category',
-        options: [
-          {name: 'Male', value: 'm'},
-          {name: 'Female', value: 'f'}
-        ]
-      }    
-    },
-  }
+    fields: {}
+  };
 
   constructor(
     private dialog: MatDialog,
@@ -52,7 +44,7 @@ export class FiltersPanelComponent implements OnInit {
       case 2:
         return 'number';
       case 3:
-        return 'boolean'
+        return 'boolean';
       case 4:
         return 'date';
       default:
@@ -77,8 +69,9 @@ export class FiltersPanelComponent implements OnInit {
     this.showLogObjectsService.getQueryDataConfig()
     .pipe(takeUntil(this.destroyed$))
     .subscribe(queryconfig => {
-      this.loadedConfig = true;
-      this.config.fields  = this.buildConfig(queryconfig);
+		this.loadedConfig = true;
+		this._queryConfigs = queryconfig;
+  this.config.fields  = this.buildConfig(queryconfig);
     });
   }
 
@@ -96,11 +89,25 @@ export class FiltersPanelComponent implements OnInit {
 
   onFilterSettings() {
       const dialogRef = this.dialog.open(NewQueryDialogComponent, {
-        data: {name: "Test Name"}
+        data: {existQueries: this._queryConfigs}
       });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed', result);
+		    dialogRef.afterClosed()
+		.pipe(takeUntil(this.destroyed$))
+		.subscribe((result: QuerySettingsItem[]) => {
+			if(result) {
+				const queryConfigs = result.map(item => {
+					const query = new QueryConfig();
+					query.key = item.name;
+					query.type = item.type;
+					query.name = item.queryPath;
+					return query;
+				});
+				this.showLogObjectsService.addNewQueryDataConfig(queryConfigs)
+				.pipe(takeUntil(this.destroyed$))
+				.subscribe(result => {
+					console.log(result, 'success');
+				});
+			}
       });
   }
 

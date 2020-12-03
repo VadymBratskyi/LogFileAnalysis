@@ -3,16 +3,15 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { JObjectType, LogQuery, QueryBuilderConfig } from '@log_models';
+import { JObjectType, LogQuery, LogQueryType, QueryBuilderConfig, QueryConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { difference } from 'lodash';
-import { FormGroup } from '@angular/forms';
 
 export class TodoItemNode {
 	children: TodoItemNode[];
 	item: string;
 	value: string;
+	valueType: LogQueryType;
 	jObjectType: JObjectType;
 	path: string;
 }
@@ -22,18 +21,15 @@ export class TodoItemFlatNode {
 	value: string;
 	level: number;
 	expandable: boolean;
+	valueType: LogQueryType;
 	objectType: JObjectType;
 	path: string;
 }
 
-export class QuerySettingsItem {
-	public name: string;
-	public queryPath: string;
-
-	constructor(path: string) {
-		this.queryPath = path;
-		this.name = '';
-	}
+export interface QuerySettingsItem {
+	name: string;
+	queryPath: string;
+	type: LogQueryType;
 
 }
 
@@ -55,7 +51,7 @@ export class QuerySettingsItem {
 		});
 	}
 
-	buildTreeFields(logQuery: LogQuery[], parentName?: string, pathNode?: string): TodoItemNode[] {
+	buildTreeFields(logQuery: LogQuery[], pathNode?: string): TodoItemNode[] {
 		return logQuery.reduce<TodoItemNode[]>((accumulator, jobject) => {
 			const node = new TodoItemNode();
 			switch(jobject.objectType) {
@@ -70,12 +66,13 @@ export class QuerySettingsItem {
 				default:
 					node.item = jobject.key;
 					node.jObjectType = JObjectType.none;
+					node.valueType = jobject.logQueryType;
 					break;
 			}
 			node.value = jobject.key;
 			node.path = pathNode ? `${pathNode}.${jobject.key}` : jobject.key;
 			if (jobject.childrens.length > 0) {
-			node.children = this.buildTreeFields(jobject.childrens, jobject.key, node.path);
+			node.children = this.buildTreeFields(jobject.childrens, node.path);
 		}
 			return accumulator.concat(node);
 		}, []);
@@ -96,13 +93,11 @@ export class QuerySettingsItem {
 	constructor(
 		private _database: ChecklistDatabase,
 		public dialogRef: MatDialogRef<NewQueryDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: any) {
-
+		@Inject(MAT_DIALOG_DATA) public existQueries: QueryConfig[]) {
 		this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
 			this.isExpandable, this.getChildren);
 		this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
 		this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
 	}
 
 	onNoClick(): void {
@@ -126,12 +121,6 @@ export class QuerySettingsItem {
 
 	/** Map from nested node to flattened node. This helps us to keep the same object for selection */
 	nestedNodeMap = new Map<TodoItemNode, TodoItemFlatNode>();
-
-	/** A selected parent node to be inserted */
-	// selectedParent: TodoItemFlatNode | null = null;
-
-	/** The new item's name */
-	// newItemName = '';
 
 	treeControl: FlatTreeControl<TodoItemFlatNode>;
 
@@ -172,6 +161,7 @@ export class QuerySettingsItem {
 		flatNode.value = node.value;
 		flatNode.objectType = node.jObjectType;
 		flatNode.path = node.path;
+		flatNode.valueType = node.valueType;
 		flatNode.expandable = !!node.children?.length;
 		this.flatNodeMap.set(flatNode, node);
 		this.nestedNodeMap.set(node, flatNode);
@@ -200,7 +190,11 @@ export class QuerySettingsItem {
 			selectedItems.filter(selectedModel => selectedModel.objectType !== JObjectType.jobject).forEach(item => {
 				const selectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === item.path);
 				if (selectedExistIndex < 0) {
-					this.queriesToSettins.push(new QuerySettingsItem(item.path));
+					this.queriesToSettins.push({
+						queryPath: item.path,
+						type: item.valueType,
+						name: ''
+					} as QuerySettingsItem);
 				}
 			});
 		} else {

@@ -21,6 +21,7 @@ export const environment = {
   methodGetAccessFieldsForQuery: 'GetAccessFieldsForQuery',
   methodGetQueryBuilderConfig: 'GetQueryBuilderConfig',
   methodGetAllLogsData: 'GetAllLogsData',
+  methodAddNewItemToQueryBuilder: 'AddNewItemToQueryBuilder',
 
   /**Error */
   methodGetAllUnKnownErrorData: 'GetAllUnKnownErrorData',

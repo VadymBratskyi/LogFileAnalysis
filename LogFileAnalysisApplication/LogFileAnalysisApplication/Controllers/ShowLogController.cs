@@ -49,8 +49,9 @@ namespace LogFileAnalysisApplication.Controllers {
 		}
 		
 		[HttpPost("[action]")]
-		public async Task AddNewItemToQueryBuilder() { 
-		
+		public async Task<ActionResult> AddNewItemToQueryBuilder([FromBody]IEnumerable<QueryConfig> newqueries) {
+			await _queryBuildingService.AddNewItem(newqueries);
+			return Ok();
 		}
 
 		[HttpPost("[action]")]
