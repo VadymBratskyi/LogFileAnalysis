@@ -14,6 +14,7 @@ export class TodoItemNode {
 	valueType: LogQueryType;
 	jObjectType: JObjectType;
 	path: string;
+	isExistQuery: boolean;
 }
 
 export class TodoItemFlatNode {
@@ -24,6 +25,7 @@ export class TodoItemFlatNode {
 	valueType: LogQueryType;
 	objectType: JObjectType;
 	path: string;
+	isExistQuery: boolean;
 }
 
 export interface QuerySettingsItem {
@@ -93,7 +95,7 @@ export interface QuerySettingsItem {
 	constructor(
 		private _database: ChecklistDatabase,
 		public dialogRef: MatDialogRef<NewQueryDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public existQueries: QueryConfig[]) {
+		@Inject(MAT_DIALOG_DATA) public data: any) {
 		this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
 			this.isExpandable, this.getChildren);
 		this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
@@ -104,9 +106,24 @@ export interface QuerySettingsItem {
 		this.dialogRef.close();
 	}
 
+	private disableExistItems(existQueries: QueryConfig[], queryNodes: TodoItemNode[]) {
+		queryNodes.forEach(item => {
+			const existIndex = existQueries.findIndex(config => config.name === item.path);
+			if(existIndex >= 0) {
+				item.isExistQuery = true;
+			}
+			if (item.children && item.children.length > 0) {
+				this.disableExistItems(existQueries, item.children);
+			}
+		});
+	}
+
+
 	ngOnInit(): void {
-		this._database.dataChange.subscribe(data => {
-		this.dataSource.data = data;
+		this._database.dataChange.subscribe((data: TodoItemNode[]) => {
+			const existQueries = this.data.existQueries;
+			this.disableExistItems(existQueries, data);
+			this.dataSource.data = data;
 		});
 	}
 
@@ -159,6 +176,7 @@ export interface QuerySettingsItem {
 		flatNode.item = node.item;
 		flatNode.level = level;
 		flatNode.value = node.value;
+		flatNode.isExistQuery = node.isExistQuery;
 		flatNode.objectType = node.jObjectType;
 		flatNode.path = node.path;
 		flatNode.valueType = node.valueType;
@@ -189,7 +207,7 @@ export interface QuerySettingsItem {
 		if (isSelected) {
 			selectedItems.filter(selectedModel => selectedModel.objectType !== JObjectType.jobject).forEach(item => {
 				const selectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === item.path);
-				if (selectedExistIndex < 0) {
+				if (selectedExistIndex < 0 && !item.isExistQuery) {
 					this.queriesToSettins.push({
 						queryPath: item.path,
 						type: item.valueType,

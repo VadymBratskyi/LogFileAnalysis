@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
 import { map, catchError, share } from 'rxjs/operators';
 import { FilterParameters, LogTableState, LogsDataGrid, QueryConfig, QueryBuilderConfig } from '@log_models';
+import { RuleSet } from 'angular2-query-builder';
 
 @Injectable({
   providedIn: 'root'
@@ -47,9 +48,7 @@ export class ShowLogObjectsService {
   }
 
   public addNewQueryDataConfig(queries: QueryConfig[]): Observable<any> {
-    
 	const url = environment.localhostApp + environment.urlShowLogApi + environment.methodAddNewItemToQueryBuilder;
-
 	return this.http.post(url, queries)
 	.pipe(
 		 map((response: QueryConfig[]) => {
@@ -78,9 +77,9 @@ export class ShowLogObjectsService {
 		);
 	}
 
-	public runLogsFilter(): Observable<LogsDataGrid> {
+	public runLogsFilter(queryRules: RuleSet): Observable<LogsDataGrid> {
 		const url = environment.localhostApp + environment.urlShowLogApi + 'GetLogsDataByFilter';
-		return this.http.post(url, null)
+		return this.http.post(url, queryRules)
 		.pipe(
 			map((response: LogsDataGrid) => {
 				return response;

@@ -11,6 +11,24 @@ using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
 
+	public class QueryRulesSet {
+
+		public string Condition { get; set; }
+
+		public IEnumerable<QueryRules> Rules { get; set; }
+
+	}
+
+	public class QueryRules {
+
+		public string Field { get; set; }
+
+		public string Operator { get; set; }
+
+		public string Value { get; set; }
+
+	}
+
 	#region Class: ShowLogController
 
 	[Route("api/[controller]")]
@@ -61,7 +79,7 @@ namespace LogFileAnalysisApplication.Controllers {
 		}
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult> GetLogsDataByFilter() {
+		public async Task<ActionResult> GetLogsDataByFilter([FromBody]QueryRulesSet rulesset) {
 			var data = await _showLogService.GetGridLogsByFilter();
 			return Ok(data);
 		}
