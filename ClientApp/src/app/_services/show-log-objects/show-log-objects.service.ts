@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'environments/environment';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, share } from 'rxjs/operators';
 import { FilterParameters, LogTableState, LogsDataGrid, QueryConfig, QueryBuilderConfig } from '@log_models';
 
 @Injectable({
@@ -46,6 +46,22 @@ export class ShowLogObjectsService {
     );
   }
 
+  public addNewQueryDataConfig(queries: QueryConfig[]): Observable<any> {
+    
+	const url = environment.localhostApp + environment.urlShowLogApi + environment.methodAddNewItemToQueryBuilder;
+
+	return this.http.post(url, queries)
+	.pipe(
+		 map((response: QueryConfig[]) => {
+			return response;
+	  }),
+	  catchError((error: HttpErrorResponse) => {
+		 console.error('getQueryDataConfig: ', error);
+		 return Observable.throw(error);
+	  })
+	);
+ }
+
 	public getAllLogs(logTableModel: LogTableState): Observable<LogsDataGrid> {
 		const url = environment.localhostApp + environment.urlShowLogApi + environment.methodGetAllLogsData;
 		var body = new FilterParameters(logTableModel.skip, logTableModel.take);
@@ -54,6 +70,7 @@ export class ShowLogObjectsService {
 			map((response: LogsDataGrid) => {
 				return response;
 		}),
+		share(),
 		catchError((error: HttpErrorResponse) => {
 			console.error('getAllLogs: ', error);
 			return Observable.throw(error);

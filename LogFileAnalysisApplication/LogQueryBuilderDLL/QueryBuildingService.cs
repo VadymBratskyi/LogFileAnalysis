@@ -134,55 +134,17 @@ namespace LogQueryBuilderDLL {
 			return config;
 		}
 
-		public async Task AddNewItem() { 
-		
+		public async Task AddNewItem(IEnumerable<QueryConfig> queries) {
+			foreach (var query in queries) {
+				var filterKey = Builders<QueryConfig>.Filter.Eq("Key", query.Key);
+				var filterName = Builders<QueryConfig>.Filter.Eq("Name", query.Name);
+				var filters = Builders<QueryConfig>.Filter.And(new List<FilterDefinition<QueryConfig>> { filterKey, filterName });
+				var existQuery = await _dbService.QueryConfigs.GetAsync(filters);
+				if(!existQuery.Any()) {
+					await _dbService.QueryConfigs.Create(query);
+				}
+			}
 		}
 
 	}
 }
-
-
-
-//  config: QueryBuilderConfig = {
-//   fields: {
-//     messageId: {name: 'MessageId', type: 'string'},     
-//     requestDate: {name: 'RequestDate', type: 'date', operators: ['=', '<=', '>'],
-//       defaultValue: (() => new Date())
-//     },
-//     responseDate: {name: 'ResponseDate', type: 'date', operators: ['=', '<=', '>'],
-//       defaultValue: (() => new Date())
-//     }      
-//   }
-// }
-
-
-// config: QueryBuilderConfig = {
-//   fields: {
-//     age: {name: 'Age', type: 'number'},
-//     gender: {
-//       name: 'Gender',
-//       type: 'category',
-//       options: [
-//         {name: 'Male', value: 'm'},
-//         {name: 'Female', value: 'f'}
-//       ]
-//     },
-//     name: {name: 'Name', type: 'string'},
-//     notes: {name: 'Notes', type: 'textarea', operators: ['=', '!=']},
-//     educated: {name: 'College Degree?', type: 'boolean'},
-//     birthday: {name: 'Birthday', type: 'date', operators: ['=', '<=', '>'],
-//       defaultValue: (() => new Date())
-//     },
-//     school: {name: 'School', type: 'string', nullable: true},
-//     occupation: {
-//       name: 'Occupation',
-//       type: 'multiselect',
-//       options: [
-//         {name: 'Student', value: 'student'},
-//         {name: 'Teacher', value: 'teacher'},
-//         {name: 'Unemployed', value: 'unemployed'},
-//         {name: 'Scientist', value: 'scientist'}
-//       ]
-//     }
-//   }
-// }

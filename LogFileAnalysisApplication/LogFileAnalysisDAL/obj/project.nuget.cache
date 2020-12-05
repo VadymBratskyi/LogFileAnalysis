@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OTQjEWxaVJzmP6zkUIRNyy1nKVkE3yDNdnnS0WGTugCthSG3xwysREfLAPxKEdxM6nhH5Fo75iZiDUWO1Y3y0Q==",
+  "dgSpecHash": "FXXLex0Jx6SVJTqPaDmV0uG1vLIlyheXwuF2GKIusZMYGTyngtt0nJb1Yr2+4d5J+dqvVEgOhms4p6uO/bBWvg==",
   "success": true,
   "projectFilePath": "C:\\GitHubProjects\\LogFileAnalysis\\LogFileAnalysisApplication\\LogFileAnalysisDAL\\LogFileAnalysisDAL.csproj",
   "expectedPackageFiles": [
@@ -8,10 +8,10 @@
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.bson\\2.11.1\\mongodb.bson.2.11.1.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver\\2.11.1\\mongodb.driver.2.11.1.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.core\\2.11.1\\mongodb.driver.core.2.11.1.nupkg.sha512",
-    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.gridfs\\2.11.1\\mongodb.driver.gridfs.2.11.1.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.bson\\2.11.4\\mongodb.bson.2.11.4.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver\\2.11.4\\mongodb.driver.2.11.4.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.core\\2.11.4\\mongodb.driver.core.2.11.4.nupkg.sha512",
+    "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.driver.gridfs\\2.11.4\\mongodb.driver.gridfs.2.11.4.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\mongodb.libmongocrypt\\1.0.0\\mongodb.libmongocrypt.1.0.0.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Vadim-PC\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
