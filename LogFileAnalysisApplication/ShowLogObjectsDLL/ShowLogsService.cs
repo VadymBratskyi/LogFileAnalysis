@@ -88,7 +88,6 @@ namespace ShowLogObjectsDLL {
 				ResponseDate = o.ResponseDate,
 				Response = _processLogTree.GetTree(o.Response)
 			});
-
 			return dataSource;
 		}
 

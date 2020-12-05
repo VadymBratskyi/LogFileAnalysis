@@ -1,4 +1,4 @@
-<query-builder [config]='config' [allowRuleset]='allowRuleset' [allowCollapse]='allowCollapse'>
+<query-builder [(ngModel)]='query' [config]='config' [allowRuleset]='allowRuleset' [allowCollapse]='allowCollapse'>
   
   <ng-container *queryButtonGroup="let ruleset; let addRule=addRule; let addRuleSet=addRuleSet; let removeRuleSet=removeRuleSet">
     <button type="button" mat-icon-button color="primary" (click)="addRule()">

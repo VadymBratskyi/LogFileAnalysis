@@ -2,96 +2,101 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { QueryConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
-import { QueryBuilderConfig, Rule, RuleSet } from 'angular2-query-builder';
-import { strict } from 'assert';
-import { config, ReplaySubject } from 'rxjs';
+import { QueryBuilderConfig } from 'angular2-query-builder';
+import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/new-query-dialog.component';
 
 @Component({
-  selector: 'app-filters-panel',
-  templateUrl: './filters-panel.component.html',
-  styleUrls: ['./filters-panel.component.scss'],
-  encapsulation: ViewEncapsulation.None
+	selector: 'app-filters-panel',
+	templateUrl: './filters-panel.component.html',
+	styleUrls: ['./filters-panel.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class FiltersPanelComponent implements OnInit {
 
-  public isQueryBuilderCardExpanded: boolean;
+	public isQueryBuilderCardExpanded: boolean;
 
-  public destroyed$: ReplaySubject<boolean> = new ReplaySubject<boolean>(); 
+	public destroyed$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
 
-  public loadedConfig: boolean;
+	public loadedConfig: boolean;
 
-  private _queryConfigs: QueryConfig[];
+	private _existQueryConfigs: QueryConfig[];
 
-  public config: QueryBuilderConfig = {
-    fields: {}
-  };
+	public queryRules = {
+		condition: 'and',
+		rules: [
+		]
+	};
 
-  constructor(
-    private dialog: MatDialog,
-    private showLogObjectsService: ShowLogObjectsService
-  ) { }
+	public config: QueryBuilderConfig = {
+		fields: {}
+	};
 
-  ngOnInit() {
-    this.onLoadData();
-  }
+	constructor(
+		private dialog: MatDialog,
+		private showLogObjectsService: ShowLogObjectsService
+	) { }
 
-  private getType(query: QueryConfig) {
-    switch(query.type) {
-      case 1:
-        return 'string';
-      case 2:
-        return 'number';
-      case 3:
-        return 'boolean';
-      case 4:
-        return 'date';
-      default:
-        return 'string';
-    }
-  }
+	ngOnInit() {
+		this.onLoadData();
+	}
 
-  private createGonfig(query: any) {
-    return {name: query.key, type: this.getType(query)};
-  }
+	private getType(query: QueryConfig) {
+		switch(query.type) {
+			case 1:
+			return 'string';
+			case 2:
+			return 'number';
+			case 3:
+			return 'boolean';
+			case 4:
+			return 'date';
+			default:
+			return 'string';
+		}
+	}
 
-  private buildConfig(queryconfigs: QueryConfig[]) {
-    var conf = {};
-    queryconfigs.forEach(element => {
-      conf[element.key.toLocaleLowerCase()] = this.createGonfig(element);
-    });
-    return conf;
-  }
+	private createGonfig(query: any) {
+		return {name: query.key, type: this.getType(query)};
+	}
 
-  onLoadData() {
-    this.loadedConfig = false;
-    this.showLogObjectsService.getQueryDataConfig()
-    .pipe(takeUntil(this.destroyed$))
-    .subscribe(queryconfig => {
-		this.loadedConfig = true;
-		this._queryConfigs = queryconfig;
-  this.config.fields  = this.buildConfig(queryconfig);
-    });
-  }
+	private buildConfig(queryconfigs: QueryConfig[]) {
+		var conf = {};
+		queryconfigs.forEach(element => {
+			conf[element.name] = this.createGonfig(element);
+		});
+		return conf;
+	}
 
-  onRunFilter() {
-	this.showLogObjectsService.runLogsFilter()
-	.pipe(takeUntil(this.destroyed$))
-	.subscribe(data => {
-		console.log(data);
-	});
-  }
+	onLoadData() {
+		this.loadedConfig = false;
+		this.showLogObjectsService.getQueryDataConfig()
+		.pipe(takeUntil(this.destroyed$))
+		.subscribe(queryconfig => {
+			this.loadedConfig = true;
+			this._existQueryConfigs = queryconfig;
+			this.config.fields  = this.buildConfig(queryconfig);
+		});
+	}
 
-  onClearFilter() {
-    
-  }
+	onRunFilter() {		
+		this.showLogObjectsService.runLogsFilter(this.queryRules)
+		.pipe(takeUntil(this.destroyed$))
+		.subscribe(data => {
+			console.log(data);
+		});
+	}
 
-  onFilterSettings() {
-      const dialogRef = this.dialog.open(NewQueryDialogComponent, {
-        data: {existQueries: this._queryConfigs}
-      });
-		    dialogRef.afterClosed()
+	onClearFilter() {
+		
+	}
+
+	onFilterSettings() {
+		const dialogRef = this.dialog.open(NewQueryDialogComponent, {
+			data: {existQueries: this._existQueryConfigs}
+		});
+				dialogRef.afterClosed()
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe((result: QuerySettingsItem[]) => {
 			if(result) {
@@ -105,14 +110,14 @@ export class FiltersPanelComponent implements OnInit {
 				this.showLogObjectsService.addNewQueryDataConfig(queryConfigs)
 				.pipe(takeUntil(this.destroyed$))
 				.subscribe(result => {
-					console.log(result, 'success');
+					this.onLoadData();
 				});
 			}
       });
-  }
+	}
 
-  ngOnDestroy()  {
-    this.destroyed$.next(true);
-    this.destroyed$.complete();
-  }
+	ngOnDestroy()  {
+		this.destroyed$.next(true);
+		this.destroyed$.complete();
+	}
 }

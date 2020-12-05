@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { QueryBuilderConfig } from 'angular2-query-builder';
+import { QueryBuilderConfig, RuleSet } from 'angular2-query-builder';
 
 @Component({
   selector: 'app-log-query-builder',
@@ -8,14 +8,15 @@ import { QueryBuilderConfig } from 'angular2-query-builder';
 })
 export class LogQueryBuilderComponent {
 
-  @Input() config: QueryBuilderConfig;    
+	@Input() query: RuleSet;
+	@Input() config: QueryBuilderConfig;
 
-  allowRuleset=true; 
-  allowCollapse=true;
+	allowRuleset = true; 
+	allowCollapse = true;
 
-  // query = {
-  //   condition: 'and',
-  //   rules: [ ]
-  // }
+	// query = {
+	//   condition: 'and',
+	//   rules: [ ]
+	// }
 
 }

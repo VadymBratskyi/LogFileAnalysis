@@ -24,7 +24,7 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy  {
   private _expandableColumns = ['request', 'response'];
 
   public dataSource: LogsDtoModel[];
-  public displayTableColumns = ['messageId','requestDate', 'responseDate'];
+  public displayTableColumns = ['messageId', 'requestDate', 'responseDate'];
   public pageSizeOptions = [10, 25, 50, 100];
   public resultsLength = 0;
   public logTableState = {
@@ -48,12 +48,12 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy  {
     this.isLoadingResults = true;
     this.showLogObjectsService.getAllLogs(this.logTableState)
       .pipe(
-        takeUntil(this._destroyed$),
-        catchError(() => {
-          this.isLoadingResults = false;
-          this.isRateLimitReached = true;
-          return of([]);
-        })
+			takeUntil(this._destroyed$),
+			catchError(() => {
+				this.isLoadingResults = false;
+				this.isRateLimitReached = true;
+				return of([]);
+			})
       )
       .subscribe((logsData: LogsDataGrid) => {
         this.isLoadingResults = false;

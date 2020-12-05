@@ -18,6 +18,6 @@
 		</div>
 	</mat-card-header>
 	<mat-card-content [style.display]="isQueryBuilderCardExpanded ? 'block' : 'none'">
-		<app-log-query-builder *ngIf="loadedConfig" [config]="config"></app-log-query-builder>
+		<app-log-query-builder *ngIf="loadedConfig" [query]="queryRules" [config]="config"></app-log-query-builder>
 	</mat-card-content>
 </mat-card>
