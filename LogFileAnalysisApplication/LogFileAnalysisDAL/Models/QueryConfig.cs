@@ -7,6 +7,7 @@ namespace LogFileAnalysisDAL.Models {
 
 		public string Key { get; set; }
 		public string Name { get; set; }
+		public JObjectType ObjectType { get; set; }
 		public LogQueryType Type { get; set; }
 
 	}

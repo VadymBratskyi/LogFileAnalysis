@@ -96,16 +96,19 @@ namespace LogQueryBuilderDLL {
 				new QueryConfig() {
 					Key = "RequestDate",
 					Name = "RequestDate",
+					ObjectType = JObjectType.none,
 					Type = LogQueryType.date
 				},
 				new QueryConfig() {
 					Key = "ResponseDate",
 					Name = "ResponseDate",
+					ObjectType = JObjectType.none,
 					Type = LogQueryType.date
 				},
 				new QueryConfig() {
 					Key = "MessageId",
 					Name = "MessageId",
+					ObjectType = JObjectType.none,
 					Type = LogQueryType.text
 				}
 			};

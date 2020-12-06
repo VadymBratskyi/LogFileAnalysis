@@ -58,13 +58,13 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private createGonfig(query: any) {
-		return {name: query.key, type: this.getType(query)};
+		return {name: query.name, type: this.getType(query)};
 	}
 
 	private buildConfig(queryconfigs: QueryConfig[]) {
 		var conf = {};
 		queryconfigs.forEach(element => {
-			conf[element.name] = this.createGonfig(element);
+			conf[element.key] = this.createGonfig(element);
 		});
 		return conf;
 	}
@@ -76,20 +76,30 @@ export class FiltersPanelComponent implements OnInit {
 		.subscribe(queryconfig => {
 			this.loadedConfig = true;
 			this._existQueryConfigs = queryconfig;
-			this.config.fields  = this.buildConfig(queryconfig);
+			this.config.fields = this.buildConfig(queryconfig);
 		});
 	}
 
 	onRunFilter() {
+		this.queryRules.rules = this.queryRules.rules.map(rule => {
+			const conf = this._existQueryConfigs.find(query => query.key === rule.field);
+			return conf ? {
+				field: rule.field,
+				operator: rule.operator,
+				value: rule.value,
+				objectType: conf.objectType,
+				type: conf.type,
+			} : null;
+		});
 		this.showLogObjectsService.runLogsFilter(this.queryRules)
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe(data => {
 			console.log(data);
 		});
-	}
+	} 
 
 	onClearFilter() {
-		
+		this.queryRules.rules = [];
 	}
 
 	onFilterSettings() {
@@ -102,9 +112,10 @@ export class FiltersPanelComponent implements OnInit {
 			if(result) {
 				const queryConfigs = result.map(item => {
 					const query = new QueryConfig();
-					query.key = item.name;
+					query.key = item.queryPath;
+					query.objectType = item.objectType;
 					query.type = item.type;
-					query.name = item.queryPath;
+					query.name = item.name;
 					return query;
 				});
 				this.showLogObjectsService.addNewQueryDataConfig(queryConfigs)
