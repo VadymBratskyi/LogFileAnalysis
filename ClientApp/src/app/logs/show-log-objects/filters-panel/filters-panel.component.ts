@@ -43,7 +43,7 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private getType(query: QueryConfig) {
-		switch(query.type) {
+		switch (query.type) {
 			case 1:
 			return 'string';
 			case 2:
@@ -80,7 +80,7 @@ export class FiltersPanelComponent implements OnInit {
 		});
 	}
 
-	onRunFilter() {		
+	onRunFilter() {
 		this.showLogObjectsService.runLogsFilter(this.queryRules)
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe(data => {

@@ -41,6 +41,9 @@ namespace LogQueryBuilderDLL.Process {
 									action(logQuery.Childrens, arrayItem);
 								}
 								break;
+							default:
+								logQuery.LogQueryType = GetJsType(item.Type);
+								break;
 						}
 					}
 					break;
@@ -48,8 +51,8 @@ namespace LogQueryBuilderDLL.Process {
 		}
 
 
-		private LogQueryType GetJsType(KeyValuePair<string, JToken> token) {
-			switch (token.Value.Type) {
+		private LogQueryType GetJsType(JTokenType tokenType) {
+			switch (tokenType) {
 				case JTokenType.String:
 					return LogQueryType.text;
 				case JTokenType.Date:
@@ -65,14 +68,14 @@ namespace LogQueryBuilderDLL.Process {
 		}
 
 		private void ActionAddLogQuery(List<LogQuery> logQueries, KeyValuePair<string, JToken> item) {
-			if (GetIsExistQueryByName(logQueries, item.Key)) {
+			if (!GetIsExistQueryByName(logQueries, item.Key)) {
 				logQueries.Add(CreateLogQuery(item));
 			}
 		}
 
 		private LogQuery CreateLogQuery(KeyValuePair<string, JToken> token) {
 			var logQuery = new LogQuery(token.Key);
-			var tp = GetJsType(token);
+			logQuery.LogQueryType = GetJsType(token.Value.Type);
 			logQuery.ObjectType = GetJObjectType(token);
 			AnalysisLogQuery(logQuery, token, ActionAddLogQuery);
 			return logQuery;
