@@ -46,7 +46,30 @@ namespace ShowLogObjectsDLL {
 			return dataSource;
 		}
 
-		public async Task<DataSourceGrid<LogDTO>> GetGridLogsByFilter() {
+		private FilterDefinition<Log> GetAndFilter(IEnumerable<FilterDefinition<Log>> filters) { 
+			return Builders<Log>.Filter.And(new List<FilterDefinition<Log>>(filters));
+		}
+
+		private FilterDefinition<Log> GetOrFilter(IEnumerable<FilterDefinition<Log>> filters) {
+			return Builders<Log>.Filter.Or(new List<FilterDefinition<Log>>(filters));
+		}
+
+		public async Task<DataSourceGrid<LogDTO>> GetGridLogsByFilter(QueryRulesSet rulesset) {
+
+			List<FilterDefinition<Log>> rules = new List<FilterDefinition<Log>>();
+			FilterDefinition<Log> filter;
+
+			foreach (var rule in rulesset.Rules) {
+				rules.Add(Builders<Log>.Filter.Eq(rule.Field, rule.Value));
+			}
+
+			if (rulesset.Condition == "and") {
+				filter = GetAndFilter(rules);
+			}
+			else {
+				filter = GetOrFilter(rules);
+			}
+
 
 			// метод Or
 			//var filter1 = Builders<Log>.Filter.Eq("MessageId", "BARS-MESS-6717790");
@@ -72,12 +95,12 @@ namespace ShowLogObjectsDLL {
 			//var resArrObj = await _dbService.Logs.GetAsync(filterAarr);
 
 			//метод Arr
-			var filter9 = Builders<Log>.Filter.All("Request.params.mergedRNK", new List<int>() { 50950 });
+			//var filter9 = Builders<Log>.Filter.All("Request.params.mergedRNK", new List<int>() { 50950 });
 			//var filter7 = Builders<Log>.Filter.Eq("Request.params.fio", "СЛАВІНСЬКА СВІТЛАНА ОЛЕКСАНДРІВНА");
 			//var filter8 = Builders<Log>.Filter.Eq("Request.params.fio", "ТОРОХТІЙ МАРІЯ ОЛЕКСІЇВНА");
-			var filterAarr = Builders<Log>.Filter.Or(new List<FilterDefinition<Log>> { filter9 });
+			//var filterAarr = Builders<Log>.Filter.Or(new List<FilterDefinition<Log>> { filter9 });
 
-			var resArr = await _dbService.Logs.GetAsync(filterAarr);
+			var resArr = await _dbService.Logs.GetAsync(filter);
 
 			var dataSource = new DataSourceGrid<LogDTO>();
 			dataSource.CountLogs = resArr.Count();

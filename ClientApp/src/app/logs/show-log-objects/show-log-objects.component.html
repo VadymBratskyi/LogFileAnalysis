@@ -1,8 +1,8 @@
 <div class="toolBox">
-    <app-filters-panel></app-filters-panel>
+	<app-filters-panel (runFilter)="onRunFilter($event)"></app-filters-panel>
 </div>
 <mat-card class="example-card">    
-    <mat-card-content>      
-        <app-log-objects-table></app-log-objects-table>
-    </mat-card-content>
+	<mat-card-content>      
+		<app-log-objects-table [dataSource]="data" (dataChanges)="onDataChanges($event)"></app-log-objects-table>
+	</mat-card-content>
 </mat-card>

@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { LogsDataGrid, LogsDtoModel, LogTableState, LogTreeModel } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
@@ -18,12 +18,12 @@ import { catchError, takeUntil } from 'rxjs/operators';
     ]),
   ],
 })
-export class LogObjectsTableComponent implements OnInit, OnDestroy  {
+export class LogObjectsTableComponent {
 
-  private _destroyed$: ReplaySubject<boolean> = new ReplaySubject();
   private _expandableColumns = ['request', 'response'];
 
-  public dataSource: LogsDtoModel[];
+  @Input() dataSource: LogsDtoModel[];
+  @Output() dataChanges = new EventEmitter<LogTableState>();
   public displayTableColumns = ['messageId', 'requestDate', 'responseDate'];
   public pageSizeOptions = [10, 25, 50, 100];
   public resultsLength = 0;
@@ -37,36 +37,13 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy  {
   public isRateLimitReached: boolean;
   public expandedElement: boolean;
    
-  constructor(private showLogObjectsService: ShowLogObjectsService) 
-  { }
-
-  public ngOnInit() {
-    this.onLoadData();
-  }
-
-  private onLoadData() {
-    this.isLoadingResults = true;
-    this.showLogObjectsService.getAllLogs(this.logTableState)
-      .pipe(
-			takeUntil(this._destroyed$),
-			catchError(() => {
-				this.isLoadingResults = false;
-				this.isRateLimitReached = true;
-				return of([]);
-			})
-      )
-      .subscribe((logsData: LogsDataGrid) => {
-        this.isLoadingResults = false;
-        this.dataSource = logsData.data;
-        this.resultsLength = logsData.countLogs;
-      });
-  }
+	constructor(private showLogObjectsService: ShowLogObjectsService) { }
 
   public pageChanges(changeData: PageEvent) {
     this.logTableState.take = changeData.pageSize
     let skip = changeData.pageIndex * this.logTableState.take;
-    this.logTableState.skip = skip;
-    this.onLoadData();
+	 this.logTableState.skip = skip;
+	 this.dataChanges.emit(this.logTableState);
   }
 
   public getExpandTreeData(element: LogsDtoModel): LogTreeModel[] {
@@ -84,11 +61,6 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy  {
       });
     }
     return treeModels;
-  }
-
-  ngOnDestroy() {
-    this._destroyed$.next(true);
-    this._destroyed$.complete();
   }
 
 }

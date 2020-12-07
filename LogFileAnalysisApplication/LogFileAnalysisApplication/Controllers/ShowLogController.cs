@@ -6,30 +6,11 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShowLogObjectsDLL;
+using ShowLogObjectsDLL.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LogFileAnalysisApplication.Controllers {
-
-	public class QueryRulesSet {
-
-		public string Condition { get; set; }
-
-		public IEnumerable<QueryRules> Rules { get; set; }
-
-	}
-
-	public class QueryRules {
-
-		public string Field { get; set; }
-
-		public string Operator { get; set; }
-
-		public string Value { get; set; }
-		public JObjectType ObjectType { get; set; }
-		public LogQueryType Type { get; set; }
-
-	}
 
 	#region Class: ShowLogController
 
@@ -82,7 +63,7 @@ namespace LogFileAnalysisApplication.Controllers {
 
 		[HttpPost("[action]")]
 		public async Task<ActionResult> GetLogsDataByFilter([FromBody]QueryRulesSet rulesset) {
-			var data = await _showLogService.GetGridLogsByFilter();
+			var data = await _showLogService.GetGridLogsByFilter(rulesset);
 			return Ok(data);
 		}
 

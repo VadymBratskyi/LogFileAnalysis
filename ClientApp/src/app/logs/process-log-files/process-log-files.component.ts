@@ -29,7 +29,7 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe(p => {
         this.sessionId = p.get("sessionId");
-        this.servProcessLogFiles.startHubConnection();        
+        this.servProcessLogFiles.startHubConnection();
       });
   }
 
@@ -43,8 +43,8 @@ export class ProcessLogFilesComponent implements OnInit, OnDestroy {
     .pipe(takeUntil(this.destroyed$))
     .subscribe((logNotify: LogNotify) => {
         this._complateProcesFile(logNotify.fileName);
-        this.servNotifications.addProcessLogNotify(logNotify);  
-    });  
+        this.servNotifications.addProcessLogNotify(logNotify);
+    });
   }
 
   private _processOfferIssues() {

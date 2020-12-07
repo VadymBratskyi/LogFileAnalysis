@@ -198,7 +198,6 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\Pr
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
-C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.csprojAssemblyReference.cache
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.AssemblyInfoInputs.cache
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.AssemblyInfo.cs
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.csproj.CopyComplete
