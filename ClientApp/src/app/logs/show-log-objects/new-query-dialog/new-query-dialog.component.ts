@@ -31,6 +31,7 @@ export class TodoItemFlatNode {
 export interface QuerySettingsItem {
 	name: string;
 	queryPath: string;
+	objectType: JObjectType;
 	type: LogQueryType;
 
 }
@@ -68,10 +69,10 @@ export interface QuerySettingsItem {
 				default:
 					node.item = jobject.key;
 					node.jObjectType = JObjectType.none;
-					node.valueType = jobject.logQueryType;
 					break;
 			}
 			node.value = jobject.key;
+			node.valueType = jobject.logQueryType;
 			node.path = pathNode ? `${pathNode}.${jobject.key}` : jobject.key;
 			if (jobject.childrens.length > 0) {
 			node.children = this.buildTreeFields(jobject.childrens, node.path);
@@ -211,6 +212,7 @@ export interface QuerySettingsItem {
 					this.queriesToSettins.push({
 						queryPath: item.path,
 						type: item.valueType,
+						objectType: item.objectType,
 						name: ''
 					} as QuerySettingsItem);
 				}

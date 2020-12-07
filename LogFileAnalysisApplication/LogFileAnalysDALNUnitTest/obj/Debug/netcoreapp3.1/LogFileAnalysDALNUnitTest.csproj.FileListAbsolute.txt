@@ -301,7 +301,6 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUn
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\bin\Debug\netcoreapp3.1\LogFileAnalysisDAL.pdb
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\obj\Debug\netcoreapp3.1\LogFileAnalysDALNUnitTest.csprojAssemblyReference.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\obj\Debug\netcoreapp3.1\LogFileAnalysDALNUnitTest.AssemblyInfoInputs.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\obj\Debug\netcoreapp3.1\LogFileAnalysDALNUnitTest.AssemblyInfo.cs
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\obj\Debug\netcoreapp3.1\LogFileAnalysDALNUnitTest.csproj.CoreCompileInputs.cache
@@ -315,3 +314,4 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUn
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogFileAnalysDALNUnitTest\obj\Debug\netcoreapp3.1\LogFileAnalysDALNUnitTest.csprojAssemblyReference.cache
