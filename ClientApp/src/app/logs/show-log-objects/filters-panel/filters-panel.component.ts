@@ -1,11 +1,24 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { QueryConfig } from '@log_models';
+import { JObjectType, LogQueryType, QueryConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { QueryBuilderConfig } from 'angular2-query-builder';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/new-query-dialog.component';
+
+export interface LogQueryRuleSet {
+	condition: string;
+	rules: LogQueryRules[];
+}
+
+export interface LogQueryRules {
+	field: string;
+	operator: string;
+	value: string | number;
+	objectType: JObjectType;
+	type: LogQueryType;
+}
 
 @Component({
 	selector: 'app-filters-panel',
@@ -14,6 +27,8 @@ import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/
 	encapsulation: ViewEncapsulation.None
 })
 export class FiltersPanelComponent implements OnInit {
+
+	@Output() runFilter = new EventEmitter<LogQueryRuleSet>();
 
 	public isQueryBuilderCardExpanded: boolean;
 
@@ -80,8 +95,8 @@ export class FiltersPanelComponent implements OnInit {
 		});
 	}
 
-	onRunFilter() {
-		this.queryRules.rules = this.queryRules.rules.map(rule => {
+	private _getLogQueryRules() {
+		return this.queryRules.rules.map(rule => {
 			const conf = this._existQueryConfigs.find(query => query.key === rule.field);
 			return conf ? {
 				field: rule.field,
@@ -91,12 +106,15 @@ export class FiltersPanelComponent implements OnInit {
 				type: conf.type,
 			} : null;
 		});
-		this.showLogObjectsService.runLogsFilter(this.queryRules)
-		.pipe(takeUntil(this.destroyed$))
-		.subscribe(data => {
-			console.log(data);
-		});
-	} 
+	}
+
+	onRunFilter() {
+		const runFilter = {
+			condition: this.queryRules.condition,
+			rules: this._getLogQueryRules()
+		} as LogQueryRuleSet;
+		this.runFilter.emit(runFilter);
+	}
 
 	onClearFilter() {
 		this.queryRules.rules = [];
