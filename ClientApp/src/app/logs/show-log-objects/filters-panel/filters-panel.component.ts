@@ -1,24 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { JObjectType, LogQueryType, QueryConfig } from '@log_models';
+import { LogQueryRuleSet, QueryConfig } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { QueryBuilderConfig } from 'angular2-query-builder';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/new-query-dialog.component';
-
-export interface LogQueryRuleSet {
-	condition: string;
-	rules: LogQueryRules[];
-}
-
-export interface LogQueryRules {
-	field: string;
-	operator: string;
-	value: string | number;
-	objectType: JObjectType;
-	type: LogQueryType;
-}
 
 @Component({
 	selector: 'app-filters-panel',
@@ -27,36 +14,20 @@ export interface LogQueryRules {
 	encapsulation: ViewEncapsulation.None
 })
 export class FiltersPanelComponent implements OnInit {
-
-	@Output() runFilter = new EventEmitter<LogQueryRuleSet>();
-
 	public isQueryBuilderCardExpanded: boolean;
-
 	public destroyed$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
-
 	public loadedConfig: boolean;
-
 	private _existQueryConfigs: QueryConfig[];
-
-	public queryRules = {
-		condition: 'and',
-		rules: [
-		]
-	};
 
 	public config: QueryBuilderConfig = {
 		fields: {}
 	};
-
-	constructor(
-		private dialog: MatDialog,
-		private showLogObjectsService: ShowLogObjectsService
+	constructor(	private dialog: MatDialog,
+		public showLogObjectsService: ShowLogObjectsService
 	) { }
-
-	ngOnInit() {
+	public ngOnInit() {
 		this.onLoadData();
 	}
-
 	private getType(query: QueryConfig) {
 		switch (query.type) {
 			case 1:
@@ -77,14 +48,14 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private buildConfig(queryconfigs: QueryConfig[]) {
-		var conf = {};
+		const conf = {};
 		queryconfigs.forEach(element => {
 			conf[element.key] = this.createGonfig(element);
 		});
 		return conf;
 	}
 
-	onLoadData() {
+	public onLoadData() {
 		this.loadedConfig = false;
 		this.showLogObjectsService.getQueryDataConfig()
 		.pipe(takeUntil(this.destroyed$))
@@ -96,38 +67,38 @@ export class FiltersPanelComponent implements OnInit {
 	}
 
 	private _getLogQueryRules() {
-		return this.queryRules.rules.map(rule => {
+		return this.showLogObjectsService.showLogQueryRules.rules.map(rule => {
 			const conf = this._existQueryConfigs.find(query => query.key === rule.field);
 			return conf ? {
 				field: rule.field,
 				operator: rule.operator,
-				value: rule.value,
+				value: rule.value.toString(),
 				objectType: conf.objectType,
 				type: conf.type,
 			} : null;
 		});
 	}
 
-	onRunFilter() {
+	public onRunFilter() {
 		const runFilter = {
-			condition: this.queryRules.condition,
+			condition: this.showLogObjectsService.showLogQueryRules.condition,
 			rules: this._getLogQueryRules()
 		} as LogQueryRuleSet;
-		this.runFilter.emit(runFilter);
+		this.showLogObjectsService.loadDataWithFilter.emit(runFilter);
 	}
 
-	onClearFilter() {
-		this.queryRules.rules = [];
+	public onClearFilter() {
+		this.showLogObjectsService.showLogQueryRules.rules = [];
 	}
 
 	onFilterSettings() {
 		const dialogRef = this.dialog.open(NewQueryDialogComponent, {
 			data: {existQueries: this._existQueryConfigs}
 		});
-				dialogRef.afterClosed()
+		dialogRef.afterClosed()
 		.pipe(takeUntil(this.destroyed$))
 		.subscribe((result: QuerySettingsItem[]) => {
-			if(result) {
+			if (result) {
 				const queryConfigs = result.map(item => {
 					const query = new QueryConfig();
 					query.key = item.queryPath;

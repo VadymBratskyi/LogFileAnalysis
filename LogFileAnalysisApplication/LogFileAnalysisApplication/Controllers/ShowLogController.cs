@@ -1,5 +1,4 @@
-﻿using LogFileAnalysisApplication.Common;
-using LogFileAnalysisDAL.Models;
+﻿using LogFileAnalysisDAL.Models;
 using LogQueryBuilderDLL;
 using LogQueryBuilderDLL.Models;
 using Microsoft.AspNetCore.Cors;
@@ -50,19 +49,19 @@ namespace LogFileAnalysisApplication.Controllers {
 		}
 		
 		[HttpPost("[action]")]
-		public async Task<ActionResult> AddNewItemToQueryBuilder([FromBody]IEnumerable<QueryConfig> newqueries) {
+		public async Task<ActionResult> AddNewItemToQueryBuilder([FromBody] IEnumerable<QueryConfig> newqueries) {
 			await _queryBuildingService.AddNewItem(newqueries);
 			return Ok();
 		}
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult> GetAllLogsData([FromBody]FilterParameters filterParameters) {
-			var logData = await _showLogService.GetGridLogs(filterParameters.Skip, filterParameters.Take);
+		public async Task<ActionResult> GetAllLogsData([FromBody] ShowLogFilterParameters filterParameters) {
+			var logData = await _showLogService.GetGridLogs(filterParameters);
 			return Ok(logData);
 		}
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult> GetLogsDataByFilter([FromBody]QueryRulesSet rulesset) {
+		public async Task<ActionResult> GetLogsDataByFilter([FromBody] QueryRulesSet rulesset) {
 			var data = await _showLogService.GetGridLogsByFilter(rulesset);
 			return Ok(data);
 		}

@@ -32,8 +32,26 @@ namespace ShowLogObjectsDLL {
 
 		#region Fields: Public
 
-		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(int skip, int take) {
-			var logs = await _dbService.Logs.GetAsync(skip, take);
+		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(ShowLogFilterParameters parameters) {
+			List<FilterDefinition<Log>> rules = new List<FilterDefinition<Log>>();
+			FilterDefinition<Log> filter;
+
+			foreach (var rule in parameters.RulesSet.Rules) {
+				rules.Add(Builders<Log>.Filter.Eq(rule.Field, rule.Value));
+			}
+			if (rules.Count > 0) {
+				if (parameters.RulesSet.Condition == "and") {
+					filter = GetAndFilter(rules);
+				}
+				else {
+					filter = GetOrFilter(rules);
+				}
+			}
+			else {
+				filter = Builders<Log>.Filter.Empty;
+			}
+			
+			var logs = await _dbService.Logs.GetAsync(filter, parameters.Skip, parameters.Take);
 			var dataSource = new DataSourceGrid<LogDTO>();
 			dataSource.Data = logs.Select(o => new LogDTO() {
 				MessageId = o.MessageId,

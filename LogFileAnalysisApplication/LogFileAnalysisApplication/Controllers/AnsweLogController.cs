@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AnswerLogObjectDLL;
 using AnswerLogObjectDLL.Models;
 using ErrorLogObjectDLL;
-using LogFileAnalysisApplication.Common;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ViewModelsDLL.Models;
 
 namespace LogFileAnalysisApplication.Controllers
 {

@@ -11,70 +11,57 @@ import { KnownErrorDataGrid } from 'app/_models/errors/known-error-data-grid';
   providedIn: 'root'
 })
 export class ErrorLogObjectsService {
+	private _errorPageType: ErrorPageType;
+	public get errorPageType(): ErrorPageType {
+		return this._errorPageType;
+	}
+	public set errorPageType(value: ErrorPageType) {
+		this._errorPageType = value;
+	}
 
-  private _errorPageType: ErrorPageType;
+	constructor(private http: HttpClient) { }
 
-  public get errorPageType(): ErrorPageType {
-    return this._errorPageType;
-  }
+	public getAllUnKnownErrorData(logTableModel: LogTableState): Observable<UnknownErrorDataGrid> {
+		const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllUnKnownErrorData;
+		const body = new FilterParameters(logTableModel.skip, logTableModel.take);
+		return this.http.post(url, body)
+		.pipe(
+			map((response: UnknownErrorDataGrid) => {
+				return response;
+			}),
+			catchError((error: HttpErrorResponse) => {
+			console.error('getAllUnKnownErrorData: ', error);
+			return Observable.throw(error);
+			})
+		);
+	}
 
-  public set errorPageType(value: ErrorPageType) {
-    this._errorPageType = value;
-  }
+	public getAllKnownErrorData(logTableModel: LogTableState): Observable<KnownErrorDataGrid> {
+		const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllKnownErrorData;
+		const body = new FilterParameters(logTableModel.skip, logTableModel.take);
+		return this.http.post(url, body)
+		.pipe(
+			map((response: KnownErrorDataGrid) => {
+				return response;
+			}),
+			catchError((error: HttpErrorResponse) => {
+			console.error('getAllKnownErrorData: ', error);
+			return Observable.throw(error);
+			})
+		);
+	}
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  public getAllUnKnownErrorData(logTableModel: LogTableState): Observable<UnknownErrorDataGrid> {
-    
-    const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllUnKnownErrorData;
-
-    var body = new FilterParameters(logTableModel.skip, logTableModel.take);
-         
-    return this.http.post(url, body)
-    .pipe(
-        map((response: UnknownErrorDataGrid) => {        
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getAllUnKnownErrorData: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
-
-  public getAllKnownErrorData(logTableModel: LogTableState): Observable<KnownErrorDataGrid> {
-    
-    const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodGetAllKnownErrorData;
-
-    var body = new FilterParameters(logTableModel.skip, logTableModel.take);
-         
-    return this.http.post(url, body)
-    .pipe(
-        map((response: KnownErrorDataGrid) => {        
-          return response;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('getAllKnownErrorData: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
-
-  public setKnownError(knownErrorConfig: KnownErrorConfig): Observable<string> {
-    
-    const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodSetKnownErrorData;
- 
-    return this.http.post(url, knownErrorConfig)
-    .pipe(
-        map((responseId: string) => {        
-          return responseId;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('setKnownError: ', error);       
-        return Observable.throw(error);
-      })
-    );
-  }
+	public setKnownError(knownErrorConfig: KnownErrorConfig): Observable<string> {
+		const url = environment.localhostApp + environment.urlErrorLogApi + environment.methodSetKnownErrorData;
+		return this.http.post(url, knownErrorConfig)
+		.pipe(
+			map((responseId: string) => {
+				return responseId;
+			}),
+			catchError((error: HttpErrorResponse) => {
+			console.error('setKnownError: ', error);
+			return Observable.throw(error);
+			})
+		);
+	}
 }

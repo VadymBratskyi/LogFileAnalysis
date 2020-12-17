@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using ErrorLogObjectDLL;
 using ErrorLogObjectDLL.Models;
-using LogFileAnalysisApplication.Common;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ViewModelsDLL.Models;
 
 namespace LogFileAnalysisApplication.Controllers
 {

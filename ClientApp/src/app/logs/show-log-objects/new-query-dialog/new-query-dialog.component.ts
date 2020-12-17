@@ -39,7 +39,6 @@ export interface QuerySettingsItem {
 @Injectable()
 	export class ChecklistDatabase {
 	dataChange = new BehaviorSubject<TodoItemNode[]>([]);
-
 	constructor(
 		private showLogObjectsService: ShowLogObjectsService
 	) {
@@ -90,9 +89,7 @@ export interface QuerySettingsItem {
 	providers: [ChecklistDatabase]
 })
 	export class NewQueryDialogComponent implements OnInit {
-
 	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
-
 	constructor(
 		private _database: ChecklistDatabase,
 		public dialogRef: MatDialogRef<NewQueryDialogComponent>,
@@ -102,11 +99,9 @@ export interface QuerySettingsItem {
 		this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
 		this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 	}
-
 	onNoClick(): void {
 		this.dialogRef.close();
 	}
-
 	private disableExistItems(existQueries: QueryConfig[], queryNodes: TodoItemNode[]) {
 		queryNodes.forEach(item => {
 			const existIndex = existQueries.findIndex(config => config.name === item.path);
@@ -118,8 +113,6 @@ export interface QuerySettingsItem {
 			}
 		});
 	}
-
-
 	ngOnInit(): void {
 		this._database.dataChange.subscribe((data: TodoItemNode[]) => {
 			const existQueries = this.data.existQueries;
@@ -127,12 +120,10 @@ export interface QuerySettingsItem {
 			this.dataSource.data = data;
 		});
 	}
-
 	ngOnDestroy() {
 		this.destroyed$.next(true);
 		this.destroyed$.complete();
 	}
-
 
 	/** Map from flat node to nested node. This helps us finding the nested node to be modified */
 	flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();

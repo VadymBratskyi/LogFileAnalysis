@@ -19,4 +19,3 @@ C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\St
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csproj.CopyComplete
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.pdb
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\StatusErrorDLL\obj\Debug\netcoreapp3.1\StatusErrorDLL.csprojAssemblyReference.cache

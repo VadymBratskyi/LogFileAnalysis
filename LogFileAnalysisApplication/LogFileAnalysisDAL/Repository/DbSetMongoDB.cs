@@ -67,18 +67,18 @@ namespace LogFileAnalysisDAL.Repository {
 			return await _entities.Find(filter).Skip(skip).Limit(take).ToListAsync();
 		}
 
-		public IEnumerable<TEntity> Get(FilterDefinition<TEntity> filterDefenition) {
+		public IEnumerable<TEntity> Get(FilterDefinition<TEntity> filterDefenition, int skip = 0, int take = Int32.MaxValue) {
 			if (filterDefenition == null) {
 				throw new ArgumentNullException("FilterDefenition is null!!");
 			}
 			return _entities.Find(filterDefenition).ToList();
 		}
 
-		public async Task<IEnumerable<TEntity>> GetAsync(FilterDefinition<TEntity> filterDefenition) {
+		public async Task<IEnumerable<TEntity>> GetAsync(FilterDefinition<TEntity> filterDefenition, int skip = 0, int take = Int32.MaxValue) {
 			if (filterDefenition == null) {
 				throw new ArgumentNullException("FilterDefenition is null!!");
 			}
-			return await _entities.Find(filterDefenition).ToListAsync();
+			return await _entities.Find(filterDefenition).Skip(skip).Limit(take).ToListAsync();
 		}
 
 		public TEntity GetSingle(FilterDefinition<TEntity> filterDefenition) {

@@ -16,8 +16,8 @@ namespace LogFileAnalysisDAL.Repository {
         IEnumerable<TEntity> Get(int skip, int take);
         Task<IEnumerable<TEntity>> GetAsync(int skip, int take);
         //Task<IEnumerable<TEntity>> Get(Func<TEntity, bool> predicate); //todo
-        IEnumerable<TEntity> Get(FilterDefinition<TEntity> filterDefenition);
-        Task<IEnumerable<TEntity>> GetAsync(FilterDefinition<TEntity> filterDefenition);
+        IEnumerable<TEntity> Get(FilterDefinition<TEntity> filterDefenition, int skip, int take);
+        Task<IEnumerable<TEntity>> GetAsync(FilterDefinition<TEntity> filterDefenition, int skip, int take);
         TEntity GetSingle(FilterDefinition<TEntity> filterDefenition);
         Task<TEntity> GetSingleAsync(FilterDefinition<TEntity> filterDefenition);
          Task<TEntity> FindById(ObjectId id);

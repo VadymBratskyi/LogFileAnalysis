@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { KnownErrorDTO, LogTableState, LogTreeModel } from '@log_models';
 import { ErrorLogObjectsService } from '@log_services';
@@ -19,77 +19,68 @@ import { catchError, takeUntil } from 'rxjs/operators';
     ]),
   ],
 })
-export class KnownErrorTableComponent implements OnInit {
+export class KnownErrorTableComponent implements OnInit, OnDestroy {
+	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
+	private _expandableColumns = ['answer', 'status'];
+	public dataSource: KnownErrorDTO[];
+	public displayTableColumns = [ 'message', 'countFounded' ];
+	public pageSizeOptions = [10, 25, 50, 100];
+	public resultsLength = 0;
+	public logTableState = {
+		skip: 0,
+		take: 10
+	} as LogTableState;
+	public isLoadingResults: boolean;
+	public isRateLimitReached: boolean;
+	public expandedElement: boolean;
+	constructor(private errorLogObjectsService: ErrorLogObjectsService) { }
+	public ngOnInit() {
+		this.onLoadData();
+	}
+	private onLoadData() {
+		this.isLoadingResults = true;
+		this.errorLogObjectsService.getAllKnownErrorData(this.logTableState)
+		.pipe(
+			takeUntil(this.destroyed$),
+			catchError(() => {
+				this.isLoadingResults = false;
+				this.isRateLimitReached = true;
+				return of([]);
+			})
+		).subscribe((unKnownErrorsData: KnownErrorDataGrid) => {
+			this.isLoadingResults = false;
+			this.dataSource = unKnownErrorsData.data;
+			this.resultsLength = unKnownErrorsData.countLogs;
+		});
+	}
 
-  private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
-  private _expandableColumns = ['answer', 'status'];
+	public pageChanges(changeData: PageEvent) {
+		this.logTableState.take = changeData.pageSize;
+		const skip = changeData.pageIndex * this.logTableState.take;
+		this.logTableState.skip = skip;
+		this.onLoadData();
+	}
 
-  public dataSource: KnownErrorDTO[];
-  public displayTableColumns = [ 'message', 'countFounded' ]; 
-  public pageSizeOptions = [10, 25, 50, 100];
-  public resultsLength = 0;
-  public logTableState = {
-    count: 0,
-    skip: 0,
-    take: 10
-  } as LogTableState;
+	public getExpandTreeData(element: KnownErrorDTO): LogTreeModel[] {
+		const treeModels: LogTreeModel[] = [];
+		if (this._expandableColumns) {
+			this._expandableColumns.forEach(column => {
+			const treeModel = new LogTreeModel();
+			const treeNode = {
+				key: column,
+				value: JSON.stringify(element[column])
+			};
+			treeModel.value = treeNode;
+			treeModel.children = element[column];
+			treeModels.push(treeModel);
+			});
+		}
+		return treeModels;
+	}
 
-  public isLoadingResults: boolean;
-  public isRateLimitReached: boolean;
-  public expandedElement: boolean;
-   
-  constructor(private errorLogObjectsService: ErrorLogObjectsService) 
-  { }
-
-  public ngOnInit() {
-    this.onLoadData();
-  }
-
-  private onLoadData() {
-    this.isLoadingResults = true;
-    this.errorLogObjectsService.getAllKnownErrorData(this.logTableState)
-      .pipe(
-        takeUntil(this.destroyed$),
-        catchError(() => {
-          this.isLoadingResults = false;
-          this.isRateLimitReached = true;
-          return of([]);
-        })
-      )
-      .subscribe((unKnownErrorsData: KnownErrorDataGrid) => {
-        this.isLoadingResults = false;
-        this.dataSource = unKnownErrorsData.data;
-        this.resultsLength = unKnownErrorsData.countLogs;         
-      });
-  }
-
-  public pageChanges(changeData: PageEvent) {
-    this.logTableState.take = changeData.pageSize
-    let skip = changeData.pageIndex * this.logTableState.take;
-    this.logTableState.skip = skip;
-    this.onLoadData();
-  }
-
-  public getExpandTreeData(element: KnownErrorDTO): LogTreeModel[] {
-    var treeModels: LogTreeModel[] = [];        
-    if(this._expandableColumns) {
-      this._expandableColumns.forEach(column => {
-        let treeModel = new LogTreeModel();
-        let treeNode = {
-          key: column,
-          value: JSON.stringify(element[column])
-        };      
-        treeModel.value = treeNode;
-        treeModel.children = element[column];      
-        treeModels.push(treeModel);
-      });
-    }
-    return treeModels;
-  }
-
-  ngOnDestroy() {
-    this.destroyed$.next(true);
-    this.destroyed$.complete();
-  }
+	ngOnDestroy() {
+		this.destroyed$.next(true);
+		this.destroyed$.complete();
+	}
 
 }
