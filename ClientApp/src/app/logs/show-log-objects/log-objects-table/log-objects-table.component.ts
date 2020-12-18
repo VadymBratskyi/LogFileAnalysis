@@ -35,15 +35,7 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy {
 	public isRateLimitReached: boolean;
 	public expandedElement: boolean;
 	constructor(private showLogObjectsService: ShowLogObjectsService) { }
-	ngOnInit(): void {
-		this.showLogObjectsService.loadDataWithFilter
-			.pipe(takeUntil(this._destroyed$))
-			.subscribe(queryState => {
-				this.logQueryRuleState = queryState;
-				this.onLoadData(this.logTableState, this.logQueryRuleState);
-			});
-	}
-	private onLoadData(dataState: LogTableState, logQueryRuleSet: LogQueryRuleSet) {
+	private _onLoadData(dataState: LogTableState, logQueryRuleSet: LogQueryRuleSet) {
 		this.isLoadingResults = true;
 		this.showLogObjectsService.getAllLogs(dataState, logQueryRuleSet)
       .pipe(
@@ -65,7 +57,7 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy {
 		const skip = changeData.pageIndex * changeData.pageSize;
 		this.logTableState.take = changeData.pageSize;
 		this.logTableState.skip = skip;
-		this.onLoadData(this.logTableState, this.logQueryRuleState);
+		this._onLoadData(this.logTableState, this.logQueryRuleState);
 	}
 
 	public getExpandTreeData(element: LogsDtoModel): LogTreeModel[] {
@@ -84,7 +76,15 @@ export class LogObjectsTableComponent implements OnInit, OnDestroy {
 		}
 		return treeModels;
 	}
-	ngOnDestroy() {
+	public ngOnInit(): void {
+		this.showLogObjectsService.loadDataWithFilter
+			.pipe(takeUntil(this._destroyed$))
+			.subscribe(queryState => {
+				this.logQueryRuleState = queryState;
+				this._onLoadData(this.logTableState, this.logQueryRuleState);
+			});
+	}
+	public ngOnDestroy() {
 		this._destroyed$.next(true);
 		this._destroyed$.complete();
 	}

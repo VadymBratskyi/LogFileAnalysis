@@ -14,7 +14,7 @@
 							class="checklist-leaf-node"
 							[checked]="checklistSelection.isSelected(node) || node.isExistQuery"
 							(change)="todoLeafItemSelectionToggle(node)"
-							>{{ node.item }}
+							>{{ node.name }}
 						</mat-checkbox>
 				</mat-tree-node>
 		
@@ -24,7 +24,7 @@
 				<button
 					mat-icon-button
 					matTreeNodeToggle
-					[attr.aria-label]="'Toggle ' + node.item">
+					[attr.aria-label]="'Toggle ' + node.name">
 					<mat-icon class="mat-icon-rtl-mirror">
 						{{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
 					</mat-icon>
@@ -34,7 +34,7 @@
 						[checked]="descendantsAllSelected(node)"
 						[indeterminate]="descendantsPartiallySelected(node) || node.isExistQuery"
 						(change)="todoItemSelectionToggle(node)">
-						{{ node.item }}
+						{{ node.name }}
 					</mat-checkbox>
 				</mat-tree-node>
 			</mat-tree>

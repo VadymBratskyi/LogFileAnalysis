@@ -1,9 +1,9 @@
-import { JObjectType } from './jobject-type';
-import { LogQueryType } from './log-query-type';
+import { LogObjectType } from './log-object-type';
+import { LogPropertyType } from './log-property-type';
 
 export class QueryConfig {
 	public key: string;
 	public name: string;
-	public objectType: JObjectType;
-	public type: LogQueryType;
+	public objectType: LogObjectType;
+	public propertyType: LogPropertyType;
 }

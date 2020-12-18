@@ -12,26 +12,26 @@ namespace LogQueryBuilderDLL.Process {
 			return token.Type;
 		}
 
-		private JObjectType GetJObjectType(KeyValuePair<string, JToken> token) {
+		private LogObjectType GetJObjectType(KeyValuePair<string, JToken> token) {
 			switch (GetTokenValueType(token.Value)) {
 				case JTokenType.Object:
-					return JObjectType.jobject;
+					return LogObjectType.jobject;
 				case JTokenType.Array:
-					return JObjectType.jarray;
+					return LogObjectType.jarray;
 				default:
-					return JObjectType.none;
+					return LogObjectType.none;
 			}
 		}
 
 		private void AnalysisLogQuery(LogQuery logQuery, KeyValuePair<string, JToken> token, Action<List<LogQuery>, KeyValuePair<string, JToken>> action) {
-			switch (logQuery.ObjectType) {
-				case JObjectType.jobject:
+			switch (logQuery.LogObjectType) {
+				case LogObjectType.jobject:
 					var objectData = (JObject)token.Value;
 					foreach (var objectItem in objectData) {
 						action(logQuery.Childrens, objectItem);
 					}
 					break;
-				case JObjectType.jarray:
+				case LogObjectType.jarray:
 					var datas = (JArray)token.Value;
 					foreach (var item in datas) {
 						switch (GetTokenValueType(item)) {
@@ -42,7 +42,7 @@ namespace LogQueryBuilderDLL.Process {
 								}
 								break;
 							default:
-								logQuery.LogQueryType = GetJsType(item.Type);
+								logQuery.LogPropertyType = GetJsType(item.Type);
 								break;
 						}
 					}
@@ -51,18 +51,18 @@ namespace LogQueryBuilderDLL.Process {
 		}
 
 
-		private LogQueryType GetJsType(JTokenType tokenType) {
+		private LogPropertyType GetJsType(JTokenType tokenType) {
 			switch (tokenType) {
 				case JTokenType.String:
-					return LogQueryType.text;
+					return LogPropertyType.text;
 				case JTokenType.Date:
-					return LogQueryType.date;
+					return LogPropertyType.date;
 				case JTokenType.Integer:
-					return LogQueryType.number;
+					return LogPropertyType.number;
 				case JTokenType.Boolean:
-					return LogQueryType.boolean;
+					return LogPropertyType.boolean;
 				default:
-					return LogQueryType.none;
+					return LogPropertyType.none;
 
 			}
 		}
@@ -75,15 +75,15 @@ namespace LogQueryBuilderDLL.Process {
 
 		private LogQuery CreateLogQuery(KeyValuePair<string, JToken> token) {
 			var logQuery = new LogQuery(token.Key);
-			logQuery.LogQueryType = GetJsType(token.Value.Type);
-			logQuery.ObjectType = GetJObjectType(token);
+			logQuery.LogPropertyType = GetJsType(token.Value.Type);
+			logQuery.LogObjectType = GetJObjectType(token);
 			AnalysisLogQuery(logQuery, token, ActionAddLogQuery);
 			return logQuery;
 		}
 
 		private void ChangeExistLogQuery(List<LogQuery> logQueries, KeyValuePair<string, JToken> token) {
 			var jObjectType = GetJObjectType(token);
-			var existItem = logQueries.SingleOrDefault(model => model.Key.ToLower() == token.Key.ToLower() && model.ObjectType == jObjectType);
+			var existItem = logQueries.SingleOrDefault(model => model.Key.ToLower() == token.Key.ToLower() && model.LogObjectType == jObjectType);
 			if (existItem == null) {
 				var newQuery = CreateLogQuery(token);
 				logQueries.Add(newQuery);
@@ -109,13 +109,13 @@ namespace LogQueryBuilderDLL.Process {
 			var query = new LogQuery(propertyName);
 			switch (GetTokenValueType(jOject)) {
 				case JTokenType.Object:
-					query.ObjectType = JObjectType.jobject;
+					query.LogObjectType = LogObjectType.jobject;
 					foreach (var model in jOject) {
 						query.Childrens.Add(CreateLogQuery(model));
 					}
 					break;
 				case JTokenType.Array:
-					query.ObjectType = JObjectType.jarray;
+					query.LogObjectType = LogObjectType.jarray;
 					foreach (var mdel in jOject) {
 						query.Childrens.Add(CreateLogQuery(mdel));
 					}

@@ -6,9 +6,9 @@ using System.Text.Json.Serialization;
 namespace LogFileAnalysisDAL.Models {
 	public class LogQuery : Entity {
 
-		public JObjectType ObjectType { get; set; }
 		public string Key { get; set; }
-		public LogQueryType LogQueryType { get; set; }
+		public LogObjectType LogObjectType { get; set; }
+		public LogPropertyType LogPropertyType { get; set; }
 		public List<LogQuery> Childrens { get; set; }
 
 		[BsonIgnore]
@@ -18,7 +18,7 @@ namespace LogFileAnalysisDAL.Models {
 		public LogQuery(string keyValue) {
 			Id = ObjectId.GenerateNewId();
 			Key = keyValue;
-			ObjectType = JObjectType.none;
+			LogObjectType = LogObjectType.none;
 			Childrens = new List<LogQuery>();
 		}
 

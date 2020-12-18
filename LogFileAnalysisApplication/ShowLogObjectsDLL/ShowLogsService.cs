@@ -60,7 +60,7 @@ namespace ShowLogObjectsDLL {
 				ResponseDate = o.ResponseDate,
 				Response = _processLogTree.GetTree(o.Response)
 			});
-			dataSource.CountLogs = await _dbService.Logs.Count();
+			dataSource.CountLogs = await _dbService.Logs.Count(filter);
 			return dataSource;
 		}
 

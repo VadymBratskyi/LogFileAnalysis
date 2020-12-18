@@ -1,5 +1,5 @@
 ﻿namespace LogFileAnalysisDAL.Models {
-	public enum JObjectType {
+	public enum LogObjectType {
 
 		none = 0,
 

@@ -1,97 +1,23 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, Inject, Injectable, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { JObjectType, LogQuery, LogQueryType, QueryBuilderConfig, QueryConfig } from '@log_models';
-import { ShowLogObjectsService } from '@log_services';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-
-export class TodoItemNode {
-	children: TodoItemNode[];
-	item: string;
-	value: string;
-	valueType: LogQueryType;
-	jObjectType: JObjectType;
-	path: string;
-	isExistQuery: boolean;
-}
-
-export class TodoItemFlatNode {
-	item: string;
-	value: string;
-	level: number;
-	expandable: boolean;
-	valueType: LogQueryType;
-	objectType: JObjectType;
-	path: string;
-	isExistQuery: boolean;
-}
-
-export interface QuerySettingsItem {
-	name: string;
-	queryPath: string;
-	objectType: JObjectType;
-	type: LogQueryType;
-
-}
-
-@Injectable()
-	export class ChecklistDatabase {
-	dataChange = new BehaviorSubject<TodoItemNode[]>([]);
-	constructor(
-		private showLogObjectsService: ShowLogObjectsService
-	) {
-		this.initialize();
-	}
-
-	initialize() {
-		this.showLogObjectsService.getAccesQueryForConfig()
-		.subscribe((accesQueries: QueryBuilderConfig) => {
-			const data = this.buildTreeFields(accesQueries.fields);
-			this.dataChange.next(data);
-		});
-	}
-
-	buildTreeFields(logQuery: LogQuery[], pathNode?: string): TodoItemNode[] {
-		return logQuery.reduce<TodoItemNode[]>((accumulator, jobject) => {
-			const node = new TodoItemNode();
-			switch(jobject.objectType) {
-				case JObjectType.jobject:
-					node.item = `${jobject.key} { }`;
-					node.jObjectType = JObjectType.jobject;
-					break;
-				case JObjectType.jarray:
-					node.item = `${jobject.key} [ ]`;
-					node.jObjectType = JObjectType.jarray;
-					break;
-				default:
-					node.item = jobject.key;
-					node.jObjectType = JObjectType.none;
-					break;
-			}
-			node.value = jobject.key;
-			node.valueType = jobject.logQueryType;
-			node.path = pathNode ? `${pathNode}.${jobject.key}` : jobject.key;
-			if (jobject.childrens.length > 0) {
-			node.children = this.buildTreeFields(jobject.childrens, node.path);
-		}
-			return accumulator.concat(node);
-		}, []);
-	}
-
-}
+import { LogObjectType, QueryConfig, QuerySettingsItem } from '@log_models';
+import { TodoItemFlatNode } from 'app/_models/component/query-tree/todo-item-flat-node';
+import { TodoItemNode } from 'app/_models/component/query-tree/todo-item-node';
+import { QueryTreeService } from 'app/_services/query-tree/query-tree.service';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
 	selector: 'app-new-query-dialog',
 	templateUrl: './new-query-dialog.component.html',
 	styleUrls: ['./new-query-dialog.component.scss'],
-	providers: [ChecklistDatabase]
 })
 	export class NewQueryDialogComponent implements OnInit {
 	private destroyed$: ReplaySubject<boolean> = new ReplaySubject();
 	constructor(
-		private _database: ChecklistDatabase,
+		private _queryTreeService: QueryTreeService,
 		public dialogRef: MatDialogRef<NewQueryDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any) {
 		this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
@@ -99,12 +25,14 @@ export interface QuerySettingsItem {
 		this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
 		this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 	}
-	onNoClick(): void {
+
+	public onNoClick(): void {
 		this.dialogRef.close();
 	}
+
 	private disableExistItems(existQueries: QueryConfig[], queryNodes: TodoItemNode[]) {
 		queryNodes.forEach(item => {
-			const existIndex = existQueries.findIndex(config => config.name === item.path);
+			const existIndex = existQueries.findIndex(config => config.key === item.queryPath);
 			if(existIndex >= 0) {
 				item.isExistQuery = true;
 			}
@@ -114,7 +42,7 @@ export interface QuerySettingsItem {
 		});
 	}
 	ngOnInit(): void {
-		this._database.dataChange.subscribe((data: TodoItemNode[]) => {
+		this._queryTreeService.dataChange.subscribe((data: TodoItemNode[]) => {
 			const existQueries = this.data.existQueries;
 			this.disableExistItems(existQueries, data);
 			this.dataSource.data = data;
@@ -162,16 +90,16 @@ export interface QuerySettingsItem {
 		*/
 	transformer = (node: TodoItemNode, level: number) => {
 		const existingNode = this.nestedNodeMap.get(node);
-		const flatNode = existingNode && existingNode.item === node.item
+		const flatNode = existingNode && existingNode.name === node.name
 			? existingNode
 			: new TodoItemFlatNode();
-		flatNode.item = node.item;
+		flatNode.name = node.name;
 		flatNode.level = level;
 		flatNode.value = node.value;
 		flatNode.isExistQuery = node.isExistQuery;
-		flatNode.objectType = node.jObjectType;
-		flatNode.path = node.path;
-		flatNode.valueType = node.valueType;
+		flatNode.objectType = node.objectType;
+		flatNode.queryPath = node.queryPath;
+		flatNode.propertyType = node.propertyType;
 		flatNode.expandable = !!node.children?.length;
 		this.flatNodeMap.set(flatNode, node);
 		this.nestedNodeMap.set(node, flatNode);
@@ -179,7 +107,7 @@ export interface QuerySettingsItem {
 	}
 
 	/** Whether all the descendants of the node are selected. */
-	descendantsAllSelected(node: TodoItemFlatNode): boolean {
+	public descendantsAllSelected(node: TodoItemFlatNode): boolean {
 		const descendants = this.treeControl.getDescendants(node);
 		const descAllSelected = descendants.length > 0 && descendants.every(child => {
 		return this.checklistSelection.isSelected(child);
@@ -188,7 +116,7 @@ export interface QuerySettingsItem {
 	}
 
 	/** Whether part of the descendants are selected */
-	descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
+	public descendantsPartiallySelected(node: TodoItemFlatNode): boolean {
 		const descendants = this.treeControl.getDescendants(node);
 		const result = descendants.some(child => this.checklistSelection.isSelected(child));
 		return result && !this.descendantsAllSelected(node);
@@ -197,19 +125,19 @@ export interface QuerySettingsItem {
 	private _buildQuerySettings(isSelected: boolean) {
 		const selectedItems = this.checklistSelection.selected;
 		if (isSelected) {
-			selectedItems.filter(selectedModel => selectedModel.objectType !== JObjectType.jobject).forEach(item => {
-				const selectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === item.path);
+			selectedItems.filter(selectedModel => selectedModel.objectType !== LogObjectType.jobject).forEach(item => {
+				const selectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === item.queryPath);
 				if (selectedExistIndex < 0 && !item.isExistQuery) {
 					this.queriesToSettins.push({
-						queryPath: item.path,
-						type: item.valueType,
+						queryPath: item.queryPath,
+						propertyType: item.propertyType,
 						objectType: item.objectType,
 						name: ''
 					} as QuerySettingsItem);
 				}
 			});
 		} else {
-			const unselectedItems = this.queriesToSettins.filter(query => selectedItems.findIndex(model => model.path === query.queryPath) === -1);
+			const unselectedItems = this.queriesToSettins.filter(query => selectedItems.findIndex(model => model.queryPath === query.queryPath) === -1);
 			unselectedItems.forEach(unSelectedModel => {
 				const unselectedExistIndex = this.queriesToSettins.findIndex(query => query.queryPath === unSelectedModel.queryPath);
 				if (unselectedExistIndex >= 0) {
@@ -221,7 +149,7 @@ export interface QuerySettingsItem {
 	}
 
   /** Toggle the to-do item selection. Select/deselect all the descendants node */
-	todoItemSelectionToggle(node: TodoItemFlatNode): void {
+	public todoItemSelectionToggle(node: TodoItemFlatNode): void {
 		this.checklistSelection.toggle(node);
 		const descendants = this.treeControl.getDescendants(node);
 		const isSelected = this.checklistSelection.isSelected(node);
@@ -230,63 +158,59 @@ export interface QuerySettingsItem {
 
 	 // Force update for the parent
 	descendants.forEach(child => this.checklistSelection.isSelected(child));
-		this.checkAllParentsSelection(node);
+		this._checkAllParentsSelection(node);
 		this._buildQuerySettings(isSelected);
 }
 
   /** Toggle a leaf to-do item selection. Check all the parents to see if they changed */
-	todoLeafItemSelectionToggle(node: TodoItemFlatNode): void {
+	public todoLeafItemSelectionToggle(node: TodoItemFlatNode): void {
 		this.checklistSelection.toggle(node);
-		this.checkAllParentsSelection(node);
+		this._checkAllParentsSelection(node);
 		this._buildQuerySettings(this.checklistSelection.isSelected(node));
 	}
 
 
 	/* Checks all the parents when a leaf node is selected/unselected */
-	checkAllParentsSelection(node: TodoItemFlatNode): void {
+	private _checkAllParentsSelection(node: TodoItemFlatNode): void {
 		let query = {
 			key : node.value,
 			parents : []
 		}
-		let parent: TodoItemFlatNode | null = this.getParentNode(node);
+		let parent: TodoItemFlatNode | null = this._getParentNode(node);
 		while (parent) {
-		query.parents.unshift(parent.value);
-		this.checkRootNodeSelection(parent);
-		parent = this.getParentNode(parent);
+			query.parents.unshift(parent.value);
+			this._checkRootNodeSelection(parent);
+			parent = this._getParentNode(parent);
 		}
 
 	}
 
   /** Check root node checked state and change it accordingly */
-	checkRootNodeSelection(node: TodoItemFlatNode): void {  
+	private _checkRootNodeSelection(node: TodoItemFlatNode): void {  
 		const nodeSelected = this.checklistSelection.isSelected(node);
 		const descendants = this.treeControl.getDescendants(node);
 		const descAllSelected = descendants.length > 0 && descendants.every(child => {
-		return this.checklistSelection.isSelected(child);
+			return this.checklistSelection.isSelected(child);
 		});
 		if (nodeSelected && !descAllSelected) {
-		this.checklistSelection.deselect(node);
+			this.checklistSelection.deselect(node);
 		} else if (!nodeSelected && descAllSelected) {
-		this.checklistSelection.select(node);
+			this.checklistSelection.select(node);
 		}
 	}
 
   /* Get the parent node of a node */
-	getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
+	private _getParentNode(node: TodoItemFlatNode): TodoItemFlatNode | null {
 		const currentLevel = this.getLevel(node);
-
 		if (currentLevel < 1) {
-		return null;
+			return null;
 		}
-
 		const startIndex = this.treeControl.dataNodes.indexOf(node) - 1;
-
 		for (let i = startIndex; i >= 0; i--) {
-		const currentNode = this.treeControl.dataNodes[i];
-
-		if (this.getLevel(currentNode) < currentLevel) {
-			return currentNode;
-		}
+			const currentNode = this.treeControl.dataNodes[i];
+			if (this.getLevel(currentNode) < currentLevel) {
+				return currentNode;
+			}
 		}
 		return null;
 	}

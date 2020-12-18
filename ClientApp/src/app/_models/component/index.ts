@@ -9,3 +9,6 @@ export * from './error-stauses-tree';
 
 /**query-builder*/
 export * from './query-builder';
+
+/**query-tree*/
+export * from './query-tree';

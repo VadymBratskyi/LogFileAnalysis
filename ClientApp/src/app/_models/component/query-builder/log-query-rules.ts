@@ -1,10 +1,10 @@
-import { JObjectType } from './jobject-type';
-import { LogQueryType } from './log-query-type';
+import { LogObjectType } from './log-object-type';
+import { LogPropertyType } from './log-property-type';
 
 export interface LogQueryRules {
 	field: string;
 	operator: string;
 	value: string | number;
-	objectType: JObjectType;
-	type: LogQueryType;
+	objectType: LogObjectType;
+	propertyType: LogPropertyType;
 }

@@ -4,7 +4,6 @@ using LogQueryBuilderDLL.Models;
 using LogQueryBuilderDLL.Process;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,12 +56,12 @@ namespace LogQueryBuilderDLL {
 			}
 		}
 
-		public LogQueryType GetCsharptType(Type propertyType) {
+		public LogPropertyType GetCsharptType(Type propertyType) {
 			 switch (propertyType.Name) {
 				case nameof(DateTime):
-					return LogQueryType.date;
+					return LogPropertyType.date;
 				default:
-					return LogQueryType.text;
+					return LogPropertyType.text;
 			}
 		}
 
@@ -73,7 +72,7 @@ namespace LogQueryBuilderDLL {
 				if (!QueryGenerator.GetIsExistQueryByName(_logQueries, property.Name) &&
 					!GetIsBsonDocumentType(property.PropertyType)) {
 					var query = new LogQuery(property.Name);
-					query.LogQueryType = GetCsharptType(property.PropertyType);
+					query.LogPropertyType = GetCsharptType(property.PropertyType);
 					_logQueries.Add(query);
 				}
 				else if (GetIsBsonDocumentType(property.PropertyType)) {
@@ -96,20 +95,20 @@ namespace LogQueryBuilderDLL {
 				new QueryConfig() {
 					Key = "RequestDate",
 					Name = "RequestDate",
-					ObjectType = JObjectType.none,
-					Type = LogQueryType.date
+					ObjectType = LogObjectType.none,
+					PropertyType = LogPropertyType.date
 				},
 				new QueryConfig() {
 					Key = "ResponseDate",
 					Name = "ResponseDate",
-					ObjectType = JObjectType.none,
-					Type = LogQueryType.date
+					ObjectType = LogObjectType.none,
+					PropertyType = LogPropertyType.date
 				},
 				new QueryConfig() {
 					Key = "MessageId",
 					Name = "MessageId",
-					ObjectType = JObjectType.none,
-					Type = LogQueryType.text
+					ObjectType = LogObjectType.none,
+					PropertyType = LogPropertyType.text
 				}
 			};
 		}

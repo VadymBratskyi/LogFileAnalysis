@@ -1,5 +1,5 @@
 ﻿namespace LogFileAnalysisDAL.Models {
-	public enum LogQueryType {
+	public enum LogPropertyType {
 		none = 0,
 		text = 1,
 		number = 2,

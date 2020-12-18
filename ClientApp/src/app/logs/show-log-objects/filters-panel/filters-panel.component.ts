@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogQueryRuleSet, QueryConfig } from '@log_models';
+import { LogQueryRules, LogQueryRuleSet, QueryConfig, QuerySettingsItem } from '@log_models';
 import { ShowLogObjectsService } from '@log_services';
 import { QueryBuilderConfig } from 'angular2-query-builder';
 import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/new-query-dialog.component';
+import { takeUntil, mergeMap } from 'rxjs/operators';
+import { NewQueryDialogComponent } from '../new-query-dialog/new-query-dialog.component';
 
 @Component({
 	selector: 'app-filters-panel',
@@ -14,22 +14,22 @@ import { NewQueryDialogComponent, QuerySettingsItem } from '../new-query-dialog/
 	encapsulation: ViewEncapsulation.None
 })
 export class FiltersPanelComponent implements OnInit {
+
+	private _existQueryConfigs: QueryConfig[];
 	public isQueryBuilderCardExpanded: boolean;
 	public destroyed$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
 	public loadedConfig: boolean;
-	private _existQueryConfigs: QueryConfig[];
 
 	public config: QueryBuilderConfig = {
 		fields: {}
 	};
-	constructor(	private dialog: MatDialog,
+	constructor(	
+		private dialog: MatDialog,
 		public showLogObjectsService: ShowLogObjectsService
 	) { }
-	public ngOnInit() {
-		this.onLoadData();
-	}
-	private getType(query: QueryConfig) {
-		switch (query.type) {
+
+	private _getType(query: QueryConfig) {
+		switch (query.propertyType) {
 			case 1:
 			return 'string';
 			case 2:
@@ -43,8 +43,8 @@ export class FiltersPanelComponent implements OnInit {
 		}
 	}
 
-	private createGonfig(query: any) {
-		return {name: query.name, type: this.getType(query)};
+	private createGonfig(query: QueryConfig) {
+		return {name: query.name, type: this._getType(query)};
 	}
 
 	private buildConfig(queryconfigs: QueryConfig[]) {
@@ -66,7 +66,21 @@ export class FiltersPanelComponent implements OnInit {
 		});
 	}
 
-	private _getLogQueryRules() {
+	private _getQueryConfigs(queryItems: QuerySettingsItem[]): QueryConfig[] {
+		if(!queryItems) {
+			return [];
+		}
+		return queryItems.map(item => {
+			return {
+				key: item.queryPath,
+				objectType: item.objectType,
+				propertyType: item.propertyType,
+				name: item.name
+			} as QueryConfig;
+		});
+	}
+
+	private _getLogQueryRules(): LogQueryRules[] {
 		return this.showLogObjectsService.showLogQueryRules.rules.map(rule => {
 			const conf = this._existQueryConfigs.find(query => query.key === rule.field);
 			return conf ? {
@@ -74,9 +88,13 @@ export class FiltersPanelComponent implements OnInit {
 				operator: rule.operator,
 				value: rule.value.toString(),
 				objectType: conf.objectType,
-				type: conf.type,
-			} : null;
+				propertyType: conf.propertyType,
+			} as LogQueryRules : null;
 		});
+	}
+
+	public ngOnInit() {
+		this.onLoadData();
 	}
 
 	public onRunFilter() {
@@ -91,28 +109,19 @@ export class FiltersPanelComponent implements OnInit {
 		this.showLogObjectsService.showLogQueryRules.rules = [];
 	}
 
-	onFilterSettings() {
+	public onFilterSettings() {
 		const dialogRef = this.dialog.open(NewQueryDialogComponent, {
 			data: {existQueries: this._existQueryConfigs}
 		});
 		dialogRef.afterClosed()
-		.pipe(takeUntil(this.destroyed$))
+		.pipe(
+			takeUntil(this.destroyed$),
+			mergeMap((queryItems: QuerySettingsItem[]) => {
+			const queryConfigs = this._getQueryConfigs(queryItems);
+			return this.showLogObjectsService.addNewQueryDataConfig(queryConfigs)
+		}))
 		.subscribe((result: QuerySettingsItem[]) => {
-			if (result) {
-				const queryConfigs = result.map(item => {
-					const query = new QueryConfig();
-					query.key = item.queryPath;
-					query.objectType = item.objectType;
-					query.type = item.type;
-					query.name = item.name;
-					return query;
-				});
-				this.showLogObjectsService.addNewQueryDataConfig(queryConfigs)
-				.pipe(takeUntil(this.destroyed$))
-				.subscribe(result => {
-					this.onLoadData();
-				});
-			}
+			this.onLoadData();
       });
 	}
 
