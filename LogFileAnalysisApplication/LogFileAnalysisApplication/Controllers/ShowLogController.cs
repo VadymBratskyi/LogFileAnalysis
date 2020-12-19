@@ -60,12 +60,6 @@ namespace LogFileAnalysisApplication.Controllers {
 			return Ok(logData);
 		}
 
-		[HttpPost("[action]")]
-		public async Task<ActionResult> GetLogsDataByFilter([FromBody] QueryRulesSet rulesset) {
-			var data = await _showLogService.GetGridLogsByFilter(rulesset);
-			return Ok(data);
-		}
-
 		#endregion
 
 	}
