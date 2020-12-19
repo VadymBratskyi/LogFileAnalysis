@@ -8,6 +8,9 @@ using ViewModelsDLL.Models;
 
 namespace LogFileAnalysisApplication.Controllers
 {
+
+	#region Class: ErrorLogController
+
 	[Route("api/[controller]")]
 	[EnableCors("AllowOrigin")]
 	public class ErrorLogController : Controller
@@ -55,4 +58,7 @@ namespace LogFileAnalysisApplication.Controllers
 		#endregion
 
 	}
+
+	#endregion
+
 }

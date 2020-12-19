@@ -9,6 +9,9 @@ using ViewModelsDLL.Models;
 
 namespace LogFileAnalysisApplication.Controllers
 {
+
+	#region Class : AnsweLogController
+
 	[Route("api/[controller]")]
 	[EnableCors("AllowOrigin")]
 	public class AnsweLogController : Controller
@@ -31,6 +34,8 @@ namespace LogFileAnalysisApplication.Controllers
 
 		#endregion
 
+		#region Methods: Public
+
 		[HttpPost("[action]")]
 		public async Task<ActionResult> GetAllAnswers([FromBody] FilterParameters filterParameters) {
 			var answers = await _answerServices.GetGridAnswers(filterParameters.Skip, filterParameters.Take);
@@ -42,5 +47,11 @@ namespace LogFileAnalysisApplication.Controllers
 			var answerId = await _answerServices.SetNewAnswer(answerDto);
 			return Ok(new ResponseItem(answerId));
 		}
+
+		#endregion
+
 	}
+
+	#endregion
+
 }

@@ -3,23 +3,23 @@ using System;
 
 namespace LogFileAnalysisDAL.Models {
 
-    #region Class: Log
+	#region Class: Log
 
-    public class Log : Entity {
+	public class Log : Entity {
 
-        #region Properties: Public
+		#region Properties: Public
 
-        public DateTime RequestDate { get; set; }
+		public DateTime RequestDate { get; set; }
 
-        public BsonDocument Request { get; set; }
+		public BsonDocument Request { get; set; }
 
-        public BsonDocument Response { get; set; }
+		public BsonDocument Response { get; set; }
 
-        public DateTime ResponseDate { get; set; }
-        
-        public string MessageId { get; set; }
+		public DateTime ResponseDate { get; set; }
 
-        #endregion
+		public string MessageId { get; set; }
+
+		#endregion
 
 	}
 

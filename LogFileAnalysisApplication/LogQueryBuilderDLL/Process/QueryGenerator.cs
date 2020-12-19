@@ -6,7 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace LogQueryBuilderDLL.Process {
+
+	#region Class: QueryGenerator
+
 	public class QueryGenerator {
+
+		#region Methods: Private
 
 		private JTokenType GetTokenValueType(JToken token) {
 			return token.Type;
@@ -50,7 +55,6 @@ namespace LogQueryBuilderDLL.Process {
 			}
 		}
 
-
 		private LogPropertyType GetJsType(JTokenType tokenType) {
 			switch (tokenType) {
 				case JTokenType.String:
@@ -93,6 +97,10 @@ namespace LogQueryBuilderDLL.Process {
 			}
 		}
 
+		#endregion
+
+		#region Methods: Public
+
 		public bool GetIsExistQueryByName(List<LogQuery> array, string name) {
 			return array.SingleOrDefault(query => query.Key.ToLower() == name.ToLower()) != null;
 		}
@@ -124,5 +132,10 @@ namespace LogQueryBuilderDLL.Process {
 			return query;
 		}
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

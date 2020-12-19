@@ -66,12 +66,6 @@ namespace LogFileAnalysisApplication.Controllers {
 			return Ok(data);
 		}
 
-		//[HttpPost("[action]")]
-		//public TestValue PostTestValue([FromBody] TestValue test) {
-		//	test.Value = "Hello World from ShowLogController.PostTestValue";
-		//	return test;
-		//}
-
 		#endregion
 
 	}

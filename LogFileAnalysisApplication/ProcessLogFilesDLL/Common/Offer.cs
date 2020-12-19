@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using ViewModelsDLL.Models;
-
-namespace ProcessLogFilesDLL.Common {
+﻿namespace ProcessLogFilesDLL.Common {
 
 	#region CLass: Offer
 

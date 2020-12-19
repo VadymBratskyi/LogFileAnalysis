@@ -2,19 +2,19 @@
 
 namespace LogFileAnalysisDAL.Models {
 
-    #region Class: KnownError
+	#region Class: KnownError
 
-    public class KnownError : Entity {
+	public class KnownError : Entity {
 
-        #region Properties: Public
+		#region Properties: Public
 
-        public int CountFounded { get; set; }
+		public int CountFounded { get; set; }
 
-        public string Message { get; set; }
+		public string Message { get; set; }
 
-        public BsonDocument Status { get; set; }
+		public BsonDocument Status { get; set; }
 
-        public BsonDocument Answer { get; set; }
+		public BsonDocument Answer { get; set; }
 
 		#endregion
 

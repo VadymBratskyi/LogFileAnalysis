@@ -6,10 +6,17 @@ using System.Threading.Tasks;
 
 namespace StatusErrorDLL
 {
+
+	#region Class: StatusService
+
 	public class StatusService {
+
+		#region Fields: Private
 
 		private readonly DbContextService _dbService;
 		private ProcessErrorStatuses _procesStatuses;
+
+		#endregion
 
 		#region Properties: Private
 
@@ -17,9 +24,15 @@ namespace StatusErrorDLL
 
 		#endregion
 
+		#region Constructor: Public
+
 		public StatusService(DbContextService service) {
 			_dbService = service;
 		}
+
+		#endregion
+
+		#region Methods: Public
 
 		public async Task<IEnumerable<StatusTreeNode>> GetErrorStatuses() {
 			var tree = await ProcesStatuses.GetErrorStatusesAsTree();
@@ -30,5 +43,10 @@ namespace StatusErrorDLL
 			await ProcesStatuses.AddNewErrorStatuses(newStatus);
 		}
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

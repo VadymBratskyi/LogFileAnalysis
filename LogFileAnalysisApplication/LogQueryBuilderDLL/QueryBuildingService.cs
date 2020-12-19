@@ -11,18 +11,35 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 namespace LogQueryBuilderDLL {
+
+	#region Class: QueryBuildingService
+
 	public class QueryBuildingService {
+
+		#region Fieds: Private
 
 		private readonly DbContextService _dbService;
 		private List<LogQuery> _logQueries;
 		private QueryGenerator _queryGenerator;
 
+		#endregion
+
+		#region Properties: Private
+
 		private QueryGenerator QueryGenerator => _queryGenerator ?? (_queryGenerator = new QueryGenerator());
+
+		#endregion
+
+		#region Constructor: Public
 
 		public QueryBuildingService(DbContextService dbService) {
 			_logQueries = new List<LogQuery>();
 			_dbService = dbService;
 		}
+
+		#endregion
+
+		#region Methods: Private
 
 		private bool GetIsBsonDocumentType(Type properType) {
 			return properType == typeof(BsonDocument);
@@ -53,15 +70,6 @@ namespace LogQueryBuilderDLL {
 				else {
 					await _dbService.LogQueries.Create(item);
 				}
-			}
-		}
-
-		public LogPropertyType GetCsharptType(Type propertyType) {
-			 switch (propertyType.Name) {
-				case nameof(DateTime):
-					return LogPropertyType.date;
-				default:
-					return LogPropertyType.text;
 			}
 		}
 
@@ -113,6 +121,19 @@ namespace LogQueryBuilderDLL {
 			};
 		}
 
+		#endregion
+
+		#region Methods: Public
+
+		public LogPropertyType GetCsharptType(Type propertyType) {
+			 switch (propertyType.Name) {
+				case nameof(DateTime):
+					return LogPropertyType.date;
+				default:
+					return LogPropertyType.text;
+			}
+		}
+
 		public async Task AnalysisLogObjectToQuery(List<Log> logList) {
 			foreach (var log in logList) {
 				GetLogQueriesByLogProperties(log);
@@ -148,5 +169,10 @@ namespace LogQueryBuilderDLL {
 			}
 		}
 
+		#endregion
+
 	}
+
+	#endregion
+
 }

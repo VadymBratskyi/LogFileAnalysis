@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace AnswerLogObjectDLL.Process
 {
+
+	#region Class: AnswerProcess
+
 	public class AnswerProcess
 	{
 		#region Fields: Private
@@ -25,6 +28,8 @@ namespace AnswerLogObjectDLL.Process
 
 		#endregion
 
+		#region Methods: Private
+
 		private Answer CreateNewAnswer(AnswerDTO newAnswer)
 		{
 			return new Answer()
@@ -33,6 +38,10 @@ namespace AnswerLogObjectDLL.Process
 				StatusId = new ObjectId(newAnswer.StatusId)
 			};
 		}
+
+		#endregion
+
+		#region Methods: Public
 
 		public async Task<IEnumerable<Answer>> GetAnswers(int skip, int take)
 		{
@@ -57,5 +66,11 @@ namespace AnswerLogObjectDLL.Process
 				throw new Exception(ex.Message);
 			}
 		}
+
+		#endregion
+
 	}
+
+	#endregion
+
 }

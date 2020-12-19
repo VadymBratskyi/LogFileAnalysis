@@ -2,16 +2,16 @@
 
 namespace LogFileAnalysisDAL.Models {
 
-    #region Class: StatusError
+	#region Class: StatusError
 
-    public class StatusError : Entity{
+	public class StatusError : Entity{
 
-        #region Properties: Public
+		#region Properties: Public
 
-        public int Code { get; set; }
-        public string Title { get; set; }
-        public BsonArray KeyWords { get; set; }
-        public ObjectId SubStatusId { get; set; }
+		public int Code { get; set; }
+		public string Title { get; set; }
+		public BsonArray KeyWords { get; set; }
+		public ObjectId SubStatusId { get; set; }
 
 		#endregion
 

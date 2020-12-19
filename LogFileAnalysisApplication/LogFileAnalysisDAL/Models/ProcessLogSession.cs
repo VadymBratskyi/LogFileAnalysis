@@ -12,7 +12,7 @@ namespace LogFileAnalysisDAL.Models {
 		public DateTime CreatedOn { get; set; }
 
 		public string SessionTitle { get; set; }
-		
+
 		public string UserName { get; set; }
 
 		#endregion

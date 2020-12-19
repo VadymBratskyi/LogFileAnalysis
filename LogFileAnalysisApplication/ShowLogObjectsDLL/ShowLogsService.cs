@@ -30,7 +30,19 @@ namespace ShowLogObjectsDLL {
 
 		#endregion
 
-		#region Fields: Public
+		#region Methods: Private
+
+		private FilterDefinition<Log> GetAndFilter(IEnumerable<FilterDefinition<Log>> filters) {
+			return Builders<Log>.Filter.And(new List<FilterDefinition<Log>>(filters));
+		}
+
+		private FilterDefinition<Log> GetOrFilter(IEnumerable<FilterDefinition<Log>> filters) {
+			return Builders<Log>.Filter.Or(new List<FilterDefinition<Log>>(filters));
+		}
+
+		#endregion
+
+		#region Methods: Public
 
 		public async Task<DataSourceGrid<LogDTO>> GetGridLogs(ShowLogFilterParameters parameters) {
 			List<FilterDefinition<Log>> rules = new List<FilterDefinition<Log>>();
@@ -62,14 +74,6 @@ namespace ShowLogObjectsDLL {
 			});
 			dataSource.CountLogs = await _dbService.Logs.Count(filter);
 			return dataSource;
-		}
-
-		private FilterDefinition<Log> GetAndFilter(IEnumerable<FilterDefinition<Log>> filters) { 
-			return Builders<Log>.Filter.And(new List<FilterDefinition<Log>>(filters));
-		}
-
-		private FilterDefinition<Log> GetOrFilter(IEnumerable<FilterDefinition<Log>> filters) {
-			return Builders<Log>.Filter.Or(new List<FilterDefinition<Log>>(filters));
 		}
 
 		public async Task<DataSourceGrid<LogDTO>> GetGridLogsByFilter(QueryRulesSet rulesset) {

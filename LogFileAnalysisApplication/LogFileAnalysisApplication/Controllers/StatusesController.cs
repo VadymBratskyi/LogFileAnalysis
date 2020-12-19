@@ -7,6 +7,9 @@ using StatusErrorDLL.Models;
 
 namespace LogFileAnalysisApplication.Controllers
 {
+
+	#region Class: StatusesController
+
 	[Route("api/[controller]")]
 	[EnableCors("AllowOrigin")]
 	public class StatusesController : Controller
@@ -19,10 +22,16 @@ namespace LogFileAnalysisApplication.Controllers
 
 		#endregion
 
+		#region Constructor: Public
+
 		public StatusesController(ILogger<StatusesController> logger, StatusService errorStatusService) {
 			_logger = logger;
 			_errorStatusService = errorStatusService;
 		}
+
+		#endregion
+
+		#region Methods: Public
 
 
 		[HttpPost("[action]")]
@@ -38,5 +47,10 @@ namespace LogFileAnalysisApplication.Controllers
 			await _errorStatusService.SetNewErrorStatus(statusErrorDTO);
 			return Ok();
 		}
+
+		#endregion
 	}
+
+	#endregion
+
 }

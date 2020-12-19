@@ -1,10 +1,7 @@
 ﻿using AnswerLogObjectDLL.Models;
 using AnswerLogObjectDLL.Process;
 using LogFileAnalysisDAL;
-using LogFileAnalysisDAL.Models;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using ViewModelsDLL.Models;
 

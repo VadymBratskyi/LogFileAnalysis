@@ -1,10 +1,8 @@
 ﻿using LogFileAnalysisDAL.Extentions;
 using LogFileAnalysisDAL.Models;
 using Microsoft.AspNetCore.SignalR;
-using MongoDB.Bson.Serialization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ViewModelsDLL.Models;
 
 namespace ProcessLogFilesDLL.Common {
 
