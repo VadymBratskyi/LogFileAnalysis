@@ -9,7 +9,7 @@ namespace ShowLogObjectsDLL.Models {
 		#region Properties: Public
 
 		public string Condition { get; set; }
-		public IEnumerable<QueryRules> Rules { get; set; }
+		public List<QueryRules> Rules { get; set; }
 
 		#endregion
 

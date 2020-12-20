@@ -86,7 +86,6 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUni
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\obj\Debug\netcoreapp3.1\LogQueryBuilderNUnitTest.csprojAssemblyReference.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\obj\Debug\netcoreapp3.1\LogQueryBuilderNUnitTest.AssemblyInfoInputs.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\obj\Debug\netcoreapp3.1\LogQueryBuilderNUnitTest.AssemblyInfo.cs
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\LogQueryBuilderNUnitTest\obj\Debug\netcoreapp3.1\LogQueryBuilderNUnitTest.csproj.CoreCompileInputs.cache

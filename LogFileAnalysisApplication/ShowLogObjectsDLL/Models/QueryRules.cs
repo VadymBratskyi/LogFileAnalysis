@@ -10,7 +10,7 @@ namespace ShowLogObjectsDLL.Models {
 
 		public string Field { get; set; }
 		public string Operator { get; set; }
-		public string Value { get; set; }
+		public dynamic Value { get; set; }
 		public LogObjectType ObjectType { get; set; }
 		public LogPropertyType Type { get; set; }
 

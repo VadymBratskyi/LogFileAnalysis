@@ -313,3 +313,4 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnit
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ProcessLogFileNUnitTest\obj\Debug\netcoreapp3.1\ProcessLogFileNUnitTest.csprojAssemblyReference.cache
