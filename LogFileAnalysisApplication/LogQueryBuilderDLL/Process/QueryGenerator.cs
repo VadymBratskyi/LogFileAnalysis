@@ -29,7 +29,7 @@ namespace LogQueryBuilderDLL.Process {
 		}
 
 		private void AnalysisLogQuery(LogQuery logQuery, KeyValuePair<string, JToken> token, Action<List<LogQuery>, KeyValuePair<string, JToken>> action) {
-			switch (logQuery.LogObjectType) {
+			switch (logQuery.ObjectType) {
 				case LogObjectType.jobject:
 					var objectData = (JObject)token.Value;
 					foreach (var objectItem in objectData) {
@@ -47,7 +47,7 @@ namespace LogQueryBuilderDLL.Process {
 								}
 								break;
 							default:
-								logQuery.LogPropertyType = GetJsType(item.Type);
+								logQuery.PropertyType = GetJsType(item.Type);
 								break;
 						}
 					}
@@ -79,15 +79,15 @@ namespace LogQueryBuilderDLL.Process {
 
 		private LogQuery CreateLogQuery(KeyValuePair<string, JToken> token) {
 			var logQuery = new LogQuery(token.Key);
-			logQuery.LogPropertyType = GetJsType(token.Value.Type);
-			logQuery.LogObjectType = GetJObjectType(token);
+			logQuery.PropertyType = GetJsType(token.Value.Type);
+			logQuery.ObjectType = GetJObjectType(token);
 			AnalysisLogQuery(logQuery, token, ActionAddLogQuery);
 			return logQuery;
 		}
 
 		private void ChangeExistLogQuery(List<LogQuery> logQueries, KeyValuePair<string, JToken> token) {
 			var jObjectType = GetJObjectType(token);
-			var existItem = logQueries.SingleOrDefault(model => model.Key.ToLower() == token.Key.ToLower() && model.LogObjectType == jObjectType);
+			var existItem = logQueries.SingleOrDefault(model => model.Key.ToLower() == token.Key.ToLower() && model.ObjectType == jObjectType);
 			if (existItem == null) {
 				var newQuery = CreateLogQuery(token);
 				logQueries.Add(newQuery);
@@ -117,13 +117,13 @@ namespace LogQueryBuilderDLL.Process {
 			var query = new LogQuery(propertyName);
 			switch (GetTokenValueType(jOject)) {
 				case JTokenType.Object:
-					query.LogObjectType = LogObjectType.jobject;
+					query.ObjectType = LogObjectType.jobject;
 					foreach (var model in jOject) {
 						query.Childrens.Add(CreateLogQuery(model));
 					}
 					break;
 				case JTokenType.Array:
-					query.LogObjectType = LogObjectType.jarray;
+					query.ObjectType = LogObjectType.jarray;
 					foreach (var mdel in jOject) {
 						query.Childrens.Add(CreateLogQuery(mdel));
 					}

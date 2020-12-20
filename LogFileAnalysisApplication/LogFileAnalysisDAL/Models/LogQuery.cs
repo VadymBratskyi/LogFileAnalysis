@@ -12,8 +12,8 @@ namespace LogFileAnalysisDAL.Models {
 		#region Properties : Public
 
 		public string Key { get; set; }
-		public LogObjectType LogObjectType { get; set; }
-		public LogPropertyType LogPropertyType { get; set; }
+		public LogObjectType ObjectType { get; set; }
+		public LogPropertyType PropertyType { get; set; }
 		public List<LogQuery> Childrens { get; set; }
 
 		[BsonIgnore]
@@ -27,7 +27,7 @@ namespace LogFileAnalysisDAL.Models {
 		public LogQuery(string keyValue) {
 			Id = ObjectId.GenerateNewId();
 			Key = keyValue;
-			LogObjectType = LogObjectType.none;
+			ObjectType = LogObjectType.none;
 			Childrens = new List<LogQuery>();
 		}
 

@@ -17,11 +17,11 @@ namespace ShowLogObjectsNUnitTest {
 		private ShowLogsService showLogsService;
 		private ShowLogFilterParameters filterParameters;
 
-		private QueryRules CreateQueryRules(string field, dynamic value) {
+		private QueryRules CreateQueryRules(string field, string value) {
 			var queryRule = new QueryRules();
 			queryRule.Field = field;
 			queryRule.ObjectType = LogObjectType.none;
-			queryRule.Type = LogPropertyType.none;
+			queryRule.PropertyType = LogPropertyType.none;
 			queryRule.Operator = "=";
 			queryRule.Value = value;
 			return queryRule;
@@ -91,8 +91,9 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Eq_RNK_Number() {
 			var key = "Request.params.RNK";
-			var value = 380;
+			var value = "380";
 			var paramMessageId = CreateQueryRules(key, value);
+			paramMessageId.PropertyType = LogPropertyType.number;
 			paramMessageId.Operator = "=";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);
 			var data = await showLogsService.GetGridLogs(filterParameters);
@@ -103,7 +104,7 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Ne_RNK_Number() {
 			var key = "Request.params.RNK";
-			var value = 380;
+			var value = "380";
 			var paramMessageId = CreateQueryRules(key, value);
 			paramMessageId.Operator = "!=";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);
@@ -115,8 +116,9 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Gt_RNK_Number() {
 			var key = "Request.params.RNK";
-			var value = 380;
+			var value = "380";
 			var paramMessageId = CreateQueryRules(key, value);
+			paramMessageId.PropertyType = LogPropertyType.number;
 			paramMessageId.Operator = ">";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);
 			var data = await showLogsService.GetGridLogs(filterParameters);
@@ -127,8 +129,9 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Gte_RNK_Number() {
 			var key = "Request.params.RNK";
-			var value = 380;
+			var value = "380";
 			var paramMessageId = CreateQueryRules(key, value);
+			paramMessageId.PropertyType = LogPropertyType.number;
 			paramMessageId.Operator = ">=";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);
 			var data = await showLogsService.GetGridLogs(filterParameters);
@@ -139,8 +142,9 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Lt_RNK_Number() {
 			var key = "Request.params.RNK";
-			var value = 1354202;
+			var value = "1354202";
 			var paramMessageId = CreateQueryRules(key, value);
+			paramMessageId.PropertyType = LogPropertyType.number;
 			paramMessageId.Operator = "<";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);
 			var data = await showLogsService.GetGridLogs(filterParameters);
@@ -151,8 +155,9 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Lte_RNK_Number() {
 			var key = "Request.params.RNK";
-			var value = 1354202;
+			var value = "1354202";
 			var paramMessageId = CreateQueryRules(key, value);
+			paramMessageId.PropertyType = LogPropertyType.number;
 			paramMessageId.Operator = "<=";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);
 			var data = await showLogsService.GetGridLogs(filterParameters);
@@ -163,8 +168,9 @@ namespace ShowLogObjectsNUnitTest {
 		[Test]
 		public async Task GetGridLogs_Filter_Arr_Eq_mergedRNK_Number() {
 			var key = "Request.params.mergedRNK";
-			var value = 20020;
+			var value = "20020";
 			var paramMessageId = CreateQueryRules(key, value);
+			paramMessageId.PropertyType = LogPropertyType.number;
 			paramMessageId.ObjectType = LogObjectType.jarray;
 			paramMessageId.Operator = "=";
 			filterParameters.RulesSet.Rules.Add(paramMessageId);

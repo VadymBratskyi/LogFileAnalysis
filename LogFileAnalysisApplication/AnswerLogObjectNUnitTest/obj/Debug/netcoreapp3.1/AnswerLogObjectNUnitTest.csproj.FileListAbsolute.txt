@@ -86,7 +86,6 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUni
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.csprojAssemblyReference.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.AssemblyInfoInputs.cache
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.AssemblyInfo.cs
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.csproj.CoreCompileInputs.cache

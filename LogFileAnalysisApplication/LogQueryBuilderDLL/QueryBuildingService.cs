@@ -80,7 +80,7 @@ namespace LogQueryBuilderDLL {
 				if (!QueryGenerator.GetIsExistQueryByName(_logQueries, property.Name) &&
 					!GetIsBsonDocumentType(property.PropertyType)) {
 					var query = new LogQuery(property.Name);
-					query.LogPropertyType = GetCsharptType(property.PropertyType);
+					query.PropertyType = GetCsharptType(property.PropertyType);
 					_logQueries.Add(query);
 				}
 				else if (GetIsBsonDocumentType(property.PropertyType)) {

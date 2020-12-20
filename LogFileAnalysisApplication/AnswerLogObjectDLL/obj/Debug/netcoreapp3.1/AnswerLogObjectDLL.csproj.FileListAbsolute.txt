@@ -24,4 +24,3 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.dll
 C:\VadimBratskyi\Git\VadymBratskyi\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Debug\netcoreapp3.1\ViewModelsDLL.pdb
-C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Debug\netcoreapp3.1\AnswerLogObjectDLL.csprojAssemblyReference.cache

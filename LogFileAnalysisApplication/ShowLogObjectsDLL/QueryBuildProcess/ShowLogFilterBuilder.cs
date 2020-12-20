@@ -121,14 +121,24 @@ namespace ShowLogObjectsDLL.QueryBuildProcess {
 			}
 		}
 
+		private dynamic GetValueByPropertyType(QueryRules rule) {
+			if (rule.PropertyType == LogPropertyType.number) {
+				return Int32.Parse(rule.Value);
+			}
+			else {
+				return rule.Value;
+			}
+		}
+
 		public FilterDefinition<Log> BuildFilter(QueryRules rule) {
+			dynamic value = GetValueByPropertyType(rule);
 			switch (rule.ObjectType) {
 				case LogObjectType.jarray:
 					var arrFilter = ItemsOperators.SingleOrDefault(option => option.Key == rule.Operator);
-					return arrFilter.Value(rule.Field, rule.Value);
+					return arrFilter.Value(rule.Field, value);
 				default:
 					var filter = ItemOperators.SingleOrDefault(option => option.Key == rule.Operator);
-					return filter.Value(rule.Field, rule.Value);
+					return filter.Value(rule.Field, value);
 			}
 		}
 
