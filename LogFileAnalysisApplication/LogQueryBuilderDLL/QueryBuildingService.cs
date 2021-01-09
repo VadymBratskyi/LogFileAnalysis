@@ -60,6 +60,9 @@ namespace LogQueryBuilderDLL {
 					_logQueries.Add(findQuery);
 				}
 			}
+			else {
+				findItem.IsModified = true;
+			}
 		}
 
 		private async Task CreateOrUpdateQueryItem() {

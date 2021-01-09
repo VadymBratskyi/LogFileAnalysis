@@ -128,6 +128,7 @@ namespace ProcessLogFilesDLL {
 				await _processLogNotifier.NotifyOffers(ProcessOffer.GetOffers());
 				await GenerateQueries(ObjectsGenerator.GetLogList());
 			}
+			
 		}
 
 		#endregion
