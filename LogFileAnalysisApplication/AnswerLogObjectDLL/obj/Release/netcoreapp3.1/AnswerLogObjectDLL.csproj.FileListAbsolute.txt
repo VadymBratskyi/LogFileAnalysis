@@ -1,0 +1,14 @@
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\AnswerLogObjectDLL.deps.json
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\AnswerLogObjectDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\AnswerLogObjectDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\LogFileAnalysisDAL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\ViewModelsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\LogFileAnalysisDAL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\bin\Release\netcoreapp3.1\ViewModelsDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.csprojAssemblyReference.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.AssemblyInfoInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.AssemblyInfo.cs
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.csproj.CoreCompileInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.csproj.CopyComplete
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectDLL\obj\Release\netcoreapp3.1\AnswerLogObjectDLL.pdb

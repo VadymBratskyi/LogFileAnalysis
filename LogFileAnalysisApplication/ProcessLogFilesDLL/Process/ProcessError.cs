@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProcessLogFilesDLL.Process {
 
@@ -16,13 +17,20 @@ namespace ProcessLogFilesDLL.Process {
 				MessageId = MessageId,
 				Message = jtError.Value<string>(keyErrorMessage),
 				Details = jtError.Value<string>("data"),
-				ResponsError = BsonDocument.Parse(jtError.ToString())
+				ResponsError = BsonDocument.Parse(jtError.ToString()),
+				CountFounded = 1
 			};
 		}
 
 		private void AddNewErrorItem(JToken jtError, string keyMessage) {
 			var error = CreateError(jtError, keyMessage);
-			ErrorsList.Add(error);
+			var exisError = ErrorsList.FirstOrDefault(model => model.Message == error.Message);
+			if (exisError == null) {
+				ErrorsList.Add(error);
+			}
+			else {
+				exisError.CountFounded++;
+			}
 		}
 
 		#endregion

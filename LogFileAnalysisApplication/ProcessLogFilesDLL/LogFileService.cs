@@ -57,7 +57,7 @@ namespace ProcessLogFilesDLL {
 				throw new ExistFileException(string.Format(ExistLogFile, file.FileName));
 			} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && sessionFile.ProcessSessionId != sessionId) {
 				sessionFile.ProcessSessionId = sessionId;
-				await _dbService.ProcessSessionFiles.Update(sessionFile, sessionFile.Id);
+				await _dbService.ProcessSessionFiles.Update(sessionFile);
 				return true;
 			} else if (sessionFile != null && sessionFile.StatusFile == StatusSessionFile.newFile && 
 				sessionFile.ProcessSessionId == sessionId) {

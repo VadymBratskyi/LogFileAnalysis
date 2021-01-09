@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using LogFileAnalysisDAL.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ namespace LogFileAnalysisDAL.Repository {
 
 	#region Interface : IDbSetMongoDB<TEntity>
 
-		public interface IDbSetMongoDB<TEntity> where TEntity : class {
+		public interface IDbSetMongoDB<TEntity> where TEntity : IEntity {
 
 			#region Methods: Public
 
@@ -23,7 +24,7 @@ namespace LogFileAnalysisDAL.Repository {
 			Task<TEntity> FindById(ObjectId id);
 			Task Create(TEntity item);
 			Task Create(IEnumerable<TEntity> entities);
-			Task Update(TEntity item, ObjectId id);
+			Task Update(TEntity item);
 			Task Remove(ObjectId id);
 
 			#endregion

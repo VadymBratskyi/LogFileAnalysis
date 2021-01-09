@@ -1,0 +1,9 @@
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\bin\Release\netcoreapp3.1\ViewModelsDLL.deps.json
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\bin\Release\netcoreapp3.1\ViewModelsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\bin\Release\netcoreapp3.1\ViewModelsDLL.pdb
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Release\netcoreapp3.1\ViewModelsDLL.csprojAssemblyReference.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Release\netcoreapp3.1\ViewModelsDLL.AssemblyInfoInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Release\netcoreapp3.1\ViewModelsDLL.AssemblyInfo.cs
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Release\netcoreapp3.1\ViewModelsDLL.csproj.CoreCompileInputs.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Release\netcoreapp3.1\ViewModelsDLL.dll
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\ViewModelsDLL\obj\Release\netcoreapp3.1\ViewModelsDLL.pdb

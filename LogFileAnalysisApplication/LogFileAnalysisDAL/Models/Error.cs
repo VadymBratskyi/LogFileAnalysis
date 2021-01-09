@@ -16,6 +16,8 @@ namespace LogFileAnalysisDAL.Models {
 
 		public BsonDocument ResponsError { get; set; }
 
+		public int CountFounded { get; set; }
+
 		#endregion
 
 	}

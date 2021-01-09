@@ -105,25 +105,27 @@ namespace ProcessLogFilesDLL.Process {
 			DateTime dateStart = DateTime.MinValue;
 			DateTime dateEnd = DateTime.MinValue;
 			string value;
-			while (!string.IsNullOrEmpty(value = reader.ReadLine())) {
-				if (GetMatchTemplate(value, Template.RegStart)) {
-					GetMatchDate(value, out dateStart);
-				}
-				if (GetMatchTemplate(value, Template.RegEnd)) {
-					GetMatchDate(value, out dateEnd);
-				}
-				string input;
-				if (GetMatchTemplate(value, Template.RegInput, out input)) {
-					var data = GetInput(input);
-					var messageId = GetMessageId(data, "notFoundInput_");
-					_generateObjects.CreateLogObject(messageId, dateStart, data, DateTime.MinValue, null);
-				}
-				string output;
-				if (GetMatchTemplate(value, Template.RegOutput, out output)) {
-					var data = GetOutput(output);
-					var messageId = GetMessageId(data, "notFoundOutput_");
-					_generateObjects.CreateLogObject(messageId, DateTime.MinValue, null, dateEnd, data);
-					FoundError(data, messageId);
+			while ((value = reader.ReadLine()) != null) {
+				if (!string.IsNullOrEmpty(value)) {
+					if (GetMatchTemplate(value, Template.RegStart)) {
+						GetMatchDate(value, out dateStart);
+					}
+					if (GetMatchTemplate(value, Template.RegEnd)) {
+						GetMatchDate(value, out dateEnd);
+					}
+					string input;
+					if (GetMatchTemplate(value, Template.RegInput, out input)) {
+						var data = GetInput(input);
+						var messageId = GetMessageId(data, "notFoundInput_");
+						_generateObjects.CreateLogObject(messageId, dateStart, data, DateTime.MinValue, null);
+					}
+					string output;
+					if (GetMatchTemplate(value, Template.RegOutput, out output)) {
+						var data = GetOutput(output);
+						var messageId = GetMessageId(data, "notFoundOutput_");
+						_generateObjects.CreateLogObject(messageId, DateTime.MinValue, null, dateEnd, data);
+						FoundError(data, messageId);
+					}
 				}
 			}
 		}

@@ -41,26 +41,25 @@ namespace ProcessLogFilesDLL.Process {
 						MessageId = error.MessageId,
 						Message = error.Message,
 						Error = error.ResponsError,
-						CountFounded = 1
+						CountFounded = error.CountFounded
 					};
 					await _dbService.UnKnownErrors.Create(unError);
 				} else if (unKnownErrors.Any()) {
-					foreach (var item in unKnownErrors) {
-						item.CountFounded++;
-						if (item.Id != ObjectId.Empty) {
-							item.IsModified = true;
+					foreach (var unKnownError in unKnownErrors) {
+						unKnownError.CountFounded += error.CountFounded;
+						if (unKnownError.Id != ObjectId.Empty) {
+							unKnownError.IsModified = true;
 						}
-						await _dbService.UnKnownErrors.Update(item, item.Id);
+						await _dbService.UnKnownErrors.Update(unKnownError);
 					}
 				} else if (knownErrors.Any()) {
-					foreach (var knownerror in knownErrors) {
-						var existOffer = _processOffer.getExistOffer(knownerror.Id);
+					foreach (var knownError in knownErrors) {
+						knownError.CountFounded += error.CountFounded;
+						var existOffer = _processOffer.getExistOffer(knownError.Id);
 						if (existOffer == null) {
-							_processOffer.AddKnowErrorToOffer(knownerror);
+							_processOffer.AddKnowErrorToOffer(knownError);
 						}
-						else {
-							existOffer.CountFounded++;
-						}
+						await _dbService.KnownErrors.Update(knownError);
 					}
 				}
 			}

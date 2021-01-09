@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using ShowLogObjectsDLL.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -122,11 +123,14 @@ namespace ShowLogObjectsDLL.QueryBuildProcess {
 		}
 
 		private dynamic GetValueByPropertyType(QueryRules rule) {
-			if (rule.PropertyType == LogPropertyType.number) {
-				return Int32.Parse(rule.Value);
-			}
-			else {
-				return rule.Value;
+			switch (rule.PropertyType) {
+				case LogPropertyType.number:
+					return Int32.Parse(rule.Value);
+				case LogPropertyType.date:
+					var date = DateTime.Parse(rule.Value);
+					return date;
+				default:
+					return rule.Value;
 			}
 		}
 

@@ -65,7 +65,7 @@ namespace LogQueryBuilderDLL {
 		private async Task CreateOrUpdateQueryItem() {
 			foreach (var item in _logQueries) {
 				if (item.IsModified) {
-					await _dbService.LogQueries.Update(item, item.Id);
+					await _dbService.LogQueries.Update(item);
 				}
 				else {
 					await _dbService.LogQueries.Create(item);

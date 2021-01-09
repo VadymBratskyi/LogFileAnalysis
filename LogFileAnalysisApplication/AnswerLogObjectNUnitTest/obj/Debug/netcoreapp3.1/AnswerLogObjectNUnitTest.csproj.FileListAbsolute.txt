@@ -93,3 +93,4 @@ C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUni
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.dll
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.pdb
 C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.genruntimeconfig.cache
+C:\GitHubProjects\LogFileAnalysis\LogFileAnalysisApplication\AnswerLogObjectNUnitTest\obj\Debug\netcoreapp3.1\AnswerLogObjectNUnitTest.csprojAssemblyReference.cache

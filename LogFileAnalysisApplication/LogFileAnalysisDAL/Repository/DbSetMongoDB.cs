@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using LogFileAnalysisDAL.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System;
@@ -10,7 +11,7 @@ namespace LogFileAnalysisDAL.Repository {
 
 	#region Class : DbSetMongoDB<TEntity>
 
-	public class DbSetMongoDB<TEntity> : IDbSetMongoDB<TEntity> where TEntity : class {
+	public class DbSetMongoDB<TEntity> : IDbSetMongoDB<TEntity> where TEntity : IEntity {
 
 		#region Fields: Private
 
@@ -99,8 +100,8 @@ namespace LogFileAnalysisDAL.Repository {
 			await _entities.DeleteOneAsync(new BsonDocument("_id", id));
 		}
 
-		public async Task Update(TEntity item, ObjectId id) {
-			await _entities.ReplaceOneAsync(new BsonDocument("_id", id), item);
+		public async Task Update(TEntity item) {
+			await _entities.ReplaceOneAsync(new BsonDocument("_id", item.Id), item);
 		}
 
 		#endregion
