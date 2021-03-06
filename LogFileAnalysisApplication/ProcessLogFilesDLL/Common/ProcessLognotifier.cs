@@ -33,17 +33,17 @@ namespace ProcessLogFilesDLL.Common {
 		}
 
 		public async Task NotifyOffers(IEnumerable<KnownError> knownErrors) {
-			var offerNotify = new OfferNotify();
+			var offers = new List<OfferNotify>();
 			foreach (var item in knownErrors) {
-				var offer = new Offer();
+				var offer = new OfferNotify();
 				offer.ErrorMessage = item.Message;
 				var answer = item.Answer.ConvertToEntity<Answer>();
 				var status = item.Status.ConvertToEntity<StatusError>();
 				offer.StatusCode = status.Code;
 				offer.AnswerMessage = answer.Text;
-				offerNotify.OfferMessages.Add(offer);
+				offers.Add(offer);
 			}
-			await _hubCaller.All.SendAsync("OfferNotification", offerNotify);
+			await _hubCaller.All.SendAsync("OfferNotification", offers);
 		}
 
 		#endregion

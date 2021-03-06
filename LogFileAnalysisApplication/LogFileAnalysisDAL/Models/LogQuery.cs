@@ -16,10 +16,6 @@ namespace LogFileAnalysisDAL.Models {
 		public LogPropertyType PropertyType { get; set; }
 		public List<LogQuery> Childrens { get; set; }
 
-		[BsonIgnore]
-		[JsonIgnore]
-		public bool IsModified { get; set; }
-
 		#endregion
 
 		#region Constructor: Public

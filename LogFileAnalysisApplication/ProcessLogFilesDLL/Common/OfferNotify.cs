@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using MongoDB.Bson;
 
 namespace ProcessLogFilesDLL.Common {
 
@@ -8,15 +8,9 @@ namespace ProcessLogFilesDLL.Common {
 
 		#region Properties: Public
 
-		public List<Offer> OfferMessages { get; set; }
-
-		#endregion
-
-		#region Constructor: Public
-
-		public OfferNotify() {
-			OfferMessages = new List<Offer>();
-		}
+		public int StatusCode { get; set; }
+		public string ErrorMessage { get; set; }
+		public string AnswerMessage { get; set; }
 
 		#endregion
 

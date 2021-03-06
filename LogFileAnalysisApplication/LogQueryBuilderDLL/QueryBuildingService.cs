@@ -50,24 +50,11 @@ namespace LogQueryBuilderDLL {
 			return new List<PropertyInfo>(type.GetProperties());
 		}
 
-		private void GetLogQueryFromDb(string propertyName) {
-			var findItem = _logQueries.SingleOrDefault(item => item.Key == propertyName);
-			if (findItem == null) {
-				var filter = Builders<LogQuery>.Filter.Eq<string>(info => info.Key, propertyName);
-				var findQuery = _dbService.LogQueries.GetSingle(filter);
-				if (findQuery != null) {
-					findQuery.IsModified = true;
-					_logQueries.Add(findQuery);
-				}
-			}
-			else {
-				findItem.IsModified = true;
-			}
-		}
-
 		private async Task CreateOrUpdateQueryItem() {
 			foreach (var item in _logQueries) {
-				if (item.IsModified) {
+				var filter = Builders<LogQuery>.Filter.Eq<string>(model => model.Key, item.Key);
+				var findQuery = _dbService.LogQueries.GetSingle(filter);
+				if (findQuery != null) {
 					await _dbService.LogQueries.Update(item);
 				}
 				else {
@@ -79,7 +66,6 @@ namespace LogQueryBuilderDLL {
 		private void GetLogQueriesByLogProperties(Log log) {
 			var properties = GetLogProperties(log);
 			foreach (var property in properties) {
-				GetLogQueryFromDb(property.Name);
 				if (!QueryGenerator.GetIsExistQueryByName(_logQueries, property.Name) &&
 					!GetIsBsonDocumentType(property.PropertyType)) {
 					var query = new LogQuery(property.Name);

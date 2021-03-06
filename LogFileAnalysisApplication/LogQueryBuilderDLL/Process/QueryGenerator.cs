@@ -102,7 +102,7 @@ namespace LogQueryBuilderDLL.Process {
 		#region Methods: Public
 
 		public bool GetIsExistQueryByName(List<LogQuery> array, string name) {
-			return array.SingleOrDefault(query => query.Key.ToLower() == name.ToLower()) != null;
+			return array.Any(query => query.Key.ToLower() == name.ToLower());
 		}
 
 		public void ProcessExistLogQuery(LogQuery logQuery, BsonDocument bsonElements) {
